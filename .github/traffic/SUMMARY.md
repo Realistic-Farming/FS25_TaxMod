@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-04-05T18:39:17Z
-**Days tracked:** 8 | **Download snapshots:** 21 (hourly)
+**Last updated:** 2026-04-06T18:54:37Z
+**Days tracked:** 9 | **Download snapshots:** 23 (hourly)
 
 ---
 
@@ -11,8 +11,8 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 107 | 53 |
-| Git Clones | 254 | 108 |
+| Page Views | 111 | 53 |
+| Git Clones | 273 | 108 |
 
 > **Engagement:** 2.0 pages per visitor (14-day avg)
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 139 of 53 visitors cloned or downloaded (**262.2%**)
+> **14-day conversion:** 140 of 53 visitors cloned or downloaded (**264.1%**)
 >
-> Unique cloners: 108 | Release downloads: 31
+> Unique cloners: 108 | Release downloads: 32
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 31 |
-| Git Clones (14-day) | 254 |
-| **Total Acquisitions** | **285** |
+| Zip Downloads | 32 |
+| Git Clones (14-day) | 273 |
+| **Total Acquisitions** | **305** |
 
 ---
 
@@ -54,7 +54,7 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 40 | 22 |
+| github.com | 44 | 24 |
 | kingmods.net | 13 | 10 |
 | Bing | 1 | 1 |
 | Google | 1 | 1 |
@@ -77,15 +77,15 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/TheCodingDad-TisonK/FS25_TaxMod` | 57 | 39 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.3.1` | 12 | 11 |
+| `/TheCodingDad-TisonK/FS25_TaxMod` | 60 | 40 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.3.1` | 13 | 12 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.3.0` | 8 | 7 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 6 | 6 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/issues/7` | 6 | 3 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/issues` | 5 | 4 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/pulls` | 3 | 2 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.2.0` | 2 | 2 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/commit/2c98ad08a58d96c8a7eaa1f598f41067269e09f4` | 2 | 1 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/README.md` | 1 | 1 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/modDesc.xml` | 1 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/src/settings/UIHelper.lua` | 1 | 1 |
 
 ---
