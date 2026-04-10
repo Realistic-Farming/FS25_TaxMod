@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-04-09T06:19:56Z
-**Days tracked:** 11 | **Download snapshots:** 30 (hourly)
+**Last updated:** 2026-04-10T18:46:55Z
+**Days tracked:** 12 | **Download snapshots:** 31 (hourly)
 
 ---
 
@@ -11,10 +11,10 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 116 | 58 |
-| Git Clones | 327 | 123 |
+| Page Views | 139 | 59 |
+| Git Clones | 380 | 135 |
 
-> **Engagement:** 2.0 pages per visitor (14-day avg)
+> **Engagement:** 2.3 pages per visitor (14-day avg)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 160 of 58 visitors cloned or downloaded (**275.8%**)
+> **14-day conversion:** 172 of 59 visitors cloned or downloaded (**291.5%**)
 >
-> Unique cloners: 123 | Release downloads: 37
+> Unique cloners: 135 | Release downloads: 37
 
 ---
 
@@ -43,8 +43,8 @@
 | Channel | Count |
 |---------|-------|
 | Zip Downloads | 37 |
-| Git Clones (14-day) | 327 |
-| **Total Acquisitions** | **364** |
+| Git Clones (14-day) | 380 |
+| **Total Acquisitions** | **417** |
 
 ---
 
@@ -54,8 +54,8 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 49 | 28 |
-| kingmods.net | 13 | 10 |
+| github.com | 49 | 29 |
+| kingmods.net | 36 | 11 |
 | Bing | 2 | 2 |
 
 ---
@@ -76,16 +76,16 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/TheCodingDad-TisonK/FS25_TaxMod` | 64 | 45 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.3.1` | 15 | 14 |
+| `/TheCodingDad-TisonK/FS25_TaxMod` | 63 | 45 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.3.1` | 17 | 15 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.3.0` | 8 | 7 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 6 | 6 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/issues/7` | 6 | 3 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/issues` | 5 | 4 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/modDesc.xml` | 4 | 2 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/icon_source.png` | 4 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/pulls` | 3 | 2 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/README.md` | 1 | 1 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/modDesc.xml` | 1 | 1 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/commit/c0c8480aab1e32cc72b76ab55e9a1c76663f7cf2` | 1 | 1 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/.gitignore` | 3 | 1 |
 
 ---
 
