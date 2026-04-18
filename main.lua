@@ -536,7 +536,10 @@ end)
 
 local taxMouseHandler = {}
 function taxMouseHandler:mouseEvent(posX, posY, isDown, isUp, button, eventUsed)
-    if taxHUD then taxHUD:onMouseEvent(posX, posY, isDown, isUp, button) end
+    if not eventUsed and taxHUD then
+        eventUsed = taxHUD:onMouseEvent(posX, posY, isDown, isUp, button, eventUsed) or eventUsed
+    end
+    return eventUsed
 end
 addModEventListener(taxMouseHandler)
 

@@ -249,8 +249,8 @@ end
 -- Mouse event
 -- =========================================================
 
-function TaxHUD:onMouseEvent(posX, posY, isDown, isUp, button)
-    if not self.visible then return end
+function TaxHUD:onMouseEvent(posX, posY, isDown, isUp, button, eventUsed)
+    if not self.visible then return false end
 
     if isDown and button == 3 then
         if self.editMode then
@@ -258,10 +258,10 @@ function TaxHUD:onMouseEvent(posX, posY, isDown, isUp, button)
         elseif self:isPointerOverHUD(posX, posY) then
             self:enterEditMode()
         end
-        return
+        return true
     end
 
-    if not self.editMode then return end
+    if not self.editMode then return false end
 
     if isDown and button == 1 then
         local corner = self:hitTestCorner(posX, posY)
@@ -271,7 +271,7 @@ function TaxHUD:onMouseEvent(posX, posY, isDown, isUp, button)
             self.resizeStartX     = posX
             self.resizeStartY     = posY
             self.resizeStartScale = self.scale
-            return
+            return true
         end
         if self:isPointerOverHUD(posX, posY) then
             self.dragging    = true
@@ -279,7 +279,7 @@ function TaxHUD:onMouseEvent(posX, posY, isDown, isUp, button)
             self.dragOffsetX = posX - self.posX
             self.dragOffsetY = posY - self.posY
         end
-        return
+        return true
     end
 
     if isUp and button == 1 then
@@ -288,7 +288,7 @@ function TaxHUD:onMouseEvent(posX, posY, isDown, isUp, button)
             self.resizing = false
             self:clampPosition()
         end
-        return
+        return true
     end
 
     if self.dragging then
@@ -311,6 +311,8 @@ function TaxHUD:onMouseEvent(posX, posY, isDown, isUp, button)
     if not self.dragging and not self.resizing then
         self.hoverCorner = self:hitTestCorner(posX, posY)
     end
+
+    return self.editMode
 end
 
 -- =========================================================
