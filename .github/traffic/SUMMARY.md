@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-04-29T12:15:42Z
-**Days tracked:** 28 | **Download snapshots:** 85 (hourly)
+**Last updated:** 2026-04-30T12:13:00Z
+**Days tracked:** 29 | **Download snapshots:** 88 (hourly)
 
 ---
 
@@ -11,8 +11,8 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 84 | 36 |
-| Git Clones | 751 | 253 |
+| Page Views | 81 | 34 |
+| Git Clones | 787 | 262 |
 
 > **Engagement:** 2.3 pages per visitor (14-day avg)
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 320 of 36 visitors cloned or downloaded (**888.8%**)
+> **14-day conversion:** 331 of 34 visitors cloned or downloaded (**973.5%**)
 >
-> Unique cloners: 253 | Release downloads: 67
+> Unique cloners: 262 | Release downloads: 69
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 67 |
-| Git Clones (14-day) | 751 |
-| **Total Acquisitions** | **818** |
+| Zip Downloads | 69 |
+| Git Clones (14-day) | 787 |
+| **Total Acquisitions** | **856** |
 
 ---
 
@@ -54,8 +54,8 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 42 | 22 |
-| Google | 14 | 3 |
+| github.com | 40 | 19 |
+| Google | 13 | 4 |
 | Bing | 4 | 2 |
 | kingmods.net | 3 | 2 |
 
@@ -77,8 +77,8 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/TheCodingDad-TisonK/FS25_TaxMod` | 49 | 34 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 21 | 6 |
+| `/TheCodingDad-TisonK/FS25_TaxMod` | 48 | 32 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 19 | 6 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.0` | 9 | 7 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.3.1` | 3 | 3 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/issues/11` | 1 | 1 |
