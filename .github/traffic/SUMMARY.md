@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-05-06T06:06:05Z
-**Days tracked:** 35 | **Download snapshots:** 100 (hourly)
+**Last updated:** 2026-05-06T18:13:31Z
+**Days tracked:** 35 | **Download snapshots:** 103 (hourly)
 
 ---
 
@@ -11,8 +11,8 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 66 | 31 |
-| Git Clones | 766 | 238 |
+| Page Views | 70 | 33 |
+| Git Clones | 798 | 251 |
 
 > **Engagement:** 2.1 pages per visitor (14-day avg)
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 316 of 31 visitors cloned or downloaded (**1019.3%**)
+> **14-day conversion:** 331 of 33 visitors cloned or downloaded (**1003.0%**)
 >
-> Unique cloners: 238 | Release downloads: 78
+> Unique cloners: 251 | Release downloads: 80
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 78 |
-| Git Clones (14-day) | 766 |
-| **Total Acquisitions** | **844** |
+| Zip Downloads | 80 |
+| Git Clones (14-day) | 798 |
+| **Total Acquisitions** | **878** |
 
 ---
 
@@ -54,10 +54,10 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 34 | 16 |
-| Google | 12 | 7 |
+| github.com | 35 | 17 |
+| Google | 11 | 6 |
 | Bing | 6 | 3 |
-| kingmods.net | 1 | 1 |
+| kingmods.net | 2 | 2 |
 
 ---
 
@@ -77,10 +77,11 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/TheCodingDad-TisonK/FS25_TaxMod` | 43 | 30 |
+| `/TheCodingDad-TisonK/FS25_TaxMod` | 45 | 31 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 12 | 5 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.0` | 7 | 6 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.0` | 8 | 7 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/modDesc.xml` | 1 | 1 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.3.0` | 1 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/tree/main/src` | 1 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/tree/main/src/settings` | 1 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/tree/main/src/ui` | 1 | 1 |
