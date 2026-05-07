@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-05-06T18:13:31Z
-**Days tracked:** 35 | **Download snapshots:** 103 (hourly)
+**Last updated:** 2026-05-07T18:21:36Z
+**Days tracked:** 36 | **Download snapshots:** 104 (hourly)
 
 ---
 
@@ -11,8 +11,8 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 70 | 33 |
-| Git Clones | 798 | 251 |
+| Page Views | 75 | 35 |
+| Git Clones | 789 | 256 |
 
 > **Engagement:** 2.1 pages per visitor (14-day avg)
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 331 of 33 visitors cloned or downloaded (**1003.0%**)
+> **14-day conversion:** 336 of 35 visitors cloned or downloaded (**960.0%**)
 >
-> Unique cloners: 251 | Release downloads: 80
+> Unique cloners: 256 | Release downloads: 80
 
 ---
 
@@ -43,8 +43,8 @@
 | Channel | Count |
 |---------|-------|
 | Zip Downloads | 80 |
-| Git Clones (14-day) | 798 |
-| **Total Acquisitions** | **878** |
+| Git Clones (14-day) | 789 |
+| **Total Acquisitions** | **869** |
 
 ---
 
@@ -54,10 +54,10 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 35 | 17 |
+| github.com | 36 | 19 |
 | Google | 11 | 6 |
-| Bing | 6 | 3 |
-| kingmods.net | 2 | 2 |
+| Bing | 7 | 4 |
+| kingmods.net | 1 | 1 |
 
 ---
 
@@ -77,11 +77,11 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/TheCodingDad-TisonK/FS25_TaxMod` | 45 | 31 |
+| `/TheCodingDad-TisonK/FS25_TaxMod` | 46 | 33 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 12 | 5 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.0` | 8 | 7 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.0` | 10 | 9 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.3.0` | 3 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/modDesc.xml` | 1 | 1 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.3.0` | 1 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/tree/main/src` | 1 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/tree/main/src/settings` | 1 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/tree/main/src/ui` | 1 | 1 |
