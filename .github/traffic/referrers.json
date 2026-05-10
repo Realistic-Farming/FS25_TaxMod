@@ -796,13 +796,13 @@
   "2026-05-10": [
     {
       "referrer": "github.com",
-      "count": 40,
+      "count": 37,
       "uniques": 22
     },
     {
       "referrer": "Google",
-      "count": 9,
-      "uniques": 6
+      "count": 11,
+      "uniques": 7
     },
     {
       "referrer": "Bing",

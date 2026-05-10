@@ -5368,26 +5368,26 @@
     "watchers": 2
   },
   {
-    "timestamp": "2026-05-10T06:08:02Z",
+    "timestamp": "2026-05-10T18:57:34Z",
     "date": "2026-05-10",
     "views": {
-      "count": 74,
-      "uniques": 37
+      "count": 70,
+      "uniques": 39
     },
     "clones": {
-      "count": 670,
-      "uniques": 218
+      "count": 603,
+      "uniques": 181
     },
     "referrers": [
       {
         "referrer": "github.com",
-        "count": 40,
+        "count": 37,
         "uniques": 22
       },
       {
         "referrer": "Google",
-        "count": 9,
-        "uniques": 6
+        "count": 11,
+        "uniques": 7
       },
       {
         "referrer": "Bing",
@@ -5404,19 +5404,19 @@
       {
         "path": "/TheCodingDad-TisonK/FS25_TaxMod",
         "title": "Overview",
-        "count": 48,
-        "uniques": 35
+        "count": 47,
+        "uniques": 37
       },
       {
         "path": "/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.0",
         "title": "/releases/tag/v1.1.4.0",
-        "count": 10,
+        "count": 9,
         "uniques": 9
       },
       {
         "path": "/TheCodingDad-TisonK/FS25_TaxMod/releases",
         "title": "/releases",
-        "count": 9,
+        "count": 7,
         "uniques": 4
       },
       {
@@ -5454,7 +5454,7 @@
       {
         "assets": [
           {
-            "downloads": 37,
+            "downloads": 39,
             "name": "FS25_TaxMod.zip"
           }
         ],
