@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-05-10T18:57:49Z
-**Days tracked:** 38 | **Download snapshots:** 113 (hourly)
+**Last updated:** 2026-05-11T06:37:03Z
+**Days tracked:** 39 | **Download snapshots:** 114 (hourly)
 
 ---
 
@@ -11,8 +11,8 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 70 | 39 |
-| Git Clones | 603 | 181 |
+| Page Views | 61 | 35 |
+| Git Clones | 612 | 186 |
 
 > **Engagement:** 1.7 pages per visitor (14-day avg)
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 268 of 39 visitors cloned or downloaded (**687.1%**)
+> **14-day conversion:** 273 of 35 visitors cloned or downloaded (**780.0%**)
 >
-> Unique cloners: 181 | Release downloads: 87
+> Unique cloners: 186 | Release downloads: 87
 
 ---
 
@@ -43,8 +43,8 @@
 | Channel | Count |
 |---------|-------|
 | Zip Downloads | 87 |
-| Git Clones (14-day) | 603 |
-| **Total Acquisitions** | **690** |
+| Git Clones (14-day) | 612 |
+| **Total Acquisitions** | **699** |
 
 ---
 
@@ -54,9 +54,9 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 37 | 22 |
+| github.com | 34 | 21 |
 | Google | 11 | 7 |
-| Bing | 6 | 4 |
+| Bing | 4 | 3 |
 | kingmods.net | 1 | 1 |
 
 ---
@@ -77,11 +77,11 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/TheCodingDad-TisonK/FS25_TaxMod` | 47 | 37 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.0` | 9 | 9 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 7 | 4 |
+| `/TheCodingDad-TisonK/FS25_TaxMod` | 45 | 33 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.0` | 8 | 8 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.3.0` | 3 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/modDesc.xml` | 1 | 1 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 1 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/tree/main/src` | 1 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/tree/main/src/settings` | 1 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/tree/main/src/ui` | 1 | 1 |
