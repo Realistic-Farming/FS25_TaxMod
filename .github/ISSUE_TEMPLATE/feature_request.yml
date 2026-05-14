@@ -8,14 +8,14 @@ body:
         **Before opening this request:**
         - Check the roadmap in the README — your idea may already be planned.
         - Check open issues to avoid duplicates.
-        - Keep requests scoped and specific. "Improve taxes" will be closed. "Allow tax rate to be configured per income category" is actionable.
+        - Keep requests scoped and specific. "Better taxes" will be closed. "Add a seasonal tax exemption that reduces the rate by 50% in the first year of a new save" is actionable.
 
   - type: textarea
     id: problem
     attributes:
       label: What problem does this solve?
       description: Describe the situation or frustration this would address. Focus on the problem, not the solution.
-      placeholder: "I want to set different tax rates for crop income vs. animal product income."
+      placeholder: "There is no way to configure different tax rates for different income types. All income is taxed at the same flat rate, which is not very realistic for farm operations."
     validations:
       required: true
 
@@ -24,7 +24,7 @@ body:
     attributes:
       label: Proposed Solution
       description: Describe what you want to happen. Be specific about the behavior, not just the concept.
-      placeholder: "Add per-category tax rate settings in the mod configuration panel."
+      placeholder: "Add separate tax rate settings for: crop sales, animal product sales, contract income, and service income. Each should be configurable independently in the settings menu."
     validations:
       required: true
 
@@ -37,15 +37,15 @@ body:
       required: false
 
   - type: dropdown
-    id: phase
+    id: area
     attributes:
       label: Which part of the mod does this relate to?
       options:
         - Tax Calculation
-        - Tax Display / HUD
-        - Tax Categories
-        - Settings / Configuration
-        - Multiplayer
+        - Deductions & Exemptions
+        - Tax Brackets
+        - Reports
+        - Settings
         - Mod Compatibility
         - Other
     validations:

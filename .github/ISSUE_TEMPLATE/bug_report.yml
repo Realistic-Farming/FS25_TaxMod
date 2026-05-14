@@ -38,6 +38,7 @@ body:
         - Singleplayer
         - Multiplayer (host)
         - Multiplayer (client)
+        - Dedicated Server
     validations:
       required: true
 
@@ -46,7 +47,7 @@ body:
     attributes:
       label: What happened?
       description: Describe the bug clearly. What did you see? What did you expect to see?
-      placeholder: "Taxes are not being deducted from my balance even though the mod is enabled."
+      placeholder: "Taxes are being deducted at the wrong rate. My configured rate is 15% but the mod is applying 30% to all crop sales regardless of bracket."
     validations:
       required: true
 
@@ -57,9 +58,9 @@ body:
       description: Exact steps that trigger the bug. If you cannot reproduce it reliably, say so.
       placeholder: |
         1. Start a new game on Elmcreek
-        2. Enable the Tax Mod
-        3. Wait for a tax period to pass
-        4. No taxes are deducted
+        2. Configure tax rate to 15% in the settings
+        3. Sell a load of wheat at the grain mill
+        4. Check the deduction — 30% was applied instead of 15%
     validations:
       required: true
 
@@ -72,8 +73,9 @@ body:
         If there are errors (lines containing "Error" or "attempt to"), include the full stack trace.
       render: text
       placeholder: |
-        [TaxMod] TaxMod initialized.
-        [TaxMod] ...
+        [TaxMod] Initialized. Tax rate: 15%, Period: WEEKLY
+        [TaxMod] Tax applied: income=50000, rate=0.30, deduction=15000
+        ...
     validations:
       required: true
 
@@ -82,7 +84,7 @@ body:
     attributes:
       label: Other Mods Loaded
       description: List any other mods active in this save. You can paste the mod list from the game's mod manager.
-      placeholder: "FS25_NPCFavor, FS25_IncomeMod, Courseplay, AutoDrive, ..."
+      placeholder: "FS25_IncomeMod, FS25_WorkerCosts, Courseplay, AutoDrive, ..."
     validations:
       required: true
 

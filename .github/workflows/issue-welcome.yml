@@ -28,22 +28,22 @@ jobs:
           script: |
             const author = context.payload.issue.user.login;
             const repoName = context.repo.repo;
-            const modName = repoName.replace('FS25_', '').replace(/([A-Z])/g, ' $1').trim();
 
             const body = [
-              `Hey @${author}, thanks for opening this issue! 👋`,
+              `Hey @${author}, your filing has been received. 🏛️`,
               ``,
-              `@TheCodingDad-TisonK has been notified and will take a look as soon as possible.`,
+              `@TheCodingDad-TisonK has been notified and will review your case as soon as possible. No late fees — we promise.`,
               ``,
-              `**While you wait, please double-check the following:**`,
+              `**To help process your report quickly, please confirm:**`,
               ``,
-              `- [ ] You are running the latest version of ${modName} (visible in the mod manager)`,
-              `- [ ] Your issue includes relevant lines from \`log.txt\``,
+              `- [ ] You are running the latest version of Tax Mod (visible in the mod manager)`,
+              `- [ ] Your issue includes the relevant \`[TaxMod]\` lines from \`log.txt\``,
               `  - Log location: \`Documents/My Games/FarmingSimulator2025/log.txt\``,
-              `  - Search for \`[${modName}]\` — paste the relevant section in your issue`,
+              `  - Search for \`[TaxMod]\` and paste the relevant section here`,
+              `- [ ] If this involves a specific tax bracket, deduction, or rate — note the expected value and what the mod actually applied`,
               `- [ ] You have searched [existing issues](https://github.com/${context.repo.owner}/${repoName}/issues) for a similar report`,
               ``,
-              `> **Important:** If this issue is missing a log snippet, it may be closed without investigation. A log is almost always required to reproduce bugs.`,
+              `> **Note:** Issues without a log snippet are difficult to investigate and may be closed. Tax calculation errors are especially hard to reproduce without log data.`,
             ].join('\n');
 
             await github.rest.issues.createComment({
