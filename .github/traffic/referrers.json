@@ -906,18 +906,18 @@
   "2026-05-15": [
     {
       "referrer": "github.com",
-      "count": 33,
-      "uniques": 21
+      "count": 40,
+      "uniques": 23
     },
     {
       "referrer": "Google",
-      "count": 10,
-      "uniques": 6
+      "count": 9,
+      "uniques": 5
     },
     {
       "referrer": "Bing",
-      "count": 4,
-      "uniques": 3
+      "count": 3,
+      "uniques": 2
     },
     {
       "referrer": "kingmods.net",
