@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-05-21T06:54:19Z
-**Days tracked:** 49 | **Download snapshots:** 143 (hourly)
+**Last updated:** 2026-05-22T06:49:59Z
+**Days tracked:** 50 | **Download snapshots:** 144 (hourly)
 
 ---
 
@@ -11,10 +11,10 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 94 | 52 |
-| Git Clones | 550 | 187 |
+| Page Views | 95 | 49 |
+| Git Clones | 564 | 194 |
 
-> **Engagement:** 1.8 pages per visitor (14-day avg)
+> **Engagement:** 1.9 pages per visitor (14-day avg)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 291 of 52 visitors cloned or downloaded (**559.6%**)
+> **14-day conversion:** 298 of 49 visitors cloned or downloaded (**608.1%**)
 >
-> Unique cloners: 187 | Release downloads: 104
+> Unique cloners: 194 | Release downloads: 104
 
 ---
 
@@ -43,8 +43,8 @@
 | Channel | Count |
 |---------|-------|
 | Zip Downloads | 104 |
-| Git Clones (14-day) | 550 |
-| **Total Acquisitions** | **654** |
+| Git Clones (14-day) | 564 |
+| **Total Acquisitions** | **668** |
 
 ---
 
@@ -54,10 +54,10 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 55 | 34 |
-| Google | 10 | 7 |
-| Bing | 2 | 2 |
-| kingmods.net | 1 | 1 |
+| github.com | 60 | 33 |
+| Google | 9 | 6 |
+| kingmods.net | 2 | 2 |
+| Bing | 1 | 1 |
 | search.brave.com | 1 | 1 |
 
 ---
@@ -78,12 +78,11 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/TheCodingDad-TisonK/FS25_TaxMod` | 67 | 49 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.0` | 17 | 15 |
+| `/TheCodingDad-TisonK/FS25_TaxMod` | 67 | 47 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.0` | 20 | 17 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 3 | 3 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/issues` | 2 | 2 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/issues/13` | 2 | 2 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.3.0` | 2 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/pull/14` | 1 | 1 |
 
 ---
