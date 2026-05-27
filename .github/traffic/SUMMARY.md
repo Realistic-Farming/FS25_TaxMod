@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-05-26T00:09:12Z
-**Days tracked:** 54 | **Download snapshots:** 158 (hourly)
+**Last updated:** 2026-05-27T18:24:00Z
+**Days tracked:** 55 | **Download snapshots:** 162 (hourly)
 
 ---
 
@@ -11,8 +11,8 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 112 | 55 |
-| Git Clones | 551 | 188 |
+| Page Views | 125 | 60 |
+| Git Clones | 579 | 200 |
 
 > **Engagement:** 2.0 pages per visitor (14-day avg)
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 317 of 55 visitors cloned or downloaded (**576.3%**)
+> **14-day conversion:** 332 of 60 visitors cloned or downloaded (**553.3%**)
 >
-> Unique cloners: 188 | Release downloads: 129
+> Unique cloners: 200 | Release downloads: 132
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 129 |
-| Git Clones (14-day) | 551 |
-| **Total Acquisitions** | **680** |
+| Zip Downloads | 132 |
+| Git Clones (14-day) | 579 |
+| **Total Acquisitions** | **711** |
 
 ---
 
@@ -54,10 +54,10 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 70 | 35 |
-| Google | 13 | 7 |
+| github.com | 81 | 41 |
+| Google | 15 | 8 |
 | Bing | 2 | 2 |
-| kingmods.net | 2 | 2 |
+| kingmods.net | 1 | 1 |
 | search.brave.com | 1 | 1 |
 
 ---
@@ -78,12 +78,14 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/TheCodingDad-TisonK/FS25_TaxMod` | 77 | 53 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.0` | 26 | 21 |
+| `/TheCodingDad-TisonK/FS25_TaxMod` | 82 | 57 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.0` | 32 | 25 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 4 | 4 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/issues` | 2 | 2 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/issues/13` | 2 | 2 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/pull/14` | 1 | 1 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/tree/main/.github` | 1 | 1 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/tree/main/tools` | 1 | 1 |
 
 ---
 
