@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-05-27T18:24:00Z
-**Days tracked:** 55 | **Download snapshots:** 162 (hourly)
+**Last updated:** 2026-05-28T12:23:49Z
+**Days tracked:** 56 | **Download snapshots:** 163 (hourly)
 
 ---
 
@@ -11,8 +11,8 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 125 | 60 |
-| Git Clones | 579 | 200 |
+| Page Views | 130 | 62 |
+| Git Clones | 570 | 201 |
 
 > **Engagement:** 2.0 pages per visitor (14-day avg)
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 332 of 60 visitors cloned or downloaded (**553.3%**)
+> **14-day conversion:** 333 of 62 visitors cloned or downloaded (**537.0%**)
 >
-> Unique cloners: 200 | Release downloads: 132
+> Unique cloners: 201 | Release downloads: 132
 
 ---
 
@@ -43,8 +43,8 @@
 | Channel | Count |
 |---------|-------|
 | Zip Downloads | 132 |
-| Git Clones (14-day) | 579 |
-| **Total Acquisitions** | **711** |
+| Git Clones (14-day) | 570 |
+| **Total Acquisitions** | **702** |
 
 ---
 
@@ -54,9 +54,9 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 81 | 41 |
+| github.com | 82 | 42 |
 | Google | 15 | 8 |
-| Bing | 2 | 2 |
+| Bing | 6 | 3 |
 | kingmods.net | 1 | 1 |
 | search.brave.com | 1 | 1 |
 
@@ -78,11 +78,13 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/TheCodingDad-TisonK/FS25_TaxMod` | 82 | 57 |
+| `/TheCodingDad-TisonK/FS25_TaxMod` | 85 | 59 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.0` | 32 | 25 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 4 | 4 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/issues` | 2 | 2 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/issues/13` | 2 | 2 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/README.md` | 1 | 1 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/modDesc.xml` | 1 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/pull/14` | 1 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/tree/main/.github` | 1 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/tree/main/tools` | 1 | 1 |
