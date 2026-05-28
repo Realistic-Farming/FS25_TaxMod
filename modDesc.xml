@@ -386,22 +386,36 @@ Funkcje:
             <it><![CDATA[Attiva/disattiva HUD fiscale]]></it>
             <pl><![CDATA[Przełącz HUD podatkowy]]></pl>
             <uk><![CDATA[Перемкнути HUD податків]]></uk>
-        
             <cz>[EN] <![CDATA[Toggle Tax HUD]]></cz>
             <br>[EN] <![CDATA[Toggle Tax HUD]]></br>
             <ru>[EN] <![CDATA[Toggle Tax HUD]]></ru>
             <da>[EN] <![CDATA[Toggle Tax HUD]]></da>
         </text>
+        <text name="input_TM_HUD_DRAG">
+            <en>Tax HUD Edit Mode</en>
+            <de>Steuer-HUD-Bearbeitungsmodus</de>
+            <fr>[EN] Tax HUD Edit Mode</fr>
+            <es>[EN] Tax HUD Edit Mode</es>
+            <it>[EN] Tax HUD Edit Mode</it>
+            <pl>[EN] Tax HUD Edit Mode</pl>
+            <uk>[EN] Tax HUD Edit Mode</uk>
+            <cz>[EN] Tax HUD Edit Mode</cz>
+            <br>[EN] Tax HUD Edit Mode</br>
+            <ru>[EN] Tax HUD Edit Mode</ru>
+            <da>Skat HUD-redigeringstilstand</da>
+        </text>
     </l10n>
 
     <actions>
         <action name="TM_TOGGLE_HUD" category="ONFOOT" />
+        <action name="TM_HUD_DRAG"   category="ONFOOT" />
     </actions>
 
     <inputBinding>
         <actionBinding action="TM_TOGGLE_HUD">
             <binding device="KB_MOUSE_DEFAULT" input="KEY_T" />
         </actionBinding>
+        <actionBinding action="TM_HUD_DRAG" />
     </inputBinding>
 
 </modDesc>

@@ -252,15 +252,15 @@ end
 function TaxHUD:onMouseEvent(posX, posY, isDown, isUp, button, eventUsed)
     if not self.visible then return false end
 
+    -- RMB: exit edit mode only. Edit mode is entered exclusively via the
+    -- TM_HUD_DRAG key binding — never via right-click — so RMB is never
+    -- consumed during normal play, preserving CoursePlay, AutoDrive, etc.
     if isDown and button == 3 then
         if self.editMode then
             self:exitEditMode()
             return true
-        elseif self:isPointerOverHUD(posX, posY) then
-            self:enterEditMode()
-            return true
         end
-        return false  -- Don't consume RMB when cursor is not over HUD and not in edit mode
+        return false
     end
 
     if not self.editMode then return false end

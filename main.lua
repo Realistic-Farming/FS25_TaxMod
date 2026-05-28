@@ -433,13 +433,36 @@ local function onLoad(mission)
             if ok and id then
                 FS25TaxMod.toggleHUDEventId = id
                 g_inputBinding:setActionEventTextPriority(id, GS_PRIO_NORMAL)
-
                 log("HUD toggle registered", 2)
             else
                 log("HUD toggle registration failed", 1)
             end
+
+            -- HUD drag (enter/exit edit mode) — PLAYER context
+            local dragOk, dragId = g_inputBinding:registerActionEvent(
+                InputAction.TM_HUD_DRAG,
+                FS25TaxMod,
+                FS25TaxMod.onHUDDragInput,
+                false, true, false, true
+            )
+            if dragOk and dragId then
+                FS25TaxMod.hudDragEventId = dragId
+                g_inputBinding:setActionEventText(dragId, g_i18n:getText("input_TM_HUD_DRAG") or "Tax HUD Edit Mode")
+                log("HUD drag registered", 2)
+            end
+
             g_inputBinding:endActionEventsModification()
         end
+    end
+end
+
+function FS25TaxMod:onHUDDragInput()
+    if not taxHUD then return end
+    if not taxHUD.visible then return end
+    if taxHUD.editMode then
+        taxHUD:exitEditMode()
+    else
+        taxHUD:enterEditMode()
     end
 end
 
@@ -505,6 +528,10 @@ local function onUnload()
     if FS25TaxMod.toggleHUDEventId and g_inputBinding then
         g_inputBinding:removeActionEvent(FS25TaxMod.toggleHUDEventId)
         FS25TaxMod.toggleHUDEventId = nil
+    end
+    if FS25TaxMod.hudDragEventId and g_inputBinding then
+        g_inputBinding:removeActionEvent(FS25TaxMod.hudDragEventId)
+        FS25TaxMod.hudDragEventId = nil
     end
     if FS25TaxMod._inputHookOriginal and PlayerInputComponent then
         PlayerInputComponent.registerActionEvents = FS25TaxMod._inputHookOriginal
