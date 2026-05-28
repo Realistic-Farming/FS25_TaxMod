@@ -255,10 +255,12 @@ function TaxHUD:onMouseEvent(posX, posY, isDown, isUp, button, eventUsed)
     if isDown and button == 3 then
         if self.editMode then
             self:exitEditMode()
+            return true
         elseif self:isPointerOverHUD(posX, posY) then
             self:enterEditMode()
+            return true
         end
-        return true
+        return false  -- Don't consume RMB when cursor is not over HUD and not in edit mode
     end
 
     if not self.editMode then return false end
