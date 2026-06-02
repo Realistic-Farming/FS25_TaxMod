@@ -1346,5 +1346,32 @@
       "count": 1,
       "uniques": 1
     }
+  ],
+  "2026-06-02": [
+    {
+      "referrer": "github.com",
+      "count": 91,
+      "uniques": 42
+    },
+    {
+      "referrer": "Google",
+      "count": 20,
+      "uniques": 13
+    },
+    {
+      "referrer": "Bing",
+      "count": 5,
+      "uniques": 2
+    },
+    {
+      "referrer": "kingmods.net",
+      "count": 3,
+      "uniques": 2
+    },
+    {
+      "referrer": "search.brave.com",
+      "count": 1,
+      "uniques": 1
+    }
   ]
 }
