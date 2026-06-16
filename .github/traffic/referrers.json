@@ -1601,5 +1601,27 @@
       "count": 1,
       "uniques": 1
     }
+  ],
+  "2026-06-16": [
+    {
+      "referrer": "github.com",
+      "count": 31,
+      "uniques": 19
+    },
+    {
+      "referrer": "Google",
+      "count": 7,
+      "uniques": 5
+    },
+    {
+      "referrer": "chatgpt.com",
+      "count": 5,
+      "uniques": 1
+    },
+    {
+      "referrer": "kingmods.net",
+      "count": 1,
+      "uniques": 1
+    }
   ]
 }

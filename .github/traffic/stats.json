@@ -10394,5 +10394,173 @@
     "stars": 6,
     "forks": 0,
     "watchers": 2
+  },
+  {
+    "timestamp": "2026-06-16T12:49:57Z",
+    "date": "2026-06-16",
+    "views": {
+      "count": 75,
+      "uniques": 34
+    },
+    "clones": {
+      "count": 321,
+      "uniques": 112
+    },
+    "referrers": [
+      {
+        "referrer": "github.com",
+        "count": 31,
+        "uniques": 19
+      },
+      {
+        "referrer": "Google",
+        "count": 7,
+        "uniques": 5
+      },
+      {
+        "referrer": "chatgpt.com",
+        "count": 5,
+        "uniques": 1
+      },
+      {
+        "referrer": "kingmods.net",
+        "count": 1,
+        "uniques": 1
+      }
+    ],
+    "popular_paths": [
+      {
+        "path": "/TheCodingDad-TisonK/FS25_TaxMod",
+        "title": "Overview",
+        "count": 48,
+        "uniques": 32
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.1",
+        "title": "/releases/tag/v1.1.4.1",
+        "count": 5,
+        "uniques": 5
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_TaxMod/issues",
+        "title": "/issues",
+        "count": 5,
+        "uniques": 4
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_TaxMod/issues/13",
+        "title": "/issues/13",
+        "count": 4,
+        "uniques": 4
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_TaxMod/releases",
+        "title": "/releases",
+        "count": 3,
+        "uniques": 3
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_TaxMod/pull/16",
+        "title": "/pull/16",
+        "count": 2,
+        "uniques": 2
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_TaxMod/blob/main/CONTRIBUTING.md",
+        "title": "/blob/main/CONTRIBUTING.md",
+        "count": 2,
+        "uniques": 1
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_TaxMod/blob/main/FS25_TaxMod.zip",
+        "title": "/blob/main/FS25_TaxMod.zip",
+        "count": 1,
+        "uniques": 1
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_TaxMod/blob/main/README.md",
+        "title": "/blob/main/README.md",
+        "count": 1,
+        "uniques": 1
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_TaxMod/blob/main/main.lua",
+        "title": "/blob/main/main.lua",
+        "count": 1,
+        "uniques": 1
+      }
+    ],
+    "releases": [
+      {
+        "assets": [
+          {
+            "downloads": 33,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.4.1"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 89,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.4.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 27,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.3.1"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 5,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.3.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 9,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.2.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 0,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.1.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 8,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.0.0"
+      },
+      {
+        "assets": [],
+        "tag": "v1.0.0.0"
+      }
+    ],
+    "stars": 7,
+    "forks": 0,
+    "watchers": 2
   }
 ]
