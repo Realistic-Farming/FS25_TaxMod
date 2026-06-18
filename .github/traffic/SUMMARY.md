@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-06-17T12:55:54Z
-**Days tracked:** 71 | **Download snapshots:** 211 (hourly)
+**Last updated:** 2026-06-18T12:21:47Z
+**Days tracked:** 72 | **Download snapshots:** 214 (hourly)
 
 ---
 
@@ -11,10 +11,10 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 80 | 35 |
-| Git Clones | 334 | 117 |
+| Page Views | 85 | 39 |
+| Git Clones | 327 | 112 |
 
-> **Engagement:** 2.2 pages per visitor (14-day avg)
+> **Engagement:** 2.1 pages per visitor (14-day avg)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 290 of 35 visitors cloned or downloaded (**828.5%**)
+> **14-day conversion:** 287 of 39 visitors cloned or downloaded (**735.8%**)
 >
-> Unique cloners: 117 | Release downloads: 173
+> Unique cloners: 112 | Release downloads: 175
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 173 |
-| Git Clones (14-day) | 334 |
-| **Total Acquisitions** | **507** |
+| Zip Downloads | 175 |
+| Git Clones (14-day) | 327 |
+| **Total Acquisitions** | **502** |
 
 ---
 
@@ -54,9 +54,10 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 32 | 20 |
+| github.com | 36 | 23 |
 | Google | 8 | 5 |
 | chatgpt.com | 5 | 1 |
+| search.brave.com | 2 | 1 |
 | kingmods.net | 1 | 1 |
 
 ---
@@ -77,16 +78,16 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/TheCodingDad-TisonK/FS25_TaxMod` | 50 | 33 |
+| `/TheCodingDad-TisonK/FS25_TaxMod` | 53 | 36 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.1` | 8 | 8 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/issues` | 6 | 4 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.1` | 5 | 5 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/issues/13` | 4 | 4 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 4 | 4 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/pull/16` | 2 | 2 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/issues/13` | 5 | 5 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 3 | 3 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/CONTRIBUTING.md` | 2 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/pulls` | 2 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/FS25_TaxMod.zip` | 1 | 1 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/README.md` | 1 | 1 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/blob/main/main.lua` | 1 | 1 |
 
 ---
 
