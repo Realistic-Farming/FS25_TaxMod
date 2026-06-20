@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-06-19T06:14:07Z
-**Days tracked:** 73 | **Download snapshots:** 217 (hourly)
+**Last updated:** 2026-06-20T00:06:18Z
+**Days tracked:** 74 | **Download snapshots:** 218 (hourly)
 
 ---
 
@@ -11,10 +11,10 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 85 | 39 |
-| Git Clones | 327 | 112 |
+| Page Views | 86 | 38 |
+| Git Clones | 368 | 122 |
 
-> **Engagement:** 2.1 pages per visitor (14-day avg)
+> **Engagement:** 2.2 pages per visitor (14-day avg)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 288 of 39 visitors cloned or downloaded (**738.4%**)
+> **14-day conversion:** 298 of 38 visitors cloned or downloaded (**784.2%**)
 >
-> Unique cloners: 112 | Release downloads: 176
+> Unique cloners: 122 | Release downloads: 176
 
 ---
 
@@ -43,8 +43,8 @@
 | Channel | Count |
 |---------|-------|
 | Zip Downloads | 176 |
-| Git Clones (14-day) | 327 |
-| **Total Acquisitions** | **503** |
+| Git Clones (14-day) | 368 |
+| **Total Acquisitions** | **544** |
 
 ---
 
@@ -54,7 +54,7 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 36 | 23 |
+| github.com | 36 | 22 |
 | Google | 8 | 5 |
 | chatgpt.com | 5 | 1 |
 | search.brave.com | 2 | 1 |
@@ -78,7 +78,7 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/TheCodingDad-TisonK/FS25_TaxMod` | 53 | 36 |
+| `/TheCodingDad-TisonK/FS25_TaxMod` | 53 | 35 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.1` | 8 | 8 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/issues` | 6 | 4 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/issues/13` | 5 | 5 |
