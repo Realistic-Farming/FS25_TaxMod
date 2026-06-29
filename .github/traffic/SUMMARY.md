@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-06-27T12:07:04Z
-**Days tracked:** 81 | **Download snapshots:** 241 (hourly)
+**Last updated:** 2026-06-29T00:05:06Z
+**Days tracked:** 82 | **Download snapshots:** 244 (hourly)
 
 ---
 
@@ -11,10 +11,10 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 166 | 50 |
-| Git Clones | 734 | 226 |
+| Page Views | 162 | 53 |
+| Git Clones | 770 | 240 |
 
-> **Engagement:** 3.3 pages per visitor (14-day avg)
+> **Engagement:** 3.0 pages per visitor (14-day avg)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 423 of 50 visitors cloned or downloaded (**846.0%**)
+> **14-day conversion:** 439 of 53 visitors cloned or downloaded (**828.3%**)
 >
-> Unique cloners: 226 | Release downloads: 197
+> Unique cloners: 240 | Release downloads: 199
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 197 |
-| Git Clones (14-day) | 734 |
-| **Total Acquisitions** | **931** |
+| Zip Downloads | 199 |
+| Git Clones (14-day) | 770 |
+| **Total Acquisitions** | **969** |
 
 ---
 
@@ -54,7 +54,7 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 117 | 39 |
+| github.com | 122 | 41 |
 | Google | 5 | 3 |
 | chatgpt.com | 5 | 1 |
 | search.brave.com | 2 | 1 |
@@ -78,16 +78,16 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 45 | 29 |
-| `/TheCodingDad-TisonK/FS25_TaxMod` | 35 | 23 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.4.1` | 15 | 9 |
-| `/Realistic-Farming/FS25_TaxMod/issues` | 10 | 3 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/issues/13` | 5 | 5 |
+| `/Realistic-Farming/FS25_TaxMod` | 55 | 36 |
+| `/TheCodingDad-TisonK/FS25_TaxMod` | 28 | 20 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.4.1` | 18 | 12 |
+| `/Realistic-Farming/FS25_TaxMod/issues` | 11 | 4 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.1` | 5 | 5 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/issues` | 5 | 3 |
 | `/Realistic-Farming/FS25_TaxMod/releases` | 4 | 4 |
 | `/Realistic-Farming/FS25_TaxMod/issues/13` | 2 | 2 |
+| `/TheCodingDad-TisonK/FS25_TaxMod/issues/13` | 2 | 2 |
 | `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 2 | 2 |
+| `/Realistic-Farming/FS25_TaxMod/blob/main/CONTRIBUTING.md` | 1 | 1 |
 
 ---
 
