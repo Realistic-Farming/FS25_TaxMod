@@ -191,7 +191,12 @@ local function applyAnnualTax()
         return
     end
 
-    g_currentMission:addMoney(-taxAmount, farmId, MoneyType.OTHER, true)
+    -- Only the server may move money; the engine syncs the new balance to clients.
+    -- Guard only the addMoney (not the whole function): TaxMod has no MP stat sync, so
+    -- every machine must still reset its own accumulation below, or client HUDs drift.
+    if g_currentMission:getIsServer() then
+        g_currentMission:addMoney(-taxAmount, farmId, MoneyType.OTHER, true)
+    end
     stats.totalTaxesPaid = stats.totalTaxesPaid + taxAmount -- Update total paid with annual tax
     stats.taxesAccumulatedAnnual = 0 -- Reset annual accumulation
     stats.lastTaxYear = currentYear -- Mark tax as paid for this year
