@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-06-30T00:00:43Z
-**Days tracked:** 83 | **Download snapshots:** 247 (hourly)
+**Last updated:** 2026-07-02T06:38:33Z
+**Days tracked:** 84 | **Download snapshots:** 255 (hourly)
 
 ---
 
@@ -11,10 +11,10 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 154 | 50 |
-| Git Clones | 757 | 235 |
+| Page Views | 159 | 47 |
+| Git Clones | 766 | 233 |
 
-> **Engagement:** 3.0 pages per visitor (14-day avg)
+> **Engagement:** 3.3 pages per visitor (14-day avg)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 438 of 50 visitors cloned or downloaded (**876.0%**)
+> **14-day conversion:** 444 of 47 visitors cloned or downloaded (**944.6%**)
 >
-> Unique cloners: 235 | Release downloads: 203
+> Unique cloners: 233 | Release downloads: 211
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 203 |
-| Git Clones (14-day) | 757 |
-| **Total Acquisitions** | **960** |
+| Zip Downloads | 211 |
+| Git Clones (14-day) | 766 |
+| **Total Acquisitions** | **977** |
 
 ---
 
@@ -54,11 +54,8 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 117 | 39 |
-| chatgpt.com | 5 | 1 |
-| Google | 3 | 2 |
-| search.brave.com | 2 | 1 |
-| kingmods.net | 1 | 1 |
+| github.com | 126 | 40 |
+| Google | 5 | 3 |
 
 ---
 
@@ -68,7 +65,7 @@
 
 | Metric | Current |
 |--------|---------|
-| Stars | 7 |
+| Stars | 8 |
 | Forks | 0 |
 | Watchers | 2 |
 
@@ -78,16 +75,16 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 59 | 38 |
-| `/TheCodingDad-TisonK/FS25_TaxMod` | 19 | 16 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.4.1` | 18 | 12 |
+| `/Realistic-Farming/FS25_TaxMod` | 73 | 45 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.4.1` | 26 | 19 |
 | `/Realistic-Farming/FS25_TaxMod/issues` | 11 | 4 |
-| `/Realistic-Farming/FS25_TaxMod/releases` | 4 | 4 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases/tag/v1.1.4.1` | 3 | 3 |
+| `/Realistic-Farming/FS25_TaxMod/releases` | 9 | 6 |
+| `/TheCodingDad-TisonK/FS25_TaxMod` | 7 | 5 |
 | `/Realistic-Farming/FS25_TaxMod/issues/13` | 2 | 2 |
-| `/TheCodingDad-TisonK/FS25_TaxMod/releases` | 2 | 2 |
 | `/Realistic-Farming/FS25_TaxMod/blob/main/CONTRIBUTING.md` | 1 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/blob/main/FS25_TaxMod.zip` | 1 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/blob/main/README.md` | 1 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/blob/main/build.sh` | 1 | 1 |
 
 ---
 

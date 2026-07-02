@@ -1969,5 +1969,17 @@
       "count": 1,
       "uniques": 1
     }
+  ],
+  "2026-07-02": [
+    {
+      "referrer": "github.com",
+      "count": 126,
+      "uniques": 40
+    },
+    {
+      "referrer": "Google",
+      "count": 5,
+      "uniques": 3
+    }
   ]
 }
