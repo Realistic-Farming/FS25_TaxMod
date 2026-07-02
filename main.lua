@@ -13,6 +13,7 @@ local modName      = g_currentModName
 source(modDirectory .. "src/settings/UIHelper.lua")
 source(modDirectory .. "src/settings/SettingsUI.lua")
 source(modDirectory .. "src/ui/TaxHUD.lua")
+source(modDirectory .. "src/settings/SettingsHubBridge.lua")
 
 FS25TaxMod = {}
 FS25TaxMod.modDir  = modDirectory
@@ -591,6 +592,10 @@ local function onMissionLoaded(mission, node)
     if not (g_currentMission and g_currentMission.missionInfo) then return end
 
     loadSettings()
+
+    -- Register with SettingsHub (if installed) so FarmTablet's System Settings
+    -- app can list Tax Mod's settings. No-ops safely if SettingsHub is absent.
+    TaxSettingsHubBridge.register(FS25TaxMod)
 
     local env = g_currentMission.environment
     if env then
