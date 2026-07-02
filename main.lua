@@ -45,6 +45,13 @@ local stats = {
 }
 FS25TaxMod.stats = stats
 
+-- Companion ledger: tracked money adjustments recorded by other mods via
+-- g_TaxManager.recordExpense(). Pure bookkeeping, surfaced in stats/HUD.
+-- It never moves money and never enters any tax computation.
+local LEDGER_MAX_ENTRIES = 10
+local ledger = { farms = {} }
+FS25TaxMod.ledger = ledger
+
 local lastDay = -1
 local lastMonth = -1
 local lastMinuteCheck = -1
@@ -100,6 +107,14 @@ local function saveSettings()
     setXMLInt(xmlFile, "settings.stats.lastTaxYear",        stats.lastTaxYear        or 0) -- New
     setXMLInt(xmlFile, "settings.lastDay",   tonumber(lastDay)   or 1)
     setXMLInt(xmlFile, "settings.lastMonth", tonumber(lastMonth) or 1)
+    local farmIndex = 0
+    for farmId, farmLedger in pairs(ledger.farms) do
+        local farmKey = string.format("settings.ledger.farm(%d)", farmIndex)
+        setXMLInt(xmlFile,   farmKey .. "#farmId",      farmId)
+        setXMLFloat(xmlFile, farmKey .. "#creditTotal", farmLedger.creditTotal or 0)
+        setXMLFloat(xmlFile, farmKey .. "#debitTotal",  farmLedger.debitTotal  or 0)
+        farmIndex = farmIndex + 1
+    end
     saveXMLFile(xmlFile)
     delete(xmlFile)
 end
@@ -132,6 +147,19 @@ local function loadSettings()
     stats.lastTaxYear        = Utils.getNoNil(getXMLInt(xmlFile, "settings.stats.lastTaxYear"),        0) -- New
     lastDay   = Utils.getNoNil(getXMLInt(xmlFile, "settings.lastDay"),   lastDay)
     lastMonth = Utils.getNoNil(getXMLInt(xmlFile, "settings.lastMonth"), lastMonth)
+    ledger.farms = {}
+    local farmIndex = 0
+    while true do
+        local farmKey = string.format("settings.ledger.farm(%d)", farmIndex)
+        local farmId = getXMLInt(xmlFile, farmKey .. "#farmId")
+        if farmId == nil then break end
+        ledger.farms[farmId] = {
+            creditTotal = Utils.getNoNil(getXMLFloat(xmlFile, farmKey .. "#creditTotal"), 0),
+            debitTotal  = Utils.getNoNil(getXMLFloat(xmlFile, farmKey .. "#debitTotal"),  0),
+            entries     = {},
+        }
+        farmIndex = farmIndex + 1
+    end
     delete(xmlFile)
     log("Settings loaded", 2)
 end
@@ -281,6 +309,69 @@ local function createUpdateable()
 end
 
 -- =====================
+-- PUBLIC WRITE API (companion mods)
+-- =====================
+-- g_TaxManager.recordExpense(farmId, amount, label) -> boolean success
+-- Records a tracked money adjustment in the running per-farm credit/debit
+-- ledger. Positive amount = credit (money the farm received, e.g. a rebate),
+-- negative amount = debit (money the farm paid out, e.g. a wage).
+-- Bookkeeping only: it never moves money and never changes any tax
+-- computation (TaxMod taxes balance, not income). Callers are expected to be
+-- server-side money code; on a non-server peer the call is rejected.
+function FS25TaxMod.recordExpense(a, b, c, d)
+    -- Tolerate colon-style calls (g_TaxManager:recordExpense(...))
+    local farmId, amount, label = a, b, c
+    if a == FS25TaxMod then
+        farmId, amount, label = b, c, d
+    end
+
+    if g_currentMission == nil or not g_currentMission:getIsServer() then
+        Logging.warning("[%s] recordExpense: server-only API called on a non-server peer, ignoring", modName)
+        return false
+    end
+    if type(farmId) ~= "number" or farmId <= 0 then
+        Logging.warning("[%s] recordExpense: invalid farmId '%s' (positive number expected)", modName, tostring(farmId))
+        return false
+    end
+    if type(amount) ~= "number" or amount ~= amount or amount == math.huge or amount == -math.huge or amount == 0 then
+        Logging.warning("[%s] recordExpense: invalid amount '%s' (finite non-zero number expected)", modName, tostring(amount))
+        return false
+    end
+    if label ~= nil and type(label) ~= "string" then
+        Logging.warning("[%s] recordExpense: invalid label '%s' (string expected)", modName, tostring(label))
+        return false
+    end
+    label = label or "Companion expense"
+
+    local farmLedger = ledger.farms[farmId]
+    if farmLedger == nil then
+        farmLedger = { creditTotal = 0, debitTotal = 0, entries = {} }
+        ledger.farms[farmId] = farmLedger
+    end
+
+    if amount > 0 then
+        farmLedger.creditTotal = farmLedger.creditTotal + amount
+    else
+        farmLedger.debitTotal = farmLedger.debitTotal - amount
+    end
+
+    local env = g_currentMission.environment
+    table.insert(farmLedger.entries, 1, {
+        amount = amount,
+        label  = label,
+        day    = env and env.currentDay   or 0,
+        month  = env and env.currentMonth or 0,
+    })
+    while #farmLedger.entries > LEDGER_MAX_ENTRIES do
+        table.remove(farmLedger.entries)
+    end
+
+    log(string.format("recordExpense: farm %d %s%s (%s)", farmId,
+        amount > 0 and "+" or "", tostring(amount), label), 2)
+    return true
+end
+
+-- =====================
 -- CONSOLE COMMANDS
 -- =====================
 function FS25TaxMod:consoleCommandTax()
@@ -360,6 +451,21 @@ function FS25TaxMod:consoleTaxStatistics()
     print("Days taxed:      " .. stats.daysTaxed)
     if stats.daysTaxed > 0 then
         print("Avg daily tax:   " .. formatMoney(math.floor(stats.totalTaxesPaid / stats.daysTaxed)))
+    end
+    print("=== Companion Ledger (recordExpense) ===")
+    local farmCount = 0
+    for farmId, farmLedger in pairs(ledger.farms) do
+        farmCount = farmCount + 1
+        print(string.format("Farm %d: credits +%s | debits -%s",
+            farmId, formatMoney(farmLedger.creditTotal), formatMoney(farmLedger.debitTotal)))
+        for i = 1, math.min(#farmLedger.entries, 3) do
+            local entry = farmLedger.entries[i]
+            print(string.format("  M%d D%d %s%s (%s)", entry.month, entry.day,
+                entry.amount > 0 and "+" or "-", formatMoney(math.abs(entry.amount)), entry.label))
+        end
+    end
+    if farmCount == 0 then
+        print("No tracked entries yet")
     end
 end
 

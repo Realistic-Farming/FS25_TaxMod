@@ -385,8 +385,8 @@ function TaxHUD:drawPanel()
 
     local histCount = math.min(#self.taxHistory, TaxHUD.MAX_HISTORY_ROWS)
 
-    -- Row count: title + rate + min-balance + annual-accumulated + projected + next-event + totals(2) + history-header + hist-rows + hint = 10 fixed + max(histCount,1) variable
-    local nRows = 11 + math.max(histCount - 1, 0)
+    -- Row count: title + rate + min-balance + annual-accumulated + projected + next-event + totals(2) + ledger + history-header + hist-rows + hint = 11 fixed + max(histCount,1) variable
+    local nRows = 12 + math.max(histCount - 1, 0)
     local nDividers = 3
     local bgH = pad * 2 + nRows * lh + nDividers * (0.004 * sc)
     local bgX = x - pad
@@ -537,6 +537,24 @@ function TaxHUD:drawPanel()
     setTextAlignment(RenderText.ALIGN_RIGHT)
     setTextColor(self.COLORS.AMOUNT_POS[1], self.COLORS.AMOUNT_POS[2], self.COLORS.AMOUNT_POS[3], self.COLORS.AMOUNT_POS[4])
     renderText(x + w, cy - tsSmall, tsSmall, "+" .. retFmt)
+    cy = cy - lh
+
+    -- Companion ledger (recordExpense credits/debits for the local farm)
+    local ledgerCredit, ledgerDebit = 0, 0
+    local ledgerFarms = taxMod.ledger and taxMod.ledger.farms
+    if ledgerFarms ~= nil and g_currentMission ~= nil and g_currentMission.getFarmId ~= nil then
+        local farmLedger = ledgerFarms[g_currentMission:getFarmId()]
+        if farmLedger ~= nil then
+            ledgerCredit = farmLedger.creditTotal or 0
+            ledgerDebit  = farmLedger.debitTotal  or 0
+        end
+    end
+    setTextAlignment(RenderText.ALIGN_LEFT)
+    setTextColor(self.COLORS.LABEL[1], self.COLORS.LABEL[2], self.COLORS.LABEL[3], self.COLORS.LABEL[4])
+    renderText(x, cy - tsSmall, tsSmall, "Tracked credits/debits:")
+    setTextAlignment(RenderText.ALIGN_RIGHT)
+    setTextColor(self.COLORS.VALUE[1], self.COLORS.VALUE[2], self.COLORS.VALUE[3], self.COLORS.VALUE[4])
+    renderText(x + w, cy - tsSmall, tsSmall, "+" .. self:formatMoney(ledgerCredit) .. " / -" .. self:formatMoney(ledgerDebit))
     cy = cy - lh
 
     -- Divider
