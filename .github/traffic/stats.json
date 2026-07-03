@@ -12966,7 +12966,7 @@
     "watchers": 2
   },
   {
-    "timestamp": "2026-07-03T06:28:00Z",
+    "timestamp": "2026-07-03T12:06:21Z",
     "date": "2026-07-03",
     "views": {
       "count": 167,
@@ -13051,6 +13051,15 @@
       }
     ],
     "releases": [
+      {
+        "assets": [
+          {
+            "downloads": 0,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.4.2"
+      },
       {
         "assets": [
           {
