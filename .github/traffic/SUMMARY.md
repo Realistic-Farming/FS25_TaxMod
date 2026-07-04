@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-07-04T00:09:28Z
-**Days tracked:** 86 | **Download snapshots:** 263 (hourly)
+**Last updated:** 2026-07-04T12:04:21Z
+**Days tracked:** 86 | **Download snapshots:** 265 (hourly)
 
 ---
 
@@ -11,10 +11,10 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 167 | 54 |
-| Git Clones | 762 | 230 |
+| Page Views | 168 | 57 |
+| Git Clones | 755 | 232 |
 
-> **Engagement:** 3.0 pages per visitor (14-day avg)
+> **Engagement:** 2.9 pages per visitor (14-day avg)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 445 of 54 visitors cloned or downloaded (**824.0%**)
+> **14-day conversion:** 448 of 57 visitors cloned or downloaded (**785.9%**)
 >
-> Unique cloners: 230 | Release downloads: 215
+> Unique cloners: 232 | Release downloads: 216
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 215 |
-| Git Clones (14-day) | 762 |
-| **Total Acquisitions** | **977** |
+| Zip Downloads | 216 |
+| Git Clones (14-day) | 755 |
+| **Total Acquisitions** | **971** |
 
 ---
 
@@ -54,7 +54,7 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 135 | 47 |
+| github.com | 137 | 48 |
 | Google | 5 | 3 |
 
 ---
@@ -75,16 +75,16 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 81 | 51 |
+| `/Realistic-Farming/FS25_TaxMod` | 83 | 52 |
 | `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.4.1` | 28 | 21 |
-| `/Realistic-Farming/FS25_TaxMod/issues` | 11 | 4 |
+| `/Realistic-Farming/FS25_TaxMod/issues` | 12 | 5 |
 | `/Realistic-Farming/FS25_TaxMod/releases` | 9 | 6 |
-| `/TheCodingDad-TisonK/FS25_TaxMod` | 6 | 5 |
+| `/TheCodingDad-TisonK/FS25_TaxMod` | 4 | 3 |
+| `/Realistic-Farming/FS25_TaxMod/blob/main/main.lua` | 2 | 2 |
 | `/Realistic-Farming/FS25_TaxMod/issues/13` | 2 | 2 |
 | `/Realistic-Farming/FS25_TaxMod/blob/main/CONTRIBUTING.md` | 1 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/blob/main/FS25_TaxMod.zip` | 1 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/blob/main/README.md` | 1 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/blob/main/build.sh` | 1 | 1 |
 
 ---
 
