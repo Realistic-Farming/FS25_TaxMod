@@ -2005,5 +2005,17 @@
       "count": 5,
       "uniques": 3
     }
+  ],
+  "2026-07-05": [
+    {
+      "referrer": "github.com",
+      "count": 144,
+      "uniques": 52
+    },
+    {
+      "referrer": "Google",
+      "count": 5,
+      "uniques": 3
+    }
   ]
 }
