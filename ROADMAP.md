@@ -1,7 +1,7 @@
 # Roadmap: FS25_TaxMod
 
 > Ecosystem role: **Markets and Economy** · Part of the Realistic Farming connected suite
-> Status: TEMPLATE (complete after the ecosystem audit/baseline).
+> Status: FILLED from the ecosystem audit/baseline.
 > Forward-looking only. Shipped history lives in CHANGELOG.md and the releases.
 
 ## How to use this file
@@ -10,23 +10,26 @@
 - Keep it honest: near-term is committed, mid-term is intended, long-term is aspirational.
 
 ## Current baseline
-- Version at baseline: _modDesc version_
-- Audit reference: _link to audit doc / CLAUDE-LOG entry_
-- Baseline date: _..._
+- Version at baseline: v1.1.3.0
+- Audit reference: ecosystem-dev-tracking Point 1-5 (FS25_TaxMod, 2026-06-30)
+- Baseline date: 2026-06-30
 
 ## Near-term (next release cycle)
-- [ ] _item_
+- [ ] Fix the multiplayer tax bug: add a `getIsServer()` gate to `applyAnnualTax()` and `applyDailyTax()` so a farm is taxed once, not once per client.
+- [ ] StateLedger migration to `TaxMod_Data`: retire the `modSettings/` subfolder save path and the FS22 createXMLFile/loadXMLFile usage.
+- [ ] SettingsHub migration: register the 5 settings; remove TaxSettingsUI.lua + UIHelper.lua (the ESC-menu injection).
 
 ## Mid-term (this season)
-- [ ] _item_
+- [ ] NetworkSync channel `TaxMod_Sync` for settings broadcast on admin change.
+- [ ] MasterHUD registration of `TaxMod_HUD` (delegate-when-present; TaxHUD keeps its own draw/update/mouse logic).
+- [ ] Decide the fate of `returnPercentage` (vestigial in the annual model).
 
 ## Long-term / aspirational
-- [ ] _item_
+- [ ] Richer tax model (brackets, deductions, or period options) without breaking MP correctness.
 
 ## Cross-mod / ecosystem dependencies
-_Roadmap items that depend on a peer mod or a core-API bedrock mod._
-- [ ] _item (blocks on: which mod / which bedrock engine)_
+- [ ] All four bedrock migrations (blocks on: StateLedger, NetworkSync, MasterHUD, SettingsHub).
+- [ ] FarmTablet TaxApp (reads `g_currentMission.taxManager`).
 
 ## Deferred / parked
-_Ideas intentionally not scheduled, each with a one-line reason._
-- _..._
+- Consuming a peer earnings API instead of reading `farm.money` directly: parked; direct read is correct and simpler for v1.

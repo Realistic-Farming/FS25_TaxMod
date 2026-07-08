@@ -1,25 +1,30 @@
 # TODO: FS25_TaxMod
 
 > Ecosystem role: **Markets and Economy** · Part of the Realistic Farming connected suite
-> Status: TEMPLATE (working checklist). Fill from the ecosystem audit/baseline, then keep it current.
+> Status: FILLED from the ecosystem audit/baseline, kept current.
 > Convention: `[ ]` open · `[~]` in progress · `[x]` done · `[!]` blocked. Newest at the top of each section.
 
 ## From the ecosystem audit (Arissani)
-_Action items that come out of the audit/baseline go here first so nothing is missed._
-- [ ] _audit item_
+- [ ] Migrate save off the `modSettings/` subfolder and the FS22 createXMLFile/loadXMLFile API to StateLedger `TaxMod_Data`.
+- [ ] Remove TaxSettingsUI.lua + UIHelper.lua (ESC-menu injection); SettingsHub owns settings.
+- [ ] Decide: keep or remove `returnPercentage`.
 
 ## Bugs
-- [ ] _bug_
+- [!] CRITICAL (MP): `applyAnnualTax()` and `applyDailyTax()` lack a `getIsServer()` gate. In multiplayer `addMoney(-taxAmount)` fires on every client for the same farmId, so tax is deducted multiple times. Add the server gate.
 
 ## Features / enhancements
-- [ ] _feature_
+- [ ] Bedrock migration (StateLedger/NetworkSync/MasterHUD/SettingsHub) per Point 1-5.
 
 ## Cross-mod integration
-_Wiring to StateLedger / NetworkSync / MasterHUD / SettingsHub / FarmTablet / peer mods._
-- [ ] _integration task_
+- [ ] StateLedger: `TaxMod_Data` (settings + stats + timer state, server-authoritative).
+- [ ] NetworkSync: `TaxMod_Sync` (settings broadcast).
+- [ ] MasterHUD: register `TaxMod_HUD` (delegate-when-present).
+- [ ] SettingsHub: register the 5 settings.
 
 ## Docs / localization
-- [ ] _doc or translation task (remember all 26 languages)_
+- [ ] Keep all 26 languages in step for any new setting.
+- [ ] Update README/version on each release.
 
 ## Blocked / waiting on
-- [!] _blocked item + what it waits on_
+- [!] Bedrock migrations (waits on: adopting the four engines; SoilFertilizer is the reference pattern).
+- [!] MasterHUD GUI-visibility suppression policy (waits on: audit answer on whether MasterHUD or each panel guards GUI visibility).
