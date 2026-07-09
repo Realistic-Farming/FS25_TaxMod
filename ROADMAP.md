@@ -15,7 +15,7 @@
 - Baseline date: 2026-06-30
 
 ## Near-term (next release cycle)
-- [ ] Fix the multiplayer tax bug: add a `getIsServer()` gate to `applyAnnualTax()` and `applyDailyTax()` so a farm is taxed once, not once per client.
+- [x] MP tax bug (F15): DONE on development (commit 8ff9989d). Annual-tax `addMoney` gated on `getIsServer`; `applyDailyTax` only accumulates. Re-verify the release asset matches dev HEAD (asset modDesc was mislabeled 1.1.4.1).
 - [ ] StateLedger migration to `TaxMod_Data`: retire the `modSettings/` subfolder save path and the FS22 createXMLFile/loadXMLFile usage.
 - [ ] SettingsHub migration: register the 5 settings; remove TaxSettingsUI.lua + UIHelper.lua (the ESC-menu injection).
 

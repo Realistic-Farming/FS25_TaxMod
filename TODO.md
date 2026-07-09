@@ -10,7 +10,7 @@
 - [ ] Decide: keep or remove `returnPercentage`.
 
 ## Bugs
-- [!] CRITICAL (MP): `applyAnnualTax()` and `applyDailyTax()` lack a `getIsServer()` gate. In multiplayer `addMoney(-taxAmount)` fires on every client for the same farmId, so tax is deducted multiple times. Add the server gate.
+- [x] MP tax bug (F15): RESOLVED on development (commit 8ff9989d, 2026-07-01). The annual-tax `addMoney` is gated on `getIsServer` (main.lua:226); `applyDailyTax` only accumulates and moves no money. Note: the mislabeled pre-release asset (modDesc 1.1.4.1) predates this, so re-verify against dev HEAD before release.
 
 ## Features / enhancements
 - [ ] Bedrock migration (StateLedger/NetworkSync/MasterHUD/SettingsHub) per Point 1-5.
