@@ -14,6 +14,8 @@ source(modDirectory .. "src/settings/UIHelper.lua")
 source(modDirectory .. "src/settings/SettingsUI.lua")
 source(modDirectory .. "src/ui/TaxHUD.lua")
 source(modDirectory .. "src/settings/SettingsHubBridge.lua")
+source(modDirectory .. "src/integrations/TaxStateLedgerBridge.lua")  -- bedrock: optional StateLedger state bridge
+source(modDirectory .. "src/integrations/TaxMasterHUDBridge.lua")    -- bedrock: optional MasterHUD draw bridge
 
 FS25TaxMod = {}
 FS25TaxMod.modDir  = modDirectory
@@ -163,6 +165,98 @@ local function loadSettings()
     end
     delete(xmlFile)
     log("Settings loaded", 2)
+end
+
+-- =====================
+-- STATE SERIALIZATION (StateLedger bridge)
+-- =====================
+-- serializeState/applyState are the in-memory twins of the state portion of
+-- saveSettings/loadSettings (stats + the recordExpense ledger + the day/month
+-- cursors). They carry STATE only, never settings (SettingsHub owns those).
+-- The own XML stays the standalone safety copy; these feed the optional
+-- StateLedger module TaxMod_Data when bedrock is present. Plain-table in/out so
+-- StateLedger's generic serializer can round-trip them (number keys included).
+
+function FS25TaxMod.serializeState()
+    local farms = {}
+    for farmId, fl in pairs(ledger.farms) do
+        local entries = {}
+        if type(fl.entries) == "table" then
+            for i, e in ipairs(fl.entries) do
+                entries[i] = { amount = e.amount, label = e.label, day = e.day, month = e.month }
+            end
+        end
+        farms[farmId] = {
+            creditTotal = fl.creditTotal or 0,
+            debitTotal  = fl.debitTotal  or 0,
+            entries     = entries,
+        }
+    end
+    return {
+        version = 1,
+        stats = {
+            totalTaxesPaid         = stats.totalTaxesPaid         or 0,
+            totalTaxesReturned     = stats.totalTaxesReturned     or 0,
+            taxesThisMonth         = stats.taxesThisMonth         or 0,
+            daysTaxed              = stats.daysTaxed              or 0,
+            monthsReturned         = stats.monthsReturned         or 0,
+            taxesAccumulatedAnnual = stats.taxesAccumulatedAnnual or 0,
+            lastTaxYear            = stats.lastTaxYear            or 0,
+        },
+        lastDay   = lastDay,
+        lastMonth = lastMonth,
+        ledger    = { farms = farms },
+    }
+end
+
+function FS25TaxMod.applyState(data)
+    if type(data) ~= "table" then return false end
+
+    local st = data.stats
+    if type(st) == "table" then
+        stats.totalTaxesPaid         = tonumber(st.totalTaxesPaid)         or stats.totalTaxesPaid         or 0
+        stats.totalTaxesReturned     = tonumber(st.totalTaxesReturned)     or stats.totalTaxesReturned     or 0
+        stats.taxesThisMonth         = tonumber(st.taxesThisMonth)         or stats.taxesThisMonth         or 0
+        stats.daysTaxed              = tonumber(st.daysTaxed)              or stats.daysTaxed              or 0
+        stats.monthsReturned         = tonumber(st.monthsReturned)         or stats.monthsReturned         or 0
+        stats.taxesAccumulatedAnnual = tonumber(st.taxesAccumulatedAnnual) or stats.taxesAccumulatedAnnual or 0
+        stats.lastTaxYear            = tonumber(st.lastTaxYear)            or stats.lastTaxYear            or 0
+    end
+
+    if data.lastDay   ~= nil then lastDay   = tonumber(data.lastDay)   or lastDay   end
+    if data.lastMonth ~= nil then lastMonth = tonumber(data.lastMonth) or lastMonth end
+
+    -- Rebuild ledger.farms IN PLACE so the table identity FS25TaxMod.ledger (and
+    -- the HUD) already holds stays valid.
+    for k in pairs(ledger.farms) do ledger.farms[k] = nil end
+    local df = data.ledger and data.ledger.farms
+    if type(df) == "table" then
+        for farmId, fl in pairs(df) do
+            local fid = tonumber(farmId)
+            if fid ~= nil and type(fl) == "table" then
+                local entries = {}
+                if type(fl.entries) == "table" then
+                    for _, e in ipairs(fl.entries) do
+                        if type(e) == "table" then
+                            entries[#entries + 1] = {
+                                amount = tonumber(e.amount) or 0,
+                                label  = tostring(e.label or ""),
+                                day    = tonumber(e.day)   or 0,
+                                month  = tonumber(e.month) or 0,
+                            }
+                        end
+                    end
+                end
+                ledger.farms[fid] = {
+                    creditTotal = tonumber(fl.creditTotal) or 0,
+                    debitTotal  = tonumber(fl.debitTotal)  or 0,
+                    entries     = entries,
+                }
+            end
+        end
+    end
+
+    return true
 end
 
 local function applyDailyTax()
@@ -597,6 +691,20 @@ local function onMissionLoaded(mission, node)
     -- app can list Tax Mod's settings. No-ops safely if SettingsHub is absent.
     TaxSettingsHubBridge.register(FS25TaxMod)
 
+    -- Register with StateLedger (if installed) as the state load source of truth.
+    -- No-ops safely if StateLedger is absent (own XML stays primary). Runs after
+    -- loadSettings so, when the shared ledger is present, it overrides the state
+    -- portion imported from the own XML.
+    TaxStateLedgerBridge.register(FS25TaxMod)
+    if TaxStateLedgerBridge.hasState() then
+        TaxStateLedgerBridge.applyState(FS25TaxMod)
+    end
+
+    -- Register the tax HUD with MasterHUD (if installed) so it owns the single
+    -- suspend-aware draw loop. No-ops safely if MasterHUD is absent; the own
+    -- FSBaseMission.draw hook below stands down when this is active.
+    TaxMasterHUDBridge.register(FS25TaxMod)
+
     local env = g_currentMission.environment
     if env then
         lastDay         = tonumber(env.currentDay)   or 1
@@ -668,8 +776,17 @@ FSBaseMission.update = Utils.appendedFunction(FSBaseMission.update, function(mis
     if taxHUD then taxHUD:update(dt) end
 end)
 
+-- When MasterHUD is present it drives TaxMasterHUDBridge.drawStack in its own
+-- suspend-aware loop, so this fallback hook stands down to avoid a double draw.
+-- The draw body (the taxHUD + settings.showHUD guard) lives in drawStack so the
+-- two paths can never diverge.
 FSBaseMission.draw = Utils.appendedFunction(FSBaseMission.draw, function(mission)
-    if taxHUD and settings.showHUD then taxHUD:draw() end
+    if TaxMasterHUDBridge and TaxMasterHUDBridge.active then return end
+    if TaxMasterHUDBridge then
+        TaxMasterHUDBridge.drawStack()
+    elseif taxHUD and settings.showHUD then
+        taxHUD:draw()
+    end
 end)
 
 Mission00.saveToXMLFile = Utils.appendedFunction(Mission00.saveToXMLFile, function(mission, xmlFilename)
