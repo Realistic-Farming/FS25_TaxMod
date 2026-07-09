@@ -47,6 +47,12 @@ function TaxSettingsHubBridge.register(tm)
         hub:registerModule("TaxMod", {
             adminSettings = defs,
             onChange      = function(key, value, playerId) applyChange(key, value) end,
+            -- We own our persistence (the mod's own save path writes FS25_TaxMod.xml) and
+            -- load it before this registration runs, so the hub must mirror-for-display
+            -- only: never restore its own stale copy and replay it back through onChange on
+            -- load. Without this the hub can push a stale value over our real setting every
+            -- load (the SoilFertilizer enabled=false reset-on-load bug class).
+            selfPersisted = true,
         })
     end)
 
