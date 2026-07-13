@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-07-13T06:12:44Z
-**Days tracked:** 94 | **Download snapshots:** 298 (hourly)
+**Last updated:** 2026-07-13T18:41:17Z
+**Days tracked:** 94 | **Download snapshots:** 300 (hourly)
 
 ---
 
@@ -11,8 +11,8 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 136 | 64 |
-| Git Clones | 537 | 153 |
+| Page Views | 138 | 64 |
+| Git Clones | 537 | 150 |
 
 > **Engagement:** 2.1 pages per visitor (14-day avg)
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 397 of 64 visitors cloned or downloaded (**620.3%**)
+> **14-day conversion:** 395 of 64 visitors cloned or downloaded (**617.1%**)
 >
-> Unique cloners: 153 | Release downloads: 244
+> Unique cloners: 150 | Release downloads: 245
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 244 |
+| Zip Downloads | 245 |
 | Git Clones (14-day) | 537 |
-| **Total Acquisitions** | **781** |
+| **Total Acquisitions** | **782** |
 
 ---
 
@@ -54,8 +54,8 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 99 | 54 |
-| Google | 6 | 4 |
+| github.com | 101 | 55 |
+| Google | 5 | 3 |
 | Bing | 2 | 1 |
 | kingmods.net | 1 | 1 |
 
@@ -77,9 +77,9 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 85 | 60 |
+| `/Realistic-Farming/FS25_TaxMod` | 86 | 60 |
 | `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.4.1` | 26 | 23 |
-| `/Realistic-Farming/FS25_TaxMod/releases` | 13 | 7 |
+| `/Realistic-Farming/FS25_TaxMod/releases` | 14 | 8 |
 | `/Realistic-Farming/FS25_TaxMod/issues` | 5 | 3 |
 | `/Realistic-Farming/FS25_TaxMod/blob/main/main.lua` | 1 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/commits` | 1 | 1 |
