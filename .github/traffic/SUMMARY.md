@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-07-15T12:12:11Z
-**Days tracked:** 95 | **Download snapshots:** 306 (hourly)
+**Last updated:** 2026-07-15T18:02:57Z
+**Days tracked:** 95 | **Download snapshots:** 309 (hourly)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 398 of 71 visitors cloned or downloaded (**560.5%**)
+> **14-day conversion:** 389 of 71 visitors cloned or downloaded (**547.8%**)
 >
-> Unique cloners: 146 | Release downloads: 252
+> Unique cloners: 146 | Release downloads: 243
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 252 |
+| Zip Downloads | 243 |
 | Git Clones (14-day) | 550 |
-| **Total Acquisitions** | **802** |
+| **Total Acquisitions** | **793** |
 
 ---
 
