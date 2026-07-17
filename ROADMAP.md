@@ -16,19 +16,19 @@
 
 ## Near-term (next release cycle)
 - [x] MP tax bug (F15): DONE on development (commit 8ff9989d). Annual-tax `addMoney` gated on `getIsServer`; `applyDailyTax` only accumulates. Re-verify the release asset matches dev HEAD (asset modDesc was mislabeled 1.1.4.1).
-- [ ] StateLedger migration to `TaxMod_Data`: retire the `modSettings/` subfolder save path and the FS22 createXMLFile/loadXMLFile usage.
-- [ ] SettingsHub migration: register the 5 settings; remove TaxSettingsUI.lua + UIHelper.lua (the ESC-menu injection).
+- [x] StateLedger `TaxMod_Data` bridge live (delegate-when-present); `modSettings/` save kept as the safety copy. Shipped v1.1.5.0. (Fully retiring the FS22 path is a later cleanup.)
+- [~] SettingsHub: 5 settings registered (selfPersisted), shipped v1.1.5.0; removing TaxSettingsUI.lua + UIHelper.lua (ESC injection) still open.
 
 ## Mid-term (this season)
-- [ ] NetworkSync channel `TaxMod_Sync` for settings broadcast on admin change.
-- [ ] MasterHUD registration of `TaxMod_HUD` (delegate-when-present; TaxHUD keeps its own draw/update/mouse logic).
+- [ ] NetworkSync channel `TaxMod_Sync` for settings broadcast on admin change. Not built yet.
+- [x] MasterHUD `TaxMod_HUD` registered (delegate-when-present; TaxHUD keeps its own draw/update/mouse logic). Shipped v1.1.5.0.
 - [ ] Decide the fate of `returnPercentage` (vestigial in the annual model).
 
 ## Long-term / aspirational
 - [ ] Richer tax model (brackets, deductions, or period options) without breaking MP correctness.
 
 ## Cross-mod / ecosystem dependencies
-- [ ] All four bedrock migrations (blocks on: StateLedger, NetworkSync, MasterHUD, SettingsHub).
+- [~] Bedrock migrations: 3/4 done (StateLedger + MasterHUD + SettingsHub, v1.1.5.0); NetworkSync remaining.
 - [ ] FarmTablet TaxApp (reads `g_currentMission.taxManager`).
 
 ## Deferred / parked
