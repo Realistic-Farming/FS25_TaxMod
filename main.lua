@@ -21,7 +21,7 @@ source(modDirectory .. "src/integrations/CropStressIrrigationExpense.lua")  -- S
 FS25TaxMod = {}
 FS25TaxMod.modDir  = modDirectory
 FS25TaxMod.modName = modName
-FS25TaxMod.version = "1.1.3.0"
+FS25TaxMod.version = "1.1.5.0"
 FS25TaxMod.Debug   = false
 
 local settings = {
