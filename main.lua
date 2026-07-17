@@ -16,6 +16,7 @@ source(modDirectory .. "src/ui/TaxHUD.lua")
 source(modDirectory .. "src/settings/SettingsHubBridge.lua")
 source(modDirectory .. "src/integrations/TaxStateLedgerBridge.lua")  -- bedrock: optional StateLedger state bridge
 source(modDirectory .. "src/integrations/TaxMasterHUDBridge.lua")    -- bedrock: optional MasterHUD draw bridge
+source(modDirectory .. "src/integrations/CropStressIrrigationExpense.lua")  -- SCS-011: mirror SCS irrigation operating cost as a deductible expense
 
 FS25TaxMod = {}
 FS25TaxMod.modDir  = modDirectory
@@ -380,6 +381,12 @@ local function createUpdateable()
                     if env.currentDay ~= lastDay then
                         lastDay = env.currentDay
                         applyDailyTax()
+                        -- SCS-011: mirror one day of SCS irrigation operating cost
+                        -- into the ledger (read-only, server-only, neutral when SCS
+                        -- is absent or costs are off).
+                        if CropStressIrrigationExpense then
+                            CropStressIrrigationExpense.accrueDaily(FS25TaxMod)
+                        end
                     end
 
                     -- Monthly checks for annual tax events

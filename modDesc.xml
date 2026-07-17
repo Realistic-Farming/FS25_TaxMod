@@ -127,6 +127,14 @@ Funkcje:
     </extraSourceFiles>
 
     <l10n>
+        <!-- SCS-011 irrigation expense ledger labels (companion expense lines) -->
+        <text name="tm_irrigation_operations">
+            <en><![CDATA[Irrigation Operations]]></en>
+        </text>
+        <text name="tm_irrigation_assets">
+            <en><![CDATA[Irrigation Assets]]></en>
+        </text>
+
         <!-- Section Header -->
         <text name="tm_section">
             <en><![CDATA[Tax Mod]]></en>
