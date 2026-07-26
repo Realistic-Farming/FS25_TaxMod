@@ -306,7 +306,7 @@ local function applyAnnualTax()
         return
     end
 
-    local taxAmount = math.floor(stats.taxesAccumulatedAnnual * settings.annualTaxRate)
+    local taxAmount = math.floor(stats.taxesAccumulatedAnnual)
     if taxAmount <= 0 then
         log("Calculated annual tax is zero or less. Resetting accumulated tax.", 2)
         stats.taxesAccumulatedAnnual = 0
