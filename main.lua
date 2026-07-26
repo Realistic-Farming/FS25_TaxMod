@@ -1,5 +1,5 @@
 -- =========================================================
--- FS25 Tax Mod (version 1.1.3.0)
+-- FS25 Tax Mod (version 1.1.5.0)
 -- =========================================================
 -- Annual tax cycle: daily accumulation, March payment,
 -- December advisory, configurable rates.
@@ -117,6 +117,15 @@ local function saveSettings()
         setXMLInt(xmlFile,   farmKey .. "#farmId",      farmId)
         setXMLFloat(xmlFile, farmKey .. "#creditTotal", farmLedger.creditTotal or 0)
         setXMLFloat(xmlFile, farmKey .. "#debitTotal",  farmLedger.debitTotal  or 0)
+        if type(farmLedger.entries) == "table" then
+            for ei, entry in ipairs(farmLedger.entries) do
+                local ek = farmKey .. string.format(".entry(%d)", ei - 1)
+                setXMLFloat(xmlFile, ek .. "#amount", entry.amount or 0)
+                setXMLString(xmlFile, ek .. "#label", entry.label or "")
+                setXMLInt(xmlFile,    ek .. "#day",   entry.day   or 0)
+                setXMLInt(xmlFile,    ek .. "#month", entry.month or 0)
+            end
+        end
         farmIndex = farmIndex + 1
     end
     saveXMLFile(xmlFile)
@@ -157,10 +166,24 @@ local function loadSettings()
         local farmKey = string.format("settings.ledger.farm(%d)", farmIndex)
         local farmId = getXMLInt(xmlFile, farmKey .. "#farmId")
         if farmId == nil then break end
+        local farmEntries = {}
+        local entryIdx = 0
+        while true do
+            local ek = farmKey .. string.format(".entry(%d)", entryIdx)
+            local eAmt = getXMLFloat(xmlFile, ek .. "#amount")
+            if eAmt == nil then break end
+            farmEntries[#farmEntries + 1] = {
+                amount = eAmt,
+                label  = Utils.getNoNil(getString(xmlFile, ek .. "#label"), ""),
+                day    = Utils.getNoNil(getXMLInt(xmlFile, ek .. "#day"), 0),
+                month  = Utils.getNoNil(getXMLInt(xmlFile, ek .. "#month"), 0),
+            }
+            entryIdx = entryIdx + 1
+        end
         ledger.farms[farmId] = {
             creditTotal = Utils.getNoNil(getXMLFloat(xmlFile, farmKey .. "#creditTotal"), 0),
             debitTotal  = Utils.getNoNil(getXMLFloat(xmlFile, farmKey .. "#debitTotal"),  0),
-            entries     = {},
+            entries     = farmEntries,
         }
         farmIndex = farmIndex + 1
     end
@@ -327,7 +350,7 @@ local function applyAnnualTax()
 
     if taxHUD then
         local env = g_currentMission.environment
-        taxHUD:recordTax(taxAmount, 1, stats.taxReturnMonth, true) -- Record as payment for the year in return month
+        taxHUD:recordTax(taxAmount, 1, stats.taxReturnMonth, false) -- Record as tax (not return)
     end
     if settings.showNotification then
         g_currentMission:addIngameNotification({1.0, 0.0, 0.0, 1.0},
@@ -837,7 +860,7 @@ function taxToggleHUD()   FS25TaxMod:consoleTaxHUD()        end
 function taxDebug(l)      FS25TaxMod:consoleTaxDebug(l)     end
 
 print("========================================")
-print("     FS25 Tax Mod v1.1.2.0 LOADED      ")
+print("     FS25 Tax Mod v1.1.5.0 LOADED      ")
 print("     Author: TisonK                     ")
 print("     Type 'tax' in console for help     ")
 print("========================================")

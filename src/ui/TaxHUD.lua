@@ -606,7 +606,7 @@ function TaxHUD:drawPanel()
     if self.editMode then
         renderText(x + w * 0.5, cy - tsSmall, tsSmall, "Drag: move   Corner: resize   RMB: done")
     else
-        renderText(x + w * 0.5, cy - tsSmall, tsSmall, "RMB: move/resize")
+        renderText(x + w * 0.5, cy - tsSmall, tsSmall, "T: toggle | Enter edit mode to drag/resize")
     end
 
     -- Reset text state
