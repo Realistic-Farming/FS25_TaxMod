@@ -18,6 +18,7 @@
 - [x] MP tax bug (F15): DONE on development (commit 8ff9989d). Annual-tax `addMoney` gated on `getIsServer`; `applyDailyTax` only accumulates. Re-verify the release asset matches dev HEAD (asset modDesc was mislabeled 1.1.4.1).
 - [x] StateLedger `TaxMod_Data` bridge live (delegate-when-present); `modSettings/` save kept as the safety copy. Shipped v1.1.5.0. (Fully retiring the FS22 path is a later cleanup.)
 - [~] SettingsHub: 5 settings registered (selfPersisted), shipped v1.1.5.0; removing TaxSettingsUI.lua + UIHelper.lua (ESC injection) still open.
+- [x] 2026-07-26 bug sweep: TX-001 / TX-002 fixed and merged to main.
 
 ## Mid-term (this season)
 - [ ] NetworkSync channel `TaxMod_Sync` for settings broadcast on admin change. Not built yet.

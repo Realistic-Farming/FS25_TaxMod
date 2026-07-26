@@ -11,6 +11,7 @@
 
 ## Bugs
 - [x] MP tax bug (F15): RESOLVED on development (commit 8ff9989d, 2026-07-01). The annual-tax `addMoney` is gated on `getIsServer` (main.lua:226); `applyDailyTax` only accumulates and moves no money. Note: the mislabeled pre-release asset (modDesc 1.1.4.1) predates this, so re-verify against dev HEAD before release.
+- [x] TX-001 / TX-002: additional TaxMod bugs fixed in 2026-07-26 bug sweep, merged to main.
 
 ## Features / enhancements
 - [~] Bedrock 3/4 built (delegate-when-present): StateLedger + MasterHUD + SettingsHub (v1.1.5.0). NetworkSync (`TaxMod_Sync`) still open.
