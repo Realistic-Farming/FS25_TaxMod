@@ -420,9 +420,7 @@ Funkcje:
     </actions>
 
     <inputBinding>
-        <actionBinding action="TM_TOGGLE_HUD">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_T" />
-        </actionBinding>
+        <actionBinding action="TM_TOGGLE_HUD" />
         <actionBinding action="TM_HUD_DRAG" />
     </inputBinding>
 
