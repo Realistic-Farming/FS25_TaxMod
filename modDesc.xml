@@ -4,7 +4,7 @@
          xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/NMC-TBone/xml-schema/main/modDesc.xsd">
 
     <author>TisonK</author>
-    <version>1.1.4.1</version>
+    <version>1.1.5.0</version>
 
     <title>
         <en>Tax Mod</en>
@@ -127,6 +127,14 @@ Funkcje:
     </extraSourceFiles>
 
     <l10n>
+        <!-- SCS-011 irrigation expense ledger labels (companion expense lines) -->
+        <text name="tm_irrigation_operations">
+            <en><![CDATA[Irrigation Operations]]></en>
+        </text>
+        <text name="tm_irrigation_assets">
+            <en><![CDATA[Irrigation Assets]]></en>
+        </text>
+
         <!-- Section Header -->
         <text name="tm_section">
             <en><![CDATA[Tax Mod]]></en>
@@ -140,7 +148,7 @@ Funkcje:
             <cz>[EN] <![CDATA[Tax Mod]]></cz>
             <br>[EN] <![CDATA[Tax Mod]]></br>
             <ru>[EN] <![CDATA[Tax Mod]]></ru>
-            <da>[EN] <![CDATA[Tax Mod]]></da>
+            <da><![CDATA[Skattebaseret Mod]]></da>
         </text>
 
         <!-- Enable -->
@@ -156,7 +164,7 @@ Funkcje:
             <cz>[EN] <![CDATA[Enable Tax Mod]]></cz>
             <br>[EN] <![CDATA[Enable Tax Mod]]></br>
             <ru>[EN] <![CDATA[Enable Tax Mod]]></ru>
-            <da>[EN] <![CDATA[Enable Tax Mod]]></da>
+            <da><![CDATA[Aktiver Skattebaseret Mod]]></da>
         </text>
         <text name="tm_enabled_long">
             <en><![CDATA[Enable or disable daily tax deductions and monthly returns]]></en>
@@ -170,7 +178,7 @@ Funkcje:
             <cz>[EN] <![CDATA[Enable or disable daily tax deductions and monthly returns]]></cz>
             <br>[EN] <![CDATA[Enable or disable daily tax deductions and monthly returns]]></br>
             <ru>[EN] <![CDATA[Enable or disable daily tax deductions and monthly returns]]></ru>
-            <da>[EN] <![CDATA[Enable or disable daily tax deductions and monthly returns]]></da>
+            <da><![CDATA[Aktivér eller deaktiver daglige skattefradrag og månedlige skatterefusioner]]></da>
         </text>
 
         <!-- Tax Rate -->
@@ -186,7 +194,7 @@ Funkcje:
             <cz>[EN] <![CDATA[Tax Rate]]></cz>
             <br>[EN] <![CDATA[Tax Rate]]></br>
             <ru>[EN] <![CDATA[Tax Rate]]></ru>
-            <da>[EN] <![CDATA[Tax Rate]]></da>
+            <da><![CDATA[Skattesats]]></da>
         </text>
         <text name="tm_taxrate_long">
             <en><![CDATA[Daily tax rate applied to your farm balance: Low=1%, Medium=2%, High=3%]]></en>
@@ -200,25 +208,25 @@ Funkcje:
             <cz>[EN] <![CDATA[Daily tax rate applied to your farm balance: Low=1%, Medium=2%, High=3%]]></cz>
             <br>[EN] <![CDATA[Daily tax rate applied to your farm balance: Low=1%, Medium=2%, High=3%]]></br>
             <ru>[EN] <![CDATA[Daily tax rate applied to your farm balance: Low=1%, Medium=2%, High=3%]]></ru>
-            <da>[EN] <![CDATA[Daily tax rate applied to your farm balance: Low=1%, Medium=2%, High=3%]]></da>
+            <da><![CDATA[Daglig skattesats anvendt på din gårds saldo: Lav=1 %, Mellem=2 %, Høj=3 %]]></da>
         </text>
         <text name="tm_taxrate_1"><en><![CDATA[Low (1%)]]></en><de><![CDATA[Niedrig (1%)]]></de><fr><![CDATA[Faible (1%)]]></fr><es><![CDATA[Baja (1%)]]></es><it><![CDATA[Bassa (1%)]]></it><pl><![CDATA[Niska (1%)]]></pl><uk><![CDATA[Низька (1%)]]></uk>
             <cz>[EN] <![CDATA[Low (1%)]]></cz>
             <br>[EN] <![CDATA[Low (1%)]]></br>
             <ru>[EN] <![CDATA[Low (1%)]]></ru>
-            <da>[EN] <![CDATA[Low (1%)]]></da>
+            <da><![CDATA[Lav (1 %)]]></da>
         </text>
         <text name="tm_taxrate_2"><en><![CDATA[Medium (2%)]]></en><de><![CDATA[Mittel (2%)]]></de><fr><![CDATA[Moyen (2%)]]></fr><es><![CDATA[Media (2%)]]></es><it><![CDATA[Media (2%)]]></it><pl><![CDATA[Średnia (2%)]]></pl><uk><![CDATA[Середня (2%)]]></uk>
             <cz>[EN] <![CDATA[Medium (2%)]]></cz>
             <br>[EN] <![CDATA[Medium (2%)]]></br>
             <ru>[EN] <![CDATA[Medium (2%)]]></ru>
-            <da>[EN] <![CDATA[Medium (2%)]]></da>
+            <da><![CDATA[Mellem (2 %)]]></da>
         </text>
         <text name="tm_taxrate_3"><en><![CDATA[High (3%)]]></en><de><![CDATA[Hoch (3%)]]></de><fr><![CDATA[Élevé (3%)]]></fr><es><![CDATA[Alta (3%)]]></es><it><![CDATA[Alta (3%)]]></it><pl><![CDATA[Wysoka (3%)]]></pl><uk><![CDATA[Висока (3%)]]></uk>
             <cz>[EN] <![CDATA[High (3%)]]></cz>
             <br>[EN] <![CDATA[High (3%)]]></br>
             <ru>[EN] <![CDATA[High (3%)]]></ru>
-            <da>[EN] <![CDATA[High (3%)]]></da>
+            <da><![CDATA[Høj (3 %)]]></da>
         </text>
 
         <!-- Annual Tax Rate -->
@@ -234,7 +242,7 @@ Funkcje:
             <cz>[EN] <![CDATA[Annual Tax Rate]]></cz>
             <br>[EN] <![CDATA[Annual Tax Rate]]></br>
             <ru>[EN] <![CDATA[Annual Tax Rate]]></ru>
-            <da>[EN] <![CDATA[Annual Tax Rate]]></da>
+            <da><![CDATA[Årlig skattesats]]></da>
         </text>
         <text name="tm_annualrate_long">
             <en><![CDATA[Percentage of accumulated taxes paid each March: Low=2%, Medium=5%, High=10%]]></en>
@@ -248,25 +256,25 @@ Funkcje:
             <cz>[EN] <![CDATA[Percentage of accumulated taxes paid each March: Low=2%, Medium=5%, High=10%]]></cz>
             <br>[EN] <![CDATA[Percentage of accumulated taxes paid each March: Low=2%, Medium=5%, High=10%]]></br>
             <ru>[EN] <![CDATA[Percentage of accumulated taxes paid each March: Low=2%, Medium=5%, High=10%]]></ru>
-            <da>[EN] <![CDATA[Percentage of accumulated taxes paid each March: Low=2%, Medium=5%, High=10%]]></da>
+            <da><![CDATA[Procentdel af de akkumulerede skatter, der udbetales hver marts: Lav=2 %, Mellem=5 %, Høj=10 %]]></da>
         </text>
         <text name="tm_annualrate_1"><en><![CDATA[Low (2%)]]></en><de><![CDATA[Niedrig (2%)]]></de><fr><![CDATA[Faible (2%)]]></fr><es><![CDATA[Baja (2%)]]></es><it><![CDATA[Bassa (2%)]]></it><pl><![CDATA[Niski (2%)]]></pl><uk><![CDATA[Низький (2%)]]></uk>
             <cz>[EN] <![CDATA[Low (2%)]]></cz>
             <br>[EN] <![CDATA[Low (2%)]]></br>
             <ru>[EN] <![CDATA[Low (2%)]]></ru>
-            <da>[EN] <![CDATA[Low (2%)]]></da>
+            <da><![CDATA[Lav (2 %)]]></da>
         </text>
         <text name="tm_annualrate_2"><en><![CDATA[Medium (5%)]]></en><de><![CDATA[Mittel (5%)]]></de><fr><![CDATA[Moyen (5%)]]></fr><es><![CDATA[Media (5%)]]></es><it><![CDATA[Media (5%)]]></it><pl><![CDATA[Średni (5%)]]></pl><uk><![CDATA[Середній (5%)]]></uk>
             <cz>[EN] <![CDATA[Medium (5%)]]></cz>
             <br>[EN] <![CDATA[Medium (5%)]]></br>
             <ru>[EN] <![CDATA[Medium (5%)]]></ru>
-            <da>[EN] <![CDATA[Medium (5%)]]></da>
+            <da><![CDATA[Mellem (5 %)]]></da>
         </text>
         <text name="tm_annualrate_3"><en><![CDATA[High (10%)]]></en><de><![CDATA[Hoch (10%)]]></de><fr><![CDATA[Élevé (10%)]]></fr><es><![CDATA[Alta (10%)]]></es><it><![CDATA[Alta (10%)]]></it><pl><![CDATA[Wysoki (10%)]]></pl><uk><![CDATA[Високий (10%)]]></uk>
             <cz>[EN] <![CDATA[High (10%)]]></cz>
             <br>[EN] <![CDATA[High (10%)]]></br>
             <ru>[EN] <![CDATA[High (10%)]]></ru>
-            <da>[EN] <![CDATA[High (10%)]]></da>
+            <da><![CDATA[Høj (10 %)]]></da>
         </text>
 
         <!-- Return Percentage (kept for save compatibility) -->
@@ -282,7 +290,7 @@ Funkcje:
             <cz>[EN] <![CDATA[Tax Return %]]></cz>
             <br>[EN] <![CDATA[Tax Return %]]></br>
             <ru>[EN] <![CDATA[Tax Return %]]></ru>
-            <da>[EN] <![CDATA[Tax Return %]]></da>
+            <da><![CDATA[Skatterefusion %]]></da>
         </text>
         <text name="tm_return_long">
             <en><![CDATA[Percentage of monthly taxes returned at the start of each new month: Low=10%, Medium=20%, High=30%]]></en>
@@ -296,25 +304,25 @@ Funkcje:
             <cz>[EN] <![CDATA[Percentage of monthly taxes returned at the start of each new month: Low=10%, Medium=20%, High=30%]]></cz>
             <br>[EN] <![CDATA[Percentage of monthly taxes returned at the start of each new month: Low=10%, Medium=20%, High=30%]]></br>
             <ru>[EN] <![CDATA[Percentage of monthly taxes returned at the start of each new month: Low=10%, Medium=20%, High=30%]]></ru>
-            <da>[EN] <![CDATA[Percentage of monthly taxes returned at the start of each new month: Low=10%, Medium=20%, High=30%]]></da>
+            <da><![CDATA[Procentdel af de månedlige skatter, der tilbagebetales ved starten af hver ny måned: Lav=10 %, Mellem=20 %, Høj=30 %]]></da>
         </text>
         <text name="tm_return_1"><en><![CDATA[Low (10%)]]></en><de><![CDATA[Niedrig (10%)]]></de><fr><![CDATA[Faible (10%)]]></fr><es><![CDATA[Baja (10%)]]></es><it><![CDATA[Bassa (10%)]]></it><pl><![CDATA[Niski (10%)]]></pl><uk><![CDATA[Низький (10%)]]></uk>
             <cz>[EN] <![CDATA[Low (10%)]]></cz>
             <br>[EN] <![CDATA[Low (10%)]]></br>
             <ru>[EN] <![CDATA[Low (10%)]]></ru>
-            <da>[EN] <![CDATA[Low (10%)]]></da>
+            <da><![CDATA[Lav (10 %)]]></da>
         </text>
         <text name="tm_return_2"><en><![CDATA[Medium (20%)]]></en><de><![CDATA[Mittel (20%)]]></de><fr><![CDATA[Moyen (20%)]]></fr><es><![CDATA[Media (20%)]]></es><it><![CDATA[Media (20%)]]></it><pl><![CDATA[Średni (20%)]]></pl><uk><![CDATA[Середній (20%)]]></uk>
             <cz>[EN] <![CDATA[Medium (20%)]]></cz>
             <br>[EN] <![CDATA[Medium (20%)]]></br>
             <ru>[EN] <![CDATA[Medium (20%)]]></ru>
-            <da>[EN] <![CDATA[Medium (20%)]]></da>
+            <da><![CDATA[Mellem (20 %)]]></da>
         </text>
         <text name="tm_return_3"><en><![CDATA[High (30%)]]></en><de><![CDATA[Hoch (30%)]]></de><fr><![CDATA[Élevé (30%)]]></fr><es><![CDATA[Alta (30%)]]></es><it><![CDATA[Alta (30%)]]></it><pl><![CDATA[Wysoki (30%)]]></pl><uk><![CDATA[Високий (30%)]]></uk>
             <cz>[EN] <![CDATA[High (30%)]]></cz>
             <br>[EN] <![CDATA[High (30%)]]></br>
             <ru>[EN] <![CDATA[High (30%)]]></ru>
-            <da>[EN] <![CDATA[High (30%)]]></da>
+            <da><![CDATA[Høj (30 %)]]></da>
         </text>
 
         <!-- Notifications -->
@@ -330,7 +338,7 @@ Funkcje:
             <cz>[EN] <![CDATA[Notifications]]></cz>
             <br>[EN] <![CDATA[Notifications]]></br>
             <ru>[EN] <![CDATA[Notifications]]></ru>
-            <da>[EN] <![CDATA[Notifications]]></da>
+            <da><![CDATA[Notifikationer]]></da>
         </text>
         <text name="tm_notifications_long">
             <en><![CDATA[Show in-game notifications when taxes are deducted or returns are paid]]></en>
@@ -344,7 +352,7 @@ Funkcje:
             <cz>[EN] <![CDATA[Show in-game notifications when taxes are deducted or returns are paid]]></cz>
             <br>[EN] <![CDATA[Show in-game notifications when taxes are deducted or returns are paid]]></br>
             <ru>[EN] <![CDATA[Show in-game notifications when taxes are deducted or returns are paid]]></ru>
-            <da>[EN] <![CDATA[Show in-game notifications when taxes are deducted or returns are paid]]></da>
+            <da><![CDATA[Vis notifikationer i spillet, når skatter fratrækkes eller refusioner udbetales]]></da>
         </text>
 
         <!-- Show HUD -->
@@ -360,7 +368,7 @@ Funkcje:
             <cz>[EN] <![CDATA[Show Tax HUD]]></cz>
             <br>[EN] <![CDATA[Show Tax HUD]]></br>
             <ru>[EN] <![CDATA[Show Tax HUD]]></ru>
-            <da>[EN] <![CDATA[Show Tax HUD]]></da>
+            <da><![CDATA[Vis skatte-HUD]]></da>
         </text>
         <text name="tm_show_hud_long">
             <en><![CDATA[Show the Tax HUD overlay with current rate, statistics and recent activity (toggle with T key)]]></en>
@@ -374,7 +382,7 @@ Funkcje:
             <cz>[EN] <![CDATA[Show the Tax HUD overlay with current rate, statistics and recent activity (toggle with T key)]]></cz>
             <br>[EN] <![CDATA[Show the Tax HUD overlay with current rate, statistics and recent activity (toggle with T key)]]></br>
             <ru>[EN] <![CDATA[Show the Tax HUD overlay with current rate, statistics and recent activity (toggle with T key)]]></ru>
-            <da>[EN] <![CDATA[Show the Tax HUD overlay with current rate, statistics and recent activity (toggle with T key)]]></da>
+            <da><![CDATA[Vis skatte-HUD-overlayet med aktuel sats, statistik og seneste aktivitet (slå til/fra med T-tasten)]]></da>
         </text>
 
         <!-- HUD toggle key binding display name -->
@@ -389,7 +397,20 @@ Funkcje:
             <cz>[EN] <![CDATA[Toggle Tax HUD]]></cz>
             <br>[EN] <![CDATA[Toggle Tax HUD]]></br>
             <ru>[EN] <![CDATA[Toggle Tax HUD]]></ru>
-            <da>[EN] <![CDATA[Toggle Tax HUD]]></da>
+            <da><![CDATA[Slå skatte-HUD til/fra]]></da>
+        </text>
+        <text name="input_TM_HUD_DRAG">
+            <en>Tax HUD Edit Mode</en>
+            <de>Steuer-HUD-Bearbeitungsmodus</de>
+            <fr>[EN] Tax HUD Edit Mode</fr>
+            <es>[EN] Tax HUD Edit Mode</es>
+            <it>[EN] Tax HUD Edit Mode</it>
+            <pl>[EN] Tax HUD Edit Mode</pl>
+            <uk>[EN] Tax HUD Edit Mode</uk>
+            <cz>[EN] Tax HUD Edit Mode</cz>
+            <br>[EN] Tax HUD Edit Mode</br>
+            <ru>[EN] Tax HUD Edit Mode</ru>
+            <da>Skat HUD-redigeringstilstand</da>
         </text>
         <text name="input_TM_HUD_DRAG">
             <en>Tax HUD Edit Mode</en>
@@ -412,9 +433,7 @@ Funkcje:
     </actions>
 
     <inputBinding>
-        <actionBinding action="TM_TOGGLE_HUD">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_T" />
-        </actionBinding>
+        <actionBinding action="TM_TOGGLE_HUD" />
         <actionBinding action="TM_HUD_DRAG" />
     </inputBinding>
 

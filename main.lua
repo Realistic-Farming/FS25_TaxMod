@@ -1,5 +1,5 @@
 -- =========================================================
--- FS25 Tax Mod (version 1.1.3.0)
+-- FS25 Tax Mod (version 1.1.5.0)
 -- =========================================================
 -- Annual tax cycle: daily accumulation, March payment,
 -- December advisory, configurable rates.
@@ -13,11 +13,15 @@ local modName      = g_currentModName
 source(modDirectory .. "src/settings/UIHelper.lua")
 source(modDirectory .. "src/settings/SettingsUI.lua")
 source(modDirectory .. "src/ui/TaxHUD.lua")
+source(modDirectory .. "src/settings/SettingsHubBridge.lua")
+source(modDirectory .. "src/integrations/TaxStateLedgerBridge.lua")  -- bedrock: optional StateLedger state bridge
+source(modDirectory .. "src/integrations/TaxMasterHUDBridge.lua")    -- bedrock: optional MasterHUD draw bridge
+source(modDirectory .. "src/integrations/CropStressIrrigationExpense.lua")  -- SCS-011: mirror SCS irrigation operating cost as a deductible expense
 
 FS25TaxMod = {}
 FS25TaxMod.modDir  = modDirectory
 FS25TaxMod.modName = modName
-FS25TaxMod.version = "1.1.3.0"
+FS25TaxMod.version = "1.1.5.0"
 FS25TaxMod.Debug   = false
 
 local settings = {
@@ -44,6 +48,13 @@ local stats = {
     taxAdvisoryMonth      = 12 -- New: Month (1-12) when tax advisory appears (e.g., December)
 }
 FS25TaxMod.stats = stats
+
+-- Companion ledger: tracked money adjustments recorded by other mods via
+-- g_TaxManager.recordExpense(). Pure bookkeeping, surfaced in stats/HUD.
+-- It never moves money and never enters any tax computation.
+local LEDGER_MAX_ENTRIES = 10
+local ledger = { farms = {} }
+FS25TaxMod.ledger = ledger
 
 local lastDay = -1
 local lastMonth = -1
@@ -100,6 +111,23 @@ local function saveSettings()
     setXMLInt(xmlFile, "settings.stats.lastTaxYear",        stats.lastTaxYear        or 0) -- New
     setXMLInt(xmlFile, "settings.lastDay",   tonumber(lastDay)   or 1)
     setXMLInt(xmlFile, "settings.lastMonth", tonumber(lastMonth) or 1)
+    local farmIndex = 0
+    for farmId, farmLedger in pairs(ledger.farms) do
+        local farmKey = string.format("settings.ledger.farm(%d)", farmIndex)
+        setXMLInt(xmlFile,   farmKey .. "#farmId",      farmId)
+        setXMLFloat(xmlFile, farmKey .. "#creditTotal", farmLedger.creditTotal or 0)
+        setXMLFloat(xmlFile, farmKey .. "#debitTotal",  farmLedger.debitTotal  or 0)
+        if type(farmLedger.entries) == "table" then
+            for ei, entry in ipairs(farmLedger.entries) do
+                local ek = farmKey .. string.format(".entry(%d)", ei - 1)
+                setXMLFloat(xmlFile, ek .. "#amount", entry.amount or 0)
+                setXMLString(xmlFile, ek .. "#label", entry.label or "")
+                setXMLInt(xmlFile,    ek .. "#day",   entry.day   or 0)
+                setXMLInt(xmlFile,    ek .. "#month", entry.month or 0)
+            end
+        end
+        farmIndex = farmIndex + 1
+    end
     saveXMLFile(xmlFile)
     delete(xmlFile)
 end
@@ -132,8 +160,127 @@ local function loadSettings()
     stats.lastTaxYear        = Utils.getNoNil(getXMLInt(xmlFile, "settings.stats.lastTaxYear"),        0) -- New
     lastDay   = Utils.getNoNil(getXMLInt(xmlFile, "settings.lastDay"),   lastDay)
     lastMonth = Utils.getNoNil(getXMLInt(xmlFile, "settings.lastMonth"), lastMonth)
+    ledger.farms = {}
+    local farmIndex = 0
+    while true do
+        local farmKey = string.format("settings.ledger.farm(%d)", farmIndex)
+        local farmId = getXMLInt(xmlFile, farmKey .. "#farmId")
+        if farmId == nil then break end
+        local farmEntries = {}
+        local entryIdx = 0
+        while true do
+            local ek = farmKey .. string.format(".entry(%d)", entryIdx)
+            local eAmt = getXMLFloat(xmlFile, ek .. "#amount")
+            if eAmt == nil then break end
+            farmEntries[#farmEntries + 1] = {
+                amount = eAmt,
+                label  = Utils.getNoNil(getString(xmlFile, ek .. "#label"), ""),
+                day    = Utils.getNoNil(getXMLInt(xmlFile, ek .. "#day"), 0),
+                month  = Utils.getNoNil(getXMLInt(xmlFile, ek .. "#month"), 0),
+            }
+            entryIdx = entryIdx + 1
+        end
+        ledger.farms[farmId] = {
+            creditTotal = Utils.getNoNil(getXMLFloat(xmlFile, farmKey .. "#creditTotal"), 0),
+            debitTotal  = Utils.getNoNil(getXMLFloat(xmlFile, farmKey .. "#debitTotal"),  0),
+            entries     = farmEntries,
+        }
+        farmIndex = farmIndex + 1
+    end
     delete(xmlFile)
     log("Settings loaded", 2)
+end
+
+-- =====================
+-- STATE SERIALIZATION (StateLedger bridge)
+-- =====================
+-- serializeState/applyState are the in-memory twins of the state portion of
+-- saveSettings/loadSettings (stats + the recordExpense ledger + the day/month
+-- cursors). They carry STATE only, never settings (SettingsHub owns those).
+-- The own XML stays the standalone safety copy; these feed the optional
+-- StateLedger module TaxMod_Data when bedrock is present. Plain-table in/out so
+-- StateLedger's generic serializer can round-trip them (number keys included).
+
+function FS25TaxMod.serializeState()
+    local farms = {}
+    for farmId, fl in pairs(ledger.farms) do
+        local entries = {}
+        if type(fl.entries) == "table" then
+            for i, e in ipairs(fl.entries) do
+                entries[i] = { amount = e.amount, label = e.label, day = e.day, month = e.month }
+            end
+        end
+        farms[farmId] = {
+            creditTotal = fl.creditTotal or 0,
+            debitTotal  = fl.debitTotal  or 0,
+            entries     = entries,
+        }
+    end
+    return {
+        version = 1,
+        stats = {
+            totalTaxesPaid         = stats.totalTaxesPaid         or 0,
+            totalTaxesReturned     = stats.totalTaxesReturned     or 0,
+            taxesThisMonth         = stats.taxesThisMonth         or 0,
+            daysTaxed              = stats.daysTaxed              or 0,
+            monthsReturned         = stats.monthsReturned         or 0,
+            taxesAccumulatedAnnual = stats.taxesAccumulatedAnnual or 0,
+            lastTaxYear            = stats.lastTaxYear            or 0,
+        },
+        lastDay   = lastDay,
+        lastMonth = lastMonth,
+        ledger    = { farms = farms },
+    }
+end
+
+function FS25TaxMod.applyState(data)
+    if type(data) ~= "table" then return false end
+
+    local st = data.stats
+    if type(st) == "table" then
+        stats.totalTaxesPaid         = tonumber(st.totalTaxesPaid)         or stats.totalTaxesPaid         or 0
+        stats.totalTaxesReturned     = tonumber(st.totalTaxesReturned)     or stats.totalTaxesReturned     or 0
+        stats.taxesThisMonth         = tonumber(st.taxesThisMonth)         or stats.taxesThisMonth         or 0
+        stats.daysTaxed              = tonumber(st.daysTaxed)              or stats.daysTaxed              or 0
+        stats.monthsReturned         = tonumber(st.monthsReturned)         or stats.monthsReturned         or 0
+        stats.taxesAccumulatedAnnual = tonumber(st.taxesAccumulatedAnnual) or stats.taxesAccumulatedAnnual or 0
+        stats.lastTaxYear            = tonumber(st.lastTaxYear)            or stats.lastTaxYear            or 0
+    end
+
+    if data.lastDay   ~= nil then lastDay   = tonumber(data.lastDay)   or lastDay   end
+    if data.lastMonth ~= nil then lastMonth = tonumber(data.lastMonth) or lastMonth end
+
+    -- Rebuild ledger.farms IN PLACE so the table identity FS25TaxMod.ledger (and
+    -- the HUD) already holds stays valid.
+    for k in pairs(ledger.farms) do ledger.farms[k] = nil end
+    local df = data.ledger and data.ledger.farms
+    if type(df) == "table" then
+        for farmId, fl in pairs(df) do
+            local fid = tonumber(farmId)
+            if fid ~= nil and type(fl) == "table" then
+                local entries = {}
+                if type(fl.entries) == "table" then
+                    for _, e in ipairs(fl.entries) do
+                        if type(e) == "table" then
+                            entries[#entries + 1] = {
+                                amount = tonumber(e.amount) or 0,
+                                label  = tostring(e.label or ""),
+                                day    = tonumber(e.day)   or 0,
+                                month  = tonumber(e.month) or 0,
+                            }
+                        end
+                    end
+                end
+                ledger.farms[fid] = {
+                    creditTotal = tonumber(fl.creditTotal) or 0,
+                    debitTotal  = tonumber(fl.debitTotal)  or 0,
+                    entries     = entries,
+                }
+            end
+        end
+    end
+
+    return true
 end
 
 local function applyDailyTax()
@@ -182,7 +329,7 @@ local function applyAnnualTax()
         return
     end
 
-    local taxAmount = math.floor(stats.taxesAccumulatedAnnual * settings.annualTaxRate)
+    local taxAmount = math.floor(stats.taxesAccumulatedAnnual)
     if taxAmount <= 0 then
         log("Calculated annual tax is zero or less. Resetting accumulated tax.", 2)
         stats.taxesAccumulatedAnnual = 0
@@ -191,14 +338,19 @@ local function applyAnnualTax()
         return
     end
 
-    g_currentMission:addMoney(-taxAmount, farmId, MoneyType.OTHER, true)
+    -- Only the server may move money; the engine syncs the new balance to clients.
+    -- Guard only the addMoney (not the whole function): TaxMod has no MP stat sync, so
+    -- every machine must still reset its own accumulation below, or client HUDs drift.
+    if g_currentMission:getIsServer() then
+        g_currentMission:addMoney(-taxAmount, farmId, MoneyType.OTHER, true)
+    end
     stats.totalTaxesPaid = stats.totalTaxesPaid + taxAmount -- Update total paid with annual tax
     stats.taxesAccumulatedAnnual = 0 -- Reset annual accumulation
     stats.lastTaxYear = currentYear -- Mark tax as paid for this year
 
     if taxHUD then
         local env = g_currentMission.environment
-        taxHUD:recordTax(taxAmount, 1, stats.taxReturnMonth, true) -- Record as payment for the year in return month
+        taxHUD:recordTax(taxAmount, 1, stats.taxReturnMonth, false) -- Record as tax (not return)
     end
     if settings.showNotification then
         g_currentMission:addIngameNotification({1.0, 0.0, 0.0, 1.0},
@@ -252,6 +404,12 @@ local function createUpdateable()
                     if env.currentDay ~= lastDay then
                         lastDay = env.currentDay
                         applyDailyTax()
+                        -- SCS-011: mirror one day of SCS irrigation operating cost
+                        -- into the ledger (read-only, server-only, neutral when SCS
+                        -- is absent or costs are off).
+                        if CropStressIrrigationExpense then
+                            CropStressIrrigationExpense.accrueDaily(FS25TaxMod)
+                        end
                     end
 
                     -- Monthly checks for annual tax events
@@ -273,6 +431,69 @@ local function createUpdateable()
         end,
         delete = function() log("Tax updateable removed") end
     }
+end
+
+-- =====================
+-- PUBLIC WRITE API (companion mods)
+-- =====================
+-- g_TaxManager.recordExpense(farmId, amount, label) -> boolean success
+-- Records a tracked money adjustment in the running per-farm credit/debit
+-- ledger. Positive amount = credit (money the farm received, e.g. a rebate),
+-- negative amount = debit (money the farm paid out, e.g. a wage).
+-- Bookkeeping only: it never moves money and never changes any tax
+-- computation (TaxMod taxes balance, not income). Callers are expected to be
+-- server-side money code; on a non-server peer the call is rejected.
+function FS25TaxMod.recordExpense(a, b, c, d)
+    -- Tolerate colon-style calls (g_TaxManager:recordExpense(...))
+    local farmId, amount, label = a, b, c
+    if a == FS25TaxMod then
+        farmId, amount, label = b, c, d
+    end
+
+    if g_currentMission == nil or not g_currentMission:getIsServer() then
+        Logging.warning("[%s] recordExpense: server-only API called on a non-server peer, ignoring", modName)
+        return false
+    end
+    if type(farmId) ~= "number" or farmId <= 0 then
+        Logging.warning("[%s] recordExpense: invalid farmId '%s' (positive number expected)", modName, tostring(farmId))
+        return false
+    end
+    if type(amount) ~= "number" or amount ~= amount or amount == math.huge or amount == -math.huge or amount == 0 then
+        Logging.warning("[%s] recordExpense: invalid amount '%s' (finite non-zero number expected)", modName, tostring(amount))
+        return false
+    end
+    if label ~= nil and type(label) ~= "string" then
+        Logging.warning("[%s] recordExpense: invalid label '%s' (string expected)", modName, tostring(label))
+        return false
+    end
+    label = label or "Companion expense"
+
+    local farmLedger = ledger.farms[farmId]
+    if farmLedger == nil then
+        farmLedger = { creditTotal = 0, debitTotal = 0, entries = {} }
+        ledger.farms[farmId] = farmLedger
+    end
+
+    if amount > 0 then
+        farmLedger.creditTotal = farmLedger.creditTotal + amount
+    else
+        farmLedger.debitTotal = farmLedger.debitTotal - amount
+    end
+
+    local env = g_currentMission.environment
+    table.insert(farmLedger.entries, 1, {
+        amount = amount,
+        label  = label,
+        day    = env and env.currentDay   or 0,
+        month  = env and env.currentMonth or 0,
+    })
+    while #farmLedger.entries > LEDGER_MAX_ENTRIES do
+        table.remove(farmLedger.entries)
+    end
+
+    log(string.format("recordExpense: farm %d %s%s (%s)", farmId,
+        amount > 0 and "+" or "", tostring(amount), label), 2)
+    return true
 end
 
 -- =====================
@@ -355,6 +576,21 @@ function FS25TaxMod:consoleTaxStatistics()
     print("Days taxed:      " .. stats.daysTaxed)
     if stats.daysTaxed > 0 then
         print("Avg daily tax:   " .. formatMoney(math.floor(stats.totalTaxesPaid / stats.daysTaxed)))
+    end
+    print("=== Companion Ledger (recordExpense) ===")
+    local farmCount = 0
+    for farmId, farmLedger in pairs(ledger.farms) do
+        farmCount = farmCount + 1
+        print(string.format("Farm %d: credits +%s | debits -%s",
+            farmId, formatMoney(farmLedger.creditTotal), formatMoney(farmLedger.debitTotal)))
+        for i = 1, math.min(#farmLedger.entries, 3) do
+            local entry = farmLedger.entries[i]
+            print(string.format("  M%d D%d %s%s (%s)", entry.month, entry.day,
+                entry.amount > 0 and "+" or "-", formatMoney(math.abs(entry.amount)), entry.label))
+        end
+    end
+    if farmCount == 0 then
+        print("No tracked entries yet")
     end
 end
 
@@ -481,6 +717,24 @@ local function onMissionLoaded(mission, node)
 
     loadSettings()
 
+    -- Register with SettingsHub (if installed) so FarmTablet's System Settings
+    -- app can list Tax Mod's settings. No-ops safely if SettingsHub is absent.
+    TaxSettingsHubBridge.register(FS25TaxMod)
+
+    -- Register with StateLedger (if installed) as the state load source of truth.
+    -- No-ops safely if StateLedger is absent (own XML stays primary). Runs after
+    -- loadSettings so, when the shared ledger is present, it overrides the state
+    -- portion imported from the own XML.
+    TaxStateLedgerBridge.register(FS25TaxMod)
+    if TaxStateLedgerBridge.hasState() then
+        TaxStateLedgerBridge.applyState(FS25TaxMod)
+    end
+
+    -- Register the tax HUD with MasterHUD (if installed) so it owns the single
+    -- suspend-aware draw loop. No-ops safely if MasterHUD is absent; the own
+    -- FSBaseMission.draw hook below stands down when this is active.
+    TaxMasterHUDBridge.register(FS25TaxMod)
+
     local env = g_currentMission.environment
     if env then
         lastDay         = tonumber(env.currentDay)   or 1
@@ -552,8 +806,17 @@ FSBaseMission.update = Utils.appendedFunction(FSBaseMission.update, function(mis
     if taxHUD then taxHUD:update(dt) end
 end)
 
+-- When MasterHUD is present it drives TaxMasterHUDBridge.drawStack in its own
+-- suspend-aware loop, so this fallback hook stands down to avoid a double draw.
+-- The draw body (the taxHUD + settings.showHUD guard) lives in drawStack so the
+-- two paths can never diverge.
 FSBaseMission.draw = Utils.appendedFunction(FSBaseMission.draw, function(mission)
-    if taxHUD and settings.showHUD then taxHUD:draw() end
+    if TaxMasterHUDBridge and TaxMasterHUDBridge.active then return end
+    if TaxMasterHUDBridge then
+        TaxMasterHUDBridge.drawStack()
+    elseif taxHUD and settings.showHUD then
+        taxHUD:draw()
+    end
 end)
 
 Mission00.saveToXMLFile = Utils.appendedFunction(Mission00.saveToXMLFile, function(mission, xmlFilename)
@@ -597,7 +860,7 @@ function taxToggleHUD()   FS25TaxMod:consoleTaxHUD()        end
 function taxDebug(l)      FS25TaxMod:consoleTaxDebug(l)     end
 
 print("========================================")
-print("     FS25 Tax Mod v1.1.2.0 LOADED      ")
+print("     FS25 Tax Mod v1.1.5.0 LOADED      ")
 print("     Author: TisonK                     ")
 print("     Type 'tax' in console for help     ")
 print("========================================")
