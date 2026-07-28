@@ -412,6 +412,19 @@ Funkcje:
             <ru>[EN] Tax HUD Edit Mode</ru>
             <da>Skat HUD-redigeringstilstand</da>
         </text>
+        <text name="input_TM_HUD_DRAG">
+            <en>Tax HUD Edit Mode</en>
+            <de>Steuer-HUD-Bearbeitungsmodus</de>
+            <fr>[EN] Tax HUD Edit Mode</fr>
+            <es>[EN] Tax HUD Edit Mode</es>
+            <it>[EN] Tax HUD Edit Mode</it>
+            <pl>[EN] Tax HUD Edit Mode</pl>
+            <uk>[EN] Tax HUD Edit Mode</uk>
+            <cz>[EN] Tax HUD Edit Mode</cz>
+            <br>[EN] Tax HUD Edit Mode</br>
+            <ru>[EN] Tax HUD Edit Mode</ru>
+            <da>Skat HUD-redigeringstilstand</da>
+        </text>
     </l10n>
 
     <actions>
