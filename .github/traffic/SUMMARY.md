@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-08-04T00:05:23Z
-**Days tracked:** 111 | **Download snapshots:** 387 (hourly)
+**Last updated:** 2026-08-04T12:58:19Z
+**Days tracked:** 111 | **Download snapshots:** 390 (hourly)
 
 ---
 
@@ -11,10 +11,10 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 212 | 75 |
-| Git Clones | 334 | 92 |
+| Page Views | 171 | 64 |
+| Git Clones | 332 | 92 |
 
-> **Engagement:** 2.8 pages per visitor (14-day avg)
+> **Engagement:** 2.6 pages per visitor (14-day avg)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 408 of 75 visitors cloned or downloaded (**544.0%**)
+> **14-day conversion:** 410 of 64 visitors cloned or downloaded (**640.6%**)
 >
-> Unique cloners: 92 | Release downloads: 316
+> Unique cloners: 92 | Release downloads: 318
 
 ---
 
@@ -42,8 +42,8 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 316 |
-| Git Clones (14-day) | 334 |
+| Zip Downloads | 318 |
+| Git Clones (14-day) | 332 |
 | **Total Acquisitions** | **650** |
 
 ---
@@ -54,9 +54,10 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 158 | 54 |
-| Google | 11 | 11 |
-| kingmods.net | 4 | 4 |
+| github.com | 129 | 47 |
+| Google | 8 | 8 |
+| kingmods.net | 3 | 2 |
+| Bing | 3 | 1 |
 | Yahoo | 1 | 1 |
 
 ---
@@ -77,16 +78,16 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 113 | 72 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.0` | 21 | 20 |
-| `/Realistic-Farming/FS25_TaxMod/releases` | 21 | 11 |
-| `/Realistic-Farming/FS25_TaxMod/issues/13` | 17 | 2 |
-| `/Realistic-Farming/FS25_TaxMod/issues` | 16 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/pulls` | 3 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/tree/main/.github` | 2 | 2 |
-| `/Realistic-Farming/FS25_TaxMod/blob/main/modDesc.xml` | 2 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/graphs/contributors` | 2 | 1 |
+| `/Realistic-Farming/FS25_TaxMod` | 97 | 62 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.0` | 24 | 19 |
+| `/Realistic-Farming/FS25_TaxMod/releases` | 18 | 10 |
+| `/Realistic-Farming/FS25_TaxMod/issues` | 8 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/issues/13` | 7 | 2 |
+| `/Realistic-Farming/FS25_TaxMod/blob/main/FS25_TaxMod.zip` | 2 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/issues/20` | 2 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/pulls` | 2 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/tree/main/src` | 2 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/blob/main/src/ui/TaxHUD.lua` | 1 | 1 |
 
 ---
 
