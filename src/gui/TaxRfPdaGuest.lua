@@ -1,4 +1,4 @@
-﻿-- =========================================================
+-- =========================================================
 -- TaxRfPdaGuest - Esc RF PDA Tax framework (Status shell)
 -- Soft-detect: mission.taxManager -> g_TaxManager -> FS25TaxMod.
 -- Read-only; no tax settle / money writes.
