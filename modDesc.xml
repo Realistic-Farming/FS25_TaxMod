@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <modDesc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          descVersion="104"
          xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/NMC-TBone/xml-schema/main/modDesc.xsd">
 
     <author>TisonK</author>
-    <version>1.1.5.0</version>
+    <version>1.1.5.14</version>
 
     <title>
         <en>Tax Mod</en>
@@ -20,96 +20,96 @@
 Adds realistic tax system to your farm.
 
 Features:
-• Daily tax deductions based on farm balance
-• Monthly tax returns (percentage of taxes paid)
-• Three tax rate levels: Low (1%), Medium (2%), High (3%)
-• Configurable minimum balance threshold
-• Tax history and statistics tracking
-• Professional in-game notifications
-• Fully configurable via console commands
-• Multiplayer compatible
-• Settings saved per savegame
-• Type 'tax' in console for commands
+� Daily tax deductions based on farm balance
+� Monthly tax returns (percentage of taxes paid)
+� Three tax rate levels: Low (1%), Medium (2%), High (3%)
+� Configurable minimum balance threshold
+� Tax history and statistics tracking
+� Professional in-game notifications
+� Fully configurable via console commands
+� Multiplayer compatible
+� Settings saved per savegame
+� Type 'tax' in console for commands
 ]]></en>
 
         <de><![CDATA[
-Fügt ein realistisches Steuersystem zu Ihrer Farm hinzu.
+F�gt ein realistisches Steuersystem zu Ihrer Farm hinzu.
 
 Funktionen:
-• Tägliche Steuerabzüge basierend auf dem Farmguthaben
-• Monatliche Steuerrückzahlungen (Prozentsatz der gezahlten Steuern)
-• Drei Steuersatzstufen: Niedrig (1%), Mittel (2%), Hoch (3%)
-• Konfigurierbare Mindestguthabenschwelle
-• Steuerverlauf und Statistikverfolgung
-• Professionelle In-Game-Benachrichtigungen
-• Vollständig über Konsolenbefehle konfigurierbar
-• Multiplayer-kompatibel
-• Einstellungen pro Spielstand gespeichert
-• Geben Sie 'tax' in der Konsole für Befehle ein
+� T�gliche Steuerabz�ge basierend auf dem Farmguthaben
+� Monatliche Steuerr�ckzahlungen (Prozentsatz der gezahlten Steuern)
+� Drei Steuersatzstufen: Niedrig (1%), Mittel (2%), Hoch (3%)
+� Konfigurierbare Mindestguthabenschwelle
+� Steuerverlauf und Statistikverfolgung
+� Professionelle In-Game-Benachrichtigungen
+� Vollst�ndig �ber Konsolenbefehle konfigurierbar
+� Multiplayer-kompatibel
+� Einstellungen pro Spielstand gespeichert
+� Geben Sie 'tax' in der Konsole f�r Befehle ein
 ]]></de>
 
         <fr><![CDATA[
-Ajoute un système de taxes réaliste à votre ferme.
+Ajoute un syst�me de taxes r�aliste � votre ferme.
 
-Fonctionnalités :
-• Déductions fiscales quotidiennes basées sur le solde de la ferme
-• Remboursements d'impôts mensuels (pourcentage des taxes payées)
-• Trois niveaux de taux d'imposition : Faible (1%), Moyen (2%), Élevé (3%)
-• Seuil de solde minimum configurable
-• Suivi de l'historique et des statistiques fiscales
-• Notifications professionnelles en jeu
-• Entièrement configurable via des commandes console
-• Compatible multijoueur
-• Paramètres enregistrés par partie
-• Tapez 'tax' dans la console pour les commandes
+Fonctionnalit�s :
+� D�ductions fiscales quotidiennes bas�es sur le solde de la ferme
+� Remboursements d'imp�ts mensuels (pourcentage des taxes pay�es)
+� Trois niveaux de taux d'imposition : Faible (1%), Moyen (2%), �lev� (3%)
+� Seuil de solde minimum configurable
+� Suivi de l'historique et des statistiques fiscales
+� Notifications professionnelles en jeu
+� Enti�rement configurable via des commandes console
+� Compatible multijoueur
+� Param�tres enregistr�s par partie
+� Tapez 'tax' dans la console pour les commandes
 ]]></fr>
 
         <es><![CDATA[
-Añade un sistema de impuestos realista a tu granja.
+A�ade un sistema de impuestos realista a tu granja.
 
-Características:
-• Deducciones fiscales diarias basadas en el saldo de la granja
-• Devoluciones de impuestos mensuales (porcentaje de impuestos pagados)
-• Tres niveles de tasa impositiva: Baja (1%), Media (2%), Alta (3%)
-• Umbral de saldo mínimo configurable
-• Seguimiento de historial y estadísticas fiscales
-• Notificaciones profesionales en el juego
-• Totalmente configurable mediante comandos de consola
-• Compatible con multijugador
-• Configuraciones guardadas por partida
-• Escribe 'tax' en la consola para comandos
+Caracter�sticas:
+� Deducciones fiscales diarias basadas en el saldo de la granja
+� Devoluciones de impuestos mensuales (porcentaje de impuestos pagados)
+� Tres niveles de tasa impositiva: Baja (1%), Media (2%), Alta (3%)
+� Umbral de saldo m�nimo configurable
+� Seguimiento de historial y estad�sticas fiscales
+� Notificaciones profesionales en el juego
+� Totalmente configurable mediante comandos de consola
+� Compatible con multijugador
+� Configuraciones guardadas por partida
+� Escribe 'tax' en la consola para comandos
 ]]></es>
 
         <it><![CDATA[
 Aggiunge un sistema fiscale realistico alla tua fattoria.
 
 Caratteristiche:
-• Detrazioni fiscali giornaliere basate sul saldo della fattoria
-• Restituzioni fiscali mensili (percentuale delle tasse pagate)
-• Tre livelli di aliquota fiscale: Bassa (1%), Media (2%), Alta (3%)
-• Soglia di saldo minimo configurabile
-• Monitoraggio della cronologia e delle statistiche fiscali
-• Notifiche professionali in gioco
-• Completamente configurabile tramite comandi console
-• Compatibile con il multiplayer
-• Impostazioni salvate per partita
-• Digita 'tax' nella console per i comandi
+� Detrazioni fiscali giornaliere basate sul saldo della fattoria
+� Restituzioni fiscali mensili (percentuale delle tasse pagate)
+� Tre livelli di aliquota fiscale: Bassa (1%), Media (2%), Alta (3%)
+� Soglia di saldo minimo configurabile
+� Monitoraggio della cronologia e delle statistiche fiscali
+� Notifiche professionali in gioco
+� Completamente configurabile tramite comandi console
+� Compatibile con il multiplayer
+� Impostazioni salvate per partita
+� Digita 'tax' nella console per i comandi
 ]]></it>
 
         <pl><![CDATA[
 Dodaje realistyczny system podatkowy do Twojej farmy.
 
 Funkcje:
-• Codzienne odliczenia podatkowe na podstawie salda farmy
-• Miesięczne zwroty podatków (procent zapłaconych podatków)
-• Trzy poziomy stawek podatkowych: Niski (1%), Średni (2%), Wysoki (3%)
-• Konfigurowalny próg minimalnego salda
-• Śledzenie historii i statystyk podatkowych
-• Profesjonalne powiadomienia w grze
-• W pełni konfigurowalne za pomocą komend konsoli
-• Zgodny z trybem wieloosobowym
-• Ustawienia zapisywane per zapis gry
-• Wpisz 'tax' w konsoli dla komend
+� Codzienne odliczenia podatkowe na podstawie salda farmy
+� Miesieczne zwroty podatk�w (procent zaplaconych podatk�w)
+� Trzy poziomy stawek podatkowych: Niski (1%), Sredni (2%), Wysoki (3%)
+� Konfigurowalny pr�g minimalnego salda
+� Sledzenie historii i statystyk podatkowych
+� Profesjonalne powiadomienia w grze
+� W pelni konfigurowalne za pomoca komend konsoli
+� Zgodny z trybem wieloosobowym
+� Ustawienia zapisywane per zapis gry
+� Wpisz 'tax' w konsoli dla komend
 ]]></pl>
     </description>
 
@@ -143,7 +143,7 @@ Funkcje:
             <es><![CDATA[Mod de Impuestos]]></es>
             <it><![CDATA[Mod Fiscale]]></it>
             <pl><![CDATA[Mod Podatkowy]]></pl>
-            <uk><![CDATA[Мод оподаткування]]></uk>
+            <uk><![CDATA[??? ?????????????]]></uk>
         
             <cz>[EN] <![CDATA[Tax Mod]]></cz>
             <br>[EN] <![CDATA[Tax Mod]]></br>
@@ -158,8 +158,8 @@ Funkcje:
             <fr><![CDATA[Activer le Mod de Taxes]]></fr>
             <es><![CDATA[Activar Mod de Impuestos]]></es>
             <it><![CDATA[Attiva Mod Fiscale]]></it>
-            <pl><![CDATA[Włącz Mod Podatkowy]]></pl>
-            <uk><![CDATA[Увімкнути мод оподаткування]]></uk>
+            <pl><![CDATA[Wlacz Mod Podatkowy]]></pl>
+            <uk><![CDATA[????????? ??? ?????????????]]></uk>
         
             <cz>[EN] <![CDATA[Enable Tax Mod]]></cz>
             <br>[EN] <![CDATA[Enable Tax Mod]]></br>
@@ -168,17 +168,17 @@ Funkcje:
         </text>
         <text name="tm_enabled_long">
             <en><![CDATA[Enable or disable daily tax deductions and monthly returns]]></en>
-            <de><![CDATA[Tägliche Steuerabzüge und monatliche Rückerstattungen ein-/ausschalten]]></de>
-            <fr><![CDATA[Activer ou désactiver les déductions fiscales quotidiennes et les remboursements mensuels]]></fr>
+            <de><![CDATA[T�gliche Steuerabz�ge und monatliche R�ckerstattungen ein-/ausschalten]]></de>
+            <fr><![CDATA[Activer ou d�sactiver les d�ductions fiscales quotidiennes et les remboursements mensuels]]></fr>
             <es><![CDATA[Activar o desactivar las deducciones fiscales diarias y las devoluciones mensuales]]></es>
             <it><![CDATA[Attiva o disattiva le detrazioni fiscali giornaliere e i rimborsi mensili]]></it>
-            <pl><![CDATA[Włącz lub wyłącz codzienne odliczenia podatkowe i miesięczne zwroty]]></pl>
-            <uk><![CDATA[Увімкнути або вимкнути щоденні відрахування та щомісячне повернення податків]]></uk>
+            <pl><![CDATA[Wlacz lub wylacz codzienne odliczenia podatkowe i miesieczne zwroty]]></pl>
+            <uk><![CDATA[????????? ??? ???????? ??????? ???????????? ?? ????????? ?????????? ????????]]></uk>
         
             <cz>[EN] <![CDATA[Enable or disable daily tax deductions and monthly returns]]></cz>
             <br>[EN] <![CDATA[Enable or disable daily tax deductions and monthly returns]]></br>
             <ru>[EN] <![CDATA[Enable or disable daily tax deductions and monthly returns]]></ru>
-            <da><![CDATA[Aktivér eller deaktiver daglige skattefradrag og månedlige skatterefusioner]]></da>
+            <da><![CDATA[Aktiv�r eller deaktiver daglige skattefradrag og m�nedlige skatterefusioner]]></da>
         </text>
 
         <!-- Tax Rate -->
@@ -189,7 +189,7 @@ Funkcje:
             <es><![CDATA[Tasa impositiva]]></es>
             <it><![CDATA[Aliquota fiscale]]></it>
             <pl><![CDATA[Stawka podatkowa]]></pl>
-            <uk><![CDATA[Ставка податку]]></uk>
+            <uk><![CDATA[?????? ???????]]></uk>
         
             <cz>[EN] <![CDATA[Tax Rate]]></cz>
             <br>[EN] <![CDATA[Tax Rate]]></br>
@@ -198,94 +198,94 @@ Funkcje:
         </text>
         <text name="tm_taxrate_long">
             <en><![CDATA[Daily tax rate applied to your farm balance: Low=1%, Medium=2%, High=3%]]></en>
-            <de><![CDATA[Täglicher Steuersatz auf Ihr Farmguthaben: Niedrig=1%, Mittel=2%, Hoch=3%]]></de>
-            <fr><![CDATA[Taux d'imposition quotidien appliqué à votre solde: Faible=1%, Moyen=2%, Élevé=3%]]></fr>
+            <de><![CDATA[T�glicher Steuersatz auf Ihr Farmguthaben: Niedrig=1%, Mittel=2%, Hoch=3%]]></de>
+            <fr><![CDATA[Taux d'imposition quotidien appliqu� � votre solde: Faible=1%, Moyen=2%, �lev�=3%]]></fr>
             <es><![CDATA[Tasa impositiva diaria sobre el saldo de tu granja: Baja=1%, Media=2%, Alta=3%]]></es>
             <it><![CDATA[Aliquota fiscale giornaliera sul saldo della fattoria: Bassa=1%, Media=2%, Alta=3%]]></it>
-            <pl><![CDATA[Dzienna stawka podatkowa od salda farmy: Niska=1%, Średnia=2%, Wysoka=3%]]></pl>
-            <uk><![CDATA[Щоденна ставка податку від балансу ферми: Низька=1%, Середня=2%, Висока=3%]]></uk>
+            <pl><![CDATA[Dzienna stawka podatkowa od salda farmy: Niska=1%, Srednia=2%, Wysoka=3%]]></pl>
+            <uk><![CDATA[??????? ?????? ??????? ??? ??????? ?????: ??????=1%, ???????=2%, ??????=3%]]></uk>
         
             <cz>[EN] <![CDATA[Daily tax rate applied to your farm balance: Low=1%, Medium=2%, High=3%]]></cz>
             <br>[EN] <![CDATA[Daily tax rate applied to your farm balance: Low=1%, Medium=2%, High=3%]]></br>
             <ru>[EN] <![CDATA[Daily tax rate applied to your farm balance: Low=1%, Medium=2%, High=3%]]></ru>
-            <da><![CDATA[Daglig skattesats anvendt på din gårds saldo: Lav=1 %, Mellem=2 %, Høj=3 %]]></da>
+            <da><![CDATA[Daglig skattesats anvendt p� din g�rds saldo: Lav=1 %, Mellem=2 %, H�j=3 %]]></da>
         </text>
-        <text name="tm_taxrate_1"><en><![CDATA[Low (1%)]]></en><de><![CDATA[Niedrig (1%)]]></de><fr><![CDATA[Faible (1%)]]></fr><es><![CDATA[Baja (1%)]]></es><it><![CDATA[Bassa (1%)]]></it><pl><![CDATA[Niska (1%)]]></pl><uk><![CDATA[Низька (1%)]]></uk>
+        <text name="tm_taxrate_1"><en><![CDATA[Low (1%)]]></en><de><![CDATA[Niedrig (1%)]]></de><fr><![CDATA[Faible (1%)]]></fr><es><![CDATA[Baja (1%)]]></es><it><![CDATA[Bassa (1%)]]></it><pl><![CDATA[Niska (1%)]]></pl><uk><![CDATA[?????? (1%)]]></uk>
             <cz>[EN] <![CDATA[Low (1%)]]></cz>
             <br>[EN] <![CDATA[Low (1%)]]></br>
             <ru>[EN] <![CDATA[Low (1%)]]></ru>
             <da><![CDATA[Lav (1 %)]]></da>
         </text>
-        <text name="tm_taxrate_2"><en><![CDATA[Medium (2%)]]></en><de><![CDATA[Mittel (2%)]]></de><fr><![CDATA[Moyen (2%)]]></fr><es><![CDATA[Media (2%)]]></es><it><![CDATA[Media (2%)]]></it><pl><![CDATA[Średnia (2%)]]></pl><uk><![CDATA[Середня (2%)]]></uk>
+        <text name="tm_taxrate_2"><en><![CDATA[Medium (2%)]]></en><de><![CDATA[Mittel (2%)]]></de><fr><![CDATA[Moyen (2%)]]></fr><es><![CDATA[Media (2%)]]></es><it><![CDATA[Media (2%)]]></it><pl><![CDATA[Srednia (2%)]]></pl><uk><![CDATA[??????? (2%)]]></uk>
             <cz>[EN] <![CDATA[Medium (2%)]]></cz>
             <br>[EN] <![CDATA[Medium (2%)]]></br>
             <ru>[EN] <![CDATA[Medium (2%)]]></ru>
             <da><![CDATA[Mellem (2 %)]]></da>
         </text>
-        <text name="tm_taxrate_3"><en><![CDATA[High (3%)]]></en><de><![CDATA[Hoch (3%)]]></de><fr><![CDATA[Élevé (3%)]]></fr><es><![CDATA[Alta (3%)]]></es><it><![CDATA[Alta (3%)]]></it><pl><![CDATA[Wysoka (3%)]]></pl><uk><![CDATA[Висока (3%)]]></uk>
+        <text name="tm_taxrate_3"><en><![CDATA[High (3%)]]></en><de><![CDATA[Hoch (3%)]]></de><fr><![CDATA[�lev� (3%)]]></fr><es><![CDATA[Alta (3%)]]></es><it><![CDATA[Alta (3%)]]></it><pl><![CDATA[Wysoka (3%)]]></pl><uk><![CDATA[?????? (3%)]]></uk>
             <cz>[EN] <![CDATA[High (3%)]]></cz>
             <br>[EN] <![CDATA[High (3%)]]></br>
             <ru>[EN] <![CDATA[High (3%)]]></ru>
-            <da><![CDATA[Høj (3 %)]]></da>
+            <da><![CDATA[H�j (3 %)]]></da>
         </text>
 
         <!-- Annual Tax Rate -->
         <text name="tm_annualrate_short">
             <en><![CDATA[Annual Tax Rate]]></en>
-            <de><![CDATA[Jährlicher Steuersatz]]></de>
+            <de><![CDATA[J�hrlicher Steuersatz]]></de>
             <fr><![CDATA[Taux d'imposition annuel]]></fr>
             <es><![CDATA[Tasa impositiva anual]]></es>
             <it><![CDATA[Aliquota fiscale annuale]]></it>
             <pl><![CDATA[Roczna stawka podatkowa]]></pl>
-            <uk><![CDATA[Річна ставка податку]]></uk>
+            <uk><![CDATA[????? ?????? ???????]]></uk>
         
             <cz>[EN] <![CDATA[Annual Tax Rate]]></cz>
             <br>[EN] <![CDATA[Annual Tax Rate]]></br>
             <ru>[EN] <![CDATA[Annual Tax Rate]]></ru>
-            <da><![CDATA[Årlig skattesats]]></da>
+            <da><![CDATA[�rlig skattesats]]></da>
         </text>
         <text name="tm_annualrate_long">
             <en><![CDATA[Percentage of accumulated taxes paid each March: Low=2%, Medium=5%, High=10%]]></en>
-            <de><![CDATA[Prozentsatz der angesammelten Steuern, der jeden März gezahlt wird: Niedrig=2%, Mittel=5%, Hoch=10%]]></de>
-            <fr><![CDATA[Pourcentage des taxes accumulées payées chaque mars: Faible=2%, Moyen=5%, Élevé=10%]]></fr>
+            <de><![CDATA[Prozentsatz der angesammelten Steuern, der jeden M�rz gezahlt wird: Niedrig=2%, Mittel=5%, Hoch=10%]]></de>
+            <fr><![CDATA[Pourcentage des taxes accumul�es pay�es chaque mars: Faible=2%, Moyen=5%, �lev�=10%]]></fr>
             <es><![CDATA[Porcentaje de impuestos acumulados pagados cada marzo: Baja=2%, Media=5%, Alta=10%]]></es>
             <it><![CDATA[Percentuale delle tasse accumulate pagate ogni marzo: Bassa=2%, Media=5%, Alta=10%]]></it>
-            <pl><![CDATA[Procent zgromadzonych podatków płaconych każdego marca: Niski=2%, Średni=5%, Wysoki=10%]]></pl>
-            <uk><![CDATA[Відсоток накопичених податків, що сплачується кожного березня: Низький=2%, Середній=5%, Високий=10%]]></uk>
+            <pl><![CDATA[Procent zgromadzonych podatk�w placonych kazdego marca: Niski=2%, Sredni=5%, Wysoki=10%]]></pl>
+            <uk><![CDATA[???????? ??????????? ????????, ?? ??????????? ??????? ???????: ???????=2%, ????????=5%, ???????=10%]]></uk>
         
             <cz>[EN] <![CDATA[Percentage of accumulated taxes paid each March: Low=2%, Medium=5%, High=10%]]></cz>
             <br>[EN] <![CDATA[Percentage of accumulated taxes paid each March: Low=2%, Medium=5%, High=10%]]></br>
             <ru>[EN] <![CDATA[Percentage of accumulated taxes paid each March: Low=2%, Medium=5%, High=10%]]></ru>
-            <da><![CDATA[Procentdel af de akkumulerede skatter, der udbetales hver marts: Lav=2 %, Mellem=5 %, Høj=10 %]]></da>
+            <da><![CDATA[Procentdel af de akkumulerede skatter, der udbetales hver marts: Lav=2 %, Mellem=5 %, H�j=10 %]]></da>
         </text>
-        <text name="tm_annualrate_1"><en><![CDATA[Low (2%)]]></en><de><![CDATA[Niedrig (2%)]]></de><fr><![CDATA[Faible (2%)]]></fr><es><![CDATA[Baja (2%)]]></es><it><![CDATA[Bassa (2%)]]></it><pl><![CDATA[Niski (2%)]]></pl><uk><![CDATA[Низький (2%)]]></uk>
+        <text name="tm_annualrate_1"><en><![CDATA[Low (2%)]]></en><de><![CDATA[Niedrig (2%)]]></de><fr><![CDATA[Faible (2%)]]></fr><es><![CDATA[Baja (2%)]]></es><it><![CDATA[Bassa (2%)]]></it><pl><![CDATA[Niski (2%)]]></pl><uk><![CDATA[??????? (2%)]]></uk>
             <cz>[EN] <![CDATA[Low (2%)]]></cz>
             <br>[EN] <![CDATA[Low (2%)]]></br>
             <ru>[EN] <![CDATA[Low (2%)]]></ru>
             <da><![CDATA[Lav (2 %)]]></da>
         </text>
-        <text name="tm_annualrate_2"><en><![CDATA[Medium (5%)]]></en><de><![CDATA[Mittel (5%)]]></de><fr><![CDATA[Moyen (5%)]]></fr><es><![CDATA[Media (5%)]]></es><it><![CDATA[Media (5%)]]></it><pl><![CDATA[Średni (5%)]]></pl><uk><![CDATA[Середній (5%)]]></uk>
+        <text name="tm_annualrate_2"><en><![CDATA[Medium (5%)]]></en><de><![CDATA[Mittel (5%)]]></de><fr><![CDATA[Moyen (5%)]]></fr><es><![CDATA[Media (5%)]]></es><it><![CDATA[Media (5%)]]></it><pl><![CDATA[Sredni (5%)]]></pl><uk><![CDATA[???????? (5%)]]></uk>
             <cz>[EN] <![CDATA[Medium (5%)]]></cz>
             <br>[EN] <![CDATA[Medium (5%)]]></br>
             <ru>[EN] <![CDATA[Medium (5%)]]></ru>
             <da><![CDATA[Mellem (5 %)]]></da>
         </text>
-        <text name="tm_annualrate_3"><en><![CDATA[High (10%)]]></en><de><![CDATA[Hoch (10%)]]></de><fr><![CDATA[Élevé (10%)]]></fr><es><![CDATA[Alta (10%)]]></es><it><![CDATA[Alta (10%)]]></it><pl><![CDATA[Wysoki (10%)]]></pl><uk><![CDATA[Високий (10%)]]></uk>
+        <text name="tm_annualrate_3"><en><![CDATA[High (10%)]]></en><de><![CDATA[Hoch (10%)]]></de><fr><![CDATA[�lev� (10%)]]></fr><es><![CDATA[Alta (10%)]]></es><it><![CDATA[Alta (10%)]]></it><pl><![CDATA[Wysoki (10%)]]></pl><uk><![CDATA[??????? (10%)]]></uk>
             <cz>[EN] <![CDATA[High (10%)]]></cz>
             <br>[EN] <![CDATA[High (10%)]]></br>
             <ru>[EN] <![CDATA[High (10%)]]></ru>
-            <da><![CDATA[Høj (10 %)]]></da>
+            <da><![CDATA[H�j (10 %)]]></da>
         </text>
 
         <!-- Return Percentage (kept for save compatibility) -->
         <text name="tm_return_short">
             <en><![CDATA[Tax Return %]]></en>
-            <de><![CDATA[Steuerrückerstattung %]]></de>
+            <de><![CDATA[Steuerr�ckerstattung %]]></de>
             <fr><![CDATA[Remboursement fiscal %]]></fr>
-            <es><![CDATA[% Devolución de impuestos]]></es>
+            <es><![CDATA[% Devoluci�n de impuestos]]></es>
             <it><![CDATA[% Rimborso fiscale]]></it>
             <pl><![CDATA[% Zwrotu podatku]]></pl>
-            <uk><![CDATA[% Повернення податку]]></uk>
+            <uk><![CDATA[% ?????????? ???????]]></uk>
         
             <cz>[EN] <![CDATA[Tax Return %]]></cz>
             <br>[EN] <![CDATA[Tax Return %]]></br>
@@ -294,35 +294,35 @@ Funkcje:
         </text>
         <text name="tm_return_long">
             <en><![CDATA[Percentage of monthly taxes returned at the start of each new month: Low=10%, Medium=20%, High=30%]]></en>
-            <de><![CDATA[Prozentsatz der monatlichen Steuern, der zurückerstattet wird: Niedrig=10%, Mittel=20%, Hoch=30%]]></de>
-            <fr><![CDATA[Pourcentage des taxes mensuelles remboursées: Faible=10%, Moyen=20%, Élevé=30%]]></fr>
+            <de><![CDATA[Prozentsatz der monatlichen Steuern, der zur�ckerstattet wird: Niedrig=10%, Mittel=20%, Hoch=30%]]></de>
+            <fr><![CDATA[Pourcentage des taxes mensuelles rembours�es: Faible=10%, Moyen=20%, �lev�=30%]]></fr>
             <es><![CDATA[Porcentaje de impuestos mensuales devueltos: Baja=10%, Media=20%, Alta=30%]]></es>
             <it><![CDATA[Percentuale delle tasse mensili rimborsate: Bassa=10%, Media=20%, Alta=30%]]></it>
-            <pl><![CDATA[Procent miesięcznych podatków zwracanych: Niski=10%, Średni=20%, Wysoki=30%]]></pl>
-            <uk><![CDATA[Відсоток місячних податків, що повертається на початку місяця: Низький=10%, Середній=20%, Високий=30%]]></uk>
+            <pl><![CDATA[Procent miesiecznych podatk�w zwracanych: Niski=10%, Sredni=20%, Wysoki=30%]]></pl>
+            <uk><![CDATA[???????? ???????? ????????, ?? ???????????? ?? ??????? ??????: ???????=10%, ????????=20%, ???????=30%]]></uk>
         
             <cz>[EN] <![CDATA[Percentage of monthly taxes returned at the start of each new month: Low=10%, Medium=20%, High=30%]]></cz>
             <br>[EN] <![CDATA[Percentage of monthly taxes returned at the start of each new month: Low=10%, Medium=20%, High=30%]]></br>
             <ru>[EN] <![CDATA[Percentage of monthly taxes returned at the start of each new month: Low=10%, Medium=20%, High=30%]]></ru>
-            <da><![CDATA[Procentdel af de månedlige skatter, der tilbagebetales ved starten af hver ny måned: Lav=10 %, Mellem=20 %, Høj=30 %]]></da>
+            <da><![CDATA[Procentdel af de m�nedlige skatter, der tilbagebetales ved starten af hver ny m�ned: Lav=10 %, Mellem=20 %, H�j=30 %]]></da>
         </text>
-        <text name="tm_return_1"><en><![CDATA[Low (10%)]]></en><de><![CDATA[Niedrig (10%)]]></de><fr><![CDATA[Faible (10%)]]></fr><es><![CDATA[Baja (10%)]]></es><it><![CDATA[Bassa (10%)]]></it><pl><![CDATA[Niski (10%)]]></pl><uk><![CDATA[Низький (10%)]]></uk>
+        <text name="tm_return_1"><en><![CDATA[Low (10%)]]></en><de><![CDATA[Niedrig (10%)]]></de><fr><![CDATA[Faible (10%)]]></fr><es><![CDATA[Baja (10%)]]></es><it><![CDATA[Bassa (10%)]]></it><pl><![CDATA[Niski (10%)]]></pl><uk><![CDATA[??????? (10%)]]></uk>
             <cz>[EN] <![CDATA[Low (10%)]]></cz>
             <br>[EN] <![CDATA[Low (10%)]]></br>
             <ru>[EN] <![CDATA[Low (10%)]]></ru>
             <da><![CDATA[Lav (10 %)]]></da>
         </text>
-        <text name="tm_return_2"><en><![CDATA[Medium (20%)]]></en><de><![CDATA[Mittel (20%)]]></de><fr><![CDATA[Moyen (20%)]]></fr><es><![CDATA[Media (20%)]]></es><it><![CDATA[Media (20%)]]></it><pl><![CDATA[Średni (20%)]]></pl><uk><![CDATA[Середній (20%)]]></uk>
+        <text name="tm_return_2"><en><![CDATA[Medium (20%)]]></en><de><![CDATA[Mittel (20%)]]></de><fr><![CDATA[Moyen (20%)]]></fr><es><![CDATA[Media (20%)]]></es><it><![CDATA[Media (20%)]]></it><pl><![CDATA[Sredni (20%)]]></pl><uk><![CDATA[???????? (20%)]]></uk>
             <cz>[EN] <![CDATA[Medium (20%)]]></cz>
             <br>[EN] <![CDATA[Medium (20%)]]></br>
             <ru>[EN] <![CDATA[Medium (20%)]]></ru>
             <da><![CDATA[Mellem (20 %)]]></da>
         </text>
-        <text name="tm_return_3"><en><![CDATA[High (30%)]]></en><de><![CDATA[Hoch (30%)]]></de><fr><![CDATA[Élevé (30%)]]></fr><es><![CDATA[Alta (30%)]]></es><it><![CDATA[Alta (30%)]]></it><pl><![CDATA[Wysoki (30%)]]></pl><uk><![CDATA[Високий (30%)]]></uk>
+        <text name="tm_return_3"><en><![CDATA[High (30%)]]></en><de><![CDATA[Hoch (30%)]]></de><fr><![CDATA[�lev� (30%)]]></fr><es><![CDATA[Alta (30%)]]></es><it><![CDATA[Alta (30%)]]></it><pl><![CDATA[Wysoki (30%)]]></pl><uk><![CDATA[??????? (30%)]]></uk>
             <cz>[EN] <![CDATA[High (30%)]]></cz>
             <br>[EN] <![CDATA[High (30%)]]></br>
             <ru>[EN] <![CDATA[High (30%)]]></ru>
-            <da><![CDATA[Høj (30 %)]]></da>
+            <da><![CDATA[H�j (30 %)]]></da>
         </text>
 
         <!-- Notifications -->
@@ -333,7 +333,7 @@ Funkcje:
             <es><![CDATA[Notificaciones]]></es>
             <it><![CDATA[Notifiche]]></it>
             <pl><![CDATA[Powiadomienia]]></pl>
-            <uk><![CDATA[Сповіщення]]></uk>
+            <uk><![CDATA[??????????]]></uk>
         
             <cz>[EN] <![CDATA[Notifications]]></cz>
             <br>[EN] <![CDATA[Notifications]]></br>
@@ -342,17 +342,17 @@ Funkcje:
         </text>
         <text name="tm_notifications_long">
             <en><![CDATA[Show in-game notifications when taxes are deducted or returns are paid]]></en>
-            <de><![CDATA[In-Game-Benachrichtigungen anzeigen, wenn Steuern abgezogen oder Rückerstattungen gezahlt werden]]></de>
-            <fr><![CDATA[Afficher les notifications en jeu lors des déductions fiscales ou des remboursements]]></fr>
+            <de><![CDATA[In-Game-Benachrichtigungen anzeigen, wenn Steuern abgezogen oder R�ckerstattungen gezahlt werden]]></de>
+            <fr><![CDATA[Afficher les notifications en jeu lors des d�ductions fiscales ou des remboursements]]></fr>
             <es><![CDATA[Mostrar notificaciones en el juego cuando se deducen impuestos o se pagan devoluciones]]></es>
             <it><![CDATA[Mostra notifiche in gioco quando vengono detratte le tasse o pagati i rimborsi]]></it>
-            <pl><![CDATA[Pokazuj powiadomienia w grze gdy podatki są odliczane lub zwracane]]></pl>
-            <uk><![CDATA[Показувати ігрові сповіщення при відрахуванні податків або поверненні коштів]]></uk>
+            <pl><![CDATA[Pokazuj powiadomienia w grze gdy podatki sa odliczane lub zwracane]]></pl>
+            <uk><![CDATA[?????????? ?????? ?????????? ??? ???????????? ???????? ??? ?????????? ??????]]></uk>
         
             <cz>[EN] <![CDATA[Show in-game notifications when taxes are deducted or returns are paid]]></cz>
             <br>[EN] <![CDATA[Show in-game notifications when taxes are deducted or returns are paid]]></br>
             <ru>[EN] <![CDATA[Show in-game notifications when taxes are deducted or returns are paid]]></ru>
-            <da><![CDATA[Vis notifikationer i spillet, når skatter fratrækkes eller refusioner udbetales]]></da>
+            <da><![CDATA[Vis notifikationer i spillet, n�r skatter fratr�kkes eller refusioner udbetales]]></da>
         </text>
 
         <!-- Show HUD -->
@@ -362,8 +362,8 @@ Funkcje:
             <fr><![CDATA[Afficher le HUD fiscal]]></fr>
             <es><![CDATA[Mostrar HUD de impuestos]]></es>
             <it><![CDATA[Mostra HUD fiscale]]></it>
-            <pl><![CDATA[Pokaż HUD podatkowy]]></pl>
-            <uk><![CDATA[Показати HUD податків]]></uk>
+            <pl><![CDATA[Pokaz HUD podatkowy]]></pl>
+            <uk><![CDATA[???????? HUD ????????]]></uk>
         
             <cz>[EN] <![CDATA[Show Tax HUD]]></cz>
             <br>[EN] <![CDATA[Show Tax HUD]]></br>
@@ -372,17 +372,17 @@ Funkcje:
         </text>
         <text name="tm_show_hud_long">
             <en><![CDATA[Show the Tax HUD overlay with current rate, statistics and recent activity (toggle with T key)]]></en>
-            <de><![CDATA[Tax-HUD mit aktuellem Steuersatz, Statistiken und letzten Aktivitäten anzeigen (mit T umschalten)]]></de>
-            <fr><![CDATA[Afficher l'HUD fiscal avec le taux actuel, les statistiques et l'activité récente (basculer avec T)]]></fr>
-            <es><![CDATA[Mostrar el HUD fiscal con la tasa actual, estadísticas y actividad reciente (alternar con T)]]></es>
-            <it><![CDATA[Mostra l'HUD fiscale con aliquota corrente, statistiche e attività recente (attiva/disattiva con T)]]></it>
-            <pl><![CDATA[Pokaż HUD podatkowy z bieżącą stawką, statystykami i ostatnią aktywnością (przełącz klawiszem T)]]></pl>
-            <uk><![CDATA[Показати HUD накладку з поточною ставкою, статистикою та нещодавньою активністю (перемикати клавішею T)]]></uk>
+            <de><![CDATA[Tax-HUD mit aktuellem Steuersatz, Statistiken und letzten Aktivit�ten anzeigen (mit T umschalten)]]></de>
+            <fr><![CDATA[Afficher l'HUD fiscal avec le taux actuel, les statistiques et l'activit� r�cente (basculer avec T)]]></fr>
+            <es><![CDATA[Mostrar el HUD fiscal con la tasa actual, estad�sticas y actividad reciente (alternar con T)]]></es>
+            <it><![CDATA[Mostra l'HUD fiscale con aliquota corrente, statistiche e attivit� recente (attiva/disattiva con T)]]></it>
+            <pl><![CDATA[Pokaz HUD podatkowy z biezaca stawka, statystykami i ostatnia aktywnoscia (przelacz klawiszem T)]]></pl>
+            <uk><![CDATA[???????? HUD ???????? ? ???????? ???????, ??????????? ?? ??????????? ?????????? (?????????? ???????? T)]]></uk>
         
             <cz>[EN] <![CDATA[Show the Tax HUD overlay with current rate, statistics and recent activity (toggle with T key)]]></cz>
             <br>[EN] <![CDATA[Show the Tax HUD overlay with current rate, statistics and recent activity (toggle with T key)]]></br>
             <ru>[EN] <![CDATA[Show the Tax HUD overlay with current rate, statistics and recent activity (toggle with T key)]]></ru>
-            <da><![CDATA[Vis skatte-HUD-overlayet med aktuel sats, statistik og seneste aktivitet (slå til/fra med T-tasten)]]></da>
+            <da><![CDATA[Vis skatte-HUD-overlayet med aktuel sats, statistik og seneste aktivitet (sl� til/fra med T-tasten)]]></da>
         </text>
 
         <!-- HUD toggle key binding display name -->
@@ -392,12 +392,12 @@ Funkcje:
             <fr><![CDATA[Basculer l'HUD fiscal]]></fr>
             <es><![CDATA[Alternar HUD de impuestos]]></es>
             <it><![CDATA[Attiva/disattiva HUD fiscale]]></it>
-            <pl><![CDATA[Przełącz HUD podatkowy]]></pl>
-            <uk><![CDATA[Перемкнути HUD податків]]></uk>
+            <pl><![CDATA[Przelacz HUD podatkowy]]></pl>
+            <uk><![CDATA[?????????? HUD ????????]]></uk>
             <cz>[EN] <![CDATA[Toggle Tax HUD]]></cz>
             <br>[EN] <![CDATA[Toggle Tax HUD]]></br>
             <ru>[EN] <![CDATA[Toggle Tax HUD]]></ru>
-            <da><![CDATA[Slå skatte-HUD til/fra]]></da>
+            <da><![CDATA[Sl� skatte-HUD til/fra]]></da>
         </text>
         <text name="input_TM_HUD_DRAG">
             <en>Tax HUD Edit Mode</en>
@@ -412,18 +412,637 @@ Funkcje:
             <ru>[EN] Tax HUD Edit Mode</ru>
             <da>Skat HUD-redigeringstilstand</da>
         </text>
-        <text name="input_TM_HUD_DRAG">
-            <en>Tax HUD Edit Mode</en>
-            <de>Steuer-HUD-Bearbeitungsmodus</de>
-            <fr>[EN] Tax HUD Edit Mode</fr>
-            <es>[EN] Tax HUD Edit Mode</es>
-            <it>[EN] Tax HUD Edit Mode</it>
-            <pl>[EN] Tax HUD Edit Mode</pl>
-            <uk>[EN] Tax HUD Edit Mode</uk>
-            <cz>[EN] Tax HUD Edit Mode</cz>
-            <br>[EN] Tax HUD Edit Mode</br>
-            <ru>[EN] Tax HUD Edit Mode</ru>
-            <da>Skat HUD-redigeringstilstand</da>
+    
+
+        <!-- Esc RF PDA framework keys (26-lang; EN real + [EN] stubs) -->
+                <text name="rf_pda_side_info_tax">
+            <en><![CDATA[This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></en>
+            <de><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></de>
+            <fr><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></fr>
+            <pl><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></pl>
+            <es><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></es>
+            <it><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></it>
+            <cz><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></cz>
+            <br><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></br>
+            <uk><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></uk>
+            <ru><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></ru>
+            <da><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></da>
+            <ct><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></ct>
+            <ea><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></ea>
+            <fc><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></fc>
+            <fi><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></fi>
+            <hu><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></hu>
+            <id><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></id>
+            <jp><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></jp>
+            <kr><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></kr>
+            <nl><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></nl>
+            <no><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></no>
+            <pt><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></pt>
+            <ro><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></ro>
+            <sv><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></sv>
+            <tr><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></tr>
+            <vi><![CDATA[[EN] This pause page is your tax posture glance. See whether tax is on, how much has built up this year, what March might cost, and roughly what share of your current balance that is. Countdown tells you whether you are heading toward an advisory or a payment month. Companion ledger totals are bookkeeping other mods record here; they are not a full expense browser and Esc does not move that money. Daily rate and March rate are different settings. Settings changes them; this page only shows the consequence. Min balance is why some days add nothing to the bill. Esc never pays tax from this page. Open the Tax HUD or Settings if you want the same story elsewhere.]]></vi>
+        </text>
+
+        <text name="tax_rf_pda_module_title">
+            <en><![CDATA[Tax]]></en>
+            <de><![CDATA[[EN] Tax]]></de>
+            <fr><![CDATA[[EN] Tax]]></fr>
+            <pl><![CDATA[[EN] Tax]]></pl>
+            <es><![CDATA[[EN] Tax]]></es>
+            <it><![CDATA[[EN] Tax]]></it>
+            <cz><![CDATA[[EN] Tax]]></cz>
+            <br><![CDATA[[EN] Tax]]></br>
+            <uk><![CDATA[[EN] Tax]]></uk>
+            <ru><![CDATA[[EN] Tax]]></ru>
+            <da><![CDATA[[EN] Tax]]></da>
+            <ct><![CDATA[[EN] Tax]]></ct>
+            <ea><![CDATA[[EN] Tax]]></ea>
+            <fc><![CDATA[[EN] Tax]]></fc>
+            <fi><![CDATA[[EN] Tax]]></fi>
+            <hu><![CDATA[[EN] Tax]]></hu>
+            <id><![CDATA[[EN] Tax]]></id>
+            <jp><![CDATA[[EN] Tax]]></jp>
+            <kr><![CDATA[[EN] Tax]]></kr>
+            <nl><![CDATA[[EN] Tax]]></nl>
+            <no><![CDATA[[EN] Tax]]></no>
+            <pt><![CDATA[[EN] Tax]]></pt>
+            <ro><![CDATA[[EN] Tax]]></ro>
+            <sv><![CDATA[[EN] Tax]]></sv>
+            <tr><![CDATA[[EN] Tax]]></tr>
+            <vi><![CDATA[[EN] Tax]]></vi>
+        </text>
+
+        <text name="tax_rf_pda_waiting">
+            <en><![CDATA[Tax manager not ready]]></en>
+            <de><![CDATA[[EN] Tax manager not ready]]></de>
+            <fr><![CDATA[[EN] Tax manager not ready]]></fr>
+            <pl><![CDATA[[EN] Tax manager not ready]]></pl>
+            <es><![CDATA[[EN] Tax manager not ready]]></es>
+            <it><![CDATA[[EN] Tax manager not ready]]></it>
+            <cz><![CDATA[[EN] Tax manager not ready]]></cz>
+            <br><![CDATA[[EN] Tax manager not ready]]></br>
+            <uk><![CDATA[[EN] Tax manager not ready]]></uk>
+            <ru><![CDATA[[EN] Tax manager not ready]]></ru>
+            <da><![CDATA[[EN] Tax manager not ready]]></da>
+            <ct><![CDATA[[EN] Tax manager not ready]]></ct>
+            <ea><![CDATA[[EN] Tax manager not ready]]></ea>
+            <fc><![CDATA[[EN] Tax manager not ready]]></fc>
+            <fi><![CDATA[[EN] Tax manager not ready]]></fi>
+            <hu><![CDATA[[EN] Tax manager not ready]]></hu>
+            <id><![CDATA[[EN] Tax manager not ready]]></id>
+            <jp><![CDATA[[EN] Tax manager not ready]]></jp>
+            <kr><![CDATA[[EN] Tax manager not ready]]></kr>
+            <nl><![CDATA[[EN] Tax manager not ready]]></nl>
+            <no><![CDATA[[EN] Tax manager not ready]]></no>
+            <pt><![CDATA[[EN] Tax manager not ready]]></pt>
+            <ro><![CDATA[[EN] Tax manager not ready]]></ro>
+            <sv><![CDATA[[EN] Tax manager not ready]]></sv>
+            <tr><![CDATA[[EN] Tax manager not ready]]></tr>
+            <vi><![CDATA[[EN] Tax manager not ready]]></vi>
+        </text>
+
+        <text name="tax_rf_pda_on">
+            <en><![CDATA[On]]></en>
+            <de><![CDATA[[EN] On]]></de>
+            <fr><![CDATA[[EN] On]]></fr>
+            <pl><![CDATA[[EN] On]]></pl>
+            <es><![CDATA[[EN] On]]></es>
+            <it><![CDATA[[EN] On]]></it>
+            <cz><![CDATA[[EN] On]]></cz>
+            <br><![CDATA[[EN] On]]></br>
+            <uk><![CDATA[[EN] On]]></uk>
+            <ru><![CDATA[[EN] On]]></ru>
+            <da><![CDATA[[EN] On]]></da>
+            <ct><![CDATA[[EN] On]]></ct>
+            <ea><![CDATA[[EN] On]]></ea>
+            <fc><![CDATA[[EN] On]]></fc>
+            <fi><![CDATA[[EN] On]]></fi>
+            <hu><![CDATA[[EN] On]]></hu>
+            <id><![CDATA[[EN] On]]></id>
+            <jp><![CDATA[[EN] On]]></jp>
+            <kr><![CDATA[[EN] On]]></kr>
+            <nl><![CDATA[[EN] On]]></nl>
+            <no><![CDATA[[EN] On]]></no>
+            <pt><![CDATA[[EN] On]]></pt>
+            <ro><![CDATA[[EN] On]]></ro>
+            <sv><![CDATA[[EN] On]]></sv>
+            <tr><![CDATA[[EN] On]]></tr>
+            <vi><![CDATA[[EN] On]]></vi>
+        </text>
+
+        <text name="tax_rf_pda_off">
+            <en><![CDATA[Off]]></en>
+            <de><![CDATA[[EN] Off]]></de>
+            <fr><![CDATA[[EN] Off]]></fr>
+            <pl><![CDATA[[EN] Off]]></pl>
+            <es><![CDATA[[EN] Off]]></es>
+            <it><![CDATA[[EN] Off]]></it>
+            <cz><![CDATA[[EN] Off]]></cz>
+            <br><![CDATA[[EN] Off]]></br>
+            <uk><![CDATA[[EN] Off]]></uk>
+            <ru><![CDATA[[EN] Off]]></ru>
+            <da><![CDATA[[EN] Off]]></da>
+            <ct><![CDATA[[EN] Off]]></ct>
+            <ea><![CDATA[[EN] Off]]></ea>
+            <fc><![CDATA[[EN] Off]]></fc>
+            <fi><![CDATA[[EN] Off]]></fi>
+            <hu><![CDATA[[EN] Off]]></hu>
+            <id><![CDATA[[EN] Off]]></id>
+            <jp><![CDATA[[EN] Off]]></jp>
+            <kr><![CDATA[[EN] Off]]></kr>
+            <nl><![CDATA[[EN] Off]]></nl>
+            <no><![CDATA[[EN] Off]]></no>
+            <pt><![CDATA[[EN] Off]]></pt>
+            <ro><![CDATA[[EN] Off]]></ro>
+            <sv><![CDATA[[EN] Off]]></sv>
+            <tr><![CDATA[[EN] Off]]></tr>
+            <vi><![CDATA[[EN] Off]]></vi>
+        </text>
+
+        <text name="tax_rf_pda_lbl_enabled">
+            <en><![CDATA[Tax]]></en>
+            <de><![CDATA[[EN] Tax]]></de>
+            <fr><![CDATA[[EN] Tax]]></fr>
+            <pl><![CDATA[[EN] Tax]]></pl>
+            <es><![CDATA[[EN] Tax]]></es>
+            <it><![CDATA[[EN] Tax]]></it>
+            <cz><![CDATA[[EN] Tax]]></cz>
+            <br><![CDATA[[EN] Tax]]></br>
+            <uk><![CDATA[[EN] Tax]]></uk>
+            <ru><![CDATA[[EN] Tax]]></ru>
+            <da><![CDATA[[EN] Tax]]></da>
+            <ct><![CDATA[[EN] Tax]]></ct>
+            <ea><![CDATA[[EN] Tax]]></ea>
+            <fc><![CDATA[[EN] Tax]]></fc>
+            <fi><![CDATA[[EN] Tax]]></fi>
+            <hu><![CDATA[[EN] Tax]]></hu>
+            <id><![CDATA[[EN] Tax]]></id>
+            <jp><![CDATA[[EN] Tax]]></jp>
+            <kr><![CDATA[[EN] Tax]]></kr>
+            <nl><![CDATA[[EN] Tax]]></nl>
+            <no><![CDATA[[EN] Tax]]></no>
+            <pt><![CDATA[[EN] Tax]]></pt>
+            <ro><![CDATA[[EN] Tax]]></ro>
+            <sv><![CDATA[[EN] Tax]]></sv>
+            <tr><![CDATA[[EN] Tax]]></tr>
+            <vi><![CDATA[[EN] Tax]]></vi>
+        </text>
+
+        <text name="tax_rf_pda_lbl_accum">
+            <en><![CDATA[Accumulated bill]]></en>
+            <de><![CDATA[[EN] Accumulated bill]]></de>
+            <fr><![CDATA[[EN] Accumulated bill]]></fr>
+            <pl><![CDATA[[EN] Accumulated bill]]></pl>
+            <es><![CDATA[[EN] Accumulated bill]]></es>
+            <it><![CDATA[[EN] Accumulated bill]]></it>
+            <cz><![CDATA[[EN] Accumulated bill]]></cz>
+            <br><![CDATA[[EN] Accumulated bill]]></br>
+            <uk><![CDATA[[EN] Accumulated bill]]></uk>
+            <ru><![CDATA[[EN] Accumulated bill]]></ru>
+            <da><![CDATA[[EN] Accumulated bill]]></da>
+            <ct><![CDATA[[EN] Accumulated bill]]></ct>
+            <ea><![CDATA[[EN] Accumulated bill]]></ea>
+            <fc><![CDATA[[EN] Accumulated bill]]></fc>
+            <fi><![CDATA[[EN] Accumulated bill]]></fi>
+            <hu><![CDATA[[EN] Accumulated bill]]></hu>
+            <id><![CDATA[[EN] Accumulated bill]]></id>
+            <jp><![CDATA[[EN] Accumulated bill]]></jp>
+            <kr><![CDATA[[EN] Accumulated bill]]></kr>
+            <nl><![CDATA[[EN] Accumulated bill]]></nl>
+            <no><![CDATA[[EN] Accumulated bill]]></no>
+            <pt><![CDATA[[EN] Accumulated bill]]></pt>
+            <ro><![CDATA[[EN] Accumulated bill]]></ro>
+            <sv><![CDATA[[EN] Accumulated bill]]></sv>
+            <tr><![CDATA[[EN] Accumulated bill]]></tr>
+            <vi><![CDATA[[EN] Accumulated bill]]></vi>
+        </text>
+
+        <text name="tax_rf_pda_lbl_projected">
+            <en><![CDATA[Projected March payment]]></en>
+            <de><![CDATA[[EN] Projected March payment]]></de>
+            <fr><![CDATA[[EN] Projected March payment]]></fr>
+            <pl><![CDATA[[EN] Projected March payment]]></pl>
+            <es><![CDATA[[EN] Projected March payment]]></es>
+            <it><![CDATA[[EN] Projected March payment]]></it>
+            <cz><![CDATA[[EN] Projected March payment]]></cz>
+            <br><![CDATA[[EN] Projected March payment]]></br>
+            <uk><![CDATA[[EN] Projected March payment]]></uk>
+            <ru><![CDATA[[EN] Projected March payment]]></ru>
+            <da><![CDATA[[EN] Projected March payment]]></da>
+            <ct><![CDATA[[EN] Projected March payment]]></ct>
+            <ea><![CDATA[[EN] Projected March payment]]></ea>
+            <fc><![CDATA[[EN] Projected March payment]]></fc>
+            <fi><![CDATA[[EN] Projected March payment]]></fi>
+            <hu><![CDATA[[EN] Projected March payment]]></hu>
+            <id><![CDATA[[EN] Projected March payment]]></id>
+            <jp><![CDATA[[EN] Projected March payment]]></jp>
+            <kr><![CDATA[[EN] Projected March payment]]></kr>
+            <nl><![CDATA[[EN] Projected March payment]]></nl>
+            <no><![CDATA[[EN] Projected March payment]]></no>
+            <pt><![CDATA[[EN] Projected March payment]]></pt>
+            <ro><![CDATA[[EN] Projected March payment]]></ro>
+            <sv><![CDATA[[EN] Projected March payment]]></sv>
+            <tr><![CDATA[[EN] Projected March payment]]></tr>
+            <vi><![CDATA[[EN] Projected March payment]]></vi>
+        </text>
+
+        <text name="tax_rf_pda_lbl_pct">
+            <en><![CDATA[Percent of balance]]></en>
+            <de><![CDATA[[EN] Percent of balance]]></de>
+            <fr><![CDATA[[EN] Percent of balance]]></fr>
+            <pl><![CDATA[[EN] Percent of balance]]></pl>
+            <es><![CDATA[[EN] Percent of balance]]></es>
+            <it><![CDATA[[EN] Percent of balance]]></it>
+            <cz><![CDATA[[EN] Percent of balance]]></cz>
+            <br><![CDATA[[EN] Percent of balance]]></br>
+            <uk><![CDATA[[EN] Percent of balance]]></uk>
+            <ru><![CDATA[[EN] Percent of balance]]></ru>
+            <da><![CDATA[[EN] Percent of balance]]></da>
+            <ct><![CDATA[[EN] Percent of balance]]></ct>
+            <ea><![CDATA[[EN] Percent of balance]]></ea>
+            <fc><![CDATA[[EN] Percent of balance]]></fc>
+            <fi><![CDATA[[EN] Percent of balance]]></fi>
+            <hu><![CDATA[[EN] Percent of balance]]></hu>
+            <id><![CDATA[[EN] Percent of balance]]></id>
+            <jp><![CDATA[[EN] Percent of balance]]></jp>
+            <kr><![CDATA[[EN] Percent of balance]]></kr>
+            <nl><![CDATA[[EN] Percent of balance]]></nl>
+            <no><![CDATA[[EN] Percent of balance]]></no>
+            <pt><![CDATA[[EN] Percent of balance]]></pt>
+            <ro><![CDATA[[EN] Percent of balance]]></ro>
+            <sv><![CDATA[[EN] Percent of balance]]></sv>
+            <tr><![CDATA[[EN] Percent of balance]]></tr>
+            <vi><![CDATA[[EN] Percent of balance]]></vi>
+        </text>
+
+        <text name="tax_rf_pda_next_month">
+            <en><![CDATA[Next month!]]></en>
+            <de><![CDATA[[EN] Next month!]]></de>
+            <fr><![CDATA[[EN] Next month!]]></fr>
+            <pl><![CDATA[[EN] Next month!]]></pl>
+            <es><![CDATA[[EN] Next month!]]></es>
+            <it><![CDATA[[EN] Next month!]]></it>
+            <cz><![CDATA[[EN] Next month!]]></cz>
+            <br><![CDATA[[EN] Next month!]]></br>
+            <uk><![CDATA[[EN] Next month!]]></uk>
+            <ru><![CDATA[[EN] Next month!]]></ru>
+            <da><![CDATA[[EN] Next month!]]></da>
+            <ct><![CDATA[[EN] Next month!]]></ct>
+            <ea><![CDATA[[EN] Next month!]]></ea>
+            <fc><![CDATA[[EN] Next month!]]></fc>
+            <fi><![CDATA[[EN] Next month!]]></fi>
+            <hu><![CDATA[[EN] Next month!]]></hu>
+            <id><![CDATA[[EN] Next month!]]></id>
+            <jp><![CDATA[[EN] Next month!]]></jp>
+            <kr><![CDATA[[EN] Next month!]]></kr>
+            <nl><![CDATA[[EN] Next month!]]></nl>
+            <no><![CDATA[[EN] Next month!]]></no>
+            <pt><![CDATA[[EN] Next month!]]></pt>
+            <ro><![CDATA[[EN] Next month!]]></ro>
+            <sv><![CDATA[[EN] Next month!]]></sv>
+            <tr><![CDATA[[EN] Next month!]]></tr>
+            <vi><![CDATA[[EN] Next month!]]></vi>
+        </text>
+
+        <text name="tax_rf_pda_next_pay">
+            <en><![CDATA[Next: Tax payment]]></en>
+            <de><![CDATA[[EN] Next: Tax payment]]></de>
+            <fr><![CDATA[[EN] Next: Tax payment]]></fr>
+            <pl><![CDATA[[EN] Next: Tax payment]]></pl>
+            <es><![CDATA[[EN] Next: Tax payment]]></es>
+            <it><![CDATA[[EN] Next: Tax payment]]></it>
+            <cz><![CDATA[[EN] Next: Tax payment]]></cz>
+            <br><![CDATA[[EN] Next: Tax payment]]></br>
+            <uk><![CDATA[[EN] Next: Tax payment]]></uk>
+            <ru><![CDATA[[EN] Next: Tax payment]]></ru>
+            <da><![CDATA[[EN] Next: Tax payment]]></da>
+            <ct><![CDATA[[EN] Next: Tax payment]]></ct>
+            <ea><![CDATA[[EN] Next: Tax payment]]></ea>
+            <fc><![CDATA[[EN] Next: Tax payment]]></fc>
+            <fi><![CDATA[[EN] Next: Tax payment]]></fi>
+            <hu><![CDATA[[EN] Next: Tax payment]]></hu>
+            <id><![CDATA[[EN] Next: Tax payment]]></id>
+            <jp><![CDATA[[EN] Next: Tax payment]]></jp>
+            <kr><![CDATA[[EN] Next: Tax payment]]></kr>
+            <nl><![CDATA[[EN] Next: Tax payment]]></nl>
+            <no><![CDATA[[EN] Next: Tax payment]]></no>
+            <pt><![CDATA[[EN] Next: Tax payment]]></pt>
+            <ro><![CDATA[[EN] Next: Tax payment]]></ro>
+            <sv><![CDATA[[EN] Next: Tax payment]]></sv>
+            <tr><![CDATA[[EN] Next: Tax payment]]></tr>
+            <vi><![CDATA[[EN] Next: Tax payment]]></vi>
+        </text>
+
+        <text name="tax_rf_pda_next_adv">
+            <en><![CDATA[Next: Advisory]]></en>
+            <de><![CDATA[[EN] Next: Advisory]]></de>
+            <fr><![CDATA[[EN] Next: Advisory]]></fr>
+            <pl><![CDATA[[EN] Next: Advisory]]></pl>
+            <es><![CDATA[[EN] Next: Advisory]]></es>
+            <it><![CDATA[[EN] Next: Advisory]]></it>
+            <cz><![CDATA[[EN] Next: Advisory]]></cz>
+            <br><![CDATA[[EN] Next: Advisory]]></br>
+            <uk><![CDATA[[EN] Next: Advisory]]></uk>
+            <ru><![CDATA[[EN] Next: Advisory]]></ru>
+            <da><![CDATA[[EN] Next: Advisory]]></da>
+            <ct><![CDATA[[EN] Next: Advisory]]></ct>
+            <ea><![CDATA[[EN] Next: Advisory]]></ea>
+            <fc><![CDATA[[EN] Next: Advisory]]></fc>
+            <fi><![CDATA[[EN] Next: Advisory]]></fi>
+            <hu><![CDATA[[EN] Next: Advisory]]></hu>
+            <id><![CDATA[[EN] Next: Advisory]]></id>
+            <jp><![CDATA[[EN] Next: Advisory]]></jp>
+            <kr><![CDATA[[EN] Next: Advisory]]></kr>
+            <nl><![CDATA[[EN] Next: Advisory]]></nl>
+            <no><![CDATA[[EN] Next: Advisory]]></no>
+            <pt><![CDATA[[EN] Next: Advisory]]></pt>
+            <ro><![CDATA[[EN] Next: Advisory]]></ro>
+            <sv><![CDATA[[EN] Next: Advisory]]></sv>
+            <tr><![CDATA[[EN] Next: Advisory]]></tr>
+            <vi><![CDATA[[EN] Next: Advisory]]></vi>
+        </text>
+
+        <text name="tax_rf_pda_lbl_paid">
+            <en><![CDATA[Lifetime paid]]></en>
+            <de><![CDATA[[EN] Lifetime paid]]></de>
+            <fr><![CDATA[[EN] Lifetime paid]]></fr>
+            <pl><![CDATA[[EN] Lifetime paid]]></pl>
+            <es><![CDATA[[EN] Lifetime paid]]></es>
+            <it><![CDATA[[EN] Lifetime paid]]></it>
+            <cz><![CDATA[[EN] Lifetime paid]]></cz>
+            <br><![CDATA[[EN] Lifetime paid]]></br>
+            <uk><![CDATA[[EN] Lifetime paid]]></uk>
+            <ru><![CDATA[[EN] Lifetime paid]]></ru>
+            <da><![CDATA[[EN] Lifetime paid]]></da>
+            <ct><![CDATA[[EN] Lifetime paid]]></ct>
+            <ea><![CDATA[[EN] Lifetime paid]]></ea>
+            <fc><![CDATA[[EN] Lifetime paid]]></fc>
+            <fi><![CDATA[[EN] Lifetime paid]]></fi>
+            <hu><![CDATA[[EN] Lifetime paid]]></hu>
+            <id><![CDATA[[EN] Lifetime paid]]></id>
+            <jp><![CDATA[[EN] Lifetime paid]]></jp>
+            <kr><![CDATA[[EN] Lifetime paid]]></kr>
+            <nl><![CDATA[[EN] Lifetime paid]]></nl>
+            <no><![CDATA[[EN] Lifetime paid]]></no>
+            <pt><![CDATA[[EN] Lifetime paid]]></pt>
+            <ro><![CDATA[[EN] Lifetime paid]]></ro>
+            <sv><![CDATA[[EN] Lifetime paid]]></sv>
+            <tr><![CDATA[[EN] Lifetime paid]]></tr>
+            <vi><![CDATA[[EN] Lifetime paid]]></vi>
+        </text>
+
+                <text name="tax_rf_pda_blurb">
+            <en><![CDATA[Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></en>
+            <de><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></de>
+            <fr><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></fr>
+            <pl><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></pl>
+            <es><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></es>
+            <it><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></it>
+            <cz><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></cz>
+            <br><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></br>
+            <uk><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></uk>
+            <ru><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></ru>
+            <da><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></da>
+            <ct><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></ct>
+            <ea><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></ea>
+            <fc><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></fc>
+            <fi><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></fi>
+            <hu><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></hu>
+            <id><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></id>
+            <jp><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></jp>
+            <kr><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></kr>
+            <nl><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></nl>
+            <no><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></no>
+            <pt><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></pt>
+            <ro><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></ro>
+            <sv><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></sv>
+            <tr><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></tr>
+            <vi><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></vi>
+        </text>
+        <text name="tax_rf_pda_hint_rates">
+            <en><![CDATA[Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></en>
+            <de><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></de>
+            <fr><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></fr>
+            <pl><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></pl>
+            <es><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></es>
+            <it><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></it>
+            <cz><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></cz>
+            <br><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></br>
+            <uk><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></uk>
+            <ru><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></ru>
+            <da><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></da>
+            <ct><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></ct>
+            <ea><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></ea>
+            <fc><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></fc>
+            <fi><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></fi>
+            <hu><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></hu>
+            <id><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></id>
+            <jp><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></jp>
+            <kr><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></kr>
+            <nl><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></nl>
+            <no><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></no>
+            <pt><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></pt>
+            <ro><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></ro>
+            <sv><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></sv>
+            <tr><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></tr>
+            <vi><![CDATA[[EN] Daily rate: %s (%.0f%%) · March rate: %.0f%% · Min balance: %s]]></vi>
+        </text>
+        <text name="tax_rf_pda_lbl_min_balance">
+            <en><![CDATA[Min balance]]></en>
+            <de><![CDATA[[EN] Min balance]]></de>
+            <fr><![CDATA[[EN] Min balance]]></fr>
+            <pl><![CDATA[[EN] Min balance]]></pl>
+            <es><![CDATA[[EN] Min balance]]></es>
+            <it><![CDATA[[EN] Min balance]]></it>
+            <cz><![CDATA[[EN] Min balance]]></cz>
+            <br><![CDATA[[EN] Min balance]]></br>
+            <uk><![CDATA[[EN] Min balance]]></uk>
+            <ru><![CDATA[[EN] Min balance]]></ru>
+            <da><![CDATA[[EN] Min balance]]></da>
+            <ct><![CDATA[[EN] Min balance]]></ct>
+            <ea><![CDATA[[EN] Min balance]]></ea>
+            <fc><![CDATA[[EN] Min balance]]></fc>
+            <fi><![CDATA[[EN] Min balance]]></fi>
+            <hu><![CDATA[[EN] Min balance]]></hu>
+            <id><![CDATA[[EN] Min balance]]></id>
+            <jp><![CDATA[[EN] Min balance]]></jp>
+            <kr><![CDATA[[EN] Min balance]]></kr>
+            <nl><![CDATA[[EN] Min balance]]></nl>
+            <no><![CDATA[[EN] Min balance]]></no>
+            <pt><![CDATA[[EN] Min balance]]></pt>
+            <ro><![CDATA[[EN] Min balance]]></ro>
+            <sv><![CDATA[[EN] Min balance]]></sv>
+            <tr><![CDATA[[EN] Min balance]]></tr>
+            <vi><![CDATA[[EN] Min balance]]></vi>
+        </text>
+        <text name="tax_rf_pda_lbl_annual_rate">
+            <en><![CDATA[March rate]]></en>
+            <de><![CDATA[[EN] March rate]]></de>
+            <fr><![CDATA[[EN] March rate]]></fr>
+            <pl><![CDATA[[EN] March rate]]></pl>
+            <es><![CDATA[[EN] March rate]]></es>
+            <it><![CDATA[[EN] March rate]]></it>
+            <cz><![CDATA[[EN] March rate]]></cz>
+            <br><![CDATA[[EN] March rate]]></br>
+            <uk><![CDATA[[EN] March rate]]></uk>
+            <ru><![CDATA[[EN] March rate]]></ru>
+            <da><![CDATA[[EN] March rate]]></da>
+            <ct><![CDATA[[EN] March rate]]></ct>
+            <ea><![CDATA[[EN] March rate]]></ea>
+            <fc><![CDATA[[EN] March rate]]></fc>
+            <fi><![CDATA[[EN] March rate]]></fi>
+            <hu><![CDATA[[EN] March rate]]></hu>
+            <id><![CDATA[[EN] March rate]]></id>
+            <jp><![CDATA[[EN] March rate]]></jp>
+            <kr><![CDATA[[EN] March rate]]></kr>
+            <nl><![CDATA[[EN] March rate]]></nl>
+            <no><![CDATA[[EN] March rate]]></no>
+            <pt><![CDATA[[EN] March rate]]></pt>
+            <ro><![CDATA[[EN] March rate]]></ro>
+            <sv><![CDATA[[EN] March rate]]></sv>
+            <tr><![CDATA[[EN] March rate]]></tr>
+            <vi><![CDATA[[EN] March rate]]></vi>
+        </text>
+        <text name="tax_rf_pda_lbl_daily_rate">
+            <en><![CDATA[Daily rate]]></en>
+            <de><![CDATA[[EN] Daily rate]]></de>
+            <fr><![CDATA[[EN] Daily rate]]></fr>
+            <pl><![CDATA[[EN] Daily rate]]></pl>
+            <es><![CDATA[[EN] Daily rate]]></es>
+            <it><![CDATA[[EN] Daily rate]]></it>
+            <cz><![CDATA[[EN] Daily rate]]></cz>
+            <br><![CDATA[[EN] Daily rate]]></br>
+            <uk><![CDATA[[EN] Daily rate]]></uk>
+            <ru><![CDATA[[EN] Daily rate]]></ru>
+            <da><![CDATA[[EN] Daily rate]]></da>
+            <ct><![CDATA[[EN] Daily rate]]></ct>
+            <ea><![CDATA[[EN] Daily rate]]></ea>
+            <fc><![CDATA[[EN] Daily rate]]></fc>
+            <fi><![CDATA[[EN] Daily rate]]></fi>
+            <hu><![CDATA[[EN] Daily rate]]></hu>
+            <id><![CDATA[[EN] Daily rate]]></id>
+            <jp><![CDATA[[EN] Daily rate]]></jp>
+            <kr><![CDATA[[EN] Daily rate]]></kr>
+            <nl><![CDATA[[EN] Daily rate]]></nl>
+            <no><![CDATA[[EN] Daily rate]]></no>
+            <pt><![CDATA[[EN] Daily rate]]></pt>
+            <ro><![CDATA[[EN] Daily rate]]></ro>
+            <sv><![CDATA[[EN] Daily rate]]></sv>
+            <tr><![CDATA[[EN] Daily rate]]></tr>
+            <vi><![CDATA[[EN] Daily rate]]></vi>
+        </text>
+        <text name="tax_rf_pda_lbl_days">
+            <en><![CDATA[Days taxed]]></en>
+            <de><![CDATA[[EN] Days taxed]]></de>
+            <fr><![CDATA[[EN] Days taxed]]></fr>
+            <pl><![CDATA[[EN] Days taxed]]></pl>
+            <es><![CDATA[[EN] Days taxed]]></es>
+            <it><![CDATA[[EN] Days taxed]]></it>
+            <cz><![CDATA[[EN] Days taxed]]></cz>
+            <br><![CDATA[[EN] Days taxed]]></br>
+            <uk><![CDATA[[EN] Days taxed]]></uk>
+            <ru><![CDATA[[EN] Days taxed]]></ru>
+            <da><![CDATA[[EN] Days taxed]]></da>
+            <ct><![CDATA[[EN] Days taxed]]></ct>
+            <ea><![CDATA[[EN] Days taxed]]></ea>
+            <fc><![CDATA[[EN] Days taxed]]></fc>
+            <fi><![CDATA[[EN] Days taxed]]></fi>
+            <hu><![CDATA[[EN] Days taxed]]></hu>
+            <id><![CDATA[[EN] Days taxed]]></id>
+            <jp><![CDATA[[EN] Days taxed]]></jp>
+            <kr><![CDATA[[EN] Days taxed]]></kr>
+            <nl><![CDATA[[EN] Days taxed]]></nl>
+            <no><![CDATA[[EN] Days taxed]]></no>
+            <pt><![CDATA[[EN] Days taxed]]></pt>
+            <ro><![CDATA[[EN] Days taxed]]></ro>
+            <sv><![CDATA[[EN] Days taxed]]></sv>
+            <tr><![CDATA[[EN] Days taxed]]></tr>
+            <vi><![CDATA[[EN] Days taxed]]></vi>
+        </text>
+        <text name="tax_rf_pda_ledger_pair">
+            <en><![CDATA[+{credit} / -{debit}]]></en>
+            <de><![CDATA[[EN] +{credit} / -{debit}]]></de>
+            <fr><![CDATA[[EN] +{credit} / -{debit}]]></fr>
+            <pl><![CDATA[[EN] +{credit} / -{debit}]]></pl>
+            <es><![CDATA[[EN] +{credit} / -{debit}]]></es>
+            <it><![CDATA[[EN] +{credit} / -{debit}]]></it>
+            <cz><![CDATA[[EN] +{credit} / -{debit}]]></cz>
+            <br><![CDATA[[EN] +{credit} / -{debit}]]></br>
+            <uk><![CDATA[[EN] +{credit} / -{debit}]]></uk>
+            <ru><![CDATA[[EN] +{credit} / -{debit}]]></ru>
+            <da><![CDATA[[EN] +{credit} / -{debit}]]></da>
+            <ct><![CDATA[[EN] +{credit} / -{debit}]]></ct>
+            <ea><![CDATA[[EN] +{credit} / -{debit}]]></ea>
+            <fc><![CDATA[[EN] +{credit} / -{debit}]]></fc>
+            <fi><![CDATA[[EN] +{credit} / -{debit}]]></fi>
+            <hu><![CDATA[[EN] +{credit} / -{debit}]]></hu>
+            <id><![CDATA[[EN] +{credit} / -{debit}]]></id>
+            <jp><![CDATA[[EN] +{credit} / -{debit}]]></jp>
+            <kr><![CDATA[[EN] +{credit} / -{debit}]]></kr>
+            <nl><![CDATA[[EN] +{credit} / -{debit}]]></nl>
+            <no><![CDATA[[EN] +{credit} / -{debit}]]></no>
+            <pt><![CDATA[[EN] +{credit} / -{debit}]]></pt>
+            <ro><![CDATA[[EN] +{credit} / -{debit}]]></ro>
+            <sv><![CDATA[[EN] +{credit} / -{debit}]]></sv>
+            <tr><![CDATA[[EN] +{credit} / -{debit}]]></tr>
+            <vi><![CDATA[[EN] +{credit} / -{debit}]]></vi>
+        </text>
+        <text name="tax_rf_pda_ledger_none">
+            <en><![CDATA[none yet]]></en>
+            <de><![CDATA[[EN] none yet]]></de>
+            <fr><![CDATA[[EN] none yet]]></fr>
+            <pl><![CDATA[[EN] none yet]]></pl>
+            <es><![CDATA[[EN] none yet]]></es>
+            <it><![CDATA[[EN] none yet]]></it>
+            <cz><![CDATA[[EN] none yet]]></cz>
+            <br><![CDATA[[EN] none yet]]></br>
+            <uk><![CDATA[[EN] none yet]]></uk>
+            <ru><![CDATA[[EN] none yet]]></ru>
+            <da><![CDATA[[EN] none yet]]></da>
+            <ct><![CDATA[[EN] none yet]]></ct>
+            <ea><![CDATA[[EN] none yet]]></ea>
+            <fc><![CDATA[[EN] none yet]]></fc>
+            <fi><![CDATA[[EN] none yet]]></fi>
+            <hu><![CDATA[[EN] none yet]]></hu>
+            <id><![CDATA[[EN] none yet]]></id>
+            <jp><![CDATA[[EN] none yet]]></jp>
+            <kr><![CDATA[[EN] none yet]]></kr>
+            <nl><![CDATA[[EN] none yet]]></nl>
+            <no><![CDATA[[EN] none yet]]></no>
+            <pt><![CDATA[[EN] none yet]]></pt>
+            <ro><![CDATA[[EN] none yet]]></ro>
+            <sv><![CDATA[[EN] none yet]]></sv>
+            <tr><![CDATA[[EN] none yet]]></tr>
+            <vi><![CDATA[[EN] none yet]]></vi>
+        </text>
+        <text name="tax_rf_pda_lbl_ledger">
+            <en><![CDATA[Companion ledger]]></en>
+            <de><![CDATA[[EN] Companion ledger]]></de>
+            <fr><![CDATA[[EN] Companion ledger]]></fr>
+            <pl><![CDATA[[EN] Companion ledger]]></pl>
+            <es><![CDATA[[EN] Companion ledger]]></es>
+            <it><![CDATA[[EN] Companion ledger]]></it>
+            <cz><![CDATA[[EN] Companion ledger]]></cz>
+            <br><![CDATA[[EN] Companion ledger]]></br>
+            <uk><![CDATA[[EN] Companion ledger]]></uk>
+            <ru><![CDATA[[EN] Companion ledger]]></ru>
+            <da><![CDATA[[EN] Companion ledger]]></da>
+            <ct><![CDATA[[EN] Companion ledger]]></ct>
+            <ea><![CDATA[[EN] Companion ledger]]></ea>
+            <fc><![CDATA[[EN] Companion ledger]]></fc>
+            <fi><![CDATA[[EN] Companion ledger]]></fi>
+            <hu><![CDATA[[EN] Companion ledger]]></hu>
+            <id><![CDATA[[EN] Companion ledger]]></id>
+            <jp><![CDATA[[EN] Companion ledger]]></jp>
+            <kr><![CDATA[[EN] Companion ledger]]></kr>
+            <nl><![CDATA[[EN] Companion ledger]]></nl>
+            <no><![CDATA[[EN] Companion ledger]]></no>
+            <pt><![CDATA[[EN] Companion ledger]]></pt>
+            <ro><![CDATA[[EN] Companion ledger]]></ro>
+            <sv><![CDATA[[EN] Companion ledger]]></sv>
+            <tr><![CDATA[[EN] Companion ledger]]></tr>
+            <vi><![CDATA[[EN] Companion ledger]]></vi>
         </text>
     </l10n>
 
@@ -433,7 +1052,9 @@ Funkcje:
     </actions>
 
     <inputBinding>
-        <actionBinding action="TM_TOGGLE_HUD" />
+        <actionBinding action="TM_TOGGLE_HUD">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_T" />
+        </actionBinding>
         <actionBinding action="TM_HUD_DRAG" />
     </inputBinding>
 

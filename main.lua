@@ -1,5 +1,5 @@
 -- =========================================================
--- FS25 Tax Mod (version 1.1.5.0)
+-- FS25 Tax Mod (version 1.1.3.0)
 -- =========================================================
 -- Annual tax cycle: daily accumulation, March payment,
 -- December advisory, configurable rates.
@@ -18,10 +18,17 @@ source(modDirectory .. "src/integrations/TaxStateLedgerBridge.lua")  -- bedrock:
 source(modDirectory .. "src/integrations/TaxMasterHUDBridge.lua")    -- bedrock: optional MasterHUD draw bridge
 source(modDirectory .. "src/integrations/CropStressIrrigationExpense.lua")  -- SCS-011: mirror SCS irrigation operating cost as a deductible expense
 
+-- Esc RF PDA framework joiner (NO-HOST).
+source(g_currentModDirectory .. "src/gui/RfEscModules.lua")
+source(g_currentModDirectory .. "src/gui/RfPdaMenuPage.lua")
+source(g_currentModDirectory .. "src/gui/RfEscBootstrap.lua")
+source(g_currentModDirectory .. "src/gui/RfEscUiDebugger.lua")
+source(g_currentModDirectory .. "src/gui/TaxRfPdaGuest.lua")
+
 FS25TaxMod = {}
 FS25TaxMod.modDir  = modDirectory
 FS25TaxMod.modName = modName
-FS25TaxMod.version = "1.1.5.0"
+FS25TaxMod.version = "1.1.5.12"
 FS25TaxMod.Debug   = false
 
 local settings = {
@@ -45,7 +52,8 @@ local stats = {
     taxesAccumulatedAnnual= 0, -- New: Accumulated taxes for the current year
     lastTaxYear           = 0, -- New: The year for which taxes were last paid
     taxReturnMonth        = 3, -- New: Month (1-12) when annual taxes are paid (e.g., March)
-    taxAdvisoryMonth      = 12 -- New: Month (1-12) when tax advisory appears (e.g., December)
+    taxAdvisoryMonth      = 12, -- New: Month (1-12) when tax advisory appears (e.g., December)
+    farmTax               = {}, -- Per-farm accrual (dedicated-safe; never key billing on getFarmId alone)
 }
 FS25TaxMod.stats = stats
 
@@ -82,6 +90,75 @@ local function getTaxRate()
     return TAX_RATE_VALUES[settings.taxRate] or 0.02
 end
 
+-- Real farm ids only (reject spectator / guided tour / invalid). Same shape as DairyCore F75.
+local function _isRealFarmId(farmId)
+    if type(farmId) ~= "number" or farmId <= 0 then return false end
+    local fm = FarmManager
+    local spectator = (fm ~= nil and fm.SPECTATOR_FARM_ID) or 0
+    local tour      = (fm ~= nil and fm.GUIDED_TOUR_FARM_ID) or 14
+    local invalid   = (fm ~= nil and fm.INVALID_FARM_ID) or 15
+    return farmId ~= spectator and farmId ~= tour and farmId ~= invalid
+end
+
+-- Dedicated: getFarmId() is nil. Never use it as the only billing authority key.
+-- Iterate real farms from FarmManager; local-farm fallback only when the list is empty.
+local function _farmIdsToScan()
+    local ids, seen = {}, {}
+    pcall(function()
+        local fm = g_farmManager
+        if fm == nil or fm.getFarms == nil then return end
+        for _, farm in pairs(fm:getFarms() or {}) do
+            local id = farm ~= nil and farm.farmId or nil
+            if id ~= nil and not seen[id] and _isRealFarmId(id) then
+                seen[id] = true
+                ids[#ids + 1] = id
+            end
+        end
+    end)
+    if #ids > 0 then return ids end
+    local localId = nil
+    pcall(function()
+        if g_currentMission ~= nil and g_currentMission.getFarmId ~= nil then
+            localId = g_currentMission:getFarmId()
+        end
+    end)
+    if _isRealFarmId(localId) then return { localId } end
+    return {}
+end
+
+-- Per-farm annual accrual (dedicated-safe). Global stats.* mirror remains for HUD/console.
+local function _ensureFarmTax(farmId)
+    if stats.farmTax == nil then
+        stats.farmTax = {}
+    end
+    local ft = stats.farmTax[farmId]
+    if ft == nil then
+        ft = { taxesAccumulatedAnnual = 0, daysTaxed = 0, lastTaxYear = 0 }
+        stats.farmTax[farmId] = ft
+    end
+    return ft
+end
+
+-- Seed legacy single-bucket accrual into per-farm on first multi-farm pass.
+local function _migrateLegacyAccrual()
+    if stats.farmTax == nil then
+        stats.farmTax = {}
+    end
+    if next(stats.farmTax) ~= nil then return end
+    local acc = stats.taxesAccumulatedAnnual or 0
+    local days = stats.daysTaxed or 0
+    local year = stats.lastTaxYear or 0
+    if acc <= 0 and days <= 0 and year <= 0 then return end
+    local ids = _farmIdsToScan()
+    local seedId = ids[1]
+    if seedId == nil then return end
+    stats.farmTax[seedId] = {
+        taxesAccumulatedAnnual = acc,
+        daysTaxed = days,
+        lastTaxYear = year,
+    }
+end
+
 local function getSettingsPath()
     if g_currentMission and g_currentMission.missionInfo then
         return g_currentMission.missionInfo.savegameDirectory .. "/modSettings/FS25_TaxMod.xml"
@@ -111,21 +188,23 @@ local function saveSettings()
     setXMLInt(xmlFile, "settings.stats.lastTaxYear",        stats.lastTaxYear        or 0) -- New
     setXMLInt(xmlFile, "settings.lastDay",   tonumber(lastDay)   or 1)
     setXMLInt(xmlFile, "settings.lastMonth", tonumber(lastMonth) or 1)
+    local farmTaxIndex = 0
+    if type(stats.farmTax) == "table" then
+        for farmId, ft in pairs(stats.farmTax) do
+            local key = string.format("settings.farmTax.farm(%d)", farmTaxIndex)
+            setXMLInt(xmlFile, key .. "#farmId", farmId)
+            setXMLInt(xmlFile, key .. "#accumulated", ft.taxesAccumulatedAnnual or 0)
+            setXMLInt(xmlFile, key .. "#daysTaxed", ft.daysTaxed or 0)
+            setXMLInt(xmlFile, key .. "#lastTaxYear", ft.lastTaxYear or 0)
+            farmTaxIndex = farmTaxIndex + 1
+        end
+    end
     local farmIndex = 0
     for farmId, farmLedger in pairs(ledger.farms) do
         local farmKey = string.format("settings.ledger.farm(%d)", farmIndex)
         setXMLInt(xmlFile,   farmKey .. "#farmId",      farmId)
         setXMLFloat(xmlFile, farmKey .. "#creditTotal", farmLedger.creditTotal or 0)
         setXMLFloat(xmlFile, farmKey .. "#debitTotal",  farmLedger.debitTotal  or 0)
-        if type(farmLedger.entries) == "table" then
-            for ei, entry in ipairs(farmLedger.entries) do
-                local ek = farmKey .. string.format(".entry(%d)", ei - 1)
-                setXMLFloat(xmlFile, ek .. "#amount", entry.amount or 0)
-                setXMLString(xmlFile, ek .. "#label", entry.label or "")
-                setXMLInt(xmlFile,    ek .. "#day",   entry.day   or 0)
-                setXMLInt(xmlFile,    ek .. "#month", entry.month or 0)
-            end
-        end
         farmIndex = farmIndex + 1
     end
     saveXMLFile(xmlFile)
@@ -160,30 +239,29 @@ local function loadSettings()
     stats.lastTaxYear        = Utils.getNoNil(getXMLInt(xmlFile, "settings.stats.lastTaxYear"),        0) -- New
     lastDay   = Utils.getNoNil(getXMLInt(xmlFile, "settings.lastDay"),   lastDay)
     lastMonth = Utils.getNoNil(getXMLInt(xmlFile, "settings.lastMonth"), lastMonth)
+    stats.farmTax = {}
+    local farmTaxIndex = 0
+    while true do
+        local key = string.format("settings.farmTax.farm(%d)", farmTaxIndex)
+        local farmId = getXMLInt(xmlFile, key .. "#farmId")
+        if farmId == nil then break end
+        stats.farmTax[farmId] = {
+            taxesAccumulatedAnnual = Utils.getNoNil(getXMLInt(xmlFile, key .. "#accumulated"), 0),
+            daysTaxed = Utils.getNoNil(getXMLInt(xmlFile, key .. "#daysTaxed"), 0),
+            lastTaxYear = Utils.getNoNil(getXMLInt(xmlFile, key .. "#lastTaxYear"), 0),
+        }
+        farmTaxIndex = farmTaxIndex + 1
+    end
     ledger.farms = {}
     local farmIndex = 0
     while true do
         local farmKey = string.format("settings.ledger.farm(%d)", farmIndex)
         local farmId = getXMLInt(xmlFile, farmKey .. "#farmId")
         if farmId == nil then break end
-        local farmEntries = {}
-        local entryIdx = 0
-        while true do
-            local ek = farmKey .. string.format(".entry(%d)", entryIdx)
-            local eAmt = getXMLFloat(xmlFile, ek .. "#amount")
-            if eAmt == nil then break end
-            farmEntries[#farmEntries + 1] = {
-                amount = eAmt,
-                label  = Utils.getNoNil(getString(xmlFile, ek .. "#label"), ""),
-                day    = Utils.getNoNil(getXMLInt(xmlFile, ek .. "#day"), 0),
-                month  = Utils.getNoNil(getXMLInt(xmlFile, ek .. "#month"), 0),
-            }
-            entryIdx = entryIdx + 1
-        end
         ledger.farms[farmId] = {
             creditTotal = Utils.getNoNil(getXMLFloat(xmlFile, farmKey .. "#creditTotal"), 0),
             debitTotal  = Utils.getNoNil(getXMLFloat(xmlFile, farmKey .. "#debitTotal"),  0),
-            entries     = farmEntries,
+            entries     = {},
         }
         farmIndex = farmIndex + 1
     end
@@ -216,8 +294,18 @@ function FS25TaxMod.serializeState()
             entries     = entries,
         }
     end
+    local farmTax = {}
+    if type(stats.farmTax) == "table" then
+        for farmId, ft in pairs(stats.farmTax) do
+            farmTax[farmId] = {
+                taxesAccumulatedAnnual = ft.taxesAccumulatedAnnual or 0,
+                daysTaxed = ft.daysTaxed or 0,
+                lastTaxYear = ft.lastTaxYear or 0,
+            }
+        end
+    end
     return {
-        version = 1,
+        version = 2,
         stats = {
             totalTaxesPaid         = stats.totalTaxesPaid         or 0,
             totalTaxesReturned     = stats.totalTaxesReturned     or 0,
@@ -226,6 +314,7 @@ function FS25TaxMod.serializeState()
             monthsReturned         = stats.monthsReturned         or 0,
             taxesAccumulatedAnnual = stats.taxesAccumulatedAnnual or 0,
             lastTaxYear            = stats.lastTaxYear            or 0,
+            farmTax                = farmTax,
         },
         lastDay   = lastDay,
         lastMonth = lastMonth,
@@ -245,6 +334,19 @@ function FS25TaxMod.applyState(data)
         stats.monthsReturned         = tonumber(st.monthsReturned)         or stats.monthsReturned         or 0
         stats.taxesAccumulatedAnnual = tonumber(st.taxesAccumulatedAnnual) or stats.taxesAccumulatedAnnual or 0
         stats.lastTaxYear            = tonumber(st.lastTaxYear)            or stats.lastTaxYear            or 0
+        if type(st.farmTax) == "table" then
+            stats.farmTax = {}
+            for farmId, ft in pairs(st.farmTax) do
+                local fid = tonumber(farmId)
+                if fid ~= nil and type(ft) == "table" then
+                    stats.farmTax[fid] = {
+                        taxesAccumulatedAnnual = tonumber(ft.taxesAccumulatedAnnual) or 0,
+                        daysTaxed = tonumber(ft.daysTaxed) or 0,
+                        lastTaxYear = tonumber(ft.lastTaxYear) or 0,
+                    }
+                end
+            end
+        end
     end
 
     if data.lastDay   ~= nil then lastDay   = tonumber(data.lastDay)   or lastDay   end
@@ -285,22 +387,56 @@ end
 
 local function applyDailyTax()
     if not settings.enabled or not g_currentMission then return end
-    local farmId = g_currentMission:getFarmId()
-    if not farmId then return end
-    local farm = g_farmManager:getFarmById(farmId)
-    if not farm then return end
-    if farm.money < settings.minimumBalance then return end
-    local taxAmount = math.floor(farm.money * getTaxRate())
-    if taxAmount <= 0 then return end
-    stats.taxesAccumulatedAnnual = stats.taxesAccumulatedAnnual + taxAmount -- Accumulate (not yet deducted)
-    stats.daysTaxed = stats.daysTaxed + 1
-    if taxHUD then
-        local env = g_currentMission.environment
-        taxHUD:recordTax(taxAmount, env and env.currentDay or 0, env and env.currentMonth or 0, false)
+    _migrateLegacyAccrual()
+    local farmIds = _farmIdsToScan()
+    if #farmIds == 0 then
+        log("applyDailyTax: no real farms to bill (dedicated-safe fail-closed)", 2)
+        return
     end
-    if settings.showNotification then
-        g_currentMission:addIngameNotification({1.0, 0.5, 0.0, 1.0},
-            string.format("Daily tax accumulated: %s", formatMoney(taxAmount)))
+
+    local localFarmId = nil
+    pcall(function()
+        if g_currentMission.getFarmId ~= nil then
+            localFarmId = g_currentMission:getFarmId()
+        end
+    end)
+
+    local anyAccrued = 0
+    for _, farmId in ipairs(farmIds) do
+        local farm = g_farmManager and g_farmManager:getFarmById(farmId)
+        if farm ~= nil and farm.money ~= nil and farm.money >= settings.minimumBalance then
+            local taxAmount = math.floor(farm.money * getTaxRate())
+            if taxAmount > 0 then
+                local ft = _ensureFarmTax(farmId)
+                ft.taxesAccumulatedAnnual = (ft.taxesAccumulatedAnnual or 0) + taxAmount
+                ft.daysTaxed = (ft.daysTaxed or 0) + 1
+                anyAccrued = anyAccrued + taxAmount
+
+                -- Mirror local farm into global stats for existing HUD/console surfaces.
+                if localFarmId ~= nil and farmId == localFarmId then
+                    stats.taxesAccumulatedAnnual = ft.taxesAccumulatedAnnual
+                    stats.daysTaxed = (stats.daysTaxed or 0) + 1
+                    if taxHUD then
+                        local env = g_currentMission.environment
+                        taxHUD:recordTax(taxAmount, env and env.currentDay or 0, env and env.currentMonth or 0, false)
+                    end
+                    if settings.showNotification then
+                        g_currentMission:addIngameNotification({1.0, 0.5, 0.0, 1.0},
+                            string.format("Daily tax accumulated: %s", formatMoney(taxAmount)))
+                    end
+                end
+            end
+        end
+    end
+
+    -- Dedicated / no local farm: keep a global mirror as the sum so console stats stay non-zero.
+    if localFarmId == nil and anyAccrued > 0 then
+        local sum = 0
+        for _, ft in pairs(stats.farmTax or {}) do
+            sum = sum + (ft.taxesAccumulatedAnnual or 0)
+        end
+        stats.taxesAccumulatedAnnual = sum
+        stats.daysTaxed = (stats.daysTaxed or 0) + 1
     end
 end
 
@@ -313,68 +449,114 @@ end
 
 local function applyAnnualTax()
     if not settings.enabled or not g_currentMission then return end
-    local farmId = g_currentMission:getFarmId()
-    if not farmId then return end
-    local farm = g_farmManager:getFarmById(farmId)
-    if not farm then return end
+    _migrateLegacyAccrual()
+    local farmIds = _farmIdsToScan()
+    if #farmIds == 0 then
+        log("applyAnnualTax: no real farms to bill (dedicated-safe fail-closed)", 2)
+        return
+    end
 
     local currentYear = g_currentMission.environment.currentYear
-    -- Only apply if we haven't paid for the current in-game year yet.
-    if stats.lastTaxYear >= currentYear then return end
+    local isServer = g_currentMission:getIsServer()
+    local localFarmId = nil
+    pcall(function()
+        if g_currentMission.getFarmId ~= nil then
+            localFarmId = g_currentMission:getFarmId()
+        end
+    end)
 
-    if stats.taxesAccumulatedAnnual <= 0 then
-        log("No annual tax accumulated for the previous year. Resetting lastTaxYear.", 2)
-        stats.lastTaxYear = currentYear -- Mark as processed for this year
-        saveSettings()
-        return
+    local anyPaid = false
+    for _, farmId in ipairs(farmIds) do
+        local ft = _ensureFarmTax(farmId)
+        if (ft.lastTaxYear or 0) < currentYear then
+            if (ft.taxesAccumulatedAnnual or 0) <= 0 then
+                log(string.format("No annual tax accumulated for farm %d. Marking year processed.", farmId), 2)
+                ft.lastTaxYear = currentYear
+            else
+                local taxAmount = math.floor(ft.taxesAccumulatedAnnual * settings.annualTaxRate)
+                if taxAmount <= 0 then
+                    log(string.format("Calculated annual tax is zero for farm %d. Resetting.", farmId), 2)
+                    ft.taxesAccumulatedAnnual = 0
+                    ft.lastTaxYear = currentYear
+                else
+                    -- Only the server may move money; engine syncs balance to clients.
+                    -- Explicit farmId — never getFarmId() as dedicated authority.
+                    if isServer then
+                        g_currentMission:addMoney(-taxAmount, farmId, MoneyType.OTHER, true)
+                    end
+                    stats.totalTaxesPaid = (stats.totalTaxesPaid or 0) + taxAmount
+                    ft.taxesAccumulatedAnnual = 0
+                    ft.lastTaxYear = currentYear
+
+                    if localFarmId ~= nil and farmId == localFarmId then
+                        stats.taxesAccumulatedAnnual = 0
+                        stats.lastTaxYear = currentYear
+                        if taxHUD then
+                            taxHUD:recordTax(taxAmount, 1, stats.taxReturnMonth, true)
+                        end
+                        if settings.showNotification then
+                            g_currentMission:addIngameNotification({1.0, 0.0, 0.0, 1.0},
+                                string.format("Annual tax deducted for %d: -%s", currentYear - 1, formatMoney(taxAmount)))
+                        end
+                    end
+                end
+            end
+        end
     end
 
-    local taxAmount = math.floor(stats.taxesAccumulatedAnnual)
-    if taxAmount <= 0 then
-        log("Calculated annual tax is zero or less. Resetting accumulated tax.", 2)
+    -- Global lastTaxYear = max across farms so the month gate still fires once per year.
+    local maxYear = stats.lastTaxYear or 0
+    for _, ft in pairs(stats.farmTax or {}) do
+        if (ft.lastTaxYear or 0) > maxYear then
+            maxYear = ft.lastTaxYear
+        end
+    end
+    stats.lastTaxYear = maxYear
+    if localFarmId == nil then
         stats.taxesAccumulatedAnnual = 0
-        stats.lastTaxYear = currentYear -- Mark as processed for this year
-        saveSettings()
-        return
+        for _, ft in pairs(stats.farmTax or {}) do
+            stats.taxesAccumulatedAnnual = stats.taxesAccumulatedAnnual + (ft.taxesAccumulatedAnnual or 0)
+        end
     end
 
-    -- Only the server may move money; the engine syncs the new balance to clients.
-    -- Guard only the addMoney (not the whole function): TaxMod has no MP stat sync, so
-    -- every machine must still reset its own accumulation below, or client HUDs drift.
-    if g_currentMission:getIsServer() then
-        g_currentMission:addMoney(-taxAmount, farmId, MoneyType.OTHER, true)
-    end
-    stats.totalTaxesPaid = stats.totalTaxesPaid + taxAmount -- Update total paid with annual tax
-    stats.taxesAccumulatedAnnual = 0 -- Reset annual accumulation
-    stats.lastTaxYear = currentYear -- Mark tax as paid for this year
-
-    if taxHUD then
-        local env = g_currentMission.environment
-        taxHUD:recordTax(taxAmount, 1, stats.taxReturnMonth, false) -- Record as tax (not return)
-    end
-    if settings.showNotification then
-        g_currentMission:addIngameNotification({1.0, 0.0, 0.0, 1.0},
-            string.format("Annual tax deducted for %d: -%s", currentYear - 1, formatMoney(taxAmount)))
-    end
     saveSettings()
 end
 
 local function taxAdvisory()
     if not settings.enabled or not g_currentMission then return end
-    if stats.taxesAccumulatedAnnual <= 0 then return end
+    _migrateLegacyAccrual()
 
-    local estimatedTax = math.floor(stats.taxesAccumulatedAnnual * settings.annualTaxRate)
-    local farm = g_farmManager and g_farmManager:getFarmById(g_currentMission:getFarmId())
+    local localFarmId = nil
+    pcall(function()
+        if g_currentMission.getFarmId ~= nil then
+            localFarmId = g_currentMission:getFarmId()
+        end
+    end)
+
+    local accrued = 0
+    if _isRealFarmId(localFarmId) then
+        local ft = _ensureFarmTax(localFarmId)
+        accrued = ft.taxesAccumulatedAnnual or 0
+    else
+        -- Dedicated: advisory from sum of all real farms (log / notification if enabled).
+        for _, ft in pairs(stats.farmTax or {}) do
+            accrued = accrued + (ft.taxesAccumulatedAnnual or 0)
+        end
+    end
+    if accrued <= 0 then return end
+
+    local estimatedTax = math.floor(accrued * settings.annualTaxRate)
+    local farm = (_isRealFarmId(localFarmId) and g_farmManager) and g_farmManager:getFarmById(localFarmId) or nil
     local balance = farm and farm.money or 0
     local pctOfBalance = balance > 0 and math.floor((estimatedTax / balance) * 100) or 0
 
-    if settings.showNotification then
+    if settings.showNotification and localFarmId ~= nil then
         g_currentMission:addIngameNotification({0.0, 0.5, 1.0, 1.0},
             string.format("Tax Advisory: Est. March payment %s (%d%% of balance). Accumulated: %s",
-                formatMoney(estimatedTax), pctOfBalance, formatMoney(stats.taxesAccumulatedAnnual)))
+                formatMoney(estimatedTax), pctOfBalance, formatMoney(accrued)))
     end
     log(string.format("Tax Advisory: Accumulated %s | Annual rate %.0f%% | Est. payment %s (%d%% of balance)",
-        formatMoney(stats.taxesAccumulatedAnnual), settings.annualTaxRate * 100,
+        formatMoney(accrued), settings.annualTaxRate * 100,
         formatMoney(estimatedTax), pctOfBalance), 1)
 end
 
@@ -860,7 +1042,34 @@ function taxToggleHUD()   FS25TaxMod:consoleTaxHUD()        end
 function taxDebug(l)      FS25TaxMod:consoleTaxDebug(l)     end
 
 print("========================================")
-print("     FS25 Tax Mod v1.1.5.0 LOADED      ")
+print("     FS25 Tax Mod v1.1.2.0 LOADED      ")
 print("     Author: TisonK                     ")
 print("     Type 'tax' in console for help     ")
 print("========================================")
+
+
+local function _rfEscTryRegister()
+    if TaxRfPdaGuest ~= nil and type(TaxRfPdaGuest.tryRegister) == "function" then
+        pcall(TaxRfPdaGuest.tryRegister)
+    end
+end
+
+-- Esc RF PDA: register module after mission/door ready (retry-safe).
+if Mission00 ~= nil then
+    Mission00.loadMission00Finished = Utils.appendedFunction(Mission00.loadMission00Finished, function()
+        _rfEscTryRegister()
+    end)
+end
+if FSBaseMission ~= nil then
+    FSBaseMission.onStartMission = Utils.appendedFunction(FSBaseMission.onStartMission, function()
+        _rfEscTryRegister()
+    end)
+end
+
+if FSBaseMission ~= nil then
+    FSBaseMission.delete = Utils.appendedFunction(FSBaseMission.delete, function()
+        if TaxRfPdaGuest ~= nil and type(TaxRfPdaGuest.reset) == "function" then
+            TaxRfPdaGuest.reset()
+        end
+    end)
+end

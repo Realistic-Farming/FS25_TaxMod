@@ -32,6 +32,9 @@ TaxMasterHUDBridge.active = false   -- MasterHUD present and we registered
 -- can be driven either by MasterHUD's loop or by the mod's own draw hook.
 -- Reproduces the own hook's `taxHUD and settings.showHUD` guard.
 function TaxMasterHUDBridge.drawStack()
+    -- Suite hide: MasterHUD # key. No-op when MasterHUD absent.
+    local mh = (g_currentMission ~= nil and g_currentMission.masterHUD) or g_masterHUD
+    if mh ~= nil and mh.areHudsHidden ~= nil and mh:areHudsHidden() then return end
     local tm = g_TaxManager
     if tm ~= nil and tm.taxHUD ~= nil and tm.settings ~= nil and tm.settings.showHUD then
         tm.taxHUD:draw()
@@ -57,6 +60,18 @@ function TaxMasterHUDBridge.register(tm)
     if ok then
         TaxMasterHUDBridge.active = true
         Logging.info("Tax Mod: Registered tax HUD with MasterHUD (single draw loop + menu-suspend)")
+        if hud.registerEditListener ~= nil then
+            hud:registerEditListener(TaxMasterHUDBridge.HUD_ID, {
+                enter = function()
+                    local th = tm ~= nil and tm.taxHUD or nil
+                    if th ~= nil and th.enterEditMode ~= nil then th:enterEditMode() end
+                end,
+                exit = function()
+                    local th = tm ~= nil and tm.taxHUD or nil
+                    if th ~= nil and th.editMode and th.exitEditMode ~= nil then th:exitEditMode() end
+                end,
+            })
+        end
     else
         Logging.warning("Tax Mod: MasterHUD registration failed: %s (using own draw hook)", tostring(err))
     end
