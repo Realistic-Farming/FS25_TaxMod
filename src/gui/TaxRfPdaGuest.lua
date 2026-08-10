@@ -154,9 +154,77 @@ local function monthsUntil(target, current)
     return d
 end
 
+local _guiWarned = false
+local _baseline = nil   -- captured once, before the first move, for onHide restore
+
+-- Wizard eyes-on: Status posture moves out of the top band into the lower empty band,
+-- with bigger type. Left column = lines 1-4 at x=0, right column = lines 5-8 at x=580.
+local TAX_LINE_POS = {
+    [1] = { "0px",   "-280px" }, [5] = { "580px", "-280px" },
+    [2] = { "0px",   "-328px" }, [6] = { "580px", "-328px" },
+    [3] = { "0px",   "-376px" }, [7] = { "580px", "-376px" },
+    [4] = { "0px",   "-424px" }, [8] = { "580px", "-424px" },
+}
+local TAX_HINT_POS  = { "0px", "-480px" }
+local TAX_TEXT_SIZE = "26px"
+
+--- position and textSize are NORMALISED in FS25 (TextElement default textSize is 0.03),
+--- so raw pixel numbers would throw the layout off-screen. Always go through GuiUtils.
+--- Nil-safe: if the normalizer is missing we leave the XML baseline rather than guess.
+local function guiOk()
+    if GuiUtils == nil or type(GuiUtils.getNormalizedXValue) ~= "function"
+        or type(GuiUtils.getNormalizedYValue) ~= "function" then
+        if not _guiWarned then
+            _guiWarned = true
+            print("[TaxMod] TaxRfPdaGuest: GuiUtils normalizer absent - leaving Status lines at XML baseline")
+        end
+        return false
+    end
+    return true
+end
+
+--- Remember where the shared Status shell started, once, so onHide can put it back.
+local function captureBaseline(container)
+    if _baseline ~= nil then return end
+    _baseline = {}
+    for i = 1, 8 do
+        local el = findDescendant(container, "rfFwLine" .. i)
+        if el ~= nil then
+            _baseline["rfFwLine" .. i] = { x = el.position and el.position[1], y = el.position and el.position[2],
+                                           textSize = el.textSize }
+        end
+    end
+    local h = findDescendant(container, "rfFwHint")
+    if h ~= nil then
+        _baseline.rfFwHint = { x = h.position and h.position[1], y = h.position and h.position[2], textSize = h.textSize }
+    end
+end
+
+local function applyStatusBand(container)
+    if not guiOk() then return end
+    captureBaseline(container)
+    local size = GuiUtils.getNormalizedYValue(TAX_TEXT_SIZE, nil)
+    for i = 1, 8 do
+        local el = findDescendant(container, "rfFwLine" .. i)
+        local pos = TAX_LINE_POS[i]
+        if el ~= nil and pos ~= nil and type(el.setPosition) == "function" then
+            el:setPosition(GuiUtils.getNormalizedXValue(pos[1], 0), GuiUtils.getNormalizedYValue(pos[2], 0))
+            if size ~= nil and type(el.setTextSize) == "function" then el:setTextSize(size) end
+            if type(el.updateAbsolutePosition) == "function" then el:updateAbsolutePosition() end
+        end
+    end
+    local h = findDescendant(container, "rfFwHint")
+    if h ~= nil and type(h.setPosition) == "function" then
+        h:setPosition(GuiUtils.getNormalizedXValue(TAX_HINT_POS[1], 0), GuiUtils.getNormalizedYValue(TAX_HINT_POS[2], 0))
+        if size ~= nil and type(h.setTextSize) == "function" then h:setTextSize(size) end
+        if type(h.updateAbsolutePosition) == "function" then h:updateAbsolutePosition() end
+    end
+end
+
 function TaxRfPdaGuest.onShow(container, lightOnly)
     clearHostDupes(container)
     showStatusMode(container)
+    applyStatusBand(container)
     paintSide(container, "rf_pda_side_info_tax",
         "Tax posture: on/off, year bill, March estimate, balance share, countdown.\n"
         .. "Daily rate and March rate differ. Esc never pays tax - use Tax HUD / Settings.")
@@ -247,7 +315,23 @@ function TaxRfPdaGuest.onShow(container, lightOnly)
     setText(findDescendant(container, "rfFwHint"), hint)
 end
 
-function TaxRfPdaGuest.onHide() end
+--- Restore the Status shell to the baseline captured before the first move.
+--- Status is currently tax-only (host maps isFwStatus = "tax"), so nothing else can be
+--- stranded by these moves - but no host calls onHide today (verified across the suite),
+--- so this is correct-when-wired rather than live. onShow re-applies the band every time.
+function TaxRfPdaGuest.onHide(container)
+    if container == nil or _baseline == nil then return end
+    local function restore(id)
+        local b = _baseline[id]
+        local el = findDescendant(container, id)
+        if b == nil or el == nil then return end
+        if b.x ~= nil and b.y ~= nil and type(el.setPosition) == "function" then el:setPosition(b.x, b.y) end
+        if b.textSize ~= nil and type(el.setTextSize) == "function" then el:setTextSize(b.textSize) end
+        if type(el.updateAbsolutePosition) == "function" then el:updateAbsolutePosition() end
+    end
+    for i = 1, 8 do restore("rfFwLine" .. i) end
+    restore("rfFwHint")
+end
 
 function TaxRfPdaGuest.tryRegister()
     if RfEscBootstrap ~= nil then
