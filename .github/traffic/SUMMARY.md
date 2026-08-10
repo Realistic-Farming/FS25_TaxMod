@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-08-09T18:34:39Z
-**Days tracked:** 115 | **Download snapshots:** 411 (hourly)
+**Last updated:** 2026-08-10T12:58:41Z
+**Days tracked:** 116 | **Download snapshots:** 412 (hourly)
 
 ---
 
@@ -11,10 +11,10 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 160 | 60 |
-| Git Clones | 303 | 73 |
+| Page Views | 153 | 62 |
+| Git Clones | 297 | 68 |
 
-> **Engagement:** 2.6 pages per visitor (14-day avg)
+> **Engagement:** 2.4 pages per visitor (14-day avg)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 406 of 60 visitors cloned or downloaded (**676.6%**)
+> **14-day conversion:** 401 of 62 visitors cloned or downloaded (**646.7%**)
 >
-> Unique cloners: 73 | Release downloads: 333
+> Unique cloners: 68 | Release downloads: 333
 
 ---
 
@@ -43,8 +43,8 @@
 | Channel | Count |
 |---------|-------|
 | Zip Downloads | 333 |
-| Git Clones (14-day) | 303 |
-| **Total Acquisitions** | **636** |
+| Git Clones (14-day) | 297 |
+| **Total Acquisitions** | **630** |
 
 ---
 
@@ -54,8 +54,8 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 116 | 43 |
-| Google | 12 | 9 |
+| github.com | 119 | 47 |
+| Google | 13 | 9 |
 | Bing | 4 | 2 |
 | kingmods.net | 3 | 2 |
 
@@ -77,16 +77,15 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 90 | 56 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.0` | 24 | 16 |
-| `/Realistic-Farming/FS25_TaxMod/releases` | 21 | 13 |
+| `/Realistic-Farming/FS25_TaxMod` | 91 | 58 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.0` | 28 | 20 |
+| `/Realistic-Farming/FS25_TaxMod/releases` | 19 | 11 |
 | `/Realistic-Farming/FS25_TaxMod/issues/13` | 5 | 2 |
-| `/Realistic-Farming/FS25_TaxMod/issues` | 5 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/issues` | 4 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/blob/main/FS25_TaxMod.zip` | 2 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/issues/20` | 2 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/pulls` | 2 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/tree/main/src` | 2 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/blob/main/src/ui/TaxHUD.lua` | 1 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/compare/de2020b3f28c...de2d1c9b605d` | 1 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/pull/21` | 1 | 1 |
 
 ---
 
