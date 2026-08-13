@@ -19172,26 +19172,26 @@
     "watchers": 2
   },
   {
-    "timestamp": "2026-08-13T06:13:03Z",
+    "timestamp": "2026-08-13T18:57:49Z",
     "date": "2026-08-13",
     "views": {
-      "count": 143,
+      "count": 149,
       "uniques": 62
     },
     "clones": {
-      "count": 317,
-      "uniques": 69
+      "count": 363,
+      "uniques": 87
     },
     "referrers": [
       {
         "referrer": "github.com",
-        "count": 106,
+        "count": 112,
         "uniques": 47
       },
       {
         "referrer": "Google",
-        "count": 16,
-        "uniques": 10
+        "count": 15,
+        "uniques": 9
       },
       {
         "referrer": "Bing",
@@ -19221,7 +19221,7 @@
         "path": "/Realistic-Farming/FS25_TaxMod/releases",
         "title": "/releases",
         "count": 17,
-        "uniques": 9
+        "uniques": 10
       },
       {
         "path": "/Realistic-Farming/FS25_TaxMod/blob/main/FS25_TaxMod.zip",
@@ -19236,14 +19236,32 @@
         "uniques": 1
       },
       {
-        "path": "/Realistic-Farming/FS25_TaxMod/pull/21",
-        "title": "/pull/21",
+        "path": "/Realistic-Farming/FS25_TaxMod/pulls",
+        "title": "/pulls",
+        "count": 2,
+        "uniques": 1
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/actions",
+        "title": "/actions",
         "count": 1,
         "uniques": 1
       },
       {
-        "path": "/Realistic-Farming/FS25_TaxMod/pulls",
-        "title": "/pulls",
+        "path": "/Realistic-Farming/FS25_TaxMod/actions/runs/31569013714",
+        "title": "/actions/runs/31569013714",
+        "count": 1,
+        "uniques": 1
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/actions/runs/31569013714/job/94026825420",
+        "title": "/actions/runs/31569013714/job/94026825420",
+        "count": 1,
+        "uniques": 1
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/issues",
+        "title": "/issues",
         "count": 1,
         "uniques": 1
       }

@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-08-13T06:13:23Z
-**Days tracked:** 119 | **Download snapshots:** 424 (hourly)
+**Last updated:** 2026-08-13T18:58:08Z
+**Days tracked:** 119 | **Download snapshots:** 425 (hourly)
 
 ---
 
@@ -11,10 +11,10 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 143 | 62 |
-| Git Clones | 317 | 69 |
+| Page Views | 149 | 62 |
+| Git Clones | 363 | 87 |
 
-> **Engagement:** 2.3 pages per visitor (14-day avg)
+> **Engagement:** 2.4 pages per visitor (14-day avg)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 407 of 62 visitors cloned or downloaded (**656.4%**)
+> **14-day conversion:** 425 of 62 visitors cloned or downloaded (**685.4%**)
 >
-> Unique cloners: 69 | Release downloads: 338
+> Unique cloners: 87 | Release downloads: 338
 
 ---
 
@@ -43,8 +43,8 @@
 | Channel | Count |
 |---------|-------|
 | Zip Downloads | 338 |
-| Git Clones (14-day) | 317 |
-| **Total Acquisitions** | **655** |
+| Git Clones (14-day) | 363 |
+| **Total Acquisitions** | **701** |
 
 ---
 
@@ -54,8 +54,8 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 106 | 47 |
-| Google | 16 | 10 |
+| github.com | 112 | 47 |
+| Google | 15 | 9 |
 | Bing | 4 | 2 |
 | kingmods.net | 3 | 2 |
 
@@ -79,11 +79,14 @@
 |------|-------|--------|
 | `/Realistic-Farming/FS25_TaxMod` | 94 | 61 |
 | `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.0` | 26 | 19 |
-| `/Realistic-Farming/FS25_TaxMod/releases` | 17 | 9 |
+| `/Realistic-Farming/FS25_TaxMod/releases` | 17 | 10 |
 | `/Realistic-Farming/FS25_TaxMod/blob/main/FS25_TaxMod.zip` | 2 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/issues/13` | 2 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/pull/21` | 1 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/pulls` | 1 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/pulls` | 2 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/actions` | 1 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/actions/runs/31569013714` | 1 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/actions/runs/31569013714/job/94026825420` | 1 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/issues` | 1 | 1 |
 
 ---
 
