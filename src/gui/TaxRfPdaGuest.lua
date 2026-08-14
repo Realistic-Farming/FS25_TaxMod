@@ -154,7 +154,7 @@ local function monthsUntil(target, current)
     return d
 end
 
-local _baseline = nil   -- the XML baseline, captured on the first show, re-asserted after
+local _statusWarned = false
 
 -- BUILD 16:32. The densify that used to live here moved rfFwLine1..8 to -280..-480 with
 -- 26px type and X reset to 0. That was written for an unframed 580-tall status block,
@@ -162,56 +162,89 @@ local _baseline = nil   -- the XML baseline, captured on the first show, re-asse
 -- round that block, so the same move now drops the whole status band under the bottom
 -- rule and leaves an empty white box above it: the FAIL Wizard saw.
 --
--- It is gone rather than re-tuned. The guest had the shell geometry copied into Lua, so
--- the moment the shared XML changed underneath it the two disagreed and the guest won.
--- The XML is the one place that says where status text lives; this file's job is only to
--- put it back there if anything moved it.
+-- BUILD 20:37. Deleting the densify was only half of it. What replaced it captured the
+-- element positions on the FIRST show and re-asserted those, which is only the XML baseline
+-- if nothing had moved the shell before that first show. If anything had, the capture froze
+-- the bad layout and every later show put it back faithfully. A one-shot capture cannot tell
+-- a baseline from a mistake, so the locks are written out instead.
+--
+-- These px are read from this mod's own xml/gui/RfPdaMenuPage.xml and must stay equal to it.
+-- The XML remains the one place that says where status text lives; this file's job is only
+-- to put it back there if anything moved it.
+local FW_STATUS_BLOCK = { "rfFwStatusBlock", "0px", "0px", "1140px", "340px" }
+-- Two columns of four. Left at 10, right at 580, sharing the four Y axes.
+local FW_STATUS_LINES = {
+    { "rfFwLine1", "10px", "-8px" },
+    { "rfFwLine2", "10px", "-56px" },
+    { "rfFwLine3", "10px", "-104px" },
+    { "rfFwLine4", "10px", "-152px" },
+    { "rfFwLine5", "580px", "-8px" },
+    { "rfFwLine6", "580px", "-56px" },
+    { "rfFwLine7", "580px", "-104px" },
+    { "rfFwLine8", "580px", "-152px" }
+}
+-- 550 wide, not 580: a line grown to 580 would run into the right column's own left edge.
+local FW_LINE_W, FW_LINE_H = "550px", "22px"
+local FW_STATUS_HINT = { "rfFwHint", "10px", "-208px", "1120px", "120px" }
 
---- Remember where the shared Status shell started, once. Nothing here moves it any more,
---- so on the first show this IS the XML baseline, and it is what every later show restores.
-local function captureBaseline(container)
-    if _baseline ~= nil then return end
-    _baseline = {}
-    for i = 1, 8 do
-        local el = findDescendant(container, "rfFwLine" .. i)
-        if el ~= nil then
-            _baseline["rfFwLine" .. i] = { x = el.position and el.position[1], y = el.position and el.position[2],
-                                           textSize = el.textSize }
-        end
-    end
-    local h = findDescendant(container, "rfFwHint")
-    if h ~= nil then
-        _baseline.rfFwHint = { x = h.position and h.position[1], y = h.position and h.position[2], textSize = h.textSize }
-    end
-end
-
---- Put the shared Status shell back on the XML baseline captured before anything moved.
---- Position and textSize are stored already normalised, straight off the element, so this
---- needs no GuiUtils and cannot mis-convert. If nothing was ever captured it does nothing,
---- which leaves the XML standing - the right failure direction.
+--- Put the Status shell back on the XML locks. Runs every show, so a move from any earlier
+--- session, or from a stale artifact still sitting in My Games, cannot survive into this one.
 ---
---- ONE definition, called from both onShow and onHide. The old pair was a densify here and
---- a restore there: two descriptions of the same layout, free to drift apart. They did.
+--- textSize is never written. The profile owns the type, and since there is no way to unset a
+--- text size once it has been set, the only way to leave type alone is to never touch it.
 local function restoreStatusBand(container)
-    if container == nil or _baseline == nil then return end
-    local function restore(id)
-        local b = _baseline[id]
+    if container == nil then
+        return
+    end
+    if GuiUtils == nil or type(GuiUtils.getNormalizedXValue) ~= "function"
+        or type(GuiUtils.getNormalizedYValue) ~= "function"
+        or type(GuiUtils.getNormalizedScreenValues) ~= "function" then
+        if not _statusWarned then
+            _statusWarned = true
+            print("[RF] Tax status band: GuiUtils normalizer absent - leaving the XML geometry")
+        end
+        return
+    end
+
+    local function place(id, xPx, yPx, wPx, hPx)
         local el = findDescendant(container, id)
-        if b == nil or el == nil then return end
-        if b.x ~= nil and b.y ~= nil and type(el.setPosition) == "function" then el:setPosition(b.x, b.y) end
-        if b.textSize ~= nil and type(el.setTextSize) == "function" then el:setTextSize(b.textSize) end
+        if el == nil then
+            return
+        end
+        if type(el.setPosition) == "function" then
+            el:setPosition(GuiUtils.getNormalizedXValue(xPx, 0),
+                           GuiUtils.getNormalizedYValue(yPx, 0))
+        end
+        if wPx ~= nil and hPx ~= nil and type(el.setSize) == "function" then
+            local norms = GuiUtils.getNormalizedScreenValues(wPx .. " " .. hPx)
+            if type(norms) == "table" and norms[1] ~= nil and norms[2] ~= nil then
+                el:setSize(norms[1], norms[2])
+            end
+        end
         if type(el.updateAbsolutePosition) == "function" then el:updateAbsolutePosition() end
     end
-    for i = 1, 8 do restore("rfFwLine" .. i) end
-    restore("rfFwHint")
+
+    -- The card first, so the lines are placed inside a block that is already the right size.
+    place(FW_STATUS_BLOCK[1], FW_STATUS_BLOCK[2], FW_STATUS_BLOCK[3],
+          FW_STATUS_BLOCK[4], FW_STATUS_BLOCK[5])
+    -- A literal 1..8 walk. An ipairs over this table would stop at the first nil if an edit
+    -- ever left a hole in it, and silently place only the left column, which is the exact
+    -- shape of the bug this suite paid for at 21:54.
+    for i = 1, 8 do
+        local row = FW_STATUS_LINES[i]
+        if row ~= nil then
+            place(row[1], row[2], row[3], FW_LINE_W, FW_LINE_H)
+        end
+    end
+    place(FW_STATUS_HINT[1], FW_STATUS_HINT[2], FW_STATUS_HINT[3],
+          FW_STATUS_HINT[4], FW_STATUS_HINT[5])
 end
 
 function TaxRfPdaGuest.onShow(container, lightOnly)
     clearHostDupes(container)
     showStatusMode(container)
-    -- Capture first (this is the XML baseline on the first show), then re-assert it every
-    -- show, so a stale move from any earlier session cannot survive into this one.
-    captureBaseline(container)
+    -- Every show, straight from the XML locks. Nothing is captured, so nothing can be
+    -- frozen wrong on a first show that happened to land after something moved the shell.
     restoreStatusBand(container)
     paintSide(container, "rf_pda_side_info_tax",
         "Tax posture: on/off, year bill, March estimate, balance share, countdown.\n"
@@ -303,10 +336,10 @@ function TaxRfPdaGuest.onShow(container, lightOnly)
     setText(findDescendant(container, "rfFwHint"), hint)
 end
 
---- Hand the Status shell back on the XML baseline. Status is tax-only today (host maps
+--- Hand the Status shell back on the XML locks. Status is tax-only today (host maps
 --- isFwStatus = "tax") and no host calls onHide, so this is correct-when-wired rather than
 --- live; it stays because the day status is shared is the day it matters, and onShow now
---- re-asserts the same baseline anyway.
+--- re-asserts the same locks anyway.
 function TaxRfPdaGuest.onHide(container)
     restoreStatusBand(container)
 end
