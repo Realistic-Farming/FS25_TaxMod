@@ -26,16 +26,16 @@ CropStressIrrigationExpense = {}
 -- and wired, not fabricated (brief OI-2 / OI-3).
 CropStressIrrigationExpense.DAILY_DEPRECIATION_PER_SYSTEM = 0
 
--- Day-of-week index 1..7, matching SCS IrrigationManager:hourlyScheduleCheck
--- (env.currentDayInPeriod, fallback (currentDay % 7) + 1, clamped) so our
--- accrual lands on the same days SCS actually runs a system.
+-- Day-of-week index 1..7, matching SCS IrrigationManager:dayOfWeekIndex (F160),
+-- so our accrual lands on the same days SCS actually runs a system. Derived from
+-- the monotonic day modulo 7, never from env.currentDayInPeriod: the base game
+-- computes currentDayInPeriod as (currentDay - 1) % daysPerPeriod + 1 and
+-- daysPerPeriod defaults to 1, so on a default save it is always 1.
 local function dayOfWeekIndex(env)
     if env == nil then return 1 end
-    local dow = env.currentDayInPeriod
-    if dow == nil then
-        local currentDay = env.currentDay or env.currentMonotonicDay or 0
-        dow = (currentDay % 7) + 1
-    end
+    local currentDay = env.currentDay or env.currentMonotonicDay or 1
+    if type(currentDay) ~= "number" or currentDay < 1 then currentDay = 1 end
+    local dow = ((currentDay - 1) % 7) + 1
     if dow < 1 or dow > 7 then dow = 1 end
     return dow
 end
