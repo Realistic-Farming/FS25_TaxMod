@@ -4,7 +4,7 @@
          xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/NMC-TBone/xml-schema/main/modDesc.xsd">
 
     <author>TisonK</author>
-    <version>1.1.5.57</version>
+    <version>1.1.5.58</version>
 
     <title>
         <en>Tax Mod</en>
@@ -20,96 +20,96 @@
 Adds realistic tax system to your farm.
 
 Features:
-├»┬┐┬¢ Daily tax deductions based on farm balance
-├»┬┐┬¢ Monthly tax returns (percentage of taxes paid)
-├»┬┐┬¢ Three tax rate levels: Low (1%), Medium (2%), High (3%)
-├»┬┐┬¢ Configurable minimum balance threshold
-├»┬┐┬¢ Tax history and statistics tracking
-├»┬┐┬¢ Professional in-game notifications
-├»┬┐┬¢ Fully configurable via console commands
-├»┬┐┬¢ Multiplayer compatible
-├»┬┐┬¢ Settings saved per savegame
-├»┬┐┬¢ Type 'tax' in console for commands
+â”œÂ»â”¬â”â”¬Â¢ Daily tax deductions based on farm balance
+â”œÂ»â”¬â”â”¬Â¢ Monthly tax returns (percentage of taxes paid)
+â”œÂ»â”¬â”â”¬Â¢ Three tax rate levels: Low (1%), Medium (2%), High (3%)
+â”œÂ»â”¬â”â”¬Â¢ Configurable minimum balance threshold
+â”œÂ»â”¬â”â”¬Â¢ Tax history and statistics tracking
+â”œÂ»â”¬â”â”¬Â¢ Professional in-game notifications
+â”œÂ»â”¬â”â”¬Â¢ Fully configurable via console commands
+â”œÂ»â”¬â”â”¬Â¢ Multiplayer compatible
+â”œÂ»â”¬â”â”¬Â¢ Settings saved per savegame
+â”œÂ»â”¬â”â”¬Â¢ Type 'tax' in console for commands
 ]]></en>
 
         <de><![CDATA[
-F├»┬┐┬¢gt ein realistisches Steuersystem zu Ihrer Farm hinzu.
+Fâ”œÂ»â”¬â”â”¬Â¢gt ein realistisches Steuersystem zu Ihrer Farm hinzu.
 
 Funktionen:
-├»┬┐┬¢ T├»┬┐┬¢gliche Steuerabz├»┬┐┬¢ge basierend auf dem Farmguthaben
-├»┬┐┬¢ Monatliche Steuerr├»┬┐┬¢ckzahlungen (Prozentsatz der gezahlten Steuern)
-├»┬┐┬¢ Drei Steuersatzstufen: Niedrig (1%), Mittel (2%), Hoch (3%)
-├»┬┐┬¢ Konfigurierbare Mindestguthabenschwelle
-├»┬┐┬¢ Steuerverlauf und Statistikverfolgung
-├»┬┐┬¢ Professionelle In-Game-Benachrichtigungen
-├»┬┐┬¢ Vollst├»┬┐┬¢ndig ├»┬┐┬¢ber Konsolenbefehle konfigurierbar
-├»┬┐┬¢ Multiplayer-kompatibel
-├»┬┐┬¢ Einstellungen pro Spielstand gespeichert
-├»┬┐┬¢ Geben Sie 'tax' in der Konsole f├»┬┐┬¢r Befehle ein
+â”œÂ»â”¬â”â”¬Â¢ Tâ”œÂ»â”¬â”â”¬Â¢gliche Steuerabzâ”œÂ»â”¬â”â”¬Â¢ge basierend auf dem Farmguthaben
+â”œÂ»â”¬â”â”¬Â¢ Monatliche Steuerrâ”œÂ»â”¬â”â”¬Â¢ckzahlungen (Prozentsatz der gezahlten Steuern)
+â”œÂ»â”¬â”â”¬Â¢ Drei Steuersatzstufen: Niedrig (1%), Mittel (2%), Hoch (3%)
+â”œÂ»â”¬â”â”¬Â¢ Konfigurierbare Mindestguthabenschwelle
+â”œÂ»â”¬â”â”¬Â¢ Steuerverlauf und Statistikverfolgung
+â”œÂ»â”¬â”â”¬Â¢ Professionelle In-Game-Benachrichtigungen
+â”œÂ»â”¬â”â”¬Â¢ Vollstâ”œÂ»â”¬â”â”¬Â¢ndig â”œÂ»â”¬â”â”¬Â¢ber Konsolenbefehle konfigurierbar
+â”œÂ»â”¬â”â”¬Â¢ Multiplayer-kompatibel
+â”œÂ»â”¬â”â”¬Â¢ Einstellungen pro Spielstand gespeichert
+â”œÂ»â”¬â”â”¬Â¢ Geben Sie 'tax' in der Konsole fâ”œÂ»â”¬â”â”¬Â¢r Befehle ein
 ]]></de>
 
         <fr><![CDATA[
-Ajoute un syst├»┬┐┬¢me de taxes r├»┬┐┬¢aliste ├»┬┐┬¢ votre ferme.
+Ajoute un systâ”œÂ»â”¬â”â”¬Â¢me de taxes râ”œÂ»â”¬â”â”¬Â¢aliste â”œÂ»â”¬â”â”¬Â¢ votre ferme.
 
-Fonctionnalit├»┬┐┬¢s :
-├»┬┐┬¢ D├»┬┐┬¢ductions fiscales quotidiennes bas├»┬┐┬¢es sur le solde de la ferme
-├»┬┐┬¢ Remboursements d'imp├»┬┐┬¢ts mensuels (pourcentage des taxes pay├»┬┐┬¢es)
-├»┬┐┬¢ Trois niveaux de taux d'imposition : Faible (1%), Moyen (2%), ├»┬┐┬¢lev├»┬┐┬¢ (3%)
-├»┬┐┬¢ Seuil de solde minimum configurable
-├»┬┐┬¢ Suivi de l'historique et des statistiques fiscales
-├»┬┐┬¢ Notifications professionnelles en jeu
-├»┬┐┬¢ Enti├»┬┐┬¢rement configurable via des commandes console
-├»┬┐┬¢ Compatible multijoueur
-├»┬┐┬¢ Param├»┬┐┬¢tres enregistr├»┬┐┬¢s par partie
-├»┬┐┬¢ Tapez 'tax' dans la console pour les commandes
+Fonctionnalitâ”œÂ»â”¬â”â”¬Â¢s :
+â”œÂ»â”¬â”â”¬Â¢ Dâ”œÂ»â”¬â”â”¬Â¢ductions fiscales quotidiennes basâ”œÂ»â”¬â”â”¬Â¢es sur le solde de la ferme
+â”œÂ»â”¬â”â”¬Â¢ Remboursements d'impâ”œÂ»â”¬â”â”¬Â¢ts mensuels (pourcentage des taxes payâ”œÂ»â”¬â”â”¬Â¢es)
+â”œÂ»â”¬â”â”¬Â¢ Trois niveaux de taux d'imposition : Faible (1%), Moyen (2%), â”œÂ»â”¬â”â”¬Â¢levâ”œÂ»â”¬â”â”¬Â¢ (3%)
+â”œÂ»â”¬â”â”¬Â¢ Seuil de solde minimum configurable
+â”œÂ»â”¬â”â”¬Â¢ Suivi de l'historique et des statistiques fiscales
+â”œÂ»â”¬â”â”¬Â¢ Notifications professionnelles en jeu
+â”œÂ»â”¬â”â”¬Â¢ Entiâ”œÂ»â”¬â”â”¬Â¢rement configurable via des commandes console
+â”œÂ»â”¬â”â”¬Â¢ Compatible multijoueur
+â”œÂ»â”¬â”â”¬Â¢ Paramâ”œÂ»â”¬â”â”¬Â¢tres enregistrâ”œÂ»â”¬â”â”¬Â¢s par partie
+â”œÂ»â”¬â”â”¬Â¢ Tapez 'tax' dans la console pour les commandes
 ]]></fr>
 
         <es><![CDATA[
-A├»┬┐┬¢ade un sistema de impuestos realista a tu granja.
+Aâ”œÂ»â”¬â”â”¬Â¢ade un sistema de impuestos realista a tu granja.
 
-Caracter├»┬┐┬¢sticas:
-├»┬┐┬¢ Deducciones fiscales diarias basadas en el saldo de la granja
-├»┬┐┬¢ Devoluciones de impuestos mensuales (porcentaje de impuestos pagados)
-├»┬┐┬¢ Tres niveles de tasa impositiva: Baja (1%), Media (2%), Alta (3%)
-├»┬┐┬¢ Umbral de saldo m├»┬┐┬¢nimo configurable
-├»┬┐┬¢ Seguimiento de historial y estad├»┬┐┬¢sticas fiscales
-├»┬┐┬¢ Notificaciones profesionales en el juego
-├»┬┐┬¢ Totalmente configurable mediante comandos de consola
-├»┬┐┬¢ Compatible con multijugador
-├»┬┐┬¢ Configuraciones guardadas por partida
-├»┬┐┬¢ Escribe 'tax' en la consola para comandos
+Caracterâ”œÂ»â”¬â”â”¬Â¢sticas:
+â”œÂ»â”¬â”â”¬Â¢ Deducciones fiscales diarias basadas en el saldo de la granja
+â”œÂ»â”¬â”â”¬Â¢ Devoluciones de impuestos mensuales (porcentaje de impuestos pagados)
+â”œÂ»â”¬â”â”¬Â¢ Tres niveles de tasa impositiva: Baja (1%), Media (2%), Alta (3%)
+â”œÂ»â”¬â”â”¬Â¢ Umbral de saldo mâ”œÂ»â”¬â”â”¬Â¢nimo configurable
+â”œÂ»â”¬â”â”¬Â¢ Seguimiento de historial y estadâ”œÂ»â”¬â”â”¬Â¢sticas fiscales
+â”œÂ»â”¬â”â”¬Â¢ Notificaciones profesionales en el juego
+â”œÂ»â”¬â”â”¬Â¢ Totalmente configurable mediante comandos de consola
+â”œÂ»â”¬â”â”¬Â¢ Compatible con multijugador
+â”œÂ»â”¬â”â”¬Â¢ Configuraciones guardadas por partida
+â”œÂ»â”¬â”â”¬Â¢ Escribe 'tax' en la consola para comandos
 ]]></es>
 
         <it><![CDATA[
 Aggiunge un sistema fiscale realistico alla tua fattoria.
 
 Caratteristiche:
-├»┬┐┬¢ Detrazioni fiscali giornaliere basate sul saldo della fattoria
-├»┬┐┬¢ Restituzioni fiscali mensili (percentuale delle tasse pagate)
-├»┬┐┬¢ Tre livelli di aliquota fiscale: Bassa (1%), Media (2%), Alta (3%)
-├»┬┐┬¢ Soglia di saldo minimo configurabile
-├»┬┐┬¢ Monitoraggio della cronologia e delle statistiche fiscali
-├»┬┐┬¢ Notifiche professionali in gioco
-├»┬┐┬¢ Completamente configurabile tramite comandi console
-├»┬┐┬¢ Compatibile con il multiplayer
-├»┬┐┬¢ Impostazioni salvate per partita
-├»┬┐┬¢ Digita 'tax' nella console per i comandi
+â”œÂ»â”¬â”â”¬Â¢ Detrazioni fiscali giornaliere basate sul saldo della fattoria
+â”œÂ»â”¬â”â”¬Â¢ Restituzioni fiscali mensili (percentuale delle tasse pagate)
+â”œÂ»â”¬â”â”¬Â¢ Tre livelli di aliquota fiscale: Bassa (1%), Media (2%), Alta (3%)
+â”œÂ»â”¬â”â”¬Â¢ Soglia di saldo minimo configurabile
+â”œÂ»â”¬â”â”¬Â¢ Monitoraggio della cronologia e delle statistiche fiscali
+â”œÂ»â”¬â”â”¬Â¢ Notifiche professionali in gioco
+â”œÂ»â”¬â”â”¬Â¢ Completamente configurabile tramite comandi console
+â”œÂ»â”¬â”â”¬Â¢ Compatibile con il multiplayer
+â”œÂ»â”¬â”â”¬Â¢ Impostazioni salvate per partita
+â”œÂ»â”¬â”â”¬Â¢ Digita 'tax' nella console per i comandi
 ]]></it>
 
         <pl><![CDATA[
 Dodaje realistyczny system podatkowy do Twojej farmy.
 
 Funkcje:
-├»┬┐┬¢ Codzienne odliczenia podatkowe na podstawie salda farmy
-├»┬┐┬¢ Miesieczne zwroty podatk├»┬┐┬¢w (procent zaplaconych podatk├»┬┐┬¢w)
-├»┬┐┬¢ Trzy poziomy stawek podatkowych: Niski (1%), Sredni (2%), Wysoki (3%)
-├»┬┐┬¢ Konfigurowalny pr├»┬┐┬¢g minimalnego salda
-├»┬┐┬¢ Sledzenie historii i statystyk podatkowych
-├»┬┐┬¢ Profesjonalne powiadomienia w grze
-├»┬┐┬¢ W pelni konfigurowalne za pomoca komend konsoli
-├»┬┐┬¢ Zgodny z trybem wieloosobowym
-├»┬┐┬¢ Ustawienia zapisywane per zapis gry
-├»┬┐┬¢ Wpisz 'tax' w konsoli dla komend
+â”œÂ»â”¬â”â”¬Â¢ Codzienne odliczenia podatkowe na podstawie salda farmy
+â”œÂ»â”¬â”â”¬Â¢ Miesieczne zwroty podatkâ”œÂ»â”¬â”â”¬Â¢w (procent zaplaconych podatkâ”œÂ»â”¬â”â”¬Â¢w)
+â”œÂ»â”¬â”â”¬Â¢ Trzy poziomy stawek podatkowych: Niski (1%), Sredni (2%), Wysoki (3%)
+â”œÂ»â”¬â”â”¬Â¢ Konfigurowalny prâ”œÂ»â”¬â”â”¬Â¢g minimalnego salda
+â”œÂ»â”¬â”â”¬Â¢ Sledzenie historii i statystyk podatkowych
+â”œÂ»â”¬â”â”¬Â¢ Profesjonalne powiadomienia w grze
+â”œÂ»â”¬â”â”¬Â¢ W pelni konfigurowalne za pomoca komend konsoli
+â”œÂ»â”¬â”â”¬Â¢ Zgodny z trybem wieloosobowym
+â”œÂ»â”¬â”â”¬Â¢ Ustawienia zapisywane per zapis gry
+â”œÂ»â”¬â”â”¬Â¢ Wpisz 'tax' w konsoli dla komend
 ]]></pl>
     </description>
 
@@ -168,8 +168,8 @@ Funkcje:
         </text>
         <text name="tm_enabled_long">
             <en><![CDATA[Enable or disable daily tax deductions and monthly returns]]></en>
-            <de><![CDATA[T├»┬┐┬¢gliche Steuerabz├»┬┐┬¢ge und monatliche R├»┬┐┬¢ckerstattungen ein-/ausschalten]]></de>
-            <fr><![CDATA[Activer ou d├»┬┐┬¢sactiver les d├»┬┐┬¢ductions fiscales quotidiennes et les remboursements mensuels]]></fr>
+            <de><![CDATA[Tâ”œÂ»â”¬â”â”¬Â¢gliche Steuerabzâ”œÂ»â”¬â”â”¬Â¢ge und monatliche Râ”œÂ»â”¬â”â”¬Â¢ckerstattungen ein-/ausschalten]]></de>
+            <fr><![CDATA[Activer ou dâ”œÂ»â”¬â”â”¬Â¢sactiver les dâ”œÂ»â”¬â”â”¬Â¢ductions fiscales quotidiennes et les remboursements mensuels]]></fr>
             <es><![CDATA[Activar o desactivar las deducciones fiscales diarias y las devoluciones mensuales]]></es>
             <it><![CDATA[Attiva o disattiva le detrazioni fiscali giornaliere e i rimborsi mensili]]></it>
             <pl><![CDATA[Wlacz lub wylacz codzienne odliczenia podatkowe i miesieczne zwroty]]></pl>
@@ -178,7 +178,7 @@ Funkcje:
             <cz>[EN] <![CDATA[Enable or disable daily tax deductions and monthly returns]]></cz>
             <br>[EN] <![CDATA[Enable or disable daily tax deductions and monthly returns]]></br>
             <ru>[EN] <![CDATA[Enable or disable daily tax deductions and monthly returns]]></ru>
-            <da><![CDATA[Aktiv├»┬┐┬¢r eller deaktiver daglige skattefradrag og m├»┬┐┬¢nedlige skatterefusioner]]></da>
+            <da><![CDATA[Aktivâ”œÂ»â”¬â”â”¬Â¢r eller deaktiver daglige skattefradrag og mâ”œÂ»â”¬â”â”¬Â¢nedlige skatterefusioner]]></da>
         </text>
 
         <!-- Tax Rate -->
@@ -198,8 +198,8 @@ Funkcje:
         </text>
         <text name="tm_taxrate_long">
             <en><![CDATA[Daily tax rate applied to your farm balance: Low=1%, Medium=2%, High=3%]]></en>
-            <de><![CDATA[T├»┬┐┬¢glicher Steuersatz auf Ihr Farmguthaben: Niedrig=1%, Mittel=2%, Hoch=3%]]></de>
-            <fr><![CDATA[Taux d'imposition quotidien appliqu├»┬┐┬¢ ├»┬┐┬¢ votre solde: Faible=1%, Moyen=2%, ├»┬┐┬¢lev├»┬┐┬¢=3%]]></fr>
+            <de><![CDATA[Tâ”œÂ»â”¬â”â”¬Â¢glicher Steuersatz auf Ihr Farmguthaben: Niedrig=1%, Mittel=2%, Hoch=3%]]></de>
+            <fr><![CDATA[Taux d'imposition quotidien appliquâ”œÂ»â”¬â”â”¬Â¢ â”œÂ»â”¬â”â”¬Â¢ votre solde: Faible=1%, Moyen=2%, â”œÂ»â”¬â”â”¬Â¢levâ”œÂ»â”¬â”â”¬Â¢=3%]]></fr>
             <es><![CDATA[Tasa impositiva diaria sobre el saldo de tu granja: Baja=1%, Media=2%, Alta=3%]]></es>
             <it><![CDATA[Aliquota fiscale giornaliera sul saldo della fattoria: Bassa=1%, Media=2%, Alta=3%]]></it>
             <pl><![CDATA[Dzienna stawka podatkowa od salda farmy: Niska=1%, Srednia=2%, Wysoka=3%]]></pl>
@@ -208,7 +208,7 @@ Funkcje:
             <cz>[EN] <![CDATA[Daily tax rate applied to your farm balance: Low=1%, Medium=2%, High=3%]]></cz>
             <br>[EN] <![CDATA[Daily tax rate applied to your farm balance: Low=1%, Medium=2%, High=3%]]></br>
             <ru>[EN] <![CDATA[Daily tax rate applied to your farm balance: Low=1%, Medium=2%, High=3%]]></ru>
-            <da><![CDATA[Daglig skattesats anvendt p├»┬┐┬¢ din g├»┬┐┬¢rds saldo: Lav=1 %, Mellem=2 %, H├»┬┐┬¢j=3 %]]></da>
+            <da><![CDATA[Daglig skattesats anvendt pâ”œÂ»â”¬â”â”¬Â¢ din gâ”œÂ»â”¬â”â”¬Â¢rds saldo: Lav=1 %, Mellem=2 %, Hâ”œÂ»â”¬â”â”¬Â¢j=3 %]]></da>
         </text>
         <text name="tm_taxrate_1"><en><![CDATA[Low (1%)]]></en><de><![CDATA[Niedrig (1%)]]></de><fr><![CDATA[Faible (1%)]]></fr><es><![CDATA[Baja (1%)]]></es><it><![CDATA[Bassa (1%)]]></it><pl><![CDATA[Niska (1%)]]></pl><uk><![CDATA[?????? (1%)]]></uk>
             <cz>[EN] <![CDATA[Low (1%)]]></cz>
@@ -222,17 +222,17 @@ Funkcje:
             <ru>[EN] <![CDATA[Medium (2%)]]></ru>
             <da><![CDATA[Mellem (2 %)]]></da>
         </text>
-        <text name="tm_taxrate_3"><en><![CDATA[High (3%)]]></en><de><![CDATA[Hoch (3%)]]></de><fr><![CDATA[├»┬┐┬¢lev├»┬┐┬¢ (3%)]]></fr><es><![CDATA[Alta (3%)]]></es><it><![CDATA[Alta (3%)]]></it><pl><![CDATA[Wysoka (3%)]]></pl><uk><![CDATA[?????? (3%)]]></uk>
+        <text name="tm_taxrate_3"><en><![CDATA[High (3%)]]></en><de><![CDATA[Hoch (3%)]]></de><fr><![CDATA[â”œÂ»â”¬â”â”¬Â¢levâ”œÂ»â”¬â”â”¬Â¢ (3%)]]></fr><es><![CDATA[Alta (3%)]]></es><it><![CDATA[Alta (3%)]]></it><pl><![CDATA[Wysoka (3%)]]></pl><uk><![CDATA[?????? (3%)]]></uk>
             <cz>[EN] <![CDATA[High (3%)]]></cz>
             <br>[EN] <![CDATA[High (3%)]]></br>
             <ru>[EN] <![CDATA[High (3%)]]></ru>
-            <da><![CDATA[H├»┬┐┬¢j (3 %)]]></da>
+            <da><![CDATA[Hâ”œÂ»â”¬â”â”¬Â¢j (3 %)]]></da>
         </text>
 
         <!-- Annual Tax Rate -->
         <text name="tm_annualrate_short">
             <en><![CDATA[Annual Tax Rate]]></en>
-            <de><![CDATA[J├»┬┐┬¢hrlicher Steuersatz]]></de>
+            <de><![CDATA[Jâ”œÂ»â”¬â”â”¬Â¢hrlicher Steuersatz]]></de>
             <fr><![CDATA[Taux d'imposition annuel]]></fr>
             <es><![CDATA[Tasa impositiva anual]]></es>
             <it><![CDATA[Aliquota fiscale annuale]]></it>
@@ -242,21 +242,21 @@ Funkcje:
             <cz>[EN] <![CDATA[Annual Tax Rate]]></cz>
             <br>[EN] <![CDATA[Annual Tax Rate]]></br>
             <ru>[EN] <![CDATA[Annual Tax Rate]]></ru>
-            <da><![CDATA[├»┬┐┬¢rlig skattesats]]></da>
+            <da><![CDATA[â”œÂ»â”¬â”â”¬Â¢rlig skattesats]]></da>
         </text>
         <text name="tm_annualrate_long">
             <en><![CDATA[Percentage of accumulated taxes paid each March: Low=2%, Medium=5%, High=10%]]></en>
-            <de><![CDATA[Prozentsatz der angesammelten Steuern, der jeden M├»┬┐┬¢rz gezahlt wird: Niedrig=2%, Mittel=5%, Hoch=10%]]></de>
-            <fr><![CDATA[Pourcentage des taxes accumul├»┬┐┬¢es pay├»┬┐┬¢es chaque mars: Faible=2%, Moyen=5%, ├»┬┐┬¢lev├»┬┐┬¢=10%]]></fr>
+            <de><![CDATA[Prozentsatz der angesammelten Steuern, der jeden Mâ”œÂ»â”¬â”â”¬Â¢rz gezahlt wird: Niedrig=2%, Mittel=5%, Hoch=10%]]></de>
+            <fr><![CDATA[Pourcentage des taxes accumulâ”œÂ»â”¬â”â”¬Â¢es payâ”œÂ»â”¬â”â”¬Â¢es chaque mars: Faible=2%, Moyen=5%, â”œÂ»â”¬â”â”¬Â¢levâ”œÂ»â”¬â”â”¬Â¢=10%]]></fr>
             <es><![CDATA[Porcentaje de impuestos acumulados pagados cada marzo: Baja=2%, Media=5%, Alta=10%]]></es>
             <it><![CDATA[Percentuale delle tasse accumulate pagate ogni marzo: Bassa=2%, Media=5%, Alta=10%]]></it>
-            <pl><![CDATA[Procent zgromadzonych podatk├»┬┐┬¢w placonych kazdego marca: Niski=2%, Sredni=5%, Wysoki=10%]]></pl>
+            <pl><![CDATA[Procent zgromadzonych podatkâ”œÂ»â”¬â”â”¬Â¢w placonych kazdego marca: Niski=2%, Sredni=5%, Wysoki=10%]]></pl>
             <uk><![CDATA[???????? ??????????? ????????, ?? ??????????? ??????? ???????: ???????=2%, ????????=5%, ???????=10%]]></uk>
         
             <cz>[EN] <![CDATA[Percentage of accumulated taxes paid each March: Low=2%, Medium=5%, High=10%]]></cz>
             <br>[EN] <![CDATA[Percentage of accumulated taxes paid each March: Low=2%, Medium=5%, High=10%]]></br>
             <ru>[EN] <![CDATA[Percentage of accumulated taxes paid each March: Low=2%, Medium=5%, High=10%]]></ru>
-            <da><![CDATA[Procentdel af de akkumulerede skatter, der udbetales hver marts: Lav=2 %, Mellem=5 %, H├»┬┐┬¢j=10 %]]></da>
+            <da><![CDATA[Procentdel af de akkumulerede skatter, der udbetales hver marts: Lav=2 %, Mellem=5 %, Hâ”œÂ»â”¬â”â”¬Â¢j=10 %]]></da>
         </text>
         <text name="tm_annualrate_1"><en><![CDATA[Low (2%)]]></en><de><![CDATA[Niedrig (2%)]]></de><fr><![CDATA[Faible (2%)]]></fr><es><![CDATA[Baja (2%)]]></es><it><![CDATA[Bassa (2%)]]></it><pl><![CDATA[Niski (2%)]]></pl><uk><![CDATA[??????? (2%)]]></uk>
             <cz>[EN] <![CDATA[Low (2%)]]></cz>
@@ -270,19 +270,19 @@ Funkcje:
             <ru>[EN] <![CDATA[Medium (5%)]]></ru>
             <da><![CDATA[Mellem (5 %)]]></da>
         </text>
-        <text name="tm_annualrate_3"><en><![CDATA[High (10%)]]></en><de><![CDATA[Hoch (10%)]]></de><fr><![CDATA[├»┬┐┬¢lev├»┬┐┬¢ (10%)]]></fr><es><![CDATA[Alta (10%)]]></es><it><![CDATA[Alta (10%)]]></it><pl><![CDATA[Wysoki (10%)]]></pl><uk><![CDATA[??????? (10%)]]></uk>
+        <text name="tm_annualrate_3"><en><![CDATA[High (10%)]]></en><de><![CDATA[Hoch (10%)]]></de><fr><![CDATA[â”œÂ»â”¬â”â”¬Â¢levâ”œÂ»â”¬â”â”¬Â¢ (10%)]]></fr><es><![CDATA[Alta (10%)]]></es><it><![CDATA[Alta (10%)]]></it><pl><![CDATA[Wysoki (10%)]]></pl><uk><![CDATA[??????? (10%)]]></uk>
             <cz>[EN] <![CDATA[High (10%)]]></cz>
             <br>[EN] <![CDATA[High (10%)]]></br>
             <ru>[EN] <![CDATA[High (10%)]]></ru>
-            <da><![CDATA[H├»┬┐┬¢j (10 %)]]></da>
+            <da><![CDATA[Hâ”œÂ»â”¬â”â”¬Â¢j (10 %)]]></da>
         </text>
 
         <!-- Return Percentage (kept for save compatibility) -->
         <text name="tm_return_short">
             <en><![CDATA[Tax Return %]]></en>
-            <de><![CDATA[Steuerr├»┬┐┬¢ckerstattung %]]></de>
+            <de><![CDATA[Steuerrâ”œÂ»â”¬â”â”¬Â¢ckerstattung %]]></de>
             <fr><![CDATA[Remboursement fiscal %]]></fr>
-            <es><![CDATA[% Devoluci├»┬┐┬¢n de impuestos]]></es>
+            <es><![CDATA[% Devoluciâ”œÂ»â”¬â”â”¬Â¢n de impuestos]]></es>
             <it><![CDATA[% Rimborso fiscale]]></it>
             <pl><![CDATA[% Zwrotu podatku]]></pl>
             <uk><![CDATA[% ?????????? ???????]]></uk>
@@ -294,17 +294,17 @@ Funkcje:
         </text>
         <text name="tm_return_long">
             <en><![CDATA[Percentage of monthly taxes returned at the start of each new month: Low=10%, Medium=20%, High=30%]]></en>
-            <de><![CDATA[Prozentsatz der monatlichen Steuern, der zur├»┬┐┬¢ckerstattet wird: Niedrig=10%, Mittel=20%, Hoch=30%]]></de>
-            <fr><![CDATA[Pourcentage des taxes mensuelles rembours├»┬┐┬¢es: Faible=10%, Moyen=20%, ├»┬┐┬¢lev├»┬┐┬¢=30%]]></fr>
+            <de><![CDATA[Prozentsatz der monatlichen Steuern, der zurâ”œÂ»â”¬â”â”¬Â¢ckerstattet wird: Niedrig=10%, Mittel=20%, Hoch=30%]]></de>
+            <fr><![CDATA[Pourcentage des taxes mensuelles remboursâ”œÂ»â”¬â”â”¬Â¢es: Faible=10%, Moyen=20%, â”œÂ»â”¬â”â”¬Â¢levâ”œÂ»â”¬â”â”¬Â¢=30%]]></fr>
             <es><![CDATA[Porcentaje de impuestos mensuales devueltos: Baja=10%, Media=20%, Alta=30%]]></es>
             <it><![CDATA[Percentuale delle tasse mensili rimborsate: Bassa=10%, Media=20%, Alta=30%]]></it>
-            <pl><![CDATA[Procent miesiecznych podatk├»┬┐┬¢w zwracanych: Niski=10%, Sredni=20%, Wysoki=30%]]></pl>
+            <pl><![CDATA[Procent miesiecznych podatkâ”œÂ»â”¬â”â”¬Â¢w zwracanych: Niski=10%, Sredni=20%, Wysoki=30%]]></pl>
             <uk><![CDATA[???????? ???????? ????????, ?? ???????????? ?? ??????? ??????: ???????=10%, ????????=20%, ???????=30%]]></uk>
         
             <cz>[EN] <![CDATA[Percentage of monthly taxes returned at the start of each new month: Low=10%, Medium=20%, High=30%]]></cz>
             <br>[EN] <![CDATA[Percentage of monthly taxes returned at the start of each new month: Low=10%, Medium=20%, High=30%]]></br>
             <ru>[EN] <![CDATA[Percentage of monthly taxes returned at the start of each new month: Low=10%, Medium=20%, High=30%]]></ru>
-            <da><![CDATA[Procentdel af de m├»┬┐┬¢nedlige skatter, der tilbagebetales ved starten af hver ny m├»┬┐┬¢ned: Lav=10 %, Mellem=20 %, H├»┬┐┬¢j=30 %]]></da>
+            <da><![CDATA[Procentdel af de mâ”œÂ»â”¬â”â”¬Â¢nedlige skatter, der tilbagebetales ved starten af hver ny mâ”œÂ»â”¬â”â”¬Â¢ned: Lav=10 %, Mellem=20 %, Hâ”œÂ»â”¬â”â”¬Â¢j=30 %]]></da>
         </text>
         <text name="tm_return_1"><en><![CDATA[Low (10%)]]></en><de><![CDATA[Niedrig (10%)]]></de><fr><![CDATA[Faible (10%)]]></fr><es><![CDATA[Baja (10%)]]></es><it><![CDATA[Bassa (10%)]]></it><pl><![CDATA[Niski (10%)]]></pl><uk><![CDATA[??????? (10%)]]></uk>
             <cz>[EN] <![CDATA[Low (10%)]]></cz>
@@ -318,11 +318,11 @@ Funkcje:
             <ru>[EN] <![CDATA[Medium (20%)]]></ru>
             <da><![CDATA[Mellem (20 %)]]></da>
         </text>
-        <text name="tm_return_3"><en><![CDATA[High (30%)]]></en><de><![CDATA[Hoch (30%)]]></de><fr><![CDATA[├»┬┐┬¢lev├»┬┐┬¢ (30%)]]></fr><es><![CDATA[Alta (30%)]]></es><it><![CDATA[Alta (30%)]]></it><pl><![CDATA[Wysoki (30%)]]></pl><uk><![CDATA[??????? (30%)]]></uk>
+        <text name="tm_return_3"><en><![CDATA[High (30%)]]></en><de><![CDATA[Hoch (30%)]]></de><fr><![CDATA[â”œÂ»â”¬â”â”¬Â¢levâ”œÂ»â”¬â”â”¬Â¢ (30%)]]></fr><es><![CDATA[Alta (30%)]]></es><it><![CDATA[Alta (30%)]]></it><pl><![CDATA[Wysoki (30%)]]></pl><uk><![CDATA[??????? (30%)]]></uk>
             <cz>[EN] <![CDATA[High (30%)]]></cz>
             <br>[EN] <![CDATA[High (30%)]]></br>
             <ru>[EN] <![CDATA[High (30%)]]></ru>
-            <da><![CDATA[H├»┬┐┬¢j (30 %)]]></da>
+            <da><![CDATA[Hâ”œÂ»â”¬â”â”¬Â¢j (30 %)]]></da>
         </text>
 
         <!-- Notifications -->
@@ -342,8 +342,8 @@ Funkcje:
         </text>
         <text name="tm_notifications_long">
             <en><![CDATA[Show in-game notifications when taxes are deducted or returns are paid]]></en>
-            <de><![CDATA[In-Game-Benachrichtigungen anzeigen, wenn Steuern abgezogen oder R├»┬┐┬¢ckerstattungen gezahlt werden]]></de>
-            <fr><![CDATA[Afficher les notifications en jeu lors des d├»┬┐┬¢ductions fiscales ou des remboursements]]></fr>
+            <de><![CDATA[In-Game-Benachrichtigungen anzeigen, wenn Steuern abgezogen oder Râ”œÂ»â”¬â”â”¬Â¢ckerstattungen gezahlt werden]]></de>
+            <fr><![CDATA[Afficher les notifications en jeu lors des dâ”œÂ»â”¬â”â”¬Â¢ductions fiscales ou des remboursements]]></fr>
             <es><![CDATA[Mostrar notificaciones en el juego cuando se deducen impuestos o se pagan devoluciones]]></es>
             <it><![CDATA[Mostra notifiche in gioco quando vengono detratte le tasse o pagati i rimborsi]]></it>
             <pl><![CDATA[Pokazuj powiadomienia w grze gdy podatki sa odliczane lub zwracane]]></pl>
@@ -352,7 +352,7 @@ Funkcje:
             <cz>[EN] <![CDATA[Show in-game notifications when taxes are deducted or returns are paid]]></cz>
             <br>[EN] <![CDATA[Show in-game notifications when taxes are deducted or returns are paid]]></br>
             <ru>[EN] <![CDATA[Show in-game notifications when taxes are deducted or returns are paid]]></ru>
-            <da><![CDATA[Vis notifikationer i spillet, n├»┬┐┬¢r skatter fratr├»┬┐┬¢kkes eller refusioner udbetales]]></da>
+            <da><![CDATA[Vis notifikationer i spillet, nâ”œÂ»â”¬â”â”¬Â¢r skatter fratrâ”œÂ»â”¬â”â”¬Â¢kkes eller refusioner udbetales]]></da>
         </text>
 
         <!-- Show HUD -->
@@ -372,17 +372,17 @@ Funkcje:
         </text>
         <text name="tm_show_hud_long">
             <en><![CDATA[Show the Tax HUD overlay with current rate, statistics and recent activity (toggle with T key)]]></en>
-            <de><![CDATA[Tax-HUD mit aktuellem Steuersatz, Statistiken und letzten Aktivit├»┬┐┬¢ten anzeigen (mit T umschalten)]]></de>
-            <fr><![CDATA[Afficher l'HUD fiscal avec le taux actuel, les statistiques et l'activit├»┬┐┬¢ r├»┬┐┬¢cente (basculer avec T)]]></fr>
-            <es><![CDATA[Mostrar el HUD fiscal con la tasa actual, estad├»┬┐┬¢sticas y actividad reciente (alternar con T)]]></es>
-            <it><![CDATA[Mostra l'HUD fiscale con aliquota corrente, statistiche e attivit├»┬┐┬¢ recente (attiva/disattiva con T)]]></it>
+            <de><![CDATA[Tax-HUD mit aktuellem Steuersatz, Statistiken und letzten Aktivitâ”œÂ»â”¬â”â”¬Â¢ten anzeigen (mit T umschalten)]]></de>
+            <fr><![CDATA[Afficher l'HUD fiscal avec le taux actuel, les statistiques et l'activitâ”œÂ»â”¬â”â”¬Â¢ râ”œÂ»â”¬â”â”¬Â¢cente (basculer avec T)]]></fr>
+            <es><![CDATA[Mostrar el HUD fiscal con la tasa actual, estadâ”œÂ»â”¬â”â”¬Â¢sticas y actividad reciente (alternar con T)]]></es>
+            <it><![CDATA[Mostra l'HUD fiscale con aliquota corrente, statistiche e attivitâ”œÂ»â”¬â”â”¬Â¢ recente (attiva/disattiva con T)]]></it>
             <pl><![CDATA[Pokaz HUD podatkowy z biezaca stawka, statystykami i ostatnia aktywnoscia (przelacz klawiszem T)]]></pl>
             <uk><![CDATA[???????? HUD ???????? ? ???????? ???????, ??????????? ?? ??????????? ?????????? (?????????? ???????? T)]]></uk>
         
             <cz>[EN] <![CDATA[Show the Tax HUD overlay with current rate, statistics and recent activity (toggle with T key)]]></cz>
             <br>[EN] <![CDATA[Show the Tax HUD overlay with current rate, statistics and recent activity (toggle with T key)]]></br>
             <ru>[EN] <![CDATA[Show the Tax HUD overlay with current rate, statistics and recent activity (toggle with T key)]]></ru>
-            <da><![CDATA[Vis skatte-HUD-overlayet med aktuel sats, statistik og seneste aktivitet (sl├»┬┐┬¢ til/fra med T-tasten)]]></da>
+            <da><![CDATA[Vis skatte-HUD-overlayet med aktuel sats, statistik og seneste aktivitet (slâ”œÂ»â”¬â”â”¬Â¢ til/fra med T-tasten)]]></da>
         </text>
 
         <!-- HUD toggle key binding display name -->
@@ -397,7 +397,7 @@ Funkcje:
             <cz>[EN] <![CDATA[Toggle Tax HUD]]></cz>
             <br>[EN] <![CDATA[Toggle Tax HUD]]></br>
             <ru>[EN] <![CDATA[Toggle Tax HUD]]></ru>
-            <da><![CDATA[Sl├»┬┐┬¢ skatte-HUD til/fra]]></da>
+            <da><![CDATA[Slâ”œÂ»â”¬â”â”¬Â¢ skatte-HUD til/fra]]></da>
         </text>
         <text name="input_TM_HUD_DRAG">
             <en>Tax HUD Edit Mode</en>
@@ -821,32 +821,32 @@ Funkcje:
             <vi><![CDATA[[EN] Tax posture glance: on/off, bill, March, balance share, countdown, lifetime paid, ledger summary.]]></vi>
         </text>
         <text name="tax_rf_pda_hint_rates">
-            <en><![CDATA[Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></en>
-            <de><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></de>
-            <fr><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></fr>
-            <pl><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></pl>
-            <es><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></es>
-            <it><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></it>
-            <cz><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></cz>
-            <br><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></br>
-            <uk><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></uk>
-            <ru><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></ru>
-            <da><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></da>
-            <ct><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></ct>
-            <ea><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></ea>
-            <fc><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></fc>
-            <fi><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></fi>
-            <hu><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></hu>
-            <id><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></id>
-            <jp><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></jp>
-            <kr><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></kr>
-            <nl><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></nl>
-            <no><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></no>
-            <pt><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></pt>
-            <ro><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></ro>
-            <sv><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></sv>
-            <tr><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></tr>
-            <vi><![CDATA[[EN] Daily rate: %s (%.0f%%) ├é┬À March rate: %.0f%% ├é┬À Min balance: %s]]></vi>
+            <en><![CDATA[Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></en>
+            <de><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></de>
+            <fr><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></fr>
+            <pl><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></pl>
+            <es><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></es>
+            <it><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></it>
+            <cz><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></cz>
+            <br><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></br>
+            <uk><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></uk>
+            <ru><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></ru>
+            <da><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></da>
+            <ct><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></ct>
+            <ea><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></ea>
+            <fc><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></fc>
+            <fi><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></fi>
+            <hu><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></hu>
+            <id><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></id>
+            <jp><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></jp>
+            <kr><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></kr>
+            <nl><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></nl>
+            <no><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></no>
+            <pt><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></pt>
+            <ro><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></ro>
+            <sv><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></sv>
+            <tr><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></tr>
+            <vi><![CDATA[[EN] Daily rate: %s (%.0f%%) â”œÃ©â”¬Ã€ March rate: %.0f%% â”œÃ©â”¬Ã€ Min balance: %s]]></vi>
         </text>
         <text name="tax_rf_pda_lbl_min_balance">
             <en><![CDATA[Min balance]]></en>
