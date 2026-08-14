@@ -34,3 +34,6 @@
 
 ## Deferred / parked
 - Consuming a peer earnings API instead of reading `farm.money` directly: parked; direct read is correct and simpler for v1.
+
+## 2026-08-14 (Fred): F160 - the irrigation-expense day index matches SCS's corrected schedule
+- [x] CropStressIrrigationExpense mirrored SCS's old day-of-week read (env.currentDayInPeriod, pinned at 1 on a default save). It now derives the index from the monotonic day modulo 7, matching SCS's F160 fix, so the accrual lands on the days SCS actually runs. DAILY_DEPRECIATION_PER_SYSTEM stays 0 (balance-pass number).
