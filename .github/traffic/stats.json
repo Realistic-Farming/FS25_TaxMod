@@ -19919,5 +19919,196 @@
     "stars": 10,
     "forks": 1,
     "watchers": 2
+  },
+  {
+    "timestamp": "2026-08-17T06:45:09Z",
+    "date": "2026-08-17",
+    "views": {
+      "count": 164,
+      "uniques": 75
+    },
+    "clones": {
+      "count": 396,
+      "uniques": 89
+    },
+    "referrers": [
+      {
+        "referrer": "github.com",
+        "count": 114,
+        "uniques": 57
+      },
+      {
+        "referrer": "Google",
+        "count": 23,
+        "uniques": 11
+      },
+      {
+        "referrer": "Bing",
+        "count": 1,
+        "uniques": 1
+      },
+      {
+        "referrer": "kingmods.net",
+        "count": 1,
+        "uniques": 1
+      },
+      {
+        "referrer": "realisticfarming.com",
+        "count": 1,
+        "uniques": 1
+      }
+    ],
+    "popular_paths": [
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod",
+        "title": "Overview",
+        "count": 101,
+        "uniques": 72
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.0",
+        "title": "/releases/tag/v1.1.5.0",
+        "count": 24,
+        "uniques": 17
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/releases",
+        "title": "/releases",
+        "count": 20,
+        "uniques": 12
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/issues",
+        "title": "/issues",
+        "count": 3,
+        "uniques": 2
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/pull/25",
+        "title": "/pull/25",
+        "count": 2,
+        "uniques": 2
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/blob/main/FS25_TaxMod.zip",
+        "title": "/blob/main/FS25_TaxMod.zip",
+        "count": 2,
+        "uniques": 1
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/pulls",
+        "title": "/pulls",
+        "count": 2,
+        "uniques": 1
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/actions",
+        "title": "/actions",
+        "count": 1,
+        "uniques": 1
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/actions/runs/31569013714",
+        "title": "/actions/runs/31569013714",
+        "count": 1,
+        "uniques": 1
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/actions/runs/31569013714/job/94026825420",
+        "title": "/actions/runs/31569013714/job/94026825420",
+        "count": 1,
+        "uniques": 1
+      }
+    ],
+    "releases": [
+      {
+        "assets": [
+          {
+            "downloads": 106,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.5.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 0,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.4.2"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 106,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.4.1"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 90,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.4.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 27,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.3.1"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 7,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.3.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 9,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.2.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 0,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.1.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 8,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.0.0"
+      },
+      {
+        "assets": [],
+        "tag": "v1.0.0.0"
+      }
+    ],
+    "stars": 10,
+    "forks": 1,
+    "watchers": 2
   }
 ]
