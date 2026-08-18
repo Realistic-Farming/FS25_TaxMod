@@ -15,6 +15,7 @@
 - Baseline date: 2026-06-30
 
 ## Near-term (next release cycle)
+- [x] API-6 input convention: clear default bindings (2026-08-18): `TM_TOGGLE_HUD` shipped `T` as a default (a collision with chat and the FarmTablet key history). Removed so the player assigns it in the game's control settings (rule 1 of the Input Convention). Action stays registered and rebindable.
 - [x] Load-crash nil guard on the settings path (2026-08-18): `getSettingsPath()` guarded on `missionInfo` existing but not on `missionInfo.savegameDirectory`, which is nil during the shared I3D load, so any early `saveSettings()`/`loadSettings()` call threw "attempt to concatenate nil with string" and aborted the load (reported on SoilFertilizer #857 / #858, the crash with the full RF suite). The guard now covers `savegameDirectory`, and both callers already no-op on a nil path. One line.
 - [x] MP tax bug (F15): DONE on development (commit 8ff9989d). Annual-tax `addMoney` gated on `getIsServer`; `applyDailyTax` only accumulates. Re-verify the release asset matches dev HEAD (asset modDesc was mislabeled 1.1.4.1).
 - [x] StateLedger `TaxMod_Data` bridge live (delegate-when-present); `modSettings/` save kept as the safety copy. Shipped v1.1.5.0. (Fully retiring the FS22 path is a later cleanup.)
