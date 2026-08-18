@@ -160,7 +160,8 @@ local function _migrateLegacyAccrual()
 end
 
 local function getSettingsPath()
-    if g_currentMission and g_currentMission.missionInfo then
+    if g_currentMission and g_currentMission.missionInfo
+       and g_currentMission.missionInfo.savegameDirectory then
         return g_currentMission.missionInfo.savegameDirectory .. "/modSettings/FS25_TaxMod.xml"
     end
 end
