@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-08-18T06:35:53Z
-**Days tracked:** 124 | **Download snapshots:** 457 (hourly)
+**Last updated:** 2026-08-18T12:37:01Z
+**Days tracked:** 124 | **Download snapshots:** 458 (hourly)
 
 ---
 
@@ -11,10 +11,10 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 164 | 75 |
-| Git Clones | 396 | 89 |
+| Page Views | 169 | 74 |
+| Git Clones | 478 | 109 |
 
-> **Engagement:** 2.1 pages per visitor (14-day avg)
+> **Engagement:** 2.2 pages per visitor (14-day avg)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 446 of 75 visitors cloned or downloaded (**594.6%**)
+> **14-day conversion:** 466 of 74 visitors cloned or downloaded (**629.7%**)
 >
-> Unique cloners: 89 | Release downloads: 357
+> Unique cloners: 109 | Release downloads: 357
 
 ---
 
@@ -43,8 +43,8 @@
 | Channel | Count |
 |---------|-------|
 | Zip Downloads | 357 |
-| Git Clones (14-day) | 396 |
-| **Total Acquisitions** | **753** |
+| Git Clones (14-day) | 478 |
+| **Total Acquisitions** | **835** |
 
 ---
 
@@ -54,11 +54,10 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 114 | 57 |
-| Google | 23 | 11 |
+| github.com | 104 | 56 |
+| Google | 25 | 11 |
+| realisticfarming.com | 2 | 1 |
 | Bing | 1 | 1 |
-| kingmods.net | 1 | 1 |
-| realisticfarming.com | 1 | 1 |
 
 ---
 
@@ -78,16 +77,16 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 101 | 72 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.0` | 24 | 17 |
-| `/Realistic-Farming/FS25_TaxMod/releases` | 20 | 12 |
+| `/Realistic-Farming/FS25_TaxMod` | 99 | 71 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.0` | 21 | 18 |
+| `/Realistic-Farming/FS25_TaxMod/releases` | 21 | 13 |
+| `/Realistic-Farming/FS25_TaxMod/pull/25` | 4 | 3 |
 | `/Realistic-Farming/FS25_TaxMod/issues` | 3 | 2 |
-| `/Realistic-Farming/FS25_TaxMod/pull/25` | 2 | 2 |
-| `/Realistic-Farming/FS25_TaxMod/blob/main/FS25_TaxMod.zip` | 2 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/pulls` | 2 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/pull/22` | 3 | 2 |
+| `/Realistic-Farming/FS25_TaxMod/pull/26` | 3 | 2 |
+| `/Realistic-Farming/FS25_TaxMod/pulls` | 3 | 2 |
+| `/Realistic-Farming/FS25_TaxMod/pull/28` | 2 | 2 |
 | `/Realistic-Farming/FS25_TaxMod/actions` | 1 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/actions/runs/31569013714` | 1 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/actions/runs/31569013714/job/94026825420` | 1 | 1 |
 
 ---
 

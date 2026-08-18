@@ -2873,26 +2873,21 @@
   "2026-08-18": [
     {
       "referrer": "github.com",
-      "count": 114,
-      "uniques": 57
+      "count": 104,
+      "uniques": 56
     },
     {
       "referrer": "Google",
-      "count": 23,
+      "count": 25,
       "uniques": 11
     },
     {
-      "referrer": "Bing",
-      "count": 1,
-      "uniques": 1
-    },
-    {
-      "referrer": "kingmods.net",
-      "count": 1,
-      "uniques": 1
-    },
-    {
       "referrer": "realisticfarming.com",
+      "count": 2,
+      "uniques": 1
+    },
+    {
+      "referrer": "Bing",
       "count": 1,
       "uniques": 1
     }
