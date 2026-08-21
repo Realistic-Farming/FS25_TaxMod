@@ -10,6 +10,7 @@
 local modDirectory = g_currentModDirectory
 local modName      = g_currentModName
 
+source(modDirectory .. "src/integrations/OptionScalingResolver.lua")
 source(modDirectory .. "src/settings/UIHelper.lua")
 source(modDirectory .. "src/settings/SettingsUI.lua")
 source(modDirectory .. "src/ui/TaxHUD.lua")
@@ -45,6 +46,18 @@ local settings = {
 FS25TaxMod.settings = settings
 
 local TAX_RATE_VALUES = { low = 0.01, medium = 0.02, high = 0.03 }
+
+FS25TaxMod.SPINE_DAILY_TAX = {
+    id   = "tm_dailyTaxRate",
+    dial = "economy",
+    base = 1.0,
+}
+
+FS25TaxMod.SPINE_ANNUAL_TAX = {
+    id   = "tm_annualTaxRate",
+    dial = "economy",
+    base = 1.0,
+}
 
 local stats = {
     totalTaxesPaid        = 0, totalTaxesReturned = 0,
@@ -86,8 +99,21 @@ local function formatMoney(amount)
     return "$" .. tostring(amount)
 end
 
+local function _spineScale(decl)
+    if OptionScalingResolver == nil then return 1.0 end
+    local hub = (g_currentMission ~= nil and g_currentMission.settingsHub) or g_settingsHub
+    local profile = OptionScalingResolver.readProfile(hub)
+    if profile == nil then return 1.0 end
+    return OptionScalingResolver.resolve(decl, profile)
+end
+
 local function getTaxRate()
-    return TAX_RATE_VALUES[settings.taxRate] or 0.02
+    local base = TAX_RATE_VALUES[settings.taxRate] or 0.02
+    return base * _spineScale(FS25TaxMod.SPINE_DAILY_TAX)
+end
+
+local function getAnnualTaxRate()
+    return (settings.annualTaxRate or 0.05) * _spineScale(FS25TaxMod.SPINE_ANNUAL_TAX)
 end
 
 -- Real farm ids only (reject spectator / guided tour / invalid). Same shape as DairyCore F75.
@@ -474,7 +500,7 @@ local function applyAnnualTax()
                 log(string.format("No annual tax accumulated for farm %d. Marking year processed.", farmId), 2)
                 ft.lastTaxYear = currentYear
             else
-                local taxAmount = math.floor(ft.taxesAccumulatedAnnual * settings.annualTaxRate)
+                local taxAmount = math.floor(ft.taxesAccumulatedAnnual * getAnnualTaxRate())
                 if taxAmount <= 0 then
                     log(string.format("Calculated annual tax is zero for farm %d. Resetting.", farmId), 2)
                     ft.taxesAccumulatedAnnual = 0
