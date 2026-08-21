@@ -10,7 +10,10 @@
 -- =========================================================
 
 ---@class TaxHUD
-TaxHUD = {}
+-- BUILD 17:57 + ATTN 18:02 (Wizard hot-reload law, FS25-HotReload-Guide.md Part 1):
+-- reuse the existing class table on Ctrl+R reload so updated methods land on the
+-- table live metatables already reference, instead of orphaning it.
+TaxHUD = TaxHUD or {}
 local TaxHUD_mt = Class(TaxHUD)
 
 TaxHUD.MAX_HISTORY_ROWS  = 5
@@ -638,4 +641,16 @@ end
 
 function TaxHUD:divider(dx, dy, dw, sc)
     self:rect(dx, dy, dw, 0.001 * (sc or 1.0), self.COLORS.DIVIDER)
+end
+
+-- =========================================================
+-- BUILD 17:57 + ATTN 18:02 (hot-reload guide Part 2): force-patch the live
+-- instance after a Ctrl+R reload - mission.taxManager is FS25TaxMod; main.lua now stores the HUD on it (this token).
+if g_currentMission ~= nil and g_currentMission.taxManager ~= nil and g_currentMission.taxManager.taxHUD ~= nil then
+    local inst = g_currentMission.taxManager.taxHUD
+    for k, v in pairs(TaxHUD) do
+        if type(v) == "function" then
+            inst[k] = v
+        end
+    end
 end
