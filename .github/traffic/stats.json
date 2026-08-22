@@ -20882,26 +20882,26 @@
     "watchers": 2
   },
   {
-    "timestamp": "2026-08-22T06:32:18Z",
+    "timestamp": "2026-08-22T12:30:12Z",
     "date": "2026-08-22",
     "views": {
-      "count": 259,
-      "uniques": 81
+      "count": 264,
+      "uniques": 80
     },
     "clones": {
-      "count": 545,
-      "uniques": 118
+      "count": 551,
+      "uniques": 120
     },
     "referrers": [
       {
         "referrer": "github.com",
-        "count": 137,
-        "uniques": 60
+        "count": 133,
+        "uniques": 59
       },
       {
         "referrer": "Google",
-        "count": 24,
-        "uniques": 11
+        "count": 25,
+        "uniques": 12
       },
       {
         "referrer": "realisticfarming.com",
@@ -20913,8 +20913,8 @@
       {
         "path": "/Realistic-Farming/FS25_TaxMod",
         "title": "Overview",
-        "count": 126,
-        "uniques": 74
+        "count": 125,
+        "uniques": 73
       },
       {
         "path": "/Realistic-Farming/FS25_TaxMod/releases",
@@ -20925,7 +20925,7 @@
       {
         "path": "/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.0",
         "title": "/releases/tag/v1.1.5.0",
-        "count": 20,
+        "count": 21,
         "uniques": 19
       },
       {
@@ -20943,25 +20943,25 @@
       {
         "path": "/Realistic-Farming/FS25_TaxMod/pull/25",
         "title": "/pull/25",
-        "count": 6,
+        "count": 7,
         "uniques": 3
       },
       {
         "path": "/Realistic-Farming/FS25_TaxMod/pull/22",
         "title": "/pull/22",
-        "count": 5,
+        "count": 6,
         "uniques": 3
       },
       {
         "path": "/Realistic-Farming/FS25_TaxMod/pull/26",
         "title": "/pull/26",
-        "count": 5,
+        "count": 6,
         "uniques": 3
       },
       {
         "path": "/Realistic-Farming/FS25_TaxMod/pull/28",
         "title": "/pull/28",
-        "count": 4,
+        "count": 5,
         "uniques": 4
       },
       {
@@ -20975,7 +20975,7 @@
       {
         "assets": [
           {
-            "downloads": 9,
+            "downloads": 11,
             "name": "FS25_TaxMod.zip"
           }
         ],
