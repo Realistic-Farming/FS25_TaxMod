@@ -29,7 +29,7 @@
 -- The cross-mod handle is g_currentMission.stateLedger (published in Mission00.load).
 -- =========================================================
 
-TaxStateLedgerBridge = {}
+TaxStateLedgerBridge = TaxStateLedgerBridge or {}
 
 -- LOCKED persistence key. Never renamed after first persist.
 TaxStateLedgerBridge.MODULE_ID = "TaxMod_Data"

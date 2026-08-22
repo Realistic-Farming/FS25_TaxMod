@@ -4,10 +4,10 @@
 -- Read-only; no tax settle / money writes.
 -- =========================================================
 
-TaxRfPdaGuest = {}
+TaxRfPdaGuest = TaxRfPdaGuest or {}
 
-local MOD_DIR = g_currentModDirectory
-local MOD_NAME = g_currentModName
+local MOD_DIR = (TaxModModDirectory or g_currentModDirectory)
+local MOD_NAME = (TaxModModName or g_currentModName)
 local PANEL_ID = "tax"
 local PANEL_ORDER = 60
 local _registered = false

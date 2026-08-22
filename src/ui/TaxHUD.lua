@@ -43,8 +43,8 @@ function TaxHUD.new(taxMod)
     -- Panel anchor: top-left of content area (text starts here)
     -- Wizard 2026-08-21: factory home is the suite layout Wizard arranged
     -- in-game (right column under Soil). A saved hudLayout XML still wins.
-    self.posX       = 0.808189
-    self.posY       = 0.521852
+    self.posX       = 0.627460
+    self.posY       = 0.827408
     self.panelWidth = 0.21
 
     -- Base layout constants (at scale 1.0)

@@ -7,7 +7,7 @@
 -- =========================================================
 
 ---@class TaxSettingsUI
-TaxSettingsUI = {}
+TaxSettingsUI = TaxSettingsUI or {}
 local TaxSettingsUI_mt = Class(TaxSettingsUI)
 
 function TaxSettingsUI.new(taxMod)

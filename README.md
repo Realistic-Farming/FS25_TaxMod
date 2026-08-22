@@ -63,7 +63,7 @@ The Tax HUD shows at a glance:
 | Total paid / returned | Running lifetime totals |
 | Recent Activity | Last few tax events |
 
-Toggle the HUD with **T**. Right-click to drag or resize it.
+Toggle the HUD with the *Toggle Tax HUD* action (no default key - assign one under Options > Controls > Mods). To move or resize it, enter the suite layout edit mode (FS25_MasterHUD's *Edit HUD Layout* action) and drag; right-click exits edit mode.
 
 ---
 
