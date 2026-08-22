@@ -18,7 +18,7 @@
 -- costsEnabled so it never reports a cost the player has switched off.
 -- =====================================================================
 
-CropStressIrrigationExpense = {}
+CropStressIrrigationExpense = CropStressIrrigationExpense or {}
 
 -- Optional daily depreciation per scheduled system. 0 = off. A real schedule
 -- needs a per-system capital value + useful life that the facade snapshot does

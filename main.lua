@@ -7,8 +7,15 @@
 -- Author: TisonK
 -- =========================================================
 
-local modDirectory = g_currentModDirectory
-local modName      = g_currentModName
+-- Hot-reload latch (FuelCosts reference): g_currentModDirectory and
+-- g_currentModName are nil on a live re-source, so they are latched into
+-- module globals on first load, with a g_modsDirectory loose-folder fallback.
+TaxModModDirectory = TaxModModDirectory
+    or g_currentModDirectory
+    or (g_modsDirectory ~= nil and (g_modsDirectory .. "FS25_TaxMod/") or nil)
+TaxModModName = TaxModModName or g_currentModName or "FS25_TaxMod"
+local modDirectory = TaxModModDirectory
+local modName = TaxModModName
 
 source(modDirectory .. "src/integrations/OptionScalingResolver.lua")
 source(modDirectory .. "src/settings/UIHelper.lua")
@@ -20,13 +27,13 @@ source(modDirectory .. "src/integrations/TaxMasterHUDBridge.lua")    -- bedrock:
 source(modDirectory .. "src/integrations/CropStressIrrigationExpense.lua")  -- SCS-011: mirror SCS irrigation operating cost as a deductible expense
 
 -- Esc RF PDA framework joiner (NO-HOST).
-source(g_currentModDirectory .. "src/gui/RfEscModules.lua")
-source(g_currentModDirectory .. "src/gui/RfPdaMenuPage.lua")
-source(g_currentModDirectory .. "src/gui/RfEscBootstrap.lua")
-source(g_currentModDirectory .. "src/gui/RfEscUiDebugger.lua")
-source(g_currentModDirectory .. "src/gui/TaxRfPdaGuest.lua")
+source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/RfEscModules.lua")
+source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/RfPdaMenuPage.lua")
+source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/RfEscBootstrap.lua")
+source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/RfEscUiDebugger.lua")
+source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/TaxRfPdaGuest.lua")
 
-FS25TaxMod = {}
+FS25TaxMod = FS25TaxMod or {}
 FS25TaxMod.modDir  = modDirectory
 FS25TaxMod.modName = modName
 FS25TaxMod.version = "1.1.5.12"
