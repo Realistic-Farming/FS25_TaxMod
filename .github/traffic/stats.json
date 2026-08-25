@@ -21450,5 +21450,195 @@
     "stars": 10,
     "forks": 1,
     "watchers": 2
+  },
+  {
+    "timestamp": "2026-08-25T06:38:48Z",
+    "date": "2026-08-25",
+    "views": {
+      "count": 271,
+      "uniques": 82
+    },
+    "clones": {
+      "count": 581,
+      "uniques": 134
+    },
+    "referrers": [
+      {
+        "referrer": "github.com",
+        "count": 136,
+        "uniques": 61
+      },
+      {
+        "referrer": "Google",
+        "count": 25,
+        "uniques": 13
+      },
+      {
+        "referrer": "realisticfarming.com",
+        "count": 5,
+        "uniques": 3
+      }
+    ],
+    "popular_paths": [
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod",
+        "title": "Overview",
+        "count": 126,
+        "uniques": 75
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/releases",
+        "title": "/releases",
+        "count": 32,
+        "uniques": 20
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.0",
+        "title": "/releases/tag/v1.1.5.0",
+        "count": 20,
+        "uniques": 19
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/issues",
+        "title": "/issues",
+        "count": 11,
+        "uniques": 4
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/pull/34",
+        "title": "/pull/34",
+        "count": 8,
+        "uniques": 3
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/pull/22",
+        "title": "/pull/22",
+        "count": 7,
+        "uniques": 3
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/pull/25",
+        "title": "/pull/25",
+        "count": 7,
+        "uniques": 3
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/pull/26",
+        "title": "/pull/26",
+        "count": 7,
+        "uniques": 3
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.59-pre",
+        "title": "/releases/tag/v1.1.5.59-pre",
+        "count": 5,
+        "uniques": 5
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/pull/28",
+        "title": "/pull/28",
+        "count": 5,
+        "uniques": 4
+      }
+    ],
+    "releases": [
+      {
+        "assets": [
+          {
+            "downloads": 17,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.5.59-pre"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 121,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.5.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 0,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.4.2"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 106,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.4.1"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 90,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.4.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 27,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.3.1"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 7,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.3.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 9,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.2.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 0,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.1.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 8,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.0.0"
+      },
+      {
+        "assets": [],
+        "tag": "v1.0.0.0"
+      }
+    ],
+    "stars": 10,
+    "forks": 1,
+    "watchers": 2
   }
 ]
