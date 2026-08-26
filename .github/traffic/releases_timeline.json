@@ -53,5 +53,10 @@
     "published_at": "2026-08-17T19:02:33Z",
     "tag": "v1.1.5.59-pre",
     "peak_downloads": 17
+  },
+  "v1.1.5.60": {
+    "published_at": "2026-08-26T11:27:39Z",
+    "tag": "v1.1.5.60",
+    "peak_downloads": 1
   }
 }
