@@ -6,7 +6,7 @@
 -- =========================================================
 
 ---@class TaxUIHelper
-TaxUIHelper = {}
+TaxUIHelper = TaxUIHelper or {}
 
 -- =========================================================
 -- Internal helpers

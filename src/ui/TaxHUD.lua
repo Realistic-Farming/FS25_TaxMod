@@ -10,13 +10,27 @@
 -- =========================================================
 
 ---@class TaxHUD
-TaxHUD = {}
+-- BUILD 17:57 + ATTN 18:02 (Wizard hot-reload law, FS25-HotReload-Guide.md Part 1):
+-- reuse the existing class table on Ctrl+R reload so updated methods land on the
+-- table live metatables already reference, instead of orphaning it.
+TaxHUD = TaxHUD or {}
 local TaxHUD_mt = Class(TaxHUD)
 
 TaxHUD.MAX_HISTORY_ROWS  = 5
 TaxHUD.MIN_SCALE         = 0.60
 TaxHUD.MAX_SCALE         = 1.80
 TaxHUD.RESIZE_HANDLE_SIZE = 0.008
+-- Wizard 2026-08-21 width wave: left/right edge drag adjusts a width multiplier,
+-- independent of corner-scale (NPCFavor/Workplace pattern, suite-wide).
+TaxHUD.MIN_WIDTH_MULT = 0.7
+TaxHUD.MAX_WIDTH_MULT = 2.5
+TaxHUD.EDGE_BAND_W    = 0.008
+TaxHUD.EDGE_SENS      = 3.0
+
+local function getBaseGameRenderer()
+    local hud = (g_currentMission ~= nil and g_currentMission.masterHUD) or g_masterHUD
+    return hud ~= nil and hud.renderer or nil
+end
 
 function TaxHUD.new(taxMod)
     local self = setmetatable({}, TaxHUD_mt)
@@ -27,8 +41,10 @@ function TaxHUD.new(taxMod)
     self.visible = true
 
     -- Panel anchor: top-left of content area (text starts here)
-    self.posX       = 0.77
-    self.posY       = 0.72   -- slightly below IncomeHUD default
+    -- Wizard 2026-08-21: factory home is the suite layout Wizard arranged
+    -- in-game (right column under Soil). A saved hudLayout XML still wins.
+    self.posX       = 0.627460
+    self.posY       = 0.827408
     self.panelWidth = 0.21
 
     -- Base layout constants (at scale 1.0)
@@ -39,7 +55,7 @@ function TaxHUD.new(taxMod)
     self.TEXT_SMALL  = 0.0095
 
     -- Scale & edit state
-    self.scale            = 1.0
+    self.scale            = 1.154745   -- factory suite layout (Wizard 2026-08-21)
     self.editMode         = false
     self.dragging         = false
     self.resizing         = false
@@ -50,6 +66,12 @@ function TaxHUD.new(taxMod)
     self.resizeStartScale = 1.0
     self.hoverCorner      = nil
     self.animTimer        = 0
+
+    -- Width state (edge-drag, NPCFavor/Workplace pattern)
+    self.widthMult          = 0.700000   -- factory suite layout (Wizard 2026-08-21)
+    self.edgeDragging       = nil   -- nil | "left" | "right"
+    self.edgeDragStartX     = 0
+    self.edgeDragStartWidth = 1.0
 
     -- Camera freeze
     self.savedCamRotX = nil
@@ -159,10 +181,11 @@ function TaxHUD:enterEditMode()
 end
 
 function TaxHUD:exitEditMode()
-    self.editMode    = false
-    self.dragging    = false
-    self.resizing    = false
-    self.hoverCorner = nil
+    self.editMode     = false
+    self.dragging     = false
+    self.resizing     = false
+    self.edgeDragging = nil
+    self.hoverCorner  = nil
     self.savedCamRotX, self.savedCamRotY, self.savedCamRotZ = nil, nil, nil
     if g_inputBinding and g_inputBinding.setShowMouseCursor then
         g_inputBinding:setShowMouseCursor(false)
@@ -188,6 +211,7 @@ function TaxHUD:saveLayout()
         xml:setFloat("hudLayout.posX",   self.posX)
         xml:setFloat("hudLayout.posY",   self.posY)
         xml:setFloat("hudLayout.scale",  self.scale)
+        xml:setFloat("hudLayout.widthMult", self.widthMult or 1.0)
         xml:setBool("hudLayout.visible", self.visible)
         xml:save()
         xml:delete()
@@ -202,6 +226,8 @@ function TaxHUD:loadLayout()
         self.posX    = xml:getFloat("hudLayout.posX",   self.posX)
         self.posY    = xml:getFloat("hudLayout.posY",   self.posY)
         self.scale   = xml:getFloat("hudLayout.scale",  self.scale)
+        self.widthMult = math.max(TaxHUD.MIN_WIDTH_MULT, math.min(TaxHUD.MAX_WIDTH_MULT,
+            xml:getFloat("hudLayout.widthMult", self.widthMult or 1.0)))
         self.visible = xml:getBool("hudLayout.visible", self.visible)
         xml:delete()
     end
@@ -233,6 +259,16 @@ function TaxHUD:hitTestCorner(posX, posY)
         and posY >= r.y and posY <= r.y + r.h then
             return key
         end
+    end
+    return nil
+end
+
+function TaxHUD:hitTestEdge(posX, posY)
+    local band = TaxHUD.EDGE_BAND_W
+    local bx, by, bw, bh = self.lastBgX, self.lastBgY, self.lastBgW, self.lastBgH
+    if posY >= by and posY <= by + bh then
+        if posX >= bx - band / 2 and posX <= bx + band / 2 then return "left" end
+        if posX >= bx + bw - band / 2 and posX <= bx + bw + band / 2 then return "right" end
     end
     return nil
 end
@@ -270,14 +306,25 @@ function TaxHUD:onMouseEvent(posX, posY, isDown, isUp, button, eventUsed)
         if corner then
             self.resizing         = true
             self.dragging         = false
+            self.edgeDragging     = nil
             self.resizeStartX     = posX
             self.resizeStartY     = posY
             self.resizeStartScale = self.scale
             return true
         end
+        local edge = self:hitTestEdge(posX, posY)
+        if edge then
+            self.edgeDragging       = edge
+            self.dragging           = false
+            self.resizing           = false
+            self.edgeDragStartX     = posX
+            self.edgeDragStartWidth = self.widthMult or 1.0
+            return true
+        end
         if self:isPointerOverHUD(posX, posY) then
             self.dragging    = true
             self.resizing    = false
+            self.edgeDragging = nil
             self.dragOffsetX = posX - self.posX
             self.dragOffsetY = posY - self.posY
         end
@@ -285,9 +332,10 @@ function TaxHUD:onMouseEvent(posX, posY, isDown, isUp, button, eventUsed)
     end
 
     if isUp and button == 1 then
-        if self.dragging or self.resizing then
-            self.dragging = false
-            self.resizing = false
+        if self.dragging or self.resizing or self.edgeDragging then
+            self.dragging     = false
+            self.resizing     = false
+            self.edgeDragging = nil
             self:clampPosition()
         end
         return true
@@ -310,7 +358,17 @@ function TaxHUD:onMouseEvent(posX, posY, isDown, isUp, button, eventUsed)
         self:clampPosition()
     end
 
-    if not self.dragging and not self.resizing then
+    -- Edge width drag: dx scaled by EDGE_SENS, left edge inverted so pulling
+    -- outward always widens (NPCFavor/Workplace pattern).
+    if self.edgeDragging then
+        local dx = posX - self.edgeDragStartX
+        if self.edgeDragging == "left" then dx = -dx end
+        self.widthMult = math.max(TaxHUD.MIN_WIDTH_MULT,
+            math.min(TaxHUD.MAX_WIDTH_MULT, self.edgeDragStartWidth + dx * TaxHUD.EDGE_SENS))
+        self:clampPosition()
+    end
+
+    if not self.dragging and not self.resizing and not self.edgeDragging then
         self.hoverCorner = self:hitTestCorner(posX, posY)
     end
 
@@ -379,7 +437,7 @@ function TaxHUD:drawPanel()
     local stats   = taxMod.stats
 
     local x   = self.posX
-    local w   = self.panelWidth * sc
+    local w   = self.panelWidth * (self.widthMult or 1.0) * sc
     local pad = self.PAD * sc
     local lh  = self.LINE_H * sc
 
@@ -398,18 +456,18 @@ function TaxHUD:drawPanel()
     self.lastBgW = bgW
     self.lastBgH = bgH
 
-    -- Drop shadow
-    self:rect(bgX + 0.002, bgY - 0.002, bgW, bgH, self.COLORS.SHADOW)
-
-    -- Background
-    self:rect(bgX, bgY, bgW, bgH, self.COLORS.BG)
-
-    -- Permanent border
-    local bw = 0.0012
-    self:rect(bgX,            bgY + bgH - bw, bgW, bw, self.COLORS.BORDER)
-    self:rect(bgX,            bgY,            bgW, bw, self.COLORS.BORDER)
-    self:rect(bgX,            bgY,            bw, bgH, self.COLORS.BORDER)
-    self:rect(bgX + bgW - bw, bgY,            bw, bgH, self.COLORS.BORDER)
+    local renderer = getBaseGameRenderer()
+    local usedNativePanel = renderer ~= nil and renderer.renderPanel ~= nil
+        and renderer:renderPanel(bgX, bgY, bgW, bgH, self.COLORS.BG[4])
+    if not usedNativePanel then
+        self:rect(bgX + 0.002, bgY - 0.002, bgW, bgH, self.COLORS.SHADOW)
+        self:rect(bgX, bgY, bgW, bgH, self.COLORS.BG)
+        local bw = 0.0012
+        self:rect(bgX,            bgY + bgH - bw, bgW, bw, self.COLORS.BORDER)
+        self:rect(bgX,            bgY,            bgW, bw, self.COLORS.BORDER)
+        self:rect(bgX,            bgY,            bw, bgH, self.COLORS.BORDER)
+        self:rect(bgX + bgW - bw, bgY,            bw, bgH, self.COLORS.BORDER)
+    end
 
     -- Edit mode chrome
     if self.editMode then
@@ -425,6 +483,14 @@ function TaxHUD:drawPanel()
             local isHover = (self.hoverCorner == key)
             self:rectA(r.x, r.y, r.w, r.h, self.COLORS.EDIT_HANDLE, isHover and 1.0 or 0.65)
         end
+
+        -- Left/right edge width handles (suite width vocabulary)
+        local ehW   = 0.004
+        local inset = bgH * 0.15
+        self:rectA(bgX - ehW / 2,       bgY + inset, ehW, bgH - inset * 2,
+            self.COLORS.EDIT_HANDLE, self.edgeDragging == "left" and 1.0 or 0.65)
+        self:rectA(bgX + bgW - ehW / 2, bgY + inset, ehW, bgH - inset * 2,
+            self.COLORS.EDIT_HANDLE, self.edgeDragging == "right" and 1.0 or 0.65)
     end
 
     -- ── Content rows ──────────────────────────────────────
@@ -448,7 +514,7 @@ function TaxHUD:drawPanel()
     cy = cy - lh
 
     -- Divider
-    self:divider(bgX, cy + lh * 0.35, bgW, sc)
+    self:divider(bgX, cy, bgW, sc)
     cy = cy - 0.004 * sc
 
     -- ── Rate | Return% ────────────────────────────────────
@@ -558,7 +624,7 @@ function TaxHUD:drawPanel()
     cy = cy - lh
 
     -- Divider
-    self:divider(bgX, cy + lh * 0.35, bgW, sc)
+    self:divider(bgX, cy, bgW, sc)
     cy = cy - 0.004 * sc
 
     -- ── History header ───────────────────────────────────
@@ -597,7 +663,7 @@ function TaxHUD:drawPanel()
     end
 
     -- Divider
-    self:divider(bgX, cy + lh * 0.35, bgW, sc)
+    self:divider(bgX, cy, bgW, sc)
     cy = cy - 0.004 * sc
 
     -- Hint row
@@ -636,6 +702,25 @@ function TaxHUD:rectA(rx, ry, rw, rh, color, alpha)
     renderOverlay(self.bgOverlay, rx, ry, rw, rh)
 end
 
-function TaxHUD:divider(dx, dy, dw, sc)
-    self:rect(dx, dy, dw, 0.001 * (sc or 1.0), self.COLORS.DIVIDER)
+function TaxHUD:divider(dx, bandTopY, dw, sc)
+    local dividerH = g_pixelSizeY or (1 / 1080)
+    local bandH = 0.004 * (sc or 1.0)
+    self:rect(dx, bandTopY - (bandH + dividerH) * 0.5,
+        dw, dividerH, self.COLORS.DIVIDER)
+end
+
+-- =========================================================
+-- BUILD 17:57 + ATTN 18:02 (hot-reload guide Part 2): force-patch the live
+-- instance after a Ctrl+R reload - mission.taxManager is FS25TaxMod; main.lua now stores the HUD on it (this token).
+if g_currentMission ~= nil and g_currentMission.taxManager ~= nil and g_currentMission.taxManager.taxHUD ~= nil then
+    local inst = g_currentMission.taxManager.taxHUD
+    for k, v in pairs(TaxHUD) do
+        if type(v) == "function" then
+            inst[k] = v
+        end
+    end
+    -- Fields new in the width wave that a pre-wave live instance lacks.
+    if inst.widthMult == nil then inst.widthMult = 1.0 end
+    -- Delivery proof in log.txt (Wizard 2026-08-21).
+    print("[TaxMod] TaxHUD hot-patched onto live instance")
 end

@@ -23,7 +23,7 @@
 -- The cross-mod handle is g_currentMission.masterHUD (published in Mission00.load).
 -- =========================================================
 
-TaxMasterHUDBridge = {}
+TaxMasterHUDBridge = TaxMasterHUDBridge or {}
 
 TaxMasterHUDBridge.HUD_ID = "TaxMod_HUD"
 TaxMasterHUDBridge.active = false   -- MasterHUD present and we registered

@@ -10,6 +10,7 @@
 - [ ] Decide: keep or remove `returnPercentage`.
 
 ## Bugs
+- [x] Load crash, nil savegameDirectory concat (2026-08-18, PR fix/tax-savegame-dir-nil): `getSettingsPath()` (main.lua:162-166) guarded on `g_currentMission.missionInfo` but concatenated `missionInfo.savegameDirectory`, which is nil during the shared I3D load, so any early settings save/load threw "attempt to concatenate nil with string" and aborted the mission load. Reported as the full-RF-suite load crash on SoilFertilizer #857 / #858. Now guarded on `savegameDirectory`; both callers already no-op on a nil path. 499 SCS + SF suites unaffected; no TaxMod suite exists, the staged Lua syntax gate passes.
 - [x] MP tax bug (F15): RESOLVED on development (commit 8ff9989d, 2026-07-01). The annual-tax `addMoney` is gated on `getIsServer` (main.lua:226); `applyDailyTax` only accumulates and moves no money. Note: the mislabeled pre-release asset (modDesc 1.1.4.1) predates this, so re-verify against dev HEAD before release.
 - [x] TX-001 / TX-002: additional TaxMod bugs fixed in 2026-07-26 bug sweep, merged to main.
 

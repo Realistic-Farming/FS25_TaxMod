@@ -4,7 +4,7 @@
          xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/NMC-TBone/xml-schema/main/modDesc.xsd">
 
     <author>TisonK</author>
-    <version>1.1.5.59</version>
+    <version>1.1.5.60</version>
 
     <title>
         <en>Tax Mod</en>
@@ -1052,9 +1052,8 @@ Funkcje:
     </actions>
 
     <inputBinding>
-        <actionBinding action="TM_TOGGLE_HUD">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_T" />
-        </actionBinding>
+        <!-- API-6 (input convention): no default binding, the player assigns the key. -->
+        <actionBinding action="TM_TOGGLE_HUD" />
         <actionBinding action="TM_HUD_DRAG" />
     </inputBinding>
 

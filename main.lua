@@ -7,9 +7,17 @@
 -- Author: TisonK
 -- =========================================================
 
-local modDirectory = g_currentModDirectory
-local modName      = g_currentModName
+-- Hot-reload latch (FuelCosts reference): g_currentModDirectory and
+-- g_currentModName are nil on a live re-source, so they are latched into
+-- module globals on first load, with a g_modsDirectory loose-folder fallback.
+TaxModModDirectory = TaxModModDirectory
+    or g_currentModDirectory
+    or (g_modsDirectory ~= nil and (g_modsDirectory .. "FS25_TaxMod/") or nil)
+TaxModModName = TaxModModName or g_currentModName or "FS25_TaxMod"
+local modDirectory = TaxModModDirectory
+local modName = TaxModModName
 
+source(modDirectory .. "src/integrations/OptionScalingResolver.lua")
 source(modDirectory .. "src/settings/UIHelper.lua")
 source(modDirectory .. "src/settings/SettingsUI.lua")
 source(modDirectory .. "src/ui/TaxHUD.lua")
@@ -19,13 +27,13 @@ source(modDirectory .. "src/integrations/TaxMasterHUDBridge.lua")    -- bedrock:
 source(modDirectory .. "src/integrations/CropStressIrrigationExpense.lua")  -- SCS-011: mirror SCS irrigation operating cost as a deductible expense
 
 -- Esc RF PDA framework joiner (NO-HOST).
-source(g_currentModDirectory .. "src/gui/RfEscModules.lua")
-source(g_currentModDirectory .. "src/gui/RfPdaMenuPage.lua")
-source(g_currentModDirectory .. "src/gui/RfEscBootstrap.lua")
-source(g_currentModDirectory .. "src/gui/RfEscUiDebugger.lua")
-source(g_currentModDirectory .. "src/gui/TaxRfPdaGuest.lua")
+source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/RfEscModules.lua")
+source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/RfPdaMenuPage.lua")
+source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/RfEscBootstrap.lua")
+source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/RfEscUiDebugger.lua")
+source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/TaxRfPdaGuest.lua")
 
-FS25TaxMod = {}
+FS25TaxMod = FS25TaxMod or {}
 FS25TaxMod.modDir  = modDirectory
 FS25TaxMod.modName = modName
 FS25TaxMod.version = "1.1.5.12"
@@ -45,6 +53,18 @@ local settings = {
 FS25TaxMod.settings = settings
 
 local TAX_RATE_VALUES = { low = 0.01, medium = 0.02, high = 0.03 }
+
+FS25TaxMod.SPINE_DAILY_TAX = {
+    id   = "tm_dailyTaxRate",
+    dial = "economy",
+    base = 1.0,
+}
+
+FS25TaxMod.SPINE_ANNUAL_TAX = {
+    id   = "tm_annualTaxRate",
+    dial = "economy",
+    base = 1.0,
+}
 
 local stats = {
     totalTaxesPaid        = 0, totalTaxesReturned = 0,
@@ -86,8 +106,21 @@ local function formatMoney(amount)
     return "$" .. tostring(amount)
 end
 
+local function _spineScale(decl)
+    if OptionScalingResolver == nil then return 1.0 end
+    local hub = (g_currentMission ~= nil and g_currentMission.settingsHub) or g_settingsHub
+    local profile = OptionScalingResolver.readProfile(hub)
+    if profile == nil then return 1.0 end
+    return OptionScalingResolver.resolve(decl, profile)
+end
+
 local function getTaxRate()
-    return TAX_RATE_VALUES[settings.taxRate] or 0.02
+    local base = TAX_RATE_VALUES[settings.taxRate] or 0.02
+    return base * _spineScale(FS25TaxMod.SPINE_DAILY_TAX)
+end
+
+local function getAnnualTaxRate()
+    return (settings.annualTaxRate or 0.05) * _spineScale(FS25TaxMod.SPINE_ANNUAL_TAX)
 end
 
 -- Real farm ids only (reject spectator / guided tour / invalid). Same shape as DairyCore F75.
@@ -160,7 +193,8 @@ local function _migrateLegacyAccrual()
 end
 
 local function getSettingsPath()
-    if g_currentMission and g_currentMission.missionInfo then
+    if g_currentMission and g_currentMission.missionInfo
+       and g_currentMission.missionInfo.savegameDirectory then
         return g_currentMission.missionInfo.savegameDirectory .. "/modSettings/FS25_TaxMod.xml"
     end
 end
@@ -473,7 +507,7 @@ local function applyAnnualTax()
                 log(string.format("No annual tax accumulated for farm %d. Marking year processed.", farmId), 2)
                 ft.lastTaxYear = currentYear
             else
-                local taxAmount = math.floor(ft.taxesAccumulatedAnnual * settings.annualTaxRate)
+                local taxAmount = math.floor(ft.taxesAccumulatedAnnual * getAnnualTaxRate())
                 if taxAmount <= 0 then
                     log(string.format("Calculated annual tax is zero for farm %d. Resetting.", farmId), 2)
                     ft.taxesAccumulatedAnnual = 0

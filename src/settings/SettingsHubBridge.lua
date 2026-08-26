@@ -13,7 +13,7 @@
 -- applyChange only sets the value back on that table.
 -- =========================================================
 
-TaxSettingsHubBridge = {}
+TaxSettingsHubBridge = TaxSettingsHubBridge or {}
 
 local function applyChange(key, value)
     local tm = g_TaxManager
