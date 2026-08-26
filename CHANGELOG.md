@@ -11,7 +11,7 @@ the repo's git history and README.
 
 ---
 
-## [1.1.5.60] - 2026-08-26
+## [1.1.6.0] - 2026-08-26
 
 ### Fixed
 - Settings path nil-guard: an early settings save during the shared I3D load could concatenate the savegame folder path before it existed and abort the load (the full-suite load crash, SF issues #857/#858). The path is now nil-guarded (PR #34).
