@@ -3015,5 +3015,22 @@
       "count": 5,
       "uniques": 3
     }
+  ],
+  "2026-08-26": [
+    {
+      "referrer": "github.com",
+      "count": 132,
+      "uniques": 58
+    },
+    {
+      "referrer": "Google",
+      "count": 26,
+      "uniques": 14
+    },
+    {
+      "referrer": "realisticfarming.com",
+      "count": 5,
+      "uniques": 3
+    }
   ]
 }
