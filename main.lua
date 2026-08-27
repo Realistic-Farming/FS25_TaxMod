@@ -1018,6 +1018,38 @@ Mission00.load                  = Utils.prependedFunction(Mission00.load, onLoad
 Mission00.loadMission00Finished = Utils.appendedFunction(Mission00.loadMission00Finished, onMissionLoaded)
 FSBaseMission.delete            = Utils.appendedFunction(FSBaseMission.delete, onUnload)
 
+-- ---------------------------------------------------------
+-- Realistic Farming Control Center: publish a runnable delegate.
+--
+-- MasterHUD owns the physical suite HUD keys, so TM_TOGGLE_HUD stays gated as a
+-- native binding. It is surfaced here instead as a Control Center hide/show
+-- button: the # key hides the whole suite at once, this toggles only the Tax HUD,
+-- so a player can disable just this mod. TaxHUD:draw honours taxHUD.visible under
+-- both the MasterHUD bridge and the standalone hook. Live "Hide"/"Show" caption.
+-- ---------------------------------------------------------
+local function registerControlCenterActions()
+    local registry = g_currentMission ~= nil and g_currentMission.rfActionRegistry or nil
+    if registry == nil then return end
+
+    registry.registerAction({
+        action = "TM_TOGGLE_HUD",
+        button = function()
+            local hud = FS25TaxMod ~= nil and FS25TaxMod.taxHUD or nil
+            return (hud ~= nil and hud.visible) and "Hide" or "Show"
+        end,
+        run = function()
+            local hud = FS25TaxMod ~= nil and FS25TaxMod.taxHUD or nil
+            if hud ~= nil and hud.toggleVisibility ~= nil then
+                hud:toggleVisibility()
+                return hud.visible and "Tax HUD shown" or "Tax HUD hidden"
+            end
+        end,
+    })
+end
+
+Mission00.loadMission00Finished = Utils.appendedFunction(
+    Mission00.loadMission00Finished, registerControlCenterActions)
+
 FSBaseMission.update = Utils.appendedFunction(FSBaseMission.update, function(mission, dt)
     if taxHUD then taxHUD:update(dt) end
 end)
