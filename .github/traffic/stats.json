@@ -22054,35 +22054,35 @@
     "watchers": 2
   },
   {
-    "timestamp": "2026-09-02T00:53:10Z",
+    "timestamp": "2026-09-02T18:24:43Z",
     "date": "2026-09-02",
     "views": {
-      "count": 261,
-      "uniques": 85
+      "count": 209,
+      "uniques": 83
     },
     "clones": {
-      "count": 366,
-      "uniques": 88
+      "count": 349,
+      "uniques": 86
     },
     "referrers": [
       {
         "referrer": "github.com",
-        "count": 140,
-        "uniques": 59
+        "count": 122,
+        "uniques": 56
       },
       {
         "referrer": "Google",
-        "count": 18,
-        "uniques": 13
+        "count": 19,
+        "uniques": 14
+      },
+      {
+        "referrer": "kingmods.net",
+        "count": 3,
+        "uniques": 3
       },
       {
         "referrer": "realisticfarming.com",
         "count": 3,
-        "uniques": 2
-      },
-      {
-        "referrer": "kingmods.net",
-        "count": 2,
         "uniques": 2
       }
     ],
@@ -22090,38 +22090,26 @@
       {
         "path": "/Realistic-Farming/FS25_TaxMod",
         "title": "Overview",
-        "count": 124,
-        "uniques": 78
+        "count": 107,
+        "uniques": 75
       },
       {
         "path": "/Realistic-Farming/FS25_TaxMod/releases",
         "title": "/releases",
-        "count": 26,
-        "uniques": 17
+        "count": 20,
+        "uniques": 16
       },
       {
         "path": "/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.6.0",
         "title": "/releases/tag/v1.1.6.0",
-        "count": 17,
-        "uniques": 16
+        "count": 18,
+        "uniques": 17
       },
       {
         "path": "/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.0",
         "title": "/releases/tag/v1.1.5.0",
-        "count": 12,
-        "uniques": 11
-      },
-      {
-        "path": "/Realistic-Farming/FS25_TaxMod/pull/34",
-        "title": "/pull/34",
-        "count": 8,
-        "uniques": 3
-      },
-      {
-        "path": "/Realistic-Farming/FS25_TaxMod/issues",
-        "title": "/issues",
-        "count": 8,
-        "uniques": 2
+        "count": 9,
+        "uniques": 8
       },
       {
         "path": "/Realistic-Farming/FS25_TaxMod/pull/22",
@@ -22130,29 +22118,41 @@
         "uniques": 3
       },
       {
-        "path": "/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.59-pre",
-        "title": "/releases/tag/v1.1.5.59-pre",
-        "count": 5,
-        "uniques": 5
-      },
-      {
         "path": "/Realistic-Farming/FS25_TaxMod/pull/28",
         "title": "/pull/28",
         "count": 5,
         "uniques": 2
       },
       {
+        "path": "/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.59-pre",
+        "title": "/releases/tag/v1.1.5.59-pre",
+        "count": 4,
+        "uniques": 4
+      },
+      {
         "path": "/Realistic-Farming/FS25_TaxMod/branches",
         "title": "/branches",
-        "count": 4,
+        "count": 3,
         "uniques": 2
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/pull/26",
+        "title": "/pull/26",
+        "count": 3,
+        "uniques": 2
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/issues",
+        "title": "/issues",
+        "count": 3,
+        "uniques": 1
       }
     ],
     "releases": [
       {
         "assets": [
           {
-            "downloads": 33,
+            "downloads": 34,
             "name": "FS25_TaxMod.zip"
           }
         ],
