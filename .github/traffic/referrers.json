@@ -3158,8 +3158,8 @@
   "2026-09-10": [
     {
       "referrer": "github.com",
-      "count": 93,
-      "uniques": 51
+      "count": 87,
+      "uniques": 48
     },
     {
       "referrer": "Google",
@@ -3175,6 +3175,11 @@
       "referrer": "kingmods.net",
       "count": 3,
       "uniques": 3
+    },
+    {
+      "referrer": "realisticfarming.com",
+      "count": 1,
+      "uniques": 1
     }
   ]
 }
