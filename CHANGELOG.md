@@ -11,6 +11,11 @@ the repo's git history and README.
 
 ---
 
+## [Unreleased]
+
+### Fixed
+- RSF-F201 PLAYER-lifetime companion: the TM_TOGGLE_HUD wrapper installs once per session (no more rewrap on every client load) and is no longer restored on unload, which could unhook a later mod's wrapper.
+
 ## [1.1.6.0] - 2026-08-26
 
 ### Fixed

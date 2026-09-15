@@ -1160,46 +1160,60 @@ local function onLoad(mission)
         log("Tax Mod v" .. FS25TaxMod.version .. ": Initialized")
     end
 
-    -- Register T key to toggle HUD via PlayerInputComponent hook (race-condition-safe)
+    -- Register T key to toggle HUD via PlayerInputComponent hook (race-condition-safe).
+    -- RSF-F201 PLAYER-lifetime companion: the wrapper is installed ONCE per loaded
+    -- script environment and its record stays on the FS25TaxMod module table.
+    -- Before F201 every client onLoad recaptured and rewrapped (there was no install
+    -- latch) and onUnload put the captured predecessor back, which can unhook a
+    -- later mod's wrapper. Now the mission's registration activity is switched on
+    -- here and off in onUnload; the wrapper body itself is unchanged.
     if mission:getIsClient() and PlayerInputComponent and PlayerInputComponent.registerActionEvents then
-        local original = PlayerInputComponent.registerActionEvents
-        FS25TaxMod._inputHookOriginal = original
-        PlayerInputComponent.registerActionEvents = function(inputComponent, ...)
-            original(inputComponent, ...)
-            if not (inputComponent.player and inputComponent.player.isOwner) then return end
-            if FS25TaxMod.toggleHUDEventId then return end
-            if not taxHUD then return end
+        if not FS25TaxMod._inputHookInstalled then
+            FS25TaxMod._inputHookInstalled = true
+            local original = PlayerInputComponent.registerActionEvents
+            FS25TaxMod._inputHookOriginal = original
+            PlayerInputComponent.registerActionEvents = function(inputComponent, ...)
+                original(inputComponent, ...)
+                if not FS25TaxMod._inputActive then return end
+                if not (inputComponent.player and inputComponent.player.isOwner) then return end
+                if FS25TaxMod.toggleHUDEventId then return end
+                -- Read the module field, not the file-local upvalue: the wrapper is
+                -- session-lived while this file's locals can be re-sourced.
+                if not FS25TaxMod.taxHUD then return end
 
-            g_inputBinding:beginActionEventsModification(PlayerInputComponent.INPUT_CONTEXT_NAME)
-            local ok, id = g_inputBinding:registerActionEvent(
-                InputAction.TM_TOGGLE_HUD,
-                FS25TaxMod,
-                FS25TaxMod.onToggleHUDInput,
-                false, true, false, true
-            )
-            if ok and id then
-                FS25TaxMod.toggleHUDEventId = id
-                g_inputBinding:setActionEventTextPriority(id, GS_PRIO_NORMAL)
-                log("HUD toggle registered", 2)
-            else
-                log("HUD toggle registration failed", 1)
+                g_inputBinding:beginActionEventsModification(PlayerInputComponent.INPUT_CONTEXT_NAME)
+                local ok, id = g_inputBinding:registerActionEvent(
+                    InputAction.TM_TOGGLE_HUD,
+                    FS25TaxMod,
+                    FS25TaxMod.onToggleHUDInput,
+                    false, true, false, true
+                )
+                if ok and id then
+                    FS25TaxMod.toggleHUDEventId = id
+                    g_inputBinding:setActionEventTextPriority(id, GS_PRIO_NORMAL)
+                    log("HUD toggle registered", 2)
+                else
+                    log("HUD toggle registration failed", 1)
+                end
+
+                -- HUD drag (enter/exit edit mode) - PLAYER context
+                local dragOk, dragId = g_inputBinding:registerActionEvent(
+                    InputAction.TM_HUD_DRAG,
+                    FS25TaxMod,
+                    FS25TaxMod.onHUDDragInput,
+                    false, true, false, true
+                )
+                if dragOk and dragId then
+                    FS25TaxMod.hudDragEventId = dragId
+                    g_inputBinding:setActionEventText(dragId, g_i18n:getText("input_TM_HUD_DRAG") or "Tax HUD Edit Mode")
+                    log("HUD drag registered", 2)
+                end
+
+                g_inputBinding:endActionEventsModification()
             end
-
-            -- HUD drag (enter/exit edit mode) — PLAYER context
-            local dragOk, dragId = g_inputBinding:registerActionEvent(
-                InputAction.TM_HUD_DRAG,
-                FS25TaxMod,
-                FS25TaxMod.onHUDDragInput,
-                false, true, false, true
-            )
-            if dragOk and dragId then
-                FS25TaxMod.hudDragEventId = dragId
-                g_inputBinding:setActionEventText(dragId, g_i18n:getText("input_TM_HUD_DRAG") or "Tax HUD Edit Mode")
-                log("HUD drag registered", 2)
-            end
-
-            g_inputBinding:endActionEventsModification()
         end
+        -- Re-arm for this mission now that the HUD and manager exist.
+        FS25TaxMod._inputActive = true
     end
 end
 
@@ -1288,6 +1302,10 @@ local function onMissionLoaded(mission, node)
 end
 
 local function onUnload()
+    -- RSF-F201: retire this mission's registration activity before the HUD
+    -- cleanup. The PLAYER wrapper itself stays installed (restoring it per
+    -- mission can remove a later mod's wrapper); onLoad re-arms it.
+    FS25TaxMod._inputActive = false
     if taxHUD then
         if taxHUD.editMode then taxHUD:exitEditMode() end
         taxHUD:saveLayout()
@@ -1307,10 +1325,6 @@ local function onUnload()
     if FS25TaxMod.hudDragEventId and g_inputBinding then
         g_inputBinding:removeActionEvent(FS25TaxMod.hudDragEventId)
         FS25TaxMod.hudDragEventId = nil
-    end
-    if FS25TaxMod._inputHookOriginal and PlayerInputComponent then
-        PlayerInputComponent.registerActionEvents = FS25TaxMod._inputHookOriginal
-        FS25TaxMod._inputHookOriginal = nil
     end
     saveSettings()
     isInitialized = false
