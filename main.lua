@@ -1177,7 +1177,9 @@ local function onLoad(mission)
                 if not FS25TaxMod._inputActive then return end
                 if not (inputComponent.player and inputComponent.player.isOwner) then return end
                 if FS25TaxMod.toggleHUDEventId then return end
-                if not taxHUD then return end
+                -- Read the module field, not the file-local upvalue: the wrapper is
+                -- session-lived while this file's locals can be re-sourced.
+                if not FS25TaxMod.taxHUD then return end
 
                 g_inputBinding:beginActionEventsModification(PlayerInputComponent.INPUT_CONTEXT_NAME)
                 local ok, id = g_inputBinding:registerActionEvent(
