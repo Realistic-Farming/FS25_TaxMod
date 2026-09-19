@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-09-17T18:46:51Z
-**Days tracked:** 144 | **Download snapshots:** 559 (hourly)
+**Last updated:** 2026-09-19T06:59:14Z
+**Days tracked:** 145 | **Download snapshots:** 562 (hourly)
 
 ---
 
@@ -11,8 +11,8 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 110 | 51 |
-| Git Clones | 305 | 122 |
+| Page Views | 114 | 52 |
+| Git Clones | 273 | 112 |
 
 > **Engagement:** 2.1 pages per visitor (14-day avg)
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 578 of 51 visitors cloned or downloaded (**1133.3%**)
+> **14-day conversion:** 570 of 52 visitors cloned or downloaded (**1096.1%**)
 >
-> Unique cloners: 122 | Release downloads: 456
+> Unique cloners: 112 | Release downloads: 458
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 456 |
-| Git Clones (14-day) | 305 |
-| **Total Acquisitions** | **761** |
+| Zip Downloads | 458 |
+| Git Clones (14-day) | 273 |
+| **Total Acquisitions** | **731** |
 
 ---
 
@@ -54,11 +54,11 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 55 | 26 |
-| Google | 19 | 13 |
+| github.com | 61 | 28 |
+| Google | 17 | 11 |
 | Bing | 8 | 3 |
+| realisticfarming.com | 2 | 2 |
 | chatgpt.com | 1 | 1 |
-| realisticfarming.com | 1 | 1 |
 
 ---
 
@@ -78,16 +78,16 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 66 | 47 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.6.0` | 20 | 16 |
-| `/Realistic-Farming/FS25_TaxMod/releases` | 6 | 5 |
+| `/Realistic-Farming/FS25_TaxMod` | 70 | 47 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.6.0` | 21 | 17 |
+| `/Realistic-Farming/FS25_TaxMod/releases` | 11 | 10 |
 | `/Realistic-Farming/FS25_TaxMod/tree/development` | 3 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/blob/main/TODO.md` | 1 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/branches` | 1 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/issues` | 1 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/projects` | 1 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/pull/45` | 1 | 1 |
-| `/Realistic-Farming/FS25_TaxMod/pull/46` | 1 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/pull/48` | 1 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/pull/49` | 1 | 1 |
+| `/Realistic-Farming/FS25_TaxMod/pull/51` | 1 | 1 |
 
 ---
 
