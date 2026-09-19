@@ -119,11 +119,13 @@ Funkcje:
 
     <multiplayer supported="true"/>
 
+    <!-- main.lua is the only entry. It source()s every module itself, in
+         dependency order, at lines 20-35. UIHelper, SettingsUI and TaxHUD were
+         ALSO listed here, so the engine ran each of them a second time after
+         main.lua had finished. Removing the three leaves exactly one load each
+         and keeps main.lua the single authority on load order. -->
     <extraSourceFiles>
         <sourceFile filename="main.lua"/>
-        <sourceFile filename="src/settings/UIHelper.lua"/>
-        <sourceFile filename="src/settings/SettingsUI.lua"/>
-        <sourceFile filename="src/ui/TaxHUD.lua"/>
     </extraSourceFiles>
 
     <l10n>
