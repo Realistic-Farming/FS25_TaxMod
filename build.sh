@@ -38,6 +38,7 @@ if command -v zip &>/dev/null; then
         --exclude "./*.sh" \
         --exclude "./.claude/*" \
         --exclude "./.git/*" \
+        --exclude "./.git" \
         --exclude "./.github/*" \
         --exclude "./*.md" \
         --exclude "./.gitignore" \
@@ -63,7 +64,7 @@ ZIP_PATH = os.path.join(MOD_DIR, sys.argv[1] + ".zip")
 
 EXCLUDE_DIRS  = {".git", ".claude", ".github", "__MACOSX", "tools"}
 EXCLUDE_EXTS  = {".sh", ".md", ".DS_Store", ".zip"}
-EXCLUDE_FILES = {".gitignore"}
+EXCLUDE_FILES = {".gitignore", ".git"}  # in a worktree .git is a FILE, not a directory
 
 with zipfile.ZipFile(ZIP_PATH, "w", zipfile.ZIP_DEFLATED) as zf:
     for root, dirs, files in os.walk(MOD_DIR):
