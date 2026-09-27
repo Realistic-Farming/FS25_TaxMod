@@ -77,12 +77,47 @@ local function formatMoney(amount)
     return string.format("%.0f", amount)
 end
 
+--- BUILD 17:48 (George CLOSED DESIGN 17:40 item 1): the body is narrowed here, in the guest, and
+--- nowhere else. It is 368px wide inside a 384px shell whose clipChildren is false, so the wrap ran
+--- through the lime RF button on the right. 32px off the width, which is inside the 24 to 40 the
+--- design allows, and the line cap is lifted because a narrower body wraps the same words onto more
+--- lines and the paragraphs must not be cut off at the bottom.
+--- The shared host XML is deliberately untouched: every module paints into that same element.
+local SIDE_BODY_TRIM_PX = 32
+local SIDE_BODY_MIN_LINES = 18
+
+local function trimSideBody(body)
+    if body == nil then return end
+    if type(body.setSize) == "function" and type(body.size) == "table" and body.size[1] ~= nil
+        and GuiUtils ~= nil and type(GuiUtils.getNormalizedScreenValues) == "function" then
+        if body._rfSideTrimmed ~= true then
+            local ok, norms = pcall(function()
+                return GuiUtils.getNormalizedScreenValues(SIDE_BODY_TRIM_PX .. "px 1px")
+            end)
+            if ok and type(norms) == "table" and type(norms[1]) == "number" and norms[1] > 0 then
+                local w = body.size[1] - norms[1]
+                if w > 0 then
+                    body:setSize(w, body.size[2])
+                    body._rfSideTrimmed = true
+                end
+            end
+        end
+    end
+    if type(body.textMaxNumLines) == "number" and body.textMaxNumLines < SIDE_BODY_MIN_LINES then
+        body.textMaxNumLines = SIDE_BODY_MIN_LINES
+    end
+    if type(body.updateAbsolutePosition) == "function" then
+        pcall(function() body:updateAbsolutePosition() end)
+    end
+end
+
 local function paintSide(container, key, fallback)
     setVis(findDescendant(container, "wcSideInfoShell"), false)
     setVis(findDescendant(container, "mdSideInfoShell"), false)
     local shell = findDescendant(container, "rfSideInfoShell")
     local body = findDescendant(container, "rfSideInfoBody")
     setVis(shell, true)
+    trimSideBody(body)
     setText(body, tr(key, fallback))
 end
 
