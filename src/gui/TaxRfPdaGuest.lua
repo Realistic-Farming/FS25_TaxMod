@@ -77,14 +77,25 @@ local function formatMoney(amount)
     return string.format("%.0f", amount)
 end
 
---- BUILD 17:48 (George CLOSED DESIGN 17:40 item 1): the body is narrowed here, in the guest, and
---- nowhere else. It is 368px wide inside a 384px shell whose clipChildren is false, so the wrap ran
---- through the lime RF button on the right. 32px off the width, which is inside the 24 to 40 the
---- design allows, and the line cap is lifted because a narrower body wraps the same words onto more
---- lines and the paragraphs must not be cut off at the bottom.
---- The shared host XML is deliberately untouched: every module paints into that same element.
+--- The side-info body is 368px wide inside a 384px shell whose clipChildren is false, so the wrap
+--- ran through the lime RF button on the right. 32px comes off the width, inside the 24 to 40 the
+--- design allows.
+---
+--- READ THIS BEFORE COPYING THE PATTERN. rfSideInfoBody is ONE SHARED ELEMENT, not this module's
+--- own. Eight pages paint into it: the RF PDA host draws the Soil and Crop Stress side text there
+--- (RfPdaMenuPage.lua:1594-1602, the same in every door mod), and the Dairy, FertilizerDepot,
+--- Income, NPCFavor, ProStaff and Tax guests draw their own. The _rfSideTrimmed latch lives on
+--- that shared element and nothing restores the width, so:
+---   before this page is opened, the other six still run full width through the button;
+---   after it is opened, all eight are 32px narrower for the rest of the session.
+--- The same page therefore looks different depending on which page was visited first. That is a
+--- real inconsistency and it is NOT fixed here. The two ways out are that every guest painting
+--- this body applies the trim, or that the width moves to the shared door XML and is propagated
+--- byte-same to all door mods under the shared-file invariant. Which one is Wizard's UI-1 call,
+--- so this stays as it is until that is answered rather than guessing at a fleet-wide change.
+---
+--- The shared host XML is deliberately untouched by this module either way.
 local SIDE_BODY_TRIM_PX = 32
-local SIDE_BODY_MIN_LINES = 18
 
 local function trimSideBody(body)
     if body == nil then return end
@@ -103,9 +114,9 @@ local function trimSideBody(body)
             end
         end
     end
-    if type(body.textMaxNumLines) == "number" and body.textMaxNumLines < SIDE_BODY_MIN_LINES then
-        body.textMaxNumLines = SIDE_BODY_MIN_LINES
-    end
+    -- No line-cap raise: rfSideInfoBody already carries textMaxNumLines 36, both on the element
+    -- (RfPdaMenuPage.xml:46) and in its RF_SideInfoBody profile (rfEscProfiles.xml:73-79). The
+    -- floor of 18 this used to apply could never fire, so it was dead code that read as live.
     if type(body.updateAbsolutePosition) == "function" then
         pcall(function() body:updateAbsolutePosition() end)
     end
