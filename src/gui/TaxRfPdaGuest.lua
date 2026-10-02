@@ -77,12 +77,58 @@ local function formatMoney(amount)
     return string.format("%.0f", amount)
 end
 
+--- The side-info body is 368px wide inside a 384px shell whose clipChildren is false, so the wrap
+--- ran through the lime RF button on the right. 32px comes off the width, inside the 24 to 40 the
+--- design allows.
+---
+--- READ THIS BEFORE COPYING THE PATTERN. rfSideInfoBody is ONE SHARED ELEMENT, not this module's
+--- own. Eight pages paint into it: the RF PDA host draws the Soil and Crop Stress side text there
+--- (RfPdaMenuPage.lua:1594-1602, the same in every door mod), and the Dairy, FertilizerDepot,
+--- Income, NPCFavor, ProStaff and Tax guests draw their own. The _rfSideTrimmed latch lives on
+--- that shared element and nothing restores the width, so:
+---   before this page is opened, the other six still run full width through the button;
+---   after it is opened, all eight are 32px narrower for the rest of the session.
+--- The same page therefore looks different depending on which page was visited first. That is a
+--- real inconsistency and it is NOT fixed here. The two ways out are that every guest painting
+--- this body applies the trim, or that the width moves to the shared door XML and is propagated
+--- byte-same to all door mods under the shared-file invariant. Which one is Wizard's UI-1 call,
+--- so this stays as it is until that is answered rather than guessing at a fleet-wide change.
+---
+--- The shared host XML is deliberately untouched by this module either way.
+local SIDE_BODY_TRIM_PX = 32
+
+local function trimSideBody(body)
+    if body == nil then return end
+    if type(body.setSize) == "function" and type(body.size) == "table" and body.size[1] ~= nil
+        and GuiUtils ~= nil and type(GuiUtils.getNormalizedScreenValues) == "function" then
+        if body._rfSideTrimmed ~= true then
+            local ok, norms = pcall(function()
+                return GuiUtils.getNormalizedScreenValues(SIDE_BODY_TRIM_PX .. "px 1px")
+            end)
+            if ok and type(norms) == "table" and type(norms[1]) == "number" and norms[1] > 0 then
+                local w = body.size[1] - norms[1]
+                if w > 0 then
+                    body:setSize(w, body.size[2])
+                    body._rfSideTrimmed = true
+                end
+            end
+        end
+    end
+    -- No line-cap raise: rfSideInfoBody already carries textMaxNumLines 36, both on the element
+    -- (RfPdaMenuPage.xml:46) and in its RF_SideInfoBody profile (rfEscProfiles.xml:73-79). The
+    -- floor of 18 this used to apply could never fire, so it was dead code that read as live.
+    if type(body.updateAbsolutePosition) == "function" then
+        pcall(function() body:updateAbsolutePosition() end)
+    end
+end
+
 local function paintSide(container, key, fallback)
     setVis(findDescendant(container, "wcSideInfoShell"), false)
     setVis(findDescendant(container, "mdSideInfoShell"), false)
     local shell = findDescendant(container, "rfSideInfoShell")
     local body = findDescendant(container, "rfSideInfoBody")
     setVis(shell, true)
+    trimSideBody(body)
     setText(body, tr(key, fallback))
 end
 
