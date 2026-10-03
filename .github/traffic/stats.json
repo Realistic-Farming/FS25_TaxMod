@@ -26331,26 +26331,26 @@
     "watchers": 2
   },
   {
-    "timestamp": "2026-10-03T00:06:49Z",
+    "timestamp": "2026-10-03T18:57:42Z",
     "date": "2026-10-03",
     "views": {
-      "count": 85,
-      "uniques": 52
+      "count": 83,
+      "uniques": 51
     },
     "clones": {
-      "count": 286,
-      "uniques": 99
+      "count": 299,
+      "uniques": 106
     },
     "referrers": [
       {
         "referrer": "github.com",
-        "count": 26,
-        "uniques": 24
+        "count": 27,
+        "uniques": 25
       },
       {
         "referrer": "Google",
-        "count": 17,
-        "uniques": 14
+        "count": 16,
+        "uniques": 13
       },
       {
         "referrer": "Bing",
@@ -26383,14 +26383,14 @@
       {
         "path": "/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.6.0",
         "title": "/releases/tag/v1.1.6.0",
-        "count": 15,
-        "uniques": 13
+        "count": 14,
+        "uniques": 12
       },
       {
         "path": "/Realistic-Farming/FS25_TaxMod/releases",
         "title": "/releases",
-        "count": 9,
-        "uniques": 8
+        "count": 7,
+        "uniques": 6
       },
       {
         "path": "/Realistic-Farming/FS25_TaxMod/blob/07aa6c435dfde6d97b529005711feafa1014126c/src/gui/RfPdaMenuPage.lua",
@@ -26421,13 +26421,19 @@
         "title": "/pull/54",
         "count": 1,
         "uniques": 1
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/pull/59",
+        "title": "/pull/59",
+        "count": 1,
+        "uniques": 1
       }
     ],
     "releases": [
       {
         "assets": [
           {
-            "downloads": 88,
+            "downloads": 93,
             "name": "FS25_TaxMod.zip"
           }
         ],
