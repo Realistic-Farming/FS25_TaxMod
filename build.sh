@@ -48,11 +48,19 @@ if command -v zip &>/dev/null; then
         --exclude "./tools/*"
     echo "  Built via zip"
 else
-    # Python fallback — try python3 first, then Windows launcher (py)
+    # Python fallback — try python3, then python, then the Windows launcher (py).
+    # Each candidate has to RUN, not merely exist: on Windows `python3` resolves to the Microsoft
+    # Store alias stub, which `command -v` finds happily and which then prints "Python was not
+    # found" and exits 49, so a presence test alone picks an interpreter that cannot build.
     PYTHON_CMD=""
-    if command -v python3 &>/dev/null; then PYTHON_CMD="python3"
-    elif command -v py &>/dev/null; then PYTHON_CMD="py"
-    else echo "ERROR: no Python found (need python3 or py)"; exit 1
+    for _py in python3 python py; do
+        if command -v "$_py" &>/dev/null && "$_py" -c "import sys" &>/dev/null; then
+            PYTHON_CMD="$_py"
+            break
+        fi
+    done
+    if [ -z "$PYTHON_CMD" ]; then
+        echo "ERROR: no working Python found (tried python3, python, py)"; exit 1
     fi
     # MOD_NAME is passed in, so the zip is named after the mod, not after the
     # folder (a worktree folder has another name), and lands where ZIP_PATH says.
