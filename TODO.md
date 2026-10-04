@@ -32,3 +32,8 @@
 ## Blocked / waiting on
 - [~] Bedrock migrations: 3/4 adopted (StateLedger/MasterHUD/SettingsHub, v1.1.5.0); NetworkSync remaining.
 - [!] MasterHUD GUI-visibility suppression policy (waits on: audit answer on whether MasterHUD or each panel guards GUI visibility).
+
+## 2026-10-04 (Fred): the shared RF Esc door (Wizard, #62)
+
+- [x] The four shared door files at the suite's STOCK page set, byte-same in all ten door mods; StockGuard's STOCK page chrome inert without StockGuard; the herd-advisory panel hidden.
+- [~] In game (owed): TESTING row 420.
