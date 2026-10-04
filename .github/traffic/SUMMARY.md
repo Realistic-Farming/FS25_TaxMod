@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-10-03T18:58:03Z
-**Days tracked:** 154 | **Download snapshots:** 593 (hourly)
+**Last updated:** 2026-10-04T18:59:55Z
+**Days tracked:** 155 | **Download snapshots:** 595 (hourly)
 
 ---
 
@@ -11,8 +11,8 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 83 | 51 |
-| Git Clones | 299 | 106 |
+| Page Views | 84 | 50 |
+| Git Clones | 280 | 94 |
 
 > **Engagement:** 1.6 pages per visitor (14-day avg)
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 589 of 51 visitors cloned or downloaded (**1154.9%**)
+> **14-day conversion:** 580 of 50 visitors cloned or downloaded (**1160.0%**)
 >
-> Unique cloners: 106 | Release downloads: 483
+> Unique cloners: 94 | Release downloads: 486
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 483 |
-| Git Clones (14-day) | 299 |
-| **Total Acquisitions** | **782** |
+| Zip Downloads | 486 |
+| Git Clones (14-day) | 280 |
+| **Total Acquisitions** | **766** |
 
 ---
 
@@ -54,7 +54,7 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 27 | 25 |
+| github.com | 27 | 23 |
 | Google | 16 | 13 |
 | Bing | 1 | 1 |
 | alice.yandex.ru | 1 | 1 |
@@ -79,8 +79,8 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 55 | 45 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.6.0` | 14 | 12 |
+| `/Realistic-Farming/FS25_TaxMod` | 55 | 44 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.6.0` | 15 | 14 |
 | `/Realistic-Farming/FS25_TaxMod/releases` | 7 | 6 |
 | `/Realistic-Farming/FS25_TaxMod/blob/07aa6c435dfde6d97b529005711feafa1014126c/src/gui/RfPdaMenuPage.lua` | 2 | 2 |
 | `/Realistic-Farming/FS25_TaxMod/blob/main/main.lua` | 1 | 1 |
