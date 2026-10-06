@@ -47,3 +47,8 @@
 
 - [x] The Tax side text in five lines, in every locale entry of `rf_pda_side_info_tax`; `build.sh`'s Python fallback runs each candidate before taking it.
 - [~] In game (owed): TESTING row 458 (#64). #66 is build tooling only (row 457).
+
+## 2026-10-06 (Fred): description and settings texts restored from history (MAINTENANCE row 228)
+
+- [x] modDesc.xml: 151 lines back to the text of f8dada4 (125) or 6b5e244 (26), the description's bullets and accented letters, the settings texts in Ukrainian, Polish, Danish, German, French and others and the Esc rate line's middle dots.
+- [~] In game (owed): TESTING row 489.
