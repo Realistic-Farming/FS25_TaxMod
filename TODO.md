@@ -42,3 +42,8 @@
 
 - [x] The side info boxes start clear of the selected tab; text bodies 352 and 348 px wide, so line length and the right edge are unchanged; byte-same in all ten door mods.
 - [~] In game (owed): TESTING row 444.
+
+## 2026-10-06 (Fred): the Tax side text and the build fallback (Wizard, #64 and #66)
+
+- [x] The Tax side text in five lines, in every locale entry of `rf_pda_side_info_tax`; `build.sh`'s Python fallback runs each candidate before taking it.
+- [~] In game (owed): TESTING row 458 (#64). #66 is build tooling only (row 457).

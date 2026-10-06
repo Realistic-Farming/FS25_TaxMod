@@ -49,3 +49,9 @@
 
 - [x] The shared Esc door file `xml/gui/RfPdaMenuPage.xml`, byte-same in all ten door mods (Wizard, #65, merged at dde50264): the side info boxes (`rfSideInfoShell`, `wcSideInfoShell`, `mdSideInfoShell`, `csSideInfoShell`) take an explicit position and size, 16 px further right and 16 px narrower (384 to 368 px), so the dark box starts clear of the selected tab's lime edge and its right edge stays where it was. The side text bodies narrow by the same 16 px, to 352 px (the main side text, from 368) and 348 px (the Worker Costs and Market Dynamics side help, from 364), so the text starts 16 px further right and each line ends where it did.
 - The change's in-game check is TESTING row 444. Docs by Fred's catch-up, on Tyson's word of 2026-10-05.
+
+## 2026-10-06 (Fred): the Tax side text in five lines, and the build script's Python fallback (Wizard, #64 and #66)
+
+- [x] Esc pause page, Tax tab (#64, merged at 75c704ce): the `rf_pda_side_info_tax` paragraph is broken into five lines at its own sentence boundaries (what the page is, what the figures mean, what the countdown tells you, which settings differ, where to change anything), in every locale entry of the key. Wording otherwise unchanged; no code, no new key, no version bump.
+- [x] Build tooling (#66, merged at 9f6aefd5): `build.sh`'s Python fallback also tries `python`, and takes an interpreter only after it actually runs, so the Windows Store alias stub for `python3` (which exits 49) is no longer picked and the zip is written.
+- The in-game check for #64 is TESTING row 458; #66 is build tooling only and needs none (row 457). Docs by Fred's catch-up, on Tyson's word of 2026-10-05.
