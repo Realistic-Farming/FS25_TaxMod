@@ -142,6 +142,13 @@ function TaxHUD:toggleVisibility()
     end
 end
 
+-- [MAINTENANCE row 272] The annual rate as the HUD shows it: a percentage to a tenth, so a rate read back
+-- through a float (loadSettings' getXMLFloat in main.lua) shows "5%", not "5.0000000745058%".
+function TaxHUD.formatAnnualRate(rate)
+    local pct = math.floor((tonumber(rate) or 0.05) * 1000 + 0.5) / 10
+    return string.format("Annual Rate: %g%%", pct)
+end
+
 -- =========================================================
 -- History recording
 -- =========================================================
@@ -528,7 +535,7 @@ function TaxHUD:drawPanel()
 
     setTextAlignment(RenderText.ALIGN_RIGHT)
     setTextColor(self.COLORS.AMOUNT_POS[1], self.COLORS.AMOUNT_POS[2], self.COLORS.AMOUNT_POS[3], self.COLORS.AMOUNT_POS[4])
-    renderText(x + w, cy - tsNormal, tsNormal, "Annual Rate: " .. (taxMod.settings.annualTaxRate * 100) .. "%") -- Display annual rate
+    renderText(x + w, cy - tsNormal, tsNormal, TaxHUD.formatAnnualRate(taxMod.settings.annualTaxRate)) -- Display annual rate
     cy = cy - lh
 
     -- ── Min balance ───────────────────────────────────────
