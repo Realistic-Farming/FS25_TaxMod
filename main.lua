@@ -25,6 +25,7 @@ source(modDirectory .. "src/settings/SettingsHubBridge.lua")
 source(modDirectory .. "src/integrations/TaxStateLedgerBridge.lua")  -- bedrock: optional StateLedger state bridge
 source(modDirectory .. "src/integrations/TaxMasterHUDBridge.lua")    -- bedrock: optional MasterHUD draw bridge
 source(modDirectory .. "src/integrations/CropStressIrrigationExpense.lua")  -- SCS-011: mirror SCS irrigation operating cost as a deductible expense
+source(modDirectory .. "src/integrations/TaxNetworkSyncBridge.lua")  -- MAINTENANCE row 272: the server's tax record to clients (NetworkSync)
 
 -- Esc RF PDA framework joiner (NO-HOST).
 source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/RfEscModules.lua")
@@ -306,6 +307,7 @@ local function getSettingsPath()
 end
 
 local function saveSettings()
+    if TaxNetworkSyncBridge then TaxNetworkSyncBridge.markDirty() end  -- [row 272] every settings writer and the annual pass save
     local path = getSettingsPath()
     if not path then return end
     -- F224/F179: ensure the modSettings destination under the active save directory
@@ -575,7 +577,8 @@ function FS25TaxMod.applyState(data)
 end
 
 local function applyDailyTax()
-    if not settings.enabled or not g_currentMission then return end
+    -- [row 272] a client synced by NetworkSync takes the server's record instead of keeping its own
+    if not settings.enabled or not g_currentMission or (TaxNetworkSyncBridge and TaxNetworkSyncBridge.clientStandsDown()) then return end
     _migrateLegacyAccrual()
     local farmIds = _farmIdsToScan()
     if #farmIds == 0 then
@@ -627,6 +630,7 @@ local function applyDailyTax()
         stats.taxesAccumulatedAnnual = sum
         stats.daysTaxed = (stats.daysTaxed or 0) + 1
     end
+    if TaxNetworkSyncBridge then TaxNetworkSyncBridge.markDirty() end  -- [row 272]
 end
 
 local function applyMonthlyReturn()
@@ -637,7 +641,7 @@ local function applyMonthlyReturn()
 end
 
 local function applyAnnualTax()
-    if not settings.enabled or not g_currentMission then return end
+    if not settings.enabled or not g_currentMission or (TaxNetworkSyncBridge and TaxNetworkSyncBridge.clientStandsDown()) then return end  -- [row 272]
     _migrateLegacyAccrual()
     local farmIds = _farmIdsToScan()
     if #farmIds == 0 then
@@ -684,6 +688,7 @@ local function applyAnnualTax()
             end
         end
 
+        if anyBucketDue then ft.lastAnnualCharge = farmTax end  -- [row 272] the client's annual notice (not saved)
         if farmTax > 0 then
             -- Only the server moves money; engine syncs balance to clients. Explicit
             -- farmId — never getFarmId() as dedicated authority.
@@ -1004,6 +1009,7 @@ function FS25TaxMod.recordExpense(a, b, c, d)
 
     log(string.format("recordExpense: farm %d %s%s (%s)", farmId,
         amount > 0 and "+" or "", tostring(amount), label), 2)
+    if TaxNetworkSyncBridge then TaxNetworkSyncBridge.markDirty() end  -- [row 272] the ledger totals ride to clients
     return true
 end
 
@@ -1245,6 +1251,8 @@ local function onMissionLoaded(mission, node)
     -- Register with SettingsHub (if installed) so FarmTablet's System Settings
     -- app can list Tax Mod's settings. No-ops safely if SettingsHub is absent.
     TaxSettingsHubBridge.register(FS25TaxMod)
+    -- [row 272] NetworkSync (if installed): the server's tax record to clients, on both sides.
+    if TaxNetworkSyncBridge then TaxNetworkSyncBridge.register(FS25TaxMod) end
 
     -- Register with StateLedger (if installed) as the state load source of truth.
     -- No-ops safely if StateLedger is absent (own XML stays primary). Runs after

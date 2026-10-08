@@ -52,3 +52,8 @@
 
 - [x] modDesc.xml: 151 lines back to the text of f8dada4 (125) or 6b5e244 (26), the description's bullets and accented letters, the settings texts in Ukrainian, Polish, Danish, German, French and others and the Esc rate line's middle dots.
 - [~] In game (owed): TESTING row 489.
+
+## 2026-10-08 (Fred): the server's tax record to clients (MAINTENANCE row 272)
+
+- [x] `src/integrations/TaxNetworkSyncBridge.lua` (new): one public NetworkSync module, `FS25_TaxMod`, carrying the five admin settings, the global scalars and every farm's record as whole numbers (the annual rate in ten-thousandths); a pure client applies it, mirrors its own farm and raises its own daily and annual notices from the change. `main.lua`: the bridge sourced and registered; `applyDailyTax` and `applyAnnualTax` stand down on a synced client; the module is marked dirty in `saveSettings`, `applyDailyTax` and `recordExpense`; the annual pass keeps each farm's last charge (not saved). `src/ui/TaxHUD.lua`: `formatAnnualRate`. Bar `MAINT-272-tax_record_to_clients_test.lua` on NetworkSync's own code (`tools/test/lua/networksync_fixture`, 63b390c); battery `tools/test/mutate_maint272.py`, 19 of 19.
+- [~] In game (owed): TESTING row 525.
