@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 # ============================================================
-# build.sh — Build & deploy FS25_SeasonalCropStress
+# build.sh - Build & deploy FS25_TaxMod
 # Usage:
-#   bash build.sh            — builds zip only
-#   bash build.sh --deploy   — builds zip AND copies to mods folder
+#   bash build.sh            builds FS25_TaxMod.zip in the repo root only
+#   bash build.sh --deploy   builds it AND copies that same file to the mods folder
 # ============================================================
 
 set -e
 
 MOD_NAME="FS25_TaxMod"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-OUTPUT_DIR="$SCRIPT_DIR/.."
-ZIP_PATH="$OUTPUT_DIR/${MOD_NAME}.zip"
+# The zip is written inside the repo root (git-ignored by *.zip), named after
+# MOD_NAME on both build paths, as the fleet's other build scripts do.
+ZIP_PATH="$SCRIPT_DIR/${MOD_NAME}.zip"
 
 # Windows path for mods folder (adjust if needed)
 MODS_DIR="$USERPROFILE/Documents/My Games/FarmingSimulator2025/mods"
@@ -37,6 +38,8 @@ if command -v zip &>/dev/null; then
         --exclude "./*.sh" \
         --exclude "./.claude/*" \
         --exclude "./.git/*" \
+        --exclude "./.git" \
+        --exclude "./.github/*" \
         --exclude "./*.md" \
         --exclude "./.gitignore" \
         --exclude "./__MACOSX/*" \
@@ -45,21 +48,31 @@ if command -v zip &>/dev/null; then
         --exclude "./tools/*"
     echo "  Built via zip"
 else
-    # Python fallback — try python3 first, then Windows launcher (py)
+    # Python fallback — try python3, then python, then the Windows launcher (py).
+    # Each candidate has to RUN, not merely exist: on Windows `python3` resolves to the Microsoft
+    # Store alias stub, which `command -v` finds happily and which then prints "Python was not
+    # found" and exits 49, so a presence test alone picks an interpreter that cannot build.
     PYTHON_CMD=""
-    if command -v python3 &>/dev/null; then PYTHON_CMD="python3"
-    elif command -v py &>/dev/null; then PYTHON_CMD="py"
-    else echo "ERROR: no Python found (need python3 or py)"; exit 1
+    for _py in python3 python py; do
+        if command -v "$_py" &>/dev/null && "$_py" -c "import sys" &>/dev/null; then
+            PYTHON_CMD="$_py"
+            break
+        fi
+    done
+    if [ -z "$PYTHON_CMD" ]; then
+        echo "ERROR: no working Python found (tried python3, python, py)"; exit 1
     fi
-    $PYTHON_CMD - <<'PYEOF'
+    # MOD_NAME is passed in, so the zip is named after the mod, not after the
+    # folder (a worktree folder has another name), and lands where ZIP_PATH says.
+    $PYTHON_CMD - "$MOD_NAME" <<'PYEOF'
 import zipfile, os, sys
 
 MOD_DIR = os.getcwd()
-ZIP_PATH = os.path.join(os.path.dirname(MOD_DIR), os.path.basename(MOD_DIR) + ".zip")
+ZIP_PATH = os.path.join(MOD_DIR, sys.argv[1] + ".zip")
 
-EXCLUDE_DIRS  = {".git", ".claude", "__MACOSX", "tools"}
+EXCLUDE_DIRS  = {".git", ".claude", ".github", "__MACOSX", "tools"}
 EXCLUDE_EXTS  = {".sh", ".md", ".DS_Store", ".zip"}
-EXCLUDE_FILES = {".gitignore"}
+EXCLUDE_FILES = {".gitignore", ".git"}  # in a worktree .git is a FILE, not a directory
 
 with zipfile.ZipFile(ZIP_PATH, "w", zipfile.ZIP_DEFLATED) as zf:
     for root, dirs, files in os.walk(MOD_DIR):
@@ -80,6 +93,13 @@ with zipfile.ZipFile(ZIP_PATH, "w", zipfile.ZIP_DEFLATED) as zf:
 
 print(f"\n  ZIP created: {ZIP_PATH}")
 PYEOF
+fi
+
+# Both paths must have written exactly ZIP_PATH (the old zip was removed above),
+# so --deploy can only ever copy the file this run built.
+if [ ! -f "$ZIP_PATH" ]; then
+    echo "ERROR: the build did not write $ZIP_PATH"
+    exit 1
 fi
 
 echo ""

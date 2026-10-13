@@ -32,3 +32,28 @@
 ## Blocked / waiting on
 - [~] Bedrock migrations: 3/4 adopted (StateLedger/MasterHUD/SettingsHub, v1.1.5.0); NetworkSync remaining.
 - [!] MasterHUD GUI-visibility suppression policy (waits on: audit answer on whether MasterHUD or each panel guards GUI visibility).
+
+## 2026-10-04 (Fred): the shared RF Esc door (Wizard, #62)
+
+- [x] The four shared door files at the suite's STOCK page set, byte-same in all ten door mods; StockGuard's STOCK page chrome inert without StockGuard; the herd-advisory panel hidden.
+- [~] In game (owed): TESTING row 420.
+
+## 2026-10-05 (Fred): the Esc side panel's info box (Wizard, #65)
+
+- [x] The side info boxes start clear of the selected tab; text bodies 352 and 348 px wide, so line length and the right edge are unchanged; byte-same in all ten door mods.
+- [~] In game (owed): TESTING row 444.
+
+## 2026-10-06 (Fred): the Tax side text and the build fallback (Wizard, #64 and #66)
+
+- [x] The Tax side text in five lines, in every locale entry of `rf_pda_side_info_tax`; `build.sh`'s Python fallback runs each candidate before taking it.
+- [~] In game (owed): TESTING row 458 (#64). #66 is build tooling only (row 457).
+
+## 2026-10-06 (Fred): description and settings texts restored from history (MAINTENANCE row 228)
+
+- [x] modDesc.xml: 151 lines back to the text of f8dada4 (125) or 6b5e244 (26), the description's bullets and accented letters, the settings texts in Ukrainian, Polish, Danish, German, French and others and the Esc rate line's middle dots.
+- [~] In game (owed): TESTING row 489.
+
+## 2026-10-08 (Fred): the server's tax record to clients (MAINTENANCE row 272)
+
+- [x] `src/integrations/TaxNetworkSyncBridge.lua` (new): one public NetworkSync module, `FS25_TaxMod`, carrying the five admin settings, the global scalars and every farm's record as whole numbers (the annual rate in ten-thousandths); a pure client applies it, mirrors its own farm and raises its own daily and annual notices from the change. `main.lua`: the bridge sourced and registered; `applyDailyTax` and `applyAnnualTax` stand down on a synced client; the module is marked dirty in `saveSettings`, `applyDailyTax` and `recordExpense`; the annual pass keeps each farm's last charge (not saved). `src/ui/TaxHUD.lua`: `formatAnnualRate`. Bar `MAINT-272-tax_record_to_clients_test.lua` on NetworkSync's own code (`tools/test/lua/networksync_fixture`, 63b390c); battery `tools/test/mutate_maint272.py`, 19 of 19.
+- [~] In game (owed): TESTING row 525.

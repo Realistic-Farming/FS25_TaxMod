@@ -25,12 +25,14 @@ source(modDirectory .. "src/settings/SettingsHubBridge.lua")
 source(modDirectory .. "src/integrations/TaxStateLedgerBridge.lua")  -- bedrock: optional StateLedger state bridge
 source(modDirectory .. "src/integrations/TaxMasterHUDBridge.lua")    -- bedrock: optional MasterHUD draw bridge
 source(modDirectory .. "src/integrations/CropStressIrrigationExpense.lua")  -- SCS-011: mirror SCS irrigation operating cost as a deductible expense
+source(modDirectory .. "src/integrations/TaxNetworkSyncBridge.lua")  -- MAINTENANCE row 272: the server's tax record to clients (NetworkSync)
 
 -- Esc RF PDA framework joiner (NO-HOST).
 source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/RfEscModules.lua")
 source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/RfPdaMenuPage.lua")
 source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/RfEscBootstrap.lua")
 source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/RfEscUiDebugger.lua")
+source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/TaxGuideDialog.lua")
 source((TaxModModDirectory or g_currentModDirectory) .. "src/gui/TaxRfPdaGuest.lua")
 
 FS25TaxMod = FS25TaxMod or {}
@@ -85,8 +87,10 @@ local ledger = { farms = {} }
 FS25TaxMod.ledger = ledger
 
 local lastDay = -1
-local lastMonth = -1
+local lastMonth = -1        -- legacy mirror (the mapped calendar month, for display/save)
+local lastPeriod = -1       -- F224: the native period is the real change-detection gate
 local lastMinuteCheck = -1
+local _initialDueCheckPending = false  -- F224: settle March on first ready check after load
 local isInitialized = false
 local infoNotificationTimer = nil
 local taxHUD = nil
@@ -122,6 +126,66 @@ end
 local function getAnnualTaxRate()
     return (settings.annualTaxRate or 0.05) * _spineScale(FS25TaxMod.SPINE_ANNUAL_TAX)
 end
+
+-- =========================================================
+-- F224: native period -> calendar-month adapter
+-- =========================================================
+-- The engine publishes env.currentPeriod (1-12 season periods), NOT env.currentMonth
+-- (which does not exist), so the old month checks never fired. March (payment, month 3)
+-- and December (advisory, month 12) are NAMED months, not those numeric periods. Build
+-- the period->month bijection by matching the localized period label g_i18n:formatPeriod
+-- (which already accounts for latitude/hemisphere) against the ui_month1..12 texts. No
+-- hardcoded arithmetic, no English parsing. An ambiguous or incomplete map is UNAVAILABLE
+-- (retain accrual, make no guessed collection). Rebuilt when language/latitude changes.
+local _periodMonthMap = nil
+local _periodMonthMapKey = nil
+
+local function _calendarContextKey()
+    local env = g_currentMission and g_currentMission.environment
+    local lat = (env and env.daylight and env.daylight.latitude) or 0
+    -- ui_month1 label doubles as a cheap language probe: it changes with the locale.
+    local probe = (g_i18n ~= nil and g_i18n.getText ~= nil) and g_i18n:getText("ui_month1") or "?"
+    return (lat < 0 and "S" or "N") .. ":" .. tostring(probe)
+end
+
+local function _buildPeriodMonthMap()
+    if g_i18n == nil or g_i18n.formatPeriod == nil or g_i18n.getText == nil then return nil end
+    local monthName = {}
+    for m = 1, 12 do
+        local key = "ui_month" .. m
+        if g_i18n.hasText ~= nil and not g_i18n:hasText(key) then return nil end
+        monthName[m] = g_i18n:getText(key)
+    end
+    local map, usedMonth = {}, {}
+    for p = 1, 12 do
+        local label = nil
+        pcall(function() label = g_i18n:formatPeriod(p, false) end)
+        if label == nil then return nil end
+        local found = nil
+        for m = 1, 12 do
+            if label == monthName[m] then
+                if found ~= nil then return nil end  -- ambiguous label
+                found = m
+            end
+        end
+        if found == nil or usedMonth[found] then return nil end  -- unknown label / not a bijection
+        map[p], usedMonth[found] = found, true
+    end
+    return map
+end
+
+--- The calendar month (1-12, March=3) for a native period, or nil when the mapping is
+--- unavailable/ambiguous. Cached; rebuilt on a language/latitude context change.
+local function _periodMonth(period)
+    local key = _calendarContextKey()
+    if _periodMonthMap == nil or _periodMonthMapKey ~= key then
+        _periodMonthMap = _buildPeriodMonthMap()
+        _periodMonthMapKey = key
+    end
+    if _periodMonthMap == nil or type(period) ~= "number" then return nil end
+    return _periodMonthMap[period]
+end
+FS25TaxMod._periodMonth = _periodMonth  -- exposed for the contract test
 
 -- Real farm ids only (reject spectator / guided tour / invalid). Same shape as DairyCore F75.
 local function _isRealFarmId(farmId)
@@ -166,8 +230,12 @@ local function _ensureFarmTax(farmId)
     end
     local ft = stats.farmTax[farmId]
     if ft == nil then
-        ft = { taxesAccumulatedAnnual = 0, daysTaxed = 0, lastTaxYear = 0 }
+        -- `imported` holds per-origin buckets merged in by an MP->SP conversion, each
+        -- keeping its own acc + paidYear guard (never collapsed into the active bucket).
+        ft = { taxesAccumulatedAnnual = 0, daysTaxed = 0, lastTaxYear = 0, imported = {} }
         stats.farmTax[farmId] = ft
+    elseif ft.imported == nil then
+        ft.imported = {}
     end
     return ft
 end
@@ -189,7 +257,46 @@ local function _migrateLegacyAccrual()
         taxesAccumulatedAnnual = acc,
         daysTaxed = days,
         lastTaxYear = year,
+        imported = {},
     }
+end
+
+-- F224: apply the native g_farmManager.mergedFarms (old -> surviving) map to OUR tax
+-- buckets once. Native cash/loan pooling already happened in the engine; this keeps each
+-- origin's accumulator + paid-year guard as a SEPARATE imported bucket under the surviving
+-- farm (differing lastTaxYear values are never collapsed into one). Idempotent: a mapped
+-- origin is consumed, so a repeat map or restore cannot add the same obligation twice.
+local function _remapMergedFarms()
+    local fm = g_farmManager
+    local map = (fm ~= nil) and fm.mergedFarms or nil
+    if type(map) ~= "table" or next(map) == nil then return end
+    if type(stats.farmTax) ~= "table" then return end
+
+    for oldFarmId, target in pairs(map) do
+        if target ~= nil and target ~= oldFarmId and _isRealFarmId(target) then
+            local src = stats.farmTax[oldFarmId]
+            if src ~= nil then
+                stats.farmTax[oldFarmId] = nil
+                local dst = _ensureFarmTax(target)
+                -- The old farm's active accumulator becomes an imported bucket carrying
+                -- its own paid-year guard; its own imported buckets carry over unchanged.
+                if (src.taxesAccumulatedAnnual or 0) > 0 or (src.lastTaxYear or 0) > 0 then
+                    dst.imported[#dst.imported + 1] = {
+                        acc          = src.taxesAccumulatedAnnual or 0,
+                        paidYear     = src.lastTaxYear or 0,
+                        originFarmId = oldFarmId,
+                    }
+                end
+                for _, b in ipairs(src.imported or {}) do
+                    dst.imported[#dst.imported + 1] = {
+                        acc          = b.acc or 0,
+                        paidYear     = b.paidYear or 0,
+                        originFarmId = b.originFarmId or oldFarmId,
+                    }
+                end
+            end
+        end
+    end
 end
 
 local function getSettingsPath()
@@ -200,8 +307,17 @@ local function getSettingsPath()
 end
 
 local function saveSettings()
+    if TaxNetworkSyncBridge then TaxNetworkSyncBridge.markDirty() end  -- [row 272] every settings writer and the annual pass save
     local path = getSettingsPath()
     if not path then return end
+    -- F224/F179: ensure the modSettings destination under the active save directory
+    -- exists before writing (createXMLFile fails silently if the folder is missing).
+    if g_currentMission and g_currentMission.missionInfo
+       and g_currentMission.missionInfo.savegameDirectory then
+        pcall(function()
+            createFolder(g_currentMission.missionInfo.savegameDirectory .. "/modSettings")
+        end)
+    end
     local xmlFile = createXMLFile("taxSettings", path, "settings")
     if xmlFile == 0 then return end
     setXMLBool(xmlFile,   "settings.enabled",          settings.enabled)
@@ -230,6 +346,15 @@ local function saveSettings()
             setXMLInt(xmlFile, key .. "#accumulated", ft.taxesAccumulatedAnnual or 0)
             setXMLInt(xmlFile, key .. "#daysTaxed", ft.daysTaxed or 0)
             setXMLInt(xmlFile, key .. "#lastTaxYear", ft.lastTaxYear or 0)
+            -- F224: imported per-origin buckets from an MP->SP merge (own paid-year guard).
+            local bi = 0
+            for _, b in ipairs(ft.imported or {}) do
+                local bkey = string.format("%s.bucket(%d)", key, bi)
+                setXMLInt(xmlFile, bkey .. "#acc", b.acc or 0)
+                setXMLInt(xmlFile, bkey .. "#paidYear", b.paidYear or 0)
+                if b.originFarmId ~= nil then setXMLInt(xmlFile, bkey .. "#originFarmId", b.originFarmId) end
+                bi = bi + 1
+            end
             farmTaxIndex = farmTaxIndex + 1
         end
     end
@@ -279,11 +404,25 @@ local function loadSettings()
         local key = string.format("settings.farmTax.farm(%d)", farmTaxIndex)
         local farmId = getXMLInt(xmlFile, key .. "#farmId")
         if farmId == nil then break end
-        stats.farmTax[farmId] = {
+        local ft = {
             taxesAccumulatedAnnual = Utils.getNoNil(getXMLInt(xmlFile, key .. "#accumulated"), 0),
             daysTaxed = Utils.getNoNil(getXMLInt(xmlFile, key .. "#daysTaxed"), 0),
             lastTaxYear = Utils.getNoNil(getXMLInt(xmlFile, key .. "#lastTaxYear"), 0),
+            imported = {},
         }
+        local bi = 0
+        while true do
+            local bkey = string.format("%s.bucket(%d)", key, bi)
+            local acc = getXMLInt(xmlFile, bkey .. "#acc")
+            if acc == nil then break end
+            ft.imported[#ft.imported + 1] = {
+                acc          = acc,
+                paidYear     = Utils.getNoNil(getXMLInt(xmlFile, bkey .. "#paidYear"), 0),
+                originFarmId = getXMLInt(xmlFile, bkey .. "#originFarmId"),
+            }
+            bi = bi + 1
+        end
+        stats.farmTax[farmId] = ft
         farmTaxIndex = farmTaxIndex + 1
     end
     ledger.farms = {}
@@ -331,10 +470,15 @@ function FS25TaxMod.serializeState()
     local farmTax = {}
     if type(stats.farmTax) == "table" then
         for farmId, ft in pairs(stats.farmTax) do
+            local imported = {}
+            for i, b in ipairs(ft.imported or {}) do
+                imported[i] = { acc = b.acc or 0, paidYear = b.paidYear or 0, originFarmId = b.originFarmId }
+            end
             farmTax[farmId] = {
                 taxesAccumulatedAnnual = ft.taxesAccumulatedAnnual or 0,
                 daysTaxed = ft.daysTaxed or 0,
                 lastTaxYear = ft.lastTaxYear or 0,
+                imported = imported,
             }
         end
     end
@@ -373,10 +517,23 @@ function FS25TaxMod.applyState(data)
             for farmId, ft in pairs(st.farmTax) do
                 local fid = tonumber(farmId)
                 if fid ~= nil and type(ft) == "table" then
+                    local imported = {}
+                    if type(ft.imported) == "table" then
+                        for _, b in ipairs(ft.imported) do
+                            if type(b) == "table" then
+                                imported[#imported + 1] = {
+                                    acc          = tonumber(b.acc) or 0,
+                                    paidYear     = tonumber(b.paidYear) or 0,
+                                    originFarmId = tonumber(b.originFarmId),
+                                }
+                            end
+                        end
+                    end
                     stats.farmTax[fid] = {
                         taxesAccumulatedAnnual = tonumber(ft.taxesAccumulatedAnnual) or 0,
                         daysTaxed = tonumber(ft.daysTaxed) or 0,
                         lastTaxYear = tonumber(ft.lastTaxYear) or 0,
+                        imported = imported,
                     }
                 end
             end
@@ -420,7 +577,8 @@ function FS25TaxMod.applyState(data)
 end
 
 local function applyDailyTax()
-    if not settings.enabled or not g_currentMission then return end
+    -- [row 272] a client synced by NetworkSync takes the server's record instead of keeping its own
+    if not settings.enabled or not g_currentMission or (TaxNetworkSyncBridge and TaxNetworkSyncBridge.clientStandsDown()) then return end
     _migrateLegacyAccrual()
     local farmIds = _farmIdsToScan()
     if #farmIds == 0 then
@@ -472,6 +630,7 @@ local function applyDailyTax()
         stats.taxesAccumulatedAnnual = sum
         stats.daysTaxed = (stats.daysTaxed or 0) + 1
     end
+    if TaxNetworkSyncBridge then TaxNetworkSyncBridge.markDirty() end  -- [row 272]
 end
 
 local function applyMonthlyReturn()
@@ -482,7 +641,7 @@ local function applyMonthlyReturn()
 end
 
 local function applyAnnualTax()
-    if not settings.enabled or not g_currentMission then return end
+    if not settings.enabled or not g_currentMission or (TaxNetworkSyncBridge and TaxNetworkSyncBridge.clientStandsDown()) then return end  -- [row 272]
     _migrateLegacyAccrual()
     local farmIds = _farmIdsToScan()
     if #farmIds == 0 then
@@ -499,41 +658,60 @@ local function applyAnnualTax()
         end
     end)
 
-    local anyPaid = false
+    local annualRate = getAnnualTaxRate()
     for _, farmId in ipairs(farmIds) do
         local ft = _ensureFarmTax(farmId)
-        if (ft.lastTaxYear or 0) < currentYear then
-            if (ft.taxesAccumulatedAnnual or 0) <= 0 then
-                log(string.format("No annual tax accumulated for farm %d. Marking year processed.", farmId), 2)
-                ft.lastTaxYear = currentYear
-            else
-                local taxAmount = math.floor(ft.taxesAccumulatedAnnual * getAnnualTaxRate())
-                if taxAmount <= 0 then
-                    log(string.format("Calculated annual tax is zero for farm %d. Resetting.", farmId), 2)
-                    ft.taxesAccumulatedAnnual = 0
-                    ft.lastTaxYear = currentYear
-                else
-                    -- Only the server may move money; engine syncs balance to clients.
-                    -- Explicit farmId — never getFarmId() as dedicated authority.
-                    if isServer then
-                        g_currentMission:addMoney(-taxAmount, farmId, MoneyType.OTHER, true)
-                    end
-                    stats.totalTaxesPaid = (stats.totalTaxesPaid or 0) + taxAmount
-                    ft.taxesAccumulatedAnnual = 0
-                    ft.lastTaxYear = currentYear
+        local farmTax = 0          -- one cash event per farm; each bucket floored separately
+        local anyBucketDue = false
 
-                    if localFarmId ~= nil and farmId == localFarmId then
-                        stats.taxesAccumulatedAnnual = 0
-                        stats.lastTaxYear = currentYear
-                        if taxHUD then
-                            taxHUD:recordTax(taxAmount, 1, stats.taxReturnMonth, true)
-                        end
-                        if settings.showNotification then
-                            g_currentMission:addIngameNotification({1.0, 0.0, 0.0, 1.0},
-                                string.format("Annual tax deducted for %d: -%s", currentYear - 1, formatMoney(taxAmount)))
-                        end
-                    end
+        -- Active bucket: due once per year by its own guard.
+        if (ft.lastTaxYear or 0) < currentYear then
+            anyBucketDue = true
+            if (ft.taxesAccumulatedAnnual or 0) > 0 then
+                farmTax = farmTax + math.floor(ft.taxesAccumulatedAnnual * annualRate)
+            end
+            ft.taxesAccumulatedAnnual = 0
+            ft.lastTaxYear = currentYear
+        end
+
+        -- Imported buckets (MP->SP): each priced and guarded independently, then folded
+        -- into this farm's single charge. An already-paid imported bucket is not billed
+        -- again; its later accrual waits for its own next eligible year.
+        for _, b in ipairs(ft.imported or {}) do
+            if (b.paidYear or 0) < currentYear then
+                anyBucketDue = true
+                if (b.acc or 0) > 0 then
+                    farmTax = farmTax + math.floor(b.acc * annualRate)
                 end
+                b.acc = 0
+                b.paidYear = currentYear
+            end
+        end
+
+        if anyBucketDue then ft.lastAnnualCharge = farmTax end  -- [row 272] the client's annual notice (not saved)
+        if farmTax > 0 then
+            -- Only the server moves money; engine syncs balance to clients. Explicit
+            -- farmId — never getFarmId() as dedicated authority.
+            if isServer then
+                g_currentMission:addMoney(-farmTax, farmId, MoneyType.OTHER, true)
+            end
+            stats.totalTaxesPaid = (stats.totalTaxesPaid or 0) + farmTax
+            if localFarmId ~= nil and farmId == localFarmId then
+                stats.taxesAccumulatedAnnual = 0
+                stats.lastTaxYear = currentYear
+                if taxHUD then
+                    taxHUD:recordTax(farmTax, 1, stats.taxReturnMonth, true)
+                end
+                if settings.showNotification then
+                    g_currentMission:addIngameNotification({1.0, 0.0, 0.0, 1.0},
+                        string.format("Annual tax deducted for %d: -%s", currentYear - 1, formatMoney(farmTax)))
+                end
+            end
+        elseif anyBucketDue then
+            log(string.format("Farm %d: year %d processed, no tax owed.", farmId, currentYear), 2)
+            if localFarmId ~= nil and farmId == localFarmId then
+                stats.taxesAccumulatedAnnual = 0
+                stats.lastTaxYear = currentYear
             end
         end
     end
@@ -554,6 +732,110 @@ local function applyAnnualTax()
     end
 
     saveSettings()
+end
+
+-- =========================================================
+-- F224 / C3: pure tax cash-bill reader (for the emergency-loan forecast)
+-- =========================================================
+FS25TaxMod.TAX_PROJECTION_VERSION = 1
+
+--- DOT function on mission.taxManager (FS25TaxMod). Server-only and PURE: it never
+--- advances taxable state, settles, saves or mutates cursors. Given C3's ascending
+--- daily scenario on its tax-free baseline, TaxMod alone maps period->March, applies
+--- future daily accrual ONCE into the active bucket, prices each eligible bucket
+--- (active + imported) with its own floor + paid-year guard, and emits ONE annual cash
+--- event at the first eligible March (then stops). Already-due-at-asOf quotes current
+--- accrued (no invented current-day accrual; labelled a lower bound). Returns a copied
+--- version-1 snapshot that never aliases live state (F224 directions 5-9).
+---@param farmId number
+---@param scenario table  ascending { {monotonicDay, timeOfDayMs, year, period, balance, isFuture}, ... }
+---@return table  version-1 tax projection snapshot
+function FS25TaxMod.getLoanTaxProjection(farmId, scenario)
+    local result = {
+        version               = FS25TaxMod.TAX_PROJECTION_VERSION,
+        status                = "UNAVAILABLE",
+        farmId                = farmId,
+        dueCalendar           = nil,
+        dueDay                = nil,
+        dueTimeMs             = nil,
+        accruedCashDue        = nil,
+        futureAccrualIncluded = false,
+        cashEvents            = {},
+        coverageReasons       = {},
+    }
+    local function gap(r) result.coverageReasons[#result.coverageReasons + 1] = r end
+
+    -- DOT contract: a colon call passes the module table as farmId. Reject it (and any
+    -- non-number) without guessing a farm.
+    if farmId == FS25TaxMod or type(farmId) ~= "number" then gap("BAD_CALL"); return result end
+    if g_currentMission == nil or g_currentMission.getIsServer == nil or not g_currentMission:getIsServer() then
+        gap("NOT_SERVER"); return result
+    end
+    if not _isRealFarmId(farmId) then gap("INVALID_FARM"); return result end
+    if not settings.enabled then
+        -- Healthy disabled: no scheduled charge, stored accrual preserved.
+        result.status = "OK"; gap("TAX_DISABLED"); return result
+    end
+
+    -- Copy this farm's active accumulator + guard and every imported bucket (pure).
+    local ft = stats.farmTax and stats.farmTax[farmId]
+    local buckets = {}
+    buckets[1] = { acc = (ft and ft.taxesAccumulatedAnnual) or 0, paidYear = (ft and ft.lastTaxYear) or 0 }
+    if ft ~= nil then
+        for _, b in ipairs(ft.imported or {}) do
+            buckets[#buckets + 1] = { acc = b.acc or 0, paidYear = b.paidYear or 0 }
+        end
+    end
+
+    local dailyRate  = getTaxRate()
+    local annualRate = getAnnualTaxRate()
+    local minBalance = settings.minimumBalance or 0
+    local futureAccrual = false
+
+    for _, day in ipairs(scenario or {}) do
+        -- Future daily accrual: once, into the active bucket, above the minimum balance.
+        if day.isFuture == true and type(day.balance) == "number" and day.balance >= minBalance then
+            local add = math.floor(day.balance * dailyRate)
+            if add > 0 then
+                buckets[1].acc = buckets[1].acc + add
+                futureAccrual = true
+            end
+        end
+
+        -- Annual due at the first mapped March in the horizon.
+        local mappedMonth = day.month or _periodMonth(day.period)
+        if mappedMonth == stats.taxReturnMonth then
+            local cash, eligible = 0, false
+            for _, b in ipairs(buckets) do
+                if (b.paidYear or 0) < (day.year or 0) then
+                    eligible = true
+                    cash = cash + math.floor((b.acc or 0) * annualRate)  -- per-bucket floor
+                    b.acc, b.paidYear = 0, day.year
+                end
+            end
+            if eligible then
+                result.status                = "OK"
+                result.futureAccrualIncluded = futureAccrual
+                result.dueDay                = day.monotonicDay
+                result.dueTimeMs             = day.timeOfDayMs
+                result.dueCalendar           = { year = day.year, period = day.period, month = mappedMonth }
+                result.cashEvents[1] = {
+                    year = day.year, amount = cash,
+                    dueDay = day.monotonicDay, dueTimeMs = day.timeOfDayMs, basis = "ANNUAL_MARCH",
+                }
+                return result  -- one event; the owner stops at its first due March
+            end
+        end
+    end
+
+    -- No eligible March inside the horizon: report the current accrued lower bound.
+    local accruedCash = 0
+    for _, b in ipairs(buckets) do accruedCash = accruedCash + math.floor((b.acc or 0) * annualRate) end
+    result.accruedCashDue        = accruedCash
+    result.futureAccrualIncluded = futureAccrual
+    if not futureAccrual then gap("ACCRUAL_LOWER_BOUND") end
+    result.status = (#result.coverageReasons > 0) and "PARTIAL" or "OK"
+    return result
 end
 
 local function taxAdvisory()
@@ -616,6 +898,16 @@ local function createUpdateable()
                     local env = g_currentMission.environment
                     local currentYear = env.currentYear or 0
 
+                    -- F224: settle March on the first ready check after load/enable (the
+                    -- owner due check also runs on a period change below). One-shot.
+                    if _initialDueCheckPending then
+                        _initialDueCheckPending = false
+                        local m0 = _periodMonth(env.currentPeriod)
+                        if m0 == stats.taxReturnMonth and currentYear > (stats.lastTaxYear or 0) then
+                            applyAnnualTax()
+                        end
+                    end
+
                     -- Daily tax accumulation
                     if env.currentDay ~= lastDay then
                         lastDay = env.currentDay
@@ -628,19 +920,27 @@ local function createUpdateable()
                         end
                     end
 
-                    -- Monthly checks for annual tax events
-                    if env.currentMonth ~= lastMonth then
-                        lastMonth = env.currentMonth
+                    -- F224: annual-tax events gate on the NATIVE PERIOD change (env.currentMonth
+                    -- does not exist in the engine — the old check never fired), mapped to the
+                    -- named calendar month. March (3) pays, December (12) advises.
+                    if env.currentPeriod ~= lastPeriod then
+                        lastPeriod = env.currentPeriod
+                        local mappedMonth = _periodMonth(env.currentPeriod)
+                        if mappedMonth ~= nil then
+                            lastMonth = mappedMonth  -- legacy mirror: the named calendar month
 
-                        -- December Tax Advisory
-                        if lastMonth == stats.taxAdvisoryMonth then
-                            taxAdvisory()
-                        end
+                            -- December Tax Advisory.
+                            if mappedMonth == stats.taxAdvisoryMonth then
+                                taxAdvisory()
+                            end
 
-                        -- March Annual Tax Payment (for the previous year)
-                        if lastMonth == stats.taxReturnMonth and currentYear > (stats.lastTaxYear or 0) then
-                            applyAnnualTax()
+                            -- March Annual Tax Payment (for the previous year).
+                            if mappedMonth == stats.taxReturnMonth and currentYear > (stats.lastTaxYear or 0) then
+                                applyAnnualTax()
+                            end
                         end
+                        -- mappedMonth == nil -> mapping unavailable: retain accrual and make no
+                        -- guessed collection; the period gate advances to re-check next period.
                     end
                 end
             end
@@ -709,6 +1009,7 @@ function FS25TaxMod.recordExpense(a, b, c, d)
 
     log(string.format("recordExpense: farm %d %s%s (%s)", farmId,
         amount > 0 and "+" or "", tostring(amount), label), 2)
+    if TaxNetworkSyncBridge then TaxNetworkSyncBridge.markDirty() end  -- [row 272] the ledger totals ride to clients
     return true
 end
 
@@ -865,46 +1166,60 @@ local function onLoad(mission)
         log("Tax Mod v" .. FS25TaxMod.version .. ": Initialized")
     end
 
-    -- Register T key to toggle HUD via PlayerInputComponent hook (race-condition-safe)
+    -- Register T key to toggle HUD via PlayerInputComponent hook (race-condition-safe).
+    -- RSF-F201 PLAYER-lifetime companion: the wrapper is installed ONCE per loaded
+    -- script environment and its record stays on the FS25TaxMod module table.
+    -- Before F201 every client onLoad recaptured and rewrapped (there was no install
+    -- latch) and onUnload put the captured predecessor back, which can unhook a
+    -- later mod's wrapper. Now the mission's registration activity is switched on
+    -- here and off in onUnload; the wrapper body itself is unchanged.
     if mission:getIsClient() and PlayerInputComponent and PlayerInputComponent.registerActionEvents then
-        local original = PlayerInputComponent.registerActionEvents
-        FS25TaxMod._inputHookOriginal = original
-        PlayerInputComponent.registerActionEvents = function(inputComponent, ...)
-            original(inputComponent, ...)
-            if not (inputComponent.player and inputComponent.player.isOwner) then return end
-            if FS25TaxMod.toggleHUDEventId then return end
-            if not taxHUD then return end
+        if not FS25TaxMod._inputHookInstalled then
+            FS25TaxMod._inputHookInstalled = true
+            local original = PlayerInputComponent.registerActionEvents
+            FS25TaxMod._inputHookOriginal = original
+            PlayerInputComponent.registerActionEvents = function(inputComponent, ...)
+                original(inputComponent, ...)
+                if not FS25TaxMod._inputActive then return end
+                if not (inputComponent.player and inputComponent.player.isOwner) then return end
+                if FS25TaxMod.toggleHUDEventId then return end
+                -- Read the module field, not the file-local upvalue: the wrapper is
+                -- session-lived while this file's locals can be re-sourced.
+                if not FS25TaxMod.taxHUD then return end
 
-            g_inputBinding:beginActionEventsModification(PlayerInputComponent.INPUT_CONTEXT_NAME)
-            local ok, id = g_inputBinding:registerActionEvent(
-                InputAction.TM_TOGGLE_HUD,
-                FS25TaxMod,
-                FS25TaxMod.onToggleHUDInput,
-                false, true, false, true
-            )
-            if ok and id then
-                FS25TaxMod.toggleHUDEventId = id
-                g_inputBinding:setActionEventTextPriority(id, GS_PRIO_NORMAL)
-                log("HUD toggle registered", 2)
-            else
-                log("HUD toggle registration failed", 1)
+                g_inputBinding:beginActionEventsModification(PlayerInputComponent.INPUT_CONTEXT_NAME)
+                local ok, id = g_inputBinding:registerActionEvent(
+                    InputAction.TM_TOGGLE_HUD,
+                    FS25TaxMod,
+                    FS25TaxMod.onToggleHUDInput,
+                    false, true, false, true
+                )
+                if ok and id then
+                    FS25TaxMod.toggleHUDEventId = id
+                    g_inputBinding:setActionEventTextPriority(id, GS_PRIO_NORMAL)
+                    log("HUD toggle registered", 2)
+                else
+                    log("HUD toggle registration failed", 1)
+                end
+
+                -- HUD drag (enter/exit edit mode) - PLAYER context
+                local dragOk, dragId = g_inputBinding:registerActionEvent(
+                    InputAction.TM_HUD_DRAG,
+                    FS25TaxMod,
+                    FS25TaxMod.onHUDDragInput,
+                    false, true, false, true
+                )
+                if dragOk and dragId then
+                    FS25TaxMod.hudDragEventId = dragId
+                    g_inputBinding:setActionEventText(dragId, g_i18n:getText("input_TM_HUD_DRAG") or "Tax HUD Edit Mode")
+                    log("HUD drag registered", 2)
+                end
+
+                g_inputBinding:endActionEventsModification()
             end
-
-            -- HUD drag (enter/exit edit mode) — PLAYER context
-            local dragOk, dragId = g_inputBinding:registerActionEvent(
-                InputAction.TM_HUD_DRAG,
-                FS25TaxMod,
-                FS25TaxMod.onHUDDragInput,
-                false, true, false, true
-            )
-            if dragOk and dragId then
-                FS25TaxMod.hudDragEventId = dragId
-                g_inputBinding:setActionEventText(dragId, g_i18n:getText("input_TM_HUD_DRAG") or "Tax HUD Edit Mode")
-                log("HUD drag registered", 2)
-            end
-
-            g_inputBinding:endActionEventsModification()
         end
+        -- Re-arm for this mission now that the HUD and manager exist.
+        FS25TaxMod._inputActive = true
     end
 end
 
@@ -936,6 +1251,8 @@ local function onMissionLoaded(mission, node)
     -- Register with SettingsHub (if installed) so FarmTablet's System Settings
     -- app can list Tax Mod's settings. No-ops safely if SettingsHub is absent.
     TaxSettingsHubBridge.register(FS25TaxMod)
+    -- [row 272] NetworkSync (if installed): the server's tax record to clients, on both sides.
+    if TaxNetworkSyncBridge then TaxNetworkSyncBridge.register(FS25TaxMod) end
 
     -- Register with StateLedger (if installed) as the state load source of truth.
     -- No-ops safely if StateLedger is absent (own XML stays primary). Runs after
@@ -953,9 +1270,19 @@ local function onMissionLoaded(mission, node)
 
     local env = g_currentMission.environment
     if env then
-        lastDay         = tonumber(env.currentDay)   or 1
-        lastMonth       = tonumber(env.currentMonth) or 1
+        lastDay         = tonumber(env.currentDay)    or 1
+        lastPeriod      = tonumber(env.currentPeriod) or -1
+        lastMonth       = _periodMonth(env.currentPeriod) or lastMonth  -- mapped calendar month
         lastMinuteCheck = math.floor((env.dayTime or 0) / 60000)
+    end
+
+    -- F224: settle March on the first update after load (direction 3), and apply any
+    -- native MP->SP farm conversion once now that native farms + the merge map exist
+    -- (loadMission00Finished runs after FarmManager load). Server-only; a repeat map
+    -- cannot double-pool because a mapped origin is consumed.
+    _initialDueCheckPending = true
+    if g_currentMission:getIsServer() then
+        _remapMergedFarms()
     end
 
     if taxHUD then
@@ -983,6 +1310,10 @@ local function onMissionLoaded(mission, node)
 end
 
 local function onUnload()
+    -- RSF-F201: retire this mission's registration activity before the HUD
+    -- cleanup. The PLAYER wrapper itself stays installed (restoring it per
+    -- mission can remove a later mod's wrapper); onLoad re-arms it.
+    FS25TaxMod._inputActive = false
     if taxHUD then
         if taxHUD.editMode then taxHUD:exitEditMode() end
         taxHUD:saveLayout()
@@ -1003,10 +1334,6 @@ local function onUnload()
         g_inputBinding:removeActionEvent(FS25TaxMod.hudDragEventId)
         FS25TaxMod.hudDragEventId = nil
     end
-    if FS25TaxMod._inputHookOriginal and PlayerInputComponent then
-        PlayerInputComponent.registerActionEvents = FS25TaxMod._inputHookOriginal
-        FS25TaxMod._inputHookOriginal = nil
-    end
     saveSettings()
     isInitialized = false
     getfenv(0)["g_TaxManager"] = nil
@@ -1017,6 +1344,38 @@ end
 Mission00.load                  = Utils.prependedFunction(Mission00.load, onLoad)
 Mission00.loadMission00Finished = Utils.appendedFunction(Mission00.loadMission00Finished, onMissionLoaded)
 FSBaseMission.delete            = Utils.appendedFunction(FSBaseMission.delete, onUnload)
+
+-- ---------------------------------------------------------
+-- Realistic Farming Control Center: publish a runnable delegate.
+--
+-- MasterHUD owns the physical suite HUD keys, so TM_TOGGLE_HUD stays gated as a
+-- native binding. It is surfaced here instead as a Control Center hide/show
+-- button: the # key hides the whole suite at once, this toggles only the Tax HUD,
+-- so a player can disable just this mod. TaxHUD:draw honours taxHUD.visible under
+-- both the MasterHUD bridge and the standalone hook. Live "Hide"/"Show" caption.
+-- ---------------------------------------------------------
+local function registerControlCenterActions()
+    local registry = g_currentMission ~= nil and g_currentMission.rfActionRegistry or nil
+    if registry == nil then return end
+
+    registry.registerAction({
+        action = "TM_TOGGLE_HUD",
+        button = function()
+            local hud = FS25TaxMod ~= nil and FS25TaxMod.taxHUD or nil
+            return (hud ~= nil and hud.visible) and "Hide" or "Show"
+        end,
+        run = function()
+            local hud = FS25TaxMod ~= nil and FS25TaxMod.taxHUD or nil
+            if hud ~= nil and hud.toggleVisibility ~= nil then
+                hud:toggleVisibility()
+                return hud.visible and "Tax HUD shown" or "Tax HUD hidden"
+            end
+        end,
+    })
+end
+
+Mission00.loadMission00Finished = Utils.appendedFunction(
+    Mission00.loadMission00Finished, registerControlCenterActions)
 
 FSBaseMission.update = Utils.appendedFunction(FSBaseMission.update, function(mission, dt)
     if taxHUD then taxHUD:update(dt) end
@@ -1035,7 +1394,9 @@ FSBaseMission.draw = Utils.appendedFunction(FSBaseMission.draw, function(mission
     end
 end)
 
-Mission00.saveToXMLFile = Utils.appendedFunction(Mission00.saveToXMLFile, function(mission, xmlFilename)
+-- F224/F179: persist on the career-save event (the active save window the engine
+-- commits in) rather than Mission00.saveToXMLFile. HUD layout stays client-local.
+FSCareerMissionInfo.saveToXMLFile = Utils.appendedFunction(FSCareerMissionInfo.saveToXMLFile, function(missionInfo)
     saveSettings()
     if taxHUD then taxHUD:saveLayout() end
 end)

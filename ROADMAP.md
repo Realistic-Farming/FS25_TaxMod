@@ -39,3 +39,28 @@
 
 ## 2026-08-14 (Fred): F160 - the irrigation-expense day index matches SCS's corrected schedule
 - [x] CropStressIrrigationExpense mirrored SCS's old day-of-week read (env.currentDayInPeriod, pinned at 1 on a default save). It now derives the index from the monotonic day modulo 7, matching SCS's F160 fix, so the accrual lands on the days SCS actually runs. DAILY_DEPRECIATION_PER_SYSTEM stays 0 (balance-pass number).
+
+## 2026-10-04 (Fred): the shared RF Esc door at the suite's STOCK page set (Wizard, #62)
+
+- [x] The four shared Esc door files (`xml/gui/RfPdaMenuPage.xml`, `src/gui/RfPdaMenuPage.lua`, `src/gui/RfEscModules.lua`, `xml/gui/rfEscProfiles.xml`) are at the set every door mod carries, byte-same in all ten (Wizard's STOCK page chain build, #62, merged at 3c6cf4c4): wider sheet cells, the explanation band at up to four lines, the ids and callbacks StockGuard's STOCK page uses (inert without StockGuard), the hidden ids and profiles of DairyCore's herd-advisory panel, ProStaff in the closed-module list, and Soil Fertilizer's AUTO target card kept.
+- The door's in-game check is TESTING row 420. Docs by Fred's catch-up, on Tyson's word of 2026-10-04.
+
+## 2026-10-05 (Fred): the Esc side panel's info box clear of the selected tab (Wizard, #65)
+
+- [x] The shared Esc door file `xml/gui/RfPdaMenuPage.xml`, byte-same in all ten door mods (Wizard, #65, merged at dde50264): the side info boxes (`rfSideInfoShell`, `wcSideInfoShell`, `mdSideInfoShell`, `csSideInfoShell`) take an explicit position and size, 16 px further right and 16 px narrower (384 to 368 px), so the dark box starts clear of the selected tab's lime edge and its right edge stays where it was. The side text bodies narrow by the same 16 px, to 352 px (the main side text, from 368) and 348 px (the Worker Costs and Market Dynamics side help, from 364), so the text starts 16 px further right and each line ends where it did.
+- The change's in-game check is TESTING row 444. Docs by Fred's catch-up, on Tyson's word of 2026-10-05.
+
+## 2026-10-06 (Fred): the Tax side text in five lines, and the build script's Python fallback (Wizard, #64 and #66)
+
+- [x] Esc pause page, Tax tab (#64, merged at 75c704ce): the `rf_pda_side_info_tax` paragraph is broken into five lines at its own sentence boundaries (what the page is, what the figures mean, what the countdown tells you, which settings differ, where to change anything), in every locale entry of the key. Wording otherwise unchanged; no code, no new key, no version bump.
+- [x] Build tooling (#66, merged at 9f6aefd5): `build.sh`'s Python fallback also tries `python`, and takes an interpreter only after it actually runs, so the Windows Store alias stub for `python3` (which exits 49) is no longer picked and the zip is written.
+- The in-game check for #64 is TESTING row 458; #66 is build tooling only and needs none (row 457). Docs by Fred's catch-up, on Tyson's word of 2026-10-05.
+
+## 2026-10-06 (Fred): the mod's description and settings texts readable again in every language (MAINTENANCE row 228)
+
+- [x] 151 lines of `modDesc.xml` (23 to 955) are restored from git history. 6b5e244 (2026-08-08) rewrote the file through the Windows cp1252 code page. Every letter cp1252 holds became U+FFFD (98 lines, among them every bullet of the description). Polish letters fell back to plain ASCII ("Wlacz") and Ukrainian to '?' ("??? ?????????????") (27 lines). 7e2886d (2026-08-10) and later re-encodings then double encoded every non-ASCII line, including 26 lines whose middle dot was written at 6b5e244. 125 lines come back from f8dada4 (2026-07-28), the last commit before 6b5e244, and the 26 from 6b5e244, where they were written. Replaying the damage on f8dada4 reproduces 6b5e244 on every line both hold, and replaying the double encoding on 6b5e244 reproduces development on 1028 of 1167 lines; the rest are later edits with no damaged text. No line was retranslated; the version line and the later edits stay.
+
+## 2026-10-08 (Fred): a player in a hosted game sees the server's taxes (MAINTENANCE row 272)
+
+- [x] In multiplayer, TaxMod had no server-to-client path: a client's HUD, statistics and Esc page showed its own file's settings and record (the last server it quit) or the defaults, while its own shadow tax ticks ran on the side. With FS25_NetworkSync installed, the server's tax settings and every farm's tax record now reach clients; each player's HUD shows their own farm's accrual and ledger totals, and their daily and annual tax notices come from the server's record. Notifications, statistics, HUD and debug choices stay each player's own. Without NetworkSync nothing changes. The HUD's annual rate shows as a whole percentage (it could read "5.0000000745058%" after a reload). Design origin none (Bob's R-15).
+- The in-game check is TESTING row 525.
