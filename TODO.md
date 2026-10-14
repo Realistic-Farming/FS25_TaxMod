@@ -57,3 +57,8 @@
 
 - [x] `src/integrations/TaxNetworkSyncBridge.lua` (new): one public NetworkSync module, `FS25_TaxMod`, carrying the five admin settings, the global scalars and every farm's record as whole numbers (the annual rate in ten-thousandths); a pure client applies it, mirrors its own farm and raises its own daily and annual notices from the change. `main.lua`: the bridge sourced and registered; `applyDailyTax` and `applyAnnualTax` stand down on a synced client; the module is marked dirty in `saveSettings`, `applyDailyTax` and `recordExpense`; the annual pass keeps each farm's last charge (not saved). `src/ui/TaxHUD.lua`: `formatAnnualRate`. Bar `MAINT-272-tax_record_to_clients_test.lua` on NetworkSync's own code (`tools/test/lua/networksync_fixture`, 63b390c); battery `tools/test/mutate_maint272.py`, 19 of 19.
 - [~] In game (owed): TESTING row 525.
+
+## 2026-10-14 (Fred (via Desk)): keyboard defaults (Wizard, #70)
+
+- [x] `modDesc.xml`: TM_TOGGLE_HUD on Right Shift + X, TM_HUD_DRAG on Right Ctrl + X.
+- [~] In game (owed): TESTING row 541.

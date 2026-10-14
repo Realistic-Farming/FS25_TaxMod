@@ -64,3 +64,8 @@
 
 - [x] In multiplayer, TaxMod had no server-to-client path: a client's HUD, statistics and Esc page showed its own file's settings and record (the last server it quit) or the defaults, while its own shadow tax ticks ran on the side. With FS25_NetworkSync installed, the server's tax settings and every farm's tax record now reach clients; each player's HUD shows their own farm's accrual and ledger totals, and their daily and annual tax notices come from the server's record. Notifications, statistics, HUD and debug choices stay each player's own. Without NetworkSync nothing changes. The HUD's annual rate shows as a whole percentage (it could read "5.0000000745058%" after a reload). Design origin none (Bob's R-15).
 - The in-game check is TESTING row 525.
+
+## 2026-10-14 (Fred (via Desk)): keyboard defaults (Wizard, #70)
+
+- [x] Toggle Tax HUD is bound to Right Shift + X and Tax HUD edit mode (TM_HUD_DRAG) to Right Ctrl + X; both were unbound. Three rf_live_key_* strings are added with no reader in this mod. (Wizard's #70, merged at 5b6bb445 on 2026-10-13, one PR of his keyboard-defaults wave.)
+- The in-game check is TESTING row 541. Docs by Fred's catch-up (R-51), on Tyson's word of 2026-10-14.
