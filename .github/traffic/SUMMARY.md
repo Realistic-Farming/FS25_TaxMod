@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-10-19T18:39:02Z
-**Days tracked:** 161 | **Download snapshots:** 633 (hourly)
+**Last updated:** 2026-10-20T18:17:36Z
+**Days tracked:** 162 | **Download snapshots:** 636 (hourly)
 
 ---
 
@@ -11,8 +11,8 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 113 | 70 |
-| Git Clones | 339 | 127 |
+| Page Views | 112 | 70 |
+| Git Clones | 360 | 136 |
 
 > **Engagement:** 1.6 pages per visitor (14-day avg)
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 672 of 70 visitors cloned or downloaded (**960.0%**)
+> **14-day conversion:** 684 of 70 visitors cloned or downloaded (**977.1%**)
 >
-> Unique cloners: 127 | Release downloads: 545
+> Unique cloners: 136 | Release downloads: 548
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 545 |
-| Git Clones (14-day) | 339 |
-| **Total Acquisitions** | **884** |
+| Zip Downloads | 548 |
+| Git Clones (14-day) | 360 |
+| **Total Acquisitions** | **908** |
 
 ---
 
@@ -54,8 +54,8 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 32 | 29 |
-| Google | 24 | 17 |
+| github.com | 31 | 29 |
+| Google | 25 | 18 |
 | realisticfarming.com | 10 | 9 |
 | Bing | 1 | 1 |
 
@@ -77,10 +77,10 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 68 | 55 |
-| `/Realistic-Farming/FS25_TaxMod/releases` | 16 | 15 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.2.0.0` | 14 | 14 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.6.0` | 11 | 11 |
+| `/Realistic-Farming/FS25_TaxMod` | 68 | 56 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.2.0.0` | 15 | 15 |
+| `/Realistic-Farming/FS25_TaxMod/releases` | 15 | 14 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.6.0` | 10 | 10 |
 | `/Realistic-Farming/FS25_TaxMod/issues` | 1 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/issues/58` | 1 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/pull/70` | 1 | 1 |
