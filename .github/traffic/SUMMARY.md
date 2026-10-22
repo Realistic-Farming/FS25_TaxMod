@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-10-21T12:49:20Z
-**Days tracked:** 163 | **Download snapshots:** 639 (hourly)
+**Last updated:** 2026-10-22T00:24:25Z
+**Days tracked:** 164 | **Download snapshots:** 642 (hourly)
 
 ---
 
@@ -11,8 +11,8 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 112 | 70 |
-| Git Clones | 360 | 136 |
+| Page Views | 100 | 61 |
+| Git Clones | 331 | 126 |
 
 > **Engagement:** 1.6 pages per visitor (14-day avg)
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 686 of 70 visitors cloned or downloaded (**980.0%**)
+> **14-day conversion:** 679 of 61 visitors cloned or downloaded (**1113.1%**)
 >
-> Unique cloners: 136 | Release downloads: 550
+> Unique cloners: 126 | Release downloads: 553
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 550 |
-| Git Clones (14-day) | 360 |
-| **Total Acquisitions** | **910** |
+| Zip Downloads | 553 |
+| Git Clones (14-day) | 331 |
+| **Total Acquisitions** | **884** |
 
 ---
 
@@ -54,9 +54,9 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 31 | 29 |
-| Google | 25 | 18 |
-| realisticfarming.com | 10 | 9 |
+| github.com | 28 | 27 |
+| Google | 21 | 15 |
+| realisticfarming.com | 11 | 10 |
 | Bing | 1 | 1 |
 
 ---
@@ -77,10 +77,10 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 68 | 56 |
+| `/Realistic-Farming/FS25_TaxMod` | 55 | 46 |
+| `/Realistic-Farming/FS25_TaxMod/releases` | 17 | 16 |
 | `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.2.0.0` | 15 | 15 |
-| `/Realistic-Farming/FS25_TaxMod/releases` | 15 | 14 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.6.0` | 10 | 10 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.6.0` | 9 | 9 |
 | `/Realistic-Farming/FS25_TaxMod/issues` | 1 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/issues/58` | 1 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/pull/70` | 1 | 1 |
