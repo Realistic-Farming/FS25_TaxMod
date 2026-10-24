@@ -28838,5 +28838,215 @@
     "stars": 10,
     "forks": 1,
     "watchers": 1
+  },
+  {
+    "timestamp": "2026-10-24T00:13:08Z",
+    "date": "2026-10-24",
+    "views": {
+      "count": 97,
+      "uniques": 58
+    },
+    "clones": {
+      "count": 354,
+      "uniques": 138
+    },
+    "referrers": [
+      {
+        "referrer": "github.com",
+        "count": 26,
+        "uniques": 25
+      },
+      {
+        "referrer": "Google",
+        "count": 17,
+        "uniques": 13
+      },
+      {
+        "referrer": "realisticfarming.com",
+        "count": 11,
+        "uniques": 10
+      },
+      {
+        "referrer": "Bing",
+        "count": 3,
+        "uniques": 2
+      }
+    ],
+    "popular_paths": [
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod",
+        "title": "Overview",
+        "count": 51,
+        "uniques": 43
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/releases",
+        "title": "/releases",
+        "count": 18,
+        "uniques": 17
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/releases/tag/v1.2.0.0",
+        "title": "/releases/tag/v1.2.0.0",
+        "count": 15,
+        "uniques": 15
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.6.0",
+        "title": "/releases/tag/v1.1.6.0",
+        "count": 9,
+        "uniques": 9
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/issues",
+        "title": "/issues",
+        "count": 1,
+        "uniques": 1
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/issues/58",
+        "title": "/issues/58",
+        "count": 1,
+        "uniques": 1
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/pull/70",
+        "title": "/pull/70",
+        "count": 1,
+        "uniques": 1
+      },
+      {
+        "path": "/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.5.0",
+        "title": "/releases/tag/v1.1.5.0",
+        "count": 1,
+        "uniques": 1
+      }
+    ],
+    "releases": [
+      {
+        "assets": [
+          {
+            "downloads": 51,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.2.0.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 115,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.6.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 4,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.5.60"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 17,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.5.59-pre"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 122,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.5.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 0,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.4.2"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 106,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.4.1"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 90,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.4.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 27,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.3.1"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 7,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.3.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 9,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.2.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 0,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.1.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 8,
+            "name": "FS25_TaxMod.zip"
+          }
+        ],
+        "tag": "v1.1.0.0"
+      },
+      {
+        "assets": [],
+        "tag": "v1.0.0.0"
+      }
+    ],
+    "stars": 10,
+    "forks": 1,
+    "watchers": 1
   }
 ]
