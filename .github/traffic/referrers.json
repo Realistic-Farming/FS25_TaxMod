@@ -3859,23 +3859,28 @@
   "2026-10-25": [
     {
       "referrer": "github.com",
-      "count": 26,
-      "uniques": 25
+      "count": 25,
+      "uniques": 22
     },
     {
       "referrer": "Google",
       "count": 18,
-      "uniques": 14
+      "uniques": 13
     },
     {
       "referrer": "realisticfarming.com",
-      "count": 10,
-      "uniques": 10
+      "count": 12,
+      "uniques": 12
     },
     {
       "referrer": "Bing",
       "count": 3,
       "uniques": 2
+    },
+    {
+      "referrer": "yandex.ru",
+      "count": 1,
+      "uniques": 1
     }
   ]
 }
