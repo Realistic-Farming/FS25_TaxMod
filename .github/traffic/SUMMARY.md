@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-10-24T00:13:24Z
-**Days tracked:** 166 | **Download snapshots:** 646 (hourly)
+**Last updated:** 2026-10-25T00:46:34Z
+**Days tracked:** 167 | **Download snapshots:** 650 (hourly)
 
 ---
 
@@ -11,8 +11,8 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 97 | 58 |
-| Git Clones | 354 | 138 |
+| Page Views | 97 | 60 |
+| Git Clones | 345 | 137 |
 
 > **Engagement:** 1.6 pages per visitor (14-day avg)
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 694 of 58 visitors cloned or downloaded (**1196.5%**)
+> **14-day conversion:** 698 of 60 visitors cloned or downloaded (**1163.3%**)
 >
-> Unique cloners: 138 | Release downloads: 556
+> Unique cloners: 137 | Release downloads: 561
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 556 |
-| Git Clones (14-day) | 354 |
-| **Total Acquisitions** | **910** |
+| Zip Downloads | 561 |
+| Git Clones (14-day) | 345 |
+| **Total Acquisitions** | **906** |
 
 ---
 
@@ -55,8 +55,8 @@
 | Source | Views | Unique |
 |--------|-------|--------|
 | github.com | 26 | 25 |
-| Google | 17 | 13 |
-| realisticfarming.com | 11 | 10 |
+| Google | 18 | 14 |
+| realisticfarming.com | 10 | 10 |
 | Bing | 3 | 2 |
 
 ---
@@ -77,10 +77,10 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 51 | 43 |
-| `/Realistic-Farming/FS25_TaxMod/releases` | 18 | 17 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.2.0.0` | 15 | 15 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.6.0` | 9 | 9 |
+| `/Realistic-Farming/FS25_TaxMod` | 52 | 44 |
+| `/Realistic-Farming/FS25_TaxMod/releases` | 17 | 17 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.2.0.0` | 16 | 16 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.6.0` | 8 | 8 |
 | `/Realistic-Farming/FS25_TaxMod/issues` | 1 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/issues/58` | 1 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/pull/70` | 1 | 1 |
