@@ -3882,5 +3882,37 @@
       "count": 1,
       "uniques": 1
     }
+  ],
+  "2026-10-30": [
+    {
+      "referrer": "Google",
+      "count": 19,
+      "uniques": 12
+    },
+    {
+      "referrer": "github.com",
+      "count": 17,
+      "uniques": 13
+    },
+    {
+      "referrer": "realisticfarming.com",
+      "count": 14,
+      "uniques": 14
+    },
+    {
+      "referrer": "aocr.org",
+      "count": 3,
+      "uniques": 3
+    },
+    {
+      "referrer": "Bing",
+      "count": 3,
+      "uniques": 2
+    },
+    {
+      "referrer": "yandex.ru",
+      "count": 1,
+      "uniques": 1
+    }
   ]
 }
