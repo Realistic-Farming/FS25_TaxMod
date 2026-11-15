@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-11-13T12:50:01Z
-**Days tracked:** 174 | **Download snapshots:** 693 (hourly)
+**Last updated:** 2026-11-15T00:41:23Z
+**Days tracked:** 175 | **Download snapshots:** 696 (hourly)
 
 ---
 
@@ -11,8 +11,8 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 162 | 91 |
-| Git Clones | 274 | 105 |
+| Page Views | 158 | 89 |
+| Git Clones | 262 | 100 |
 
 > **Engagement:** 1.7 pages per visitor (14-day avg)
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 722 of 91 visitors cloned or downloaded (**793.4%**)
+> **14-day conversion:** 721 of 89 visitors cloned or downloaded (**810.1%**)
 >
-> Unique cloners: 105 | Release downloads: 617
+> Unique cloners: 100 | Release downloads: 621
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 617 |
-| Git Clones (14-day) | 274 |
-| **Total Acquisitions** | **891** |
+| Zip Downloads | 621 |
+| Git Clones (14-day) | 262 |
+| **Total Acquisitions** | **883** |
 
 ---
 
@@ -54,9 +54,9 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 48 | 32 |
-| Google | 27 | 11 |
-| aocr.org | 18 | 18 |
+| github.com | 48 | 34 |
+| Google | 28 | 11 |
+| aocr.org | 13 | 13 |
 | realisticfarming.com | 5 | 4 |
 | Bing | 2 | 2 |
 | duck.ai | 1 | 1 |
@@ -81,12 +81,12 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 91 | 51 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.2.0.0` | 18 | 17 |
+| `/Realistic-Farming/FS25_TaxMod` | 92 | 54 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.2.0.0` | 18 | 18 |
 | `/Realistic-Farming/FS25_TaxMod/releases` | 12 | 11 |
-| `/Realistic-Farming/FS25_TaxMod/issues/7` | 6 | 6 |
-| `/Realistic-Farming/FS25_TaxMod/pull/8` | 3 | 3 |
+| `/Realistic-Farming/FS25_TaxMod/issues/7` | 5 | 5 |
 | `/Realistic-Farming/FS25_TaxMod/issues` | 2 | 2 |
+| `/Realistic-Farming/FS25_TaxMod/pull/8` | 2 | 2 |
 | `/Realistic-Farming/FS25_TaxMod/tree/main/src` | 2 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/blob/main/src/gui/RfEscBootstrap.lua` | 1 | 1 |
 | `/Realistic-Farming/FS25_TaxMod/blob/main/textures/ui/menuIcon.dds` | 1 | 1 |
