@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-11-15T00:41:23Z
-**Days tracked:** 175 | **Download snapshots:** 696 (hourly)
+**Last updated:** 2026-11-16T00:41:35Z
+**Days tracked:** 176 | **Download snapshots:** 699 (hourly)
 
 ---
 
@@ -11,10 +11,10 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 158 | 89 |
-| Git Clones | 262 | 100 |
+| Page Views | 137 | 76 |
+| Git Clones | 262 | 102 |
 
-> **Engagement:** 1.7 pages per visitor (14-day avg)
+> **Engagement:** 1.8 pages per visitor (14-day avg)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 721 of 89 visitors cloned or downloaded (**810.1%**)
+> **14-day conversion:** 728 of 76 visitors cloned or downloaded (**957.8%**)
 >
-> Unique cloners: 100 | Release downloads: 621
+> Unique cloners: 102 | Release downloads: 626
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 621 |
+| Zip Downloads | 626 |
 | Git Clones (14-day) | 262 |
-| **Total Acquisitions** | **883** |
+| **Total Acquisitions** | **888** |
 
 ---
 
@@ -54,11 +54,11 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 48 | 34 |
-| Google | 28 | 11 |
+| github.com | 40 | 27 |
+| Google | 27 | 10 |
 | aocr.org | 13 | 13 |
-| realisticfarming.com | 5 | 4 |
-| Bing | 2 | 2 |
+| realisticfarming.com | 2 | 2 |
+| Bing | 1 | 1 |
 | duck.ai | 1 | 1 |
 | kingmods.net | 1 | 1 |
 | yandex.ru | 1 | 1 |
@@ -81,9 +81,9 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 92 | 54 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.2.0.0` | 18 | 18 |
-| `/Realistic-Farming/FS25_TaxMod/releases` | 12 | 11 |
+| `/Realistic-Farming/FS25_TaxMod` | 79 | 44 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.2.0.0` | 14 | 14 |
+| `/Realistic-Farming/FS25_TaxMod/releases` | 9 | 9 |
 | `/Realistic-Farming/FS25_TaxMod/issues/7` | 5 | 5 |
 | `/Realistic-Farming/FS25_TaxMod/issues` | 2 | 2 |
 | `/Realistic-Farming/FS25_TaxMod/pull/8` | 2 | 2 |
