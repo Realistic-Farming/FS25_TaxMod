@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-11-22T00:54:25Z
-**Days tracked:** 179 | **Download snapshots:** 712 (hourly)
+**Last updated:** 2026-11-27T06:31:52Z
+**Days tracked:** 180 | **Download snapshots:** 717 (hourly)
 
 ---
 
@@ -11,10 +11,10 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 93 | 51 |
-| Git Clones | 283 | 142 |
+| Page Views | 76 | 49 |
+| Git Clones | 293 | 149 |
 
-> **Engagement:** 1.8 pages per visitor (14-day avg)
+> **Engagement:** 1.5 pages per visitor (14-day avg)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 782 of 51 visitors cloned or downloaded (**1533.3%**)
+> **14-day conversion:** 795 of 49 visitors cloned or downloaded (**1622.4%**)
 >
-> Unique cloners: 142 | Release downloads: 640
+> Unique cloners: 149 | Release downloads: 646
 
 ---
 
@@ -42,9 +42,9 @@
 
 | Channel | Count |
 |---------|-------|
-| Zip Downloads | 640 |
-| Git Clones (14-day) | 283 |
-| **Total Acquisitions** | **923** |
+| Zip Downloads | 646 |
+| Git Clones (14-day) | 293 |
+| **Total Acquisitions** | **939** |
 
 ---
 
@@ -54,10 +54,11 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 34 | 24 |
-| Google | 20 | 10 |
-| realisticfarming.com | 3 | 3 |
-| kingmods.net | 1 | 1 |
+| github.com | 29 | 21 |
+| Google | 14 | 10 |
+| realisticfarming.com | 2 | 2 |
+| DuckDuckGo | 1 | 1 |
+| yandex.ru | 1 | 1 |
 
 ---
 
@@ -77,11 +78,9 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/Realistic-Farming/FS25_TaxMod` | 63 | 41 |
-| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.2.0.0` | 16 | 15 |
-| `/Realistic-Farming/FS25_TaxMod/releases` | 10 | 10 |
-| `/Realistic-Farming/FS25_TaxMod/issues` | 2 | 2 |
-| `/Realistic-Farming/FS25_TaxMod/pulse` | 1 | 1 |
+| `/Realistic-Farming/FS25_TaxMod` | 53 | 41 |
+| `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.2.0.0` | 13 | 11 |
+| `/Realistic-Farming/FS25_TaxMod/releases` | 9 | 9 |
 | `/Realistic-Farming/FS25_TaxMod/releases/tag/v1.1.6.0` | 1 | 1 |
 
 ---

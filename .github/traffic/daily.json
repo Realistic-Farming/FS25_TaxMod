@@ -1504,5 +1504,35 @@
     "views_unique": 2,
     "clones_total": 16,
     "clones_unique": 9
+  },
+  "2026-11-21": {
+    "views_total": 5,
+    "views_unique": 5,
+    "clones_total": 4,
+    "clones_unique": 2
+  },
+  "2026-11-22": {
+    "views_total": 2,
+    "views_unique": 2,
+    "clones_total": 5,
+    "clones_unique": 2
+  },
+  "2026-11-23": {
+    "views_total": 0,
+    "views_unique": 0,
+    "clones_total": 17,
+    "clones_unique": 9
+  },
+  "2026-11-24": {
+    "views_total": 8,
+    "views_unique": 5,
+    "clones_total": 19,
+    "clones_unique": 12
+  },
+  "2026-11-25": {
+    "views_total": 5,
+    "views_unique": 5,
+    "clones_total": 41,
+    "clones_unique": 27
   }
 }
